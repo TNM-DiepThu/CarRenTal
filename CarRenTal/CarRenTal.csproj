@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Bus\Bus.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="View\" />
+  </ItemGroup>
+
 </Project>
