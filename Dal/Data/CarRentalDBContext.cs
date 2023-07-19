@@ -34,6 +34,7 @@ namespace Dal.Data
         // thêm đường dẫn
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+        // đổi tên server
             optionsBuilder.UseSqlServer(@"Server=LAPTOP-04RP8E0L\SQLEXPRESS;Database=DBDA1TEST;Trusted_Connection=True;TrustServerCertificate=True;");
         }
         // áp dụng tất cả asemmbly . 
