@@ -13,7 +13,7 @@ namespace Dal.Configuration
     {
         public void Configure(EntityTypeBuilder<MauSac> builder)
         {
-            builder.ToTable("Màu sắc");
+            builder.ToTable("Mau_sac");
             builder.HasKey(x => x.Id);
             builder.Property(x=>x.TenMauSac).HasColumnType("nvarchar(100)").IsRequired();
         }

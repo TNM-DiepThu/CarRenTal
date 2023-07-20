@@ -13,7 +13,7 @@ namespace Dal.Configuration
     {
         public void Configure(EntityTypeBuilder<KhachHang> builder)
         {
-            builder.ToTable("Khách hàng");
+            builder.ToTable("Khach_hang");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x=>x.GioiTinh).HasColumnType("Bit").IsRequired();

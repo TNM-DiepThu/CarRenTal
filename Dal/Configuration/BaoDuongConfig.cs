@@ -14,7 +14,7 @@ namespace Dal.Configuration
         public void Configure(EntityTypeBuilder<BaoDuong> builder)
         {
             //đặt tên bảng
-            builder.ToTable("Bảo dưỡng");
+            builder.ToTable("Bao_Duong");
             // set khoá chính
             builder.HasKey(p => p.Id);
             //set thuộc tính

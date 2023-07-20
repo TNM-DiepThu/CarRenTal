@@ -13,7 +13,7 @@ namespace Dal.Configuration
     {
         public void Configure(EntityTypeBuilder<DangKiem> builder)
         {
-            builder.ToTable("Đăng kiểm");
+            builder.ToTable("Đang_kiem");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.NgayDangKiem).HasColumnType("DateTime").IsRequired();
             builder.Property(x => x.NgayHetHan).HasColumnType("DateTime").IsRequired();

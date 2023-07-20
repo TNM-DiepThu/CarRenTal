@@ -13,7 +13,7 @@ namespace Dal.Configuration
     {
         public void Configure(EntityTypeBuilder<TaiKhoan> builder)
         {
-            builder.ToTable("Tài khoản");
+            builder.ToTable("Tai_khoan");
             builder.HasKey(p => p.username);
             builder.Property(p => p.password);
             builder.HasOne(t => t.NhanVien).WithOne(nv => nv.TaiKhoan).HasForeignKey<TaiKhoan>(t => t.IdNhanVien).IsRequired();

@@ -13,7 +13,7 @@ namespace Dal.Configuration
     {
         public void Configure(EntityTypeBuilder<HoaDonThueXe> builder)
         {
-            builder.ToTable("Hoá đơn thuê xe");
+            builder.ToTable("Hoa_don_thue_xe");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.NgayTao).HasColumnType("DateTime").IsRequired();
             builder.Property(x=>x.SoHopDong).HasColumnType("int").IsRequired();

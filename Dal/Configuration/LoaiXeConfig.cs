@@ -13,7 +13,7 @@ namespace Dal.Configuration
     {
         public void Configure(EntityTypeBuilder<LoaiXe> builder)
         {
-            builder.ToTable("Loại xe");
+            builder.ToTable("Loai_xe");
             builder.HasKey(x=>x.Id);
             builder.Property(x => x.Name).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x => x.LoaiNguyenLieu).HasColumnType("nvarchar(100)").IsRequired();
