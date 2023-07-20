@@ -156,9 +156,6 @@ namespace Dal.Migrations
                     b.Property<decimal>("PhuPhi")
                         .HasColumnType("DECIMAL");
 
-                    b.Property<int>("SoLuong")
-                        .HasColumnType("Int");
-
                     b.Property<decimal>("TongTien")
                         .HasColumnType("DECIMAL");
 

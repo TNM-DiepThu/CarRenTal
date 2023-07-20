@@ -276,7 +276,6 @@ namespace Dal.Migrations
                     NgayKetThuc = table.Column<DateTime>(type: "DateTime", nullable: false),
                     TongTien = table.Column<decimal>(type: "DECIMAL", nullable: false),
                     DonGia = table.Column<decimal>(type: "DECIMAL", nullable: false),
-                    SoLuong = table.Column<int>(type: "Int", nullable: false),
                     PhuPhi = table.Column<decimal>(type: "DECIMAL", nullable: false),
                     TrangThai = table.Column<int>(type: "int", nullable: false),
                     IdHoaDon = table.Column<Guid>(type: "uniqueidentifier", nullable: false),

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dal.Migrations
 {
     [DbContext(typeof(CarRentalDBContext))]
-    [Migration("20230719080756_DB")]
+    [Migration("20230720013802_DB")]
     partial class DB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -157,9 +157,6 @@ namespace Dal.Migrations
 
                     b.Property<decimal>("PhuPhi")
                         .HasColumnType("DECIMAL");
-
-                    b.Property<int>("SoLuong")
-                        .HasColumnType("Int");
 
                     b.Property<decimal>("TongTien")
                         .HasColumnType("DECIMAL");

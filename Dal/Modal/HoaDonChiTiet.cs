@@ -14,8 +14,7 @@ namespace Dal.Modal
         public DateTime NgayBatDau { get; set; }    
         public DateTime NgayKetThuc { get;set; }
         public decimal TongTien { get; set; }
-        public decimal DonGia { get; set; }
-        public int SoLuong { get; set; }
+        public decimal DonGia { get; set; }      
         public decimal PhuPhi { get; set; }
         public int TrangThai { get; set; }
         public Guid IdHoaDon { get; set; }
