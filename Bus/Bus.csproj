@@ -23,4 +23,9 @@
     <ProjectReference Include="..\Dal\Dal.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Serviece\Implements\" />
+    <Folder Include="Serviece\Interface\" />
+  </ItemGroup>
+
 </Project>
