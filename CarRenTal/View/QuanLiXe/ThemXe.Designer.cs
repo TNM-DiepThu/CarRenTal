@@ -43,7 +43,6 @@
             textBox8 = new TextBox();
             label7 = new Label();
             label8 = new Label();
-            textBox9 = new TextBox();
             textBox10 = new TextBox();
             label9 = new Label();
             label10 = new Label();
@@ -59,6 +58,7 @@
             bt_esc = new Button();
             comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
+            comboBox3 = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -181,13 +181,6 @@
             label8.Size = new Size(57, 20);
             label8.TabIndex = 1;
             label8.Text = "Hộp số";
-            // 
-            // textBox9
-            // 
-            textBox9.Location = new Point(44, 304);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(217, 27);
-            textBox9.TabIndex = 0;
             // 
             // textBox10
             // 
@@ -316,11 +309,20 @@
             comboBox2.Size = new Size(217, 28);
             comboBox2.TabIndex = 3;
             // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(44, 304);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(217, 28);
+            comboBox3.TabIndex = 3;
+            // 
             // ThemXe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(655, 586);
+            Controls.Add(comboBox3);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
             Controls.Add(bt_esc);
@@ -348,7 +350,6 @@
             Controls.Add(textBox4);
             Controls.Add(textBox2);
             Controls.Add(textBox13);
-            Controls.Add(textBox9);
             Controls.Add(textBox7);
             Controls.Add(textBox5);
             Controls.Add(textBox3);
@@ -374,7 +375,6 @@
         private TextBox textBox8;
         private Label label7;
         private Label label8;
-        private TextBox textBox9;
         private TextBox textBox10;
         private Label label9;
         private Label label10;
@@ -390,5 +390,6 @@
         private Button bt_esc;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
+        private ComboBox comboBox3;
     }
 }
