@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
+﻿using CarRenTal.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,22 +9,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarRenTal.View
+namespace CarRenTal
 {
-    public partial class Login : Form
+    public partial class EmailVerifyForm : Form
     {
+
         private Form currentFormChild;
-        public Login()
+        public EmailVerifyForm()
         {
             InitializeComponent();
         }
-
-        private void lb_forgotPass_Click(object sender, EventArgs e)
+        private void bt_back_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new EmailVerifyForm());
+            OpenChildForm(new Login());
         }
-        private void OpenChildForm(Form childForm)
+
+        private void bt_continue_Click(object sender, EventArgs e)
         {
+            if (true)
+            {
+                OpenChildForm(new ResetPass());
+            }
+        }
+        public void OpenChildForm(Form childForm)
+        {
+            this.Text = childForm.Text;
             if (currentFormChild != null)
             {
                 currentFormChild.Close();
@@ -32,9 +41,8 @@ namespace CarRenTal.View
             currentFormChild = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
-            // childForm.Dock = DockStyle.Fill;
-            pn_login.Controls.Clear();
-            pn_login.Controls.Add(childForm);
+            childForm.Dock = DockStyle.Fill;
+            pn_verify.Controls.Add(childForm);
             // pnlBody.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
