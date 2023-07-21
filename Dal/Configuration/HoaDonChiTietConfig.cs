@@ -20,6 +20,7 @@ namespace Dal.Configuration
             builder.Property(x => x.TongTien).HasColumnType("DECIMAL").IsRequired();
             builder.Property(x => x.DonGia).HasColumnType("DECIMAL").IsRequired();
             builder.Property(x => x.PhuPhi).HasColumnType("DECIMAL").IsRequired();
+            builder.Property(x => x.TienCoc).HasColumnType("DECIMAL").IsRequired();
             builder.HasOne(x => x.HoaDonThueXe).WithMany(x => x.HoaDonChiTiets).HasForeignKey(x=>x.IdHoaDon);
             builder.HasOne(x => x.Xe).WithMany(x => x.HoaDonChiTiets).HasForeignKey(x=>x.IdXe);
 

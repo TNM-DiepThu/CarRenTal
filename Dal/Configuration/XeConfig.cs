@@ -19,6 +19,7 @@ namespace Dal.Configuration
             builder.Property(x => x.SoKhung).HasColumnType("int").IsRequired();
             builder.Property(x => x.SoMay).HasColumnType("int").IsRequired();
             builder.Property(x => x.DonGia).HasColumnType("DECIMAL").IsRequired();
+            builder.Property(x => x.SoCongTo).HasColumnType("int").IsRequired();
             builder.Property(x => x.TrangThai).HasColumnType("int").IsRequired();
             builder.HasOne(x => x.MauSac).WithMany(c => c.Xes).HasForeignKey(y => y.IdMauSac);
             

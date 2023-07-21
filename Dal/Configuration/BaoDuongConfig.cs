@@ -21,6 +21,7 @@ namespace Dal.Configuration
             builder.Property(p => p.NgayDangKiem).HasColumnType("DateTime").IsRequired();
             builder.Property(p => p.NgayHetHan).HasColumnType("DateTime").IsRequired();
             builder.Property(p => p.ChiPhi).HasColumnType("Decimal").IsRequired();
+            builder.Property(x => x.SoCongToBaoDuong).HasColumnType("int").IsRequired();
             builder.HasOne(x=>x.Xe).WithMany(y=>y.baoDuongs).HasForeignKey(x=>x.IdXe);
 
         }

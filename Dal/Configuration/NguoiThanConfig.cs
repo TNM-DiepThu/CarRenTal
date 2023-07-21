@@ -19,6 +19,7 @@ namespace Dal.Configuration
             builder.Property(p => p.GioiTinh).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x => x.DiaChi).HasColumnType("nvarchar(100)").IsRequired(); 
             builder.Property(x => x.SDT).HasColumnType("int").IsRequired();
+            builder.Property(x => x.CCCD).HasColumnType("int").IsRequired();
             builder.HasOne(x => x.KhachHangs).WithMany(y=> y.NguoiThans).HasForeignKey(x=>x.IdKhachHang);
         }
     }

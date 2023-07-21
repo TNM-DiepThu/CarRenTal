@@ -15,6 +15,7 @@ namespace Dal.Modal
         public bool GioiTinh { get; set; }
         public string DiaChi { get; set; }
         public int SDT { get; set;}
+        public int CCCD { get; set;}
         
         public virtual ICollection<HoaDonThueXe> HoaDonThueXe { get; set; }
         public virtual ICollection<NguoiThan> NguoiThans { get; set; }

@@ -14,7 +14,8 @@ namespace Dal.Modal
         public string Name { get; set; }    
         public bool GioiTinh { get; set; }
         public string DiaChi { get; set; }
-        public int SDT { get; set; }        
+        public int SDT { get; set; }
+        public int CCCD { get; set; }
         public Guid IdKhachHang { get; set; }
 
         public virtual KhachHang KhachHangs { get; set;}
