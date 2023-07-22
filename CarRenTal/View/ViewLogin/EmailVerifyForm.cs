@@ -16,7 +16,7 @@ namespace CarRenTal.View.ViewLogin
     public partial class EmailVerifyForm : Form
     {
         Form currentFormChild;
-        int min, seconds, countOTPFail=0;
+        int min = 0, seconds = 0, countOTPFail = 0;
         LoginService loginService;
         public EmailVerifyForm()
         {
@@ -28,13 +28,13 @@ namespace CarRenTal.View.ViewLogin
         {
             if (loginService.VerifyOTP(tx_emailOTP.Text))
             {
-                OpenChildForm(new ResetPassForm());
+                OpenChildForm(new ResetPassForm(tx_email.Text));
             }
             else
             {
                 countOTPFail++;
                 MessageBox.Show("Vui lòng kiểm tra email hoặc mã của bạn");
-                if (countOTPFail>=3)
+                if (countOTPFail >= 3)
                 {
                     MessageBox.Show("Tài khoản của bạn bị khóa tạm thời, liên hệ quản lý để mở lại");
                 }
@@ -72,8 +72,13 @@ namespace CarRenTal.View.ViewLogin
         {
             try
             {
+                if (min != 0 && seconds != 0)
+                {
+                    return;
+                }
                 if (IsValid(tx_email.Text))
                 {
+
                     lb_sendOTP.Enabled = true;
                 }
             }
@@ -89,9 +94,9 @@ namespace CarRenTal.View.ViewLogin
             min = 3; seconds = 0;
             timer1.Start();
             lb_time.Visible = true;
-            lb_time.Text= min.ToString()+":"+seconds.ToString();
+            lb_time.Text = min.ToString() + ":" + seconds.ToString();
             lb_sendOTP.Enabled = false;
-            if (true)
+            if (loginService.CheckEmail(tx_email.Text))
             {
                 loginService.Get_verification_code(tx_email.Text);
             }
@@ -100,13 +105,13 @@ namespace CarRenTal.View.ViewLogin
         private void timer1_Tick(object sender, EventArgs e)
         {
             lb_time.Text = min.ToString() + ":" + seconds.ToString();
-            if (min==0&& seconds==0)
+            if (min == 0 && seconds == 0)
             {
                 lb_sendOTP.Enabled = true;
                 lb_time.Visible = false;
                 timer1.Stop();
             }
-            if (min>0&& seconds==0)
+            if (min > 0 && seconds == 0)
             {
                 seconds = 60;
                 min--;
@@ -115,6 +120,6 @@ namespace CarRenTal.View.ViewLogin
 
         }
 
-        
+
     }
 }

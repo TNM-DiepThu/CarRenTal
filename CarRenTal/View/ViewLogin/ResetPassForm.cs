@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bus.Serviece.Implements;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,18 +13,51 @@ namespace CarRenTal.View.ViewLogin
 {
     public partial class ResetPassForm : Form
     {
-        public ResetPassForm()
+        string _email;
+        LoginService _loginService = new LoginService();
+        public ResetPassForm(string email)
         {
             InitializeComponent();
+            _email = email;
         }
         private Form currentFormChild;
 
         private void bt_submit_Click(object sender, EventArgs e)
         {
-            if (true)
+            string checkPass = CheckPass();
+            if (CheckPass() != null)
             {
-                OpenChildForm(new ResetPassForm());
+                MessageBox.Show("" + checkPass);
+                return;
             }
+
+            try
+            {
+                var result = _loginService.UpdatePas(tx_newPass.Text, _email);
+                OpenChildForm(new LoginForm());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+        string CheckPass()
+        {
+            if (tx_newPass.Text.Length == 0)
+            {
+                return "Mật khẩu phải có ít nhất 1 ký tự!";
+            }
+            if (tx_newPass.Text.Contains(" "))
+            {
+                return "Mật khẩu không có khoảng trắng!";
+            }
+            if (tx_newPass.Text != tx_rePass.Text)
+            {
+                return "Mật khẩu nhập lại không giống!";
+            }
+            return null;
         }
         private void OpenChildForm(Form childForm)
         {
