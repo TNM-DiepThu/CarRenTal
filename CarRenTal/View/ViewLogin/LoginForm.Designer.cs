@@ -87,7 +87,7 @@
             tx_user.Location = new Point(142, 251);
             tx_user.Name = "tx_user";
             tx_user.Size = new Size(316, 34);
-            tx_user.TabIndex = 5;
+            tx_user.TabIndex = 1;
             // 
             // tx_pass
             // 
@@ -96,7 +96,8 @@
             tx_pass.Location = new Point(142, 379);
             tx_pass.Name = "tx_pass";
             tx_pass.Size = new Size(316, 34);
-            tx_pass.TabIndex = 5;
+            tx_pass.TabIndex = 2;
+            tx_pass.UseSystemPasswordChar = true;
             // 
             // bt_login
             // 
@@ -106,7 +107,7 @@
             bt_login.Location = new Point(188, 536);
             bt_login.Name = "bt_login";
             bt_login.Size = new Size(190, 71);
-            bt_login.TabIndex = 6;
+            bt_login.TabIndex = 3;
             bt_login.Text = "Đăng nhập";
             bt_login.UseVisualStyleBackColor = false;
             bt_login.Click += bt_login_Click;
@@ -133,6 +134,7 @@
             Controls.Add(pn_login);
             Name = "LoginForm";
             Text = "LoginForm";
+            Load += LoginForm_Load;
             pn_login.ResumeLayout(false);
             pn_login.PerformLayout();
             ResumeLayout(false);

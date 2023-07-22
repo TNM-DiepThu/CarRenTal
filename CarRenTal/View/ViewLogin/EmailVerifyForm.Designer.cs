@@ -90,7 +90,7 @@
             bt_continue.Location = new Point(90, 489);
             bt_continue.Name = "bt_continue";
             bt_continue.Size = new Size(177, 64);
-            bt_continue.TabIndex = 6;
+            bt_continue.TabIndex = 3;
             bt_continue.Text = "Tiếp tục";
             bt_continue.UseVisualStyleBackColor = false;
             bt_continue.Click += bt_continue_Click;
@@ -103,7 +103,7 @@
             bt_return.Location = new Point(295, 489);
             bt_return.Name = "bt_return";
             bt_return.Size = new Size(177, 64);
-            bt_return.TabIndex = 6;
+            bt_return.TabIndex = 4;
             bt_return.Text = "Trở lại";
             bt_return.UseVisualStyleBackColor = false;
             // 
@@ -114,7 +114,7 @@
             tx_emailOTP.Location = new Point(122, 390);
             tx_emailOTP.Name = "tx_emailOTP";
             tx_emailOTP.Size = new Size(316, 34);
-            tx_emailOTP.TabIndex = 5;
+            tx_emailOTP.TabIndex = 2;
             // 
             // tx_email
             // 
@@ -123,7 +123,7 @@
             tx_email.Location = new Point(122, 251);
             tx_email.Name = "tx_email";
             tx_email.Size = new Size(316, 34);
-            tx_email.TabIndex = 5;
+            tx_email.TabIndex = 1;
             tx_email.TextChanged += tx_email_TextChanged;
             // 
             // lb_pass
