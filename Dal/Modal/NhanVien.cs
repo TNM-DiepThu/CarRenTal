@@ -17,7 +17,9 @@ namespace Dal.Modal
         [Phone]
         [StringLength(10, ErrorMessage = "nhap 10 ky tu")]
         public string SDT { get; set; }
-        public DateTime NgaySinh { get; set; }      
+        public DateTime NgaySinh { get; set; }
+        [EmailAddress(ErrorMessage = "nhập đúng email")]
+        public string  Email { get; set; }
         public int TrangThai { get; set; }
         public Guid IdChucVu { get; set; }
         public virtual ChucVu ChucVu { get; set; }
