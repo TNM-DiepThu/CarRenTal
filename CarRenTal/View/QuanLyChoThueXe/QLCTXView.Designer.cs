@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -40,11 +41,21 @@
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            button2.Location = new Point(494, 187);
+            button2.Name = "button2";
+            button2.Size = new Size(112, 34);
+            button2.TabIndex = 1;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // QLCTXView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1478, 784);
+            Controls.Add(button2);
             Controls.Add(button1);
             Name = "QLCTXView";
             Text = "QLCTXView";
@@ -54,5 +65,6 @@
         #endregion
 
         private Button button1;
+        private Button button2;
     }
 }
