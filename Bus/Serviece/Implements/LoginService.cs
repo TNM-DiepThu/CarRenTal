@@ -5,15 +5,25 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using Dal.Repository;
+using Dal.Modal;
 namespace Bus.Serviece.Implements
 {
     public class LoginService
     {
         string _otp;
+        TaiKhoanRepo _taiKhoanRepo;
+        NhanVienRepo _nhanVienRepo= new NhanVienRepo();
+        ChucVuRepo _chucVuRepo= new ChucVuRepo();
+        List<TaiKhoan> _lstTaiKhoan;
+        List<ChucVu> _lstChucVu;
+        List<NhanVien> _lstNhanVien;
         public LoginService()
         {
-            
+            _taiKhoanRepo = new TaiKhoanRepo();
+            _lstChucVu = _chucVuRepo.GetChucVu();
+            _lstNhanVien = _nhanVienRepo.GetNhanVien();
+            _lstTaiKhoan = _taiKhoanRepo.GetTaiKhoan();
         }
         bool senMail(string otp, string email)
         {
@@ -38,21 +48,77 @@ namespace Bus.Serviece.Implements
         public string CreateOTP()
         {
             Random random = new Random();
-            string otp="";
+            string otp = "";
             for (int i = 0; i < 4; i++)
             {
-                otp+= random.Next(9).ToString()+"";
+                otp += random.Next(9).ToString() + "";
             }
             return otp;
         }
         public void Get_verification_code(string email)
         {
-            _otp= CreateOTP();
+            _otp = CreateOTP();
             senMail(_otp, email);
         }
         public bool VerifyOTP(string userOTP)
         {
-            return userOTP ==_otp.ToString();
+            return userOTP == _otp.ToString();
+        }
+
+        public string CheckLogin(string user, string password)
+        {
+            try
+            {
+                var result = from t in _lstTaiKhoan
+                             join n in _lstNhanVien on t.IdNhanVien equals n.Id
+                             join c in _lstChucVu on n.IdChucVu equals c.Id
+                             where (t.username == user && t.password == password && t.TrangThai == 1)
+                             select c.TenChucVu;
+                return result.ToList()[0];
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+        public bool CheckEmail(string email)
+        {
+            try
+            {
+                var result = _lstNhanVien.FirstOrDefault(x => x.Email == email);
+                if (result!= null)
+                {
+                     return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        public bool UpdatePas(string newPass, string email)
+        {
+            try
+            {
+                var lstTaiKhoan = from t in _lstTaiKhoan
+                                  join n in _lstNhanVien on t.IdNhanVien equals n.Id
+                                  where n.Email == email
+                                  select t;
+                TaiKhoan taiKhoan = lstTaiKhoan.ToList()[0];
+                taiKhoan.password = newPass;
+                return _taiKhoanRepo.UpdateTaiKhoan(taiKhoan);
+    
+
+    }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
     }
 }
