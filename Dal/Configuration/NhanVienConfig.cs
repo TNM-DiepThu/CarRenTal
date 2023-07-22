@@ -20,6 +20,7 @@ namespace Dal.Configuration
             builder.Property(x => x.DiaChi).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x=>x.SDT).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x=>x.NgaySinh).HasColumnType("DateTime").IsRequired();
+            builder.Property(x => x.Email).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x=>x.TrangThai).HasColumnType("int").IsRequired();
             builder.HasOne(x => x.ChucVu).WithMany(y => y.NhanVien).HasForeignKey(c => c.IdChucVu);
             
