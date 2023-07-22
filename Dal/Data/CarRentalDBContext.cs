@@ -30,6 +30,11 @@ namespace Dal.Data
         public DbSet<TaiKhoan> taiKhoans { get; set; }
         public DbSet<Xe> xes { get; set; }
         public DbSet<XeBaoHiem> xeBaoHiems { get; set; }
+        public DbSet<ChiPhiPhatSinh> chiPhiPhatSinhs { get; set; }
+        public DbSet<LoaiPhuPhi> loaiPhuPhis { get; set; }
+        public DbSet<TheChap> theChaps { get; set; }
+        public DbSet<TaiSanTheChap> taiSanThes { get; set; }
+        public DbSet<GiayToTheChap> giayToThes { get; set; }
 
         // thêm đường dẫn
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
