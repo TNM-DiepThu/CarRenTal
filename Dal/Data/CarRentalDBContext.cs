@@ -27,7 +27,7 @@ namespace Dal.Data
         public DbSet<MauSac> mauSacs { get; set; }
         public DbSet<NguoiThan> nguoiThans { get; set; }
         public DbSet<NhanVien> nhanViens { get; set; }
-        public DbSet<TheChap> taiKhoans { get; set; }
+        public DbSet<TaiKhoan> taiKhoans { get; set; }
         public DbSet<Xe> xes { get; set; }
         public DbSet<XeBaoHiem> xeBaoHiems { get; set; }
 
