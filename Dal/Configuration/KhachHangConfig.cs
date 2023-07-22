@@ -18,8 +18,8 @@ namespace Dal.Configuration
             builder.Property(x => x.Name).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x=>x.GioiTinh).HasColumnType("Bit").IsRequired();
             builder.Property(x => x.DiaChi).HasColumnType("nvarchar(100)").IsRequired();
-            builder.Property(x=>x.SDT).HasColumnType("int").IsRequired();
-            builder.Property(x => x.CCCD).HasColumnType("int").IsRequired();
+            builder.Property(x=>x.SDT).HasColumnType("nvarchar(100)").IsRequired();
+            builder.Property(x => x.CCCD).HasColumnType("nvarchar(100)").IsRequired();
 
         }
     }

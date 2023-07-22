@@ -14,8 +14,11 @@ namespace Dal.Modal
         public string Name { get; set; }
         public bool GioiTinh { get; set; }
         public string DiaChi { get; set; }
-        public int SDT { get; set;}
-        public int CCCD { get; set;}
+        [Phone]
+        [StringLength(10, ErrorMessage = "nhap 10 ky tu")]
+        public string SDT { get; set; }
+        [Phone]          
+        public string CCCD { get; set;}
         
         public virtual ICollection<HoaDonThueXe> HoaDonThueXe { get; set; }
         public virtual ICollection<NguoiThan> NguoiThans { get; set; }

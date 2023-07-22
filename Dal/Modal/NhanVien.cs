@@ -14,7 +14,9 @@ namespace Dal.Modal
         public string HoTen { get; set; }
         public bool GioiTinh { get; set; }
         public string DiaChi { get; set; }
-        public int SDT { get; set; }
+        [Phone]
+        [StringLength(10, ErrorMessage = "nhap 10 ky tu")]
+        public string SDT { get; set; }
         public DateTime NgaySinh { get; set; }      
         public int TrangThai { get; set; }
         public Guid IdChucVu { get; set; }
