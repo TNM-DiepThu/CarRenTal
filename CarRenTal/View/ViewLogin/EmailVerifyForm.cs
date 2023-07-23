@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bus;
 using Bus.Serviece.Implements;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CarRenTal.View.ViewLogin
 {
@@ -26,6 +28,10 @@ namespace CarRenTal.View.ViewLogin
 
         private void bt_continue_Click(object sender, EventArgs e)
         {
+            if (tx_email.Text==null)
+            {
+                return;
+            }
             if (loginService.VerifyOTP(tx_emailOTP.Text))
             {
                 OpenChildForm(new ResetPassForm(tx_email.Text));
@@ -55,13 +61,18 @@ namespace CarRenTal.View.ViewLogin
             childForm.BringToFront();
             childForm.Show();
         }
+        // regex Email để lấy mã
         public bool IsValid(string emailaddress)
         {
             try
             {
-                MailAddress m = new MailAddress(emailaddress);
+                string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 
-                return true;
+                // Create Regex object
+                Regex regex = new Regex(pattern);
+
+                // Check if the email matches the pattern
+                return regex.IsMatch(emailaddress);
             }
             catch (FormatException)
             {
@@ -120,6 +131,9 @@ namespace CarRenTal.View.ViewLogin
 
         }
 
-
+        private void bt_return_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new LoginForm());
+        }
     }
 }

@@ -62,7 +62,16 @@ namespace Bus.Serviece.Implements
         }
         public bool VerifyOTP(string userOTP)
         {
-            return userOTP == _otp.ToString();
+            try
+            {
+                if (string.IsNullOrEmpty(userOTP)) { return false; }
+                    return userOTP == _otp.ToString();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public string CheckLogin(string user, string password)
