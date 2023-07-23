@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CarRenTal.View.QuanLyChoThueXe
 {
-    public partial class QLCTXView : Form
+    public partial class HistoryCTX : Form
     {
-        public QLCTXView()
+        public HistoryCTX()
         {
             InitializeComponent();
         }

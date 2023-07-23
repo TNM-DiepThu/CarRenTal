@@ -43,9 +43,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(188, 88);
+            label1.Location = new Point(235, 110);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(227, 46);
+            label1.Size = new Size(268, 54);
             label1.TabIndex = 1;
             label1.Text = "ĐĂNG NHẬP";
             // 
@@ -53,9 +54,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(89, 194);
+            label2.Location = new Point(111, 242);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(157, 28);
+            label2.Size = new Size(190, 32);
             label2.TabIndex = 2;
             label2.Text = "Tên đăng nhập:";
             // 
@@ -63,9 +65,10 @@
             // 
             lb_pass.AutoSize = true;
             lb_pass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_pass.Location = new Point(89, 328);
+            lb_pass.Location = new Point(111, 410);
+            lb_pass.Margin = new Padding(4, 0, 4, 0);
             lb_pass.Name = "lb_pass";
-            lb_pass.Size = new Size(107, 28);
+            lb_pass.Size = new Size(128, 32);
             lb_pass.TabIndex = 3;
             lb_pass.Text = "Mật khẩu:";
             // 
@@ -73,9 +76,10 @@
             // 
             lb_forgotPass.AutoSize = true;
             lb_forgotPass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_forgotPass.Location = new Point(316, 477);
+            lb_forgotPass.Location = new Point(395, 596);
+            lb_forgotPass.Margin = new Padding(4, 0, 4, 0);
             lb_forgotPass.Name = "lb_forgotPass";
-            lb_forgotPass.Size = new Size(157, 28);
+            lb_forgotPass.Size = new Size(188, 32);
             lb_forgotPass.TabIndex = 4;
             lb_forgotPass.Text = "Quên mật khẩu";
             lb_forgotPass.Click += lb_forgotPass_Click;
