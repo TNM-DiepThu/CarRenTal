@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace CarRenTal.View.QuanLyChoThueXe
 {
-    public partial class HDCTView : Form
+    public partial class HistoryCTX : Form
     {
-        public HDCTView()
+        public HistoryCTX()
         {
             InitializeComponent();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
         }
     }
 }
