@@ -43,7 +43,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(188, 88);
+            label1.Location = new Point(180, 74);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(227, 46);
             label1.TabIndex = 1;
@@ -53,7 +54,8 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(89, 194);
+            label2.Location = new Point(111, 180);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(157, 28);
             label2.TabIndex = 2;
@@ -63,7 +65,8 @@
             // 
             lb_pass.AutoSize = true;
             lb_pass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_pass.Location = new Point(89, 328);
+            lb_pass.Location = new Point(111, 325);
+            lb_pass.Margin = new Padding(4, 0, 4, 0);
             lb_pass.Name = "lb_pass";
             lb_pass.Size = new Size(107, 28);
             lb_pass.TabIndex = 3;
@@ -73,7 +76,8 @@
             // 
             lb_forgotPass.AutoSize = true;
             lb_forgotPass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_forgotPass.Location = new Point(316, 477);
+            lb_forgotPass.Location = new Point(292, 467);
+            lb_forgotPass.Margin = new Padding(4, 0, 4, 0);
             lb_forgotPass.Name = "lb_forgotPass";
             lb_forgotPass.Size = new Size(157, 28);
             lb_forgotPass.TabIndex = 4;
@@ -84,18 +88,18 @@
             // 
             tx_user.BackColor = SystemColors.ScrollBar;
             tx_user.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            tx_user.Location = new Point(142, 251);
+            tx_user.Location = new Point(111, 243);
             tx_user.Name = "tx_user";
-            tx_user.Size = new Size(316, 34);
+            tx_user.Size = new Size(348, 34);
             tx_user.TabIndex = 1;
             // 
             // tx_pass
             // 
             tx_pass.BackColor = SystemColors.ScrollBar;
             tx_pass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            tx_pass.Location = new Point(142, 379);
+            tx_pass.Location = new Point(111, 373);
             tx_pass.Name = "tx_pass";
-            tx_pass.Size = new Size(316, 34);
+            tx_pass.Size = new Size(338, 34);
             tx_pass.TabIndex = 2;
             tx_pass.UseSystemPasswordChar = true;
             // 
@@ -104,7 +108,7 @@
             bt_login.BackColor = SystemColors.ScrollBar;
             bt_login.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
             bt_login.ForeColor = SystemColors.ControlText;
-            bt_login.Location = new Point(188, 536);
+            bt_login.Location = new Point(180, 538);
             bt_login.Name = "bt_login";
             bt_login.Size = new Size(190, 71);
             bt_login.TabIndex = 3;

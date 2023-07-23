@@ -62,10 +62,19 @@ namespace Bus.Serviece.Implements
         }
         public bool VerifyOTP(string userOTP)
         {
-            return userOTP == _otp.ToString();
+            try
+            {
+                if (string.IsNullOrEmpty(userOTP)) { return false; }
+                    return userOTP == _otp.ToString();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public string CheckLogin(string user, string password)
+        public object CheckLogin(string user, string password)
         {
             try
             {
@@ -73,7 +82,7 @@ namespace Bus.Serviece.Implements
                              join n in _lstNhanVien on t.IdNhanVien equals n.Id
                              join c in _lstChucVu on n.IdChucVu equals c.Id
                              where (t.username == user && t.password == password && t.TrangThai == 1)
-                             select c.TenChucVu;
+                             select new { ten = n.HoTen, chucVu = c.TenChucVu };
                 return result.ToList()[0];
             }
             catch (Exception)

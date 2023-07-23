@@ -106,6 +106,7 @@
             bt_return.TabIndex = 4;
             bt_return.Text = "Trở lại";
             bt_return.UseVisualStyleBackColor = false;
+            bt_return.Click += bt_return_Click;
             // 
             // tx_emailOTP
             // 
