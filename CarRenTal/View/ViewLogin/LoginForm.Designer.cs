@@ -88,32 +88,30 @@
             // 
             tx_user.BackColor = SystemColors.ScrollBar;
             tx_user.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            tx_user.Location = new Point(178, 314);
-            tx_user.Margin = new Padding(4, 4, 4, 4);
+            tx_user.Location = new Point(142, 251);
             tx_user.Name = "tx_user";
-            tx_user.Size = new Size(394, 39);
-            tx_user.TabIndex = 5;
+            tx_user.Size = new Size(316, 34);
+            tx_user.TabIndex = 1;
             // 
             // tx_pass
             // 
             tx_pass.BackColor = SystemColors.ScrollBar;
             tx_pass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            tx_pass.Location = new Point(178, 474);
-            tx_pass.Margin = new Padding(4, 4, 4, 4);
+            tx_pass.Location = new Point(142, 379);
             tx_pass.Name = "tx_pass";
-            tx_pass.Size = new Size(394, 39);
-            tx_pass.TabIndex = 5;
+            tx_pass.Size = new Size(316, 34);
+            tx_pass.TabIndex = 2;
+            tx_pass.UseSystemPasswordChar = true;
             // 
             // bt_login
             // 
             bt_login.BackColor = SystemColors.ScrollBar;
             bt_login.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point);
             bt_login.ForeColor = SystemColors.ControlText;
-            bt_login.Location = new Point(235, 670);
-            bt_login.Margin = new Padding(4, 4, 4, 4);
+            bt_login.Location = new Point(188, 536);
             bt_login.Name = "bt_login";
-            bt_login.Size = new Size(238, 89);
-            bt_login.TabIndex = 6;
+            bt_login.Size = new Size(190, 71);
+            bt_login.TabIndex = 3;
             bt_login.Text = "Đăng nhập";
             bt_login.UseVisualStyleBackColor = false;
             bt_login.Click += bt_login_Click;
@@ -128,18 +126,16 @@
             pn_login.Controls.Add(label2);
             pn_login.Controls.Add(label1);
             pn_login.Location = new Point(2, 1);
-            pn_login.Margin = new Padding(4, 4, 4, 4);
             pn_login.Name = "pn_login";
-            pn_login.Size = new Size(714, 902);
+            pn_login.Size = new Size(571, 722);
             pn_login.TabIndex = 1;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(714, 844);
+            ClientSize = new Size(571, 675);
             Controls.Add(pn_login);
-            Margin = new Padding(4, 4, 4, 4);
             Name = "LoginForm";
             Text = "LoginForm";
             Load += LoginForm_Load;

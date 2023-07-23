@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace Dal.Repository
 {
-    public class TaiKhoanRepo
+    public class NhanVienRepo
     {
         CarRentalDBContext db;
-        public TaiKhoanRepo() 
+        public NhanVienRepo()
         {
             db = new CarRentalDBContext();
         }
-        public List<TaiKhoan> GetTaiKhoan()
+        public List<NhanVien> GetNhanVien()
         {
-            return db.taiKhoans.ToList();
+            return db.nhanViens.ToList();
         }
-        public bool UpdateTaiKhoan(TaiKhoan taiKhoan)
+        public bool UpdateNhanVien(NhanVien nhanVien)
         {
             try
             {
-                db.taiKhoans.Update(taiKhoan);
+                db.nhanViens.Update(nhanVien);
                 db.SaveChanges();
                 return true;
             }
@@ -33,11 +33,11 @@ namespace Dal.Repository
                 return false;
             }
         }
-        public bool AddTaiKhoan(TaiKhoan taiKhoan)
+        public bool AddNhanVien(NhanVien nhanVien)
         {
             try
             {
-                db.taiKhoans.Add(taiKhoan);
+                db.nhanViens.Add(nhanVien);
                 db.SaveChanges();
                 return true;
             }
@@ -48,4 +48,5 @@ namespace Dal.Repository
             }
         }
     }
+
 }

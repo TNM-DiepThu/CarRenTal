@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bus.Serviece.Implements;
+using Dal.Modal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +15,12 @@ namespace CarRenTal.View.ViewLogin
     public partial class LoginForm : Form
     {
         private Form currentFormChild;
+        LoginService loginService;
+
         public LoginForm()
         {
             InitializeComponent();
+            loginService = new LoginService();
         }
 
         private void lb_forgotPass_Click(object sender, EventArgs e)
@@ -40,9 +45,22 @@ namespace CarRenTal.View.ViewLogin
 
         private void bt_login_Click(object sender, EventArgs e)
         {
-            if (true)
+            try
+            {
+                var result = loginService.CheckLogin(tx_user.Text, tx_pass.Text);
+                if (result != null)
+                {
+                    MessageBox.Show("Đăng nhập thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
+                }
+            }
+            catch (Exception)
             {
 
+                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
             }
         }
 

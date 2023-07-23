@@ -62,7 +62,7 @@
             cb_showPass.Location = new Point(71, 456);
             cb_showPass.Name = "cb_showPass";
             cb_showPass.Size = new Size(205, 32);
-            cb_showPass.TabIndex = 7;
+            cb_showPass.TabIndex = 3;
             cb_showPass.Text = "Hiển thị mật khẩu";
             cb_showPass.UseVisualStyleBackColor = true;
             cb_showPass.CheckedChanged += cb_showPass_CheckedChanged;
@@ -75,7 +75,7 @@
             bt_submit.Location = new Point(97, 517);
             bt_submit.Name = "bt_submit";
             bt_submit.Size = new Size(156, 58);
-            bt_submit.TabIndex = 6;
+            bt_submit.TabIndex = 4;
             bt_submit.Text = "Cập nhật";
             bt_submit.UseVisualStyleBackColor = false;
             bt_submit.Click += bt_submit_Click;
@@ -88,7 +88,7 @@
             bt_back.Location = new Point(310, 517);
             bt_back.Name = "bt_back";
             bt_back.Size = new Size(156, 58);
-            bt_back.TabIndex = 6;
+            bt_back.TabIndex = 5;
             bt_back.Text = "Trở lại";
             bt_back.UseVisualStyleBackColor = false;
             bt_back.Click += bt_back_Click;
@@ -100,7 +100,7 @@
             tx_rePass.Location = new Point(150, 395);
             tx_rePass.Name = "tx_rePass";
             tx_rePass.Size = new Size(316, 34);
-            tx_rePass.TabIndex = 5;
+            tx_rePass.TabIndex = 2;
             tx_rePass.UseSystemPasswordChar = true;
             // 
             // tx_newPass
@@ -110,7 +110,7 @@
             tx_newPass.Location = new Point(150, 256);
             tx_newPass.Name = "tx_newPass";
             tx_newPass.Size = new Size(316, 34);
-            tx_newPass.TabIndex = 5;
+            tx_newPass.TabIndex = 1;
             tx_newPass.UseSystemPasswordChar = true;
             // 
             // lb_pass
