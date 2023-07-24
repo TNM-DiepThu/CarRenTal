@@ -15,7 +15,7 @@ namespace Dal.Data
         {
             
         }
-        public DbSet<KhachHang> baoDuongs { get; set; }
+        public DbSet<BaoDuong> baoDuongs { get; set; }
         public DbSet<BaoHiem> baoHiems { get; set; }
         public DbSet<ChucVu> chucVus { get; set; }
         public DbSet<DangKiem> dangKiems { get; set; }
