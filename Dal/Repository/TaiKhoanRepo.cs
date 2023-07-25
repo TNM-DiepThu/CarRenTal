@@ -23,7 +23,9 @@ namespace Dal.Repository
         {
             try
             {
-                db.taiKhoans.Update(taiKhoan);
+              //  db.taiKhoans.Update(taiKhoan);
+                db.taiKhoans.FirstOrDefault(x => x.username==taiKhoan.username).password=taiKhoan.password;
+                db.taiKhoans.FirstOrDefault(x => x.username==taiKhoan.username).TrangThai=taiKhoan.TrangThai;
                 db.SaveChanges();
                 return true;
             }
