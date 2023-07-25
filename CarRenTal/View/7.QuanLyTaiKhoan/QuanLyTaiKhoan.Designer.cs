@@ -71,6 +71,7 @@
             // 
             // dtgv_data
             // 
+            dtgv_data.AllowUserToAddRows = false;
             dtgv_data.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgv_data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgv_data.Location = new Point(39, 345);
@@ -246,6 +247,7 @@
             bt_delete.TabIndex = 8;
             bt_delete.Text = "Xóa";
             bt_delete.UseVisualStyleBackColor = true;
+            bt_delete.Click += bt_delete_Click;
             // 
             // bt_update
             // 
@@ -255,6 +257,7 @@
             bt_update.TabIndex = 9;
             bt_update.Text = "Sửa ";
             bt_update.UseVisualStyleBackColor = true;
+            bt_update.Click += bt_update_Click;
             // 
             // bt_add
             // 
