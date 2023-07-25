@@ -19,9 +19,8 @@ namespace Dal.Modal
         [StringLength(10, ErrorMessage = "nhap 10 ky tu")]
         public string SDT { get; set; }
         [Phone]
-        public int CCCD { get; set; }
+        public string CCCD { get; set; }
         public Guid IdKhachHang { get; set; }
-
         public virtual KhachHang KhachHangs { get; set;}
     }
 }

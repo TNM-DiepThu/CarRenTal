@@ -20,6 +20,7 @@ namespace Dal.Configuration
             builder.Property(x => x.DiaChi).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x=>x.SDT).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x => x.CCCD).HasColumnType("nvarchar(100)").IsRequired();
+            builder.Property(x => x.NgaySinh).HasColumnType("DateTime").IsRequired();
 
         }
     }
