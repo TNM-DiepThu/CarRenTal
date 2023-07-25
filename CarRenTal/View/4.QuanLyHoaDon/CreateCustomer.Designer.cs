@@ -60,14 +60,16 @@
             button3 = new Button();
             button4 = new Button();
             groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             button6 = new Button();
             button5 = new Button();
+            button8 = new Button();
+            button7 = new Button();
             pictureBox1 = new PictureBox();
             comboBox1 = new ComboBox();
             label16 = new Label();
-            button7 = new Button();
-            button8 = new Button();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -331,23 +333,33 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(groupBox2);
             groupBox1.Controls.Add(button8);
             groupBox1.Controls.Add(button7);
-            groupBox1.Controls.Add(button6);
-            groupBox1.Controls.Add(button5);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(comboBox1);
             groupBox1.Controls.Add(label16);
-            groupBox1.Location = new Point(25, 230);
+            groupBox1.Location = new Point(21, 230);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(409, 525);
-            groupBox1.TabIndex = 37;
+            groupBox1.Size = new Size(412, 578);
+            groupBox1.TabIndex = 70;
             groupBox1.TabStop = false;
             groupBox1.Text = "Quét QR Code";
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(button6);
+            groupBox2.Controls.Add(button5);
+            groupBox2.Location = new Point(36, 143);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(330, 82);
+            groupBox2.TabIndex = 70;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Camera";
+            // 
             // button6
             // 
-            button6.Location = new Point(260, 138);
+            button6.Location = new Point(212, 30);
             button6.Name = "button6";
             button6.Size = new Size(112, 34);
             button6.TabIndex = 40;
@@ -356,16 +368,34 @@
             // 
             // button5
             // 
-            button5.Location = new Point(142, 138);
+            button5.Location = new Point(78, 30);
             button5.Name = "button5";
             button5.Size = new Size(112, 34);
             button5.TabIndex = 39;
             button5.Text = "Bật ";
             button5.UseVisualStyleBackColor = true;
             // 
+            // button8
+            // 
+            button8.Location = new Point(216, 527);
+            button8.Name = "button8";
+            button8.Size = new Size(150, 33);
+            button8.TabIndex = 42;
+            button8.Text = "Người thân";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(46, 527);
+            button7.Name = "button7";
+            button7.Size = new Size(150, 33);
+            button7.TabIndex = 41;
+            button7.Text = "Khách hàng";
+            button7.UseVisualStyleBackColor = true;
+            // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(36, 187);
+            pictureBox1.Location = new Point(36, 247);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(330, 249);
             pictureBox1.TabIndex = 38;
@@ -387,24 +417,6 @@
             label16.Size = new Size(114, 25);
             label16.TabIndex = 36;
             label16.Text = "Chọn thiết bị";
-            // 
-            // button7
-            // 
-            button7.Location = new Point(46, 467);
-            button7.Name = "button7";
-            button7.Size = new Size(150, 33);
-            button7.TabIndex = 41;
-            button7.Text = "Khách hàng";
-            button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            button8.Location = new Point(216, 467);
-            button8.Name = "button8";
-            button8.Size = new Size(150, 33);
-            button8.TabIndex = 42;
-            button8.Text = "Người thân";
-            button8.UseVisualStyleBackColor = true;
             // 
             // CreateCustomer
             // 
@@ -447,6 +459,7 @@
             Text = "Thêm thông tin khách hàng";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -486,10 +499,11 @@
         private Button button3;
         private Button button4;
         private GroupBox groupBox1;
-        private Button button8;
-        private Button button7;
+        private GroupBox groupBox2;
         private Button button6;
         private Button button5;
+        private Button button8;
+        private Button button7;
         private PictureBox pictureBox1;
         private ComboBox comboBox1;
         private Label label16;
