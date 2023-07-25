@@ -33,7 +33,7 @@
             groupBox11 = new GroupBox();
             tx_email = new TextBox();
             groupBox10 = new GroupBox();
-            dateTimePicker1 = new DateTimePicker();
+            dtp_dob = new DateTimePicker();
             groupBox9 = new GroupBox();
             tx_sdt = new TextBox();
             groupBox8 = new GroupBox();
@@ -71,6 +71,7 @@
             // 
             // dtgv_data
             // 
+            dtgv_data.AllowUserToAddRows = false;
             dtgv_data.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgv_data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgv_data.Location = new Point(39, 345);
@@ -115,7 +116,7 @@
             // 
             // groupBox10
             // 
-            groupBox10.Controls.Add(dateTimePicker1);
+            groupBox10.Controls.Add(dtp_dob);
             groupBox10.Location = new Point(886, 26);
             groupBox10.Name = "groupBox10";
             groupBox10.Size = new Size(214, 82);
@@ -123,13 +124,13 @@
             groupBox10.TabStop = false;
             groupBox10.Text = "Ngày sinh";
             // 
-            // dateTimePicker1
+            // dtp_dob
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(19, 49);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(180, 27);
-            dateTimePicker1.TabIndex = 0;
+            dtp_dob.Format = DateTimePickerFormat.Short;
+            dtp_dob.Location = new Point(19, 49);
+            dtp_dob.Name = "dtp_dob";
+            dtp_dob.Size = new Size(180, 27);
+            dtp_dob.TabIndex = 0;
             // 
             // groupBox9
             // 
@@ -226,6 +227,7 @@
             bt_search.TabIndex = 6;
             bt_search.Text = "Tìm kiếm";
             bt_search.UseVisualStyleBackColor = true;
+            bt_search.Click += bt_search_Click;
             // 
             // bt_clear
             // 
@@ -245,6 +247,7 @@
             bt_delete.TabIndex = 8;
             bt_delete.Text = "Xóa";
             bt_delete.UseVisualStyleBackColor = true;
+            bt_delete.Click += bt_delete_Click;
             // 
             // bt_update
             // 
@@ -254,6 +257,7 @@
             bt_update.TabIndex = 9;
             bt_update.Text = "Sửa ";
             bt_update.UseVisualStyleBackColor = true;
+            bt_update.Click += bt_update_Click;
             // 
             // bt_add
             // 
@@ -263,6 +267,7 @@
             bt_add.TabIndex = 10;
             bt_add.Text = "Thêm";
             bt_add.UseVisualStyleBackColor = true;
+            bt_add.Click += bt_add_Click;
             // 
             // tx_search
             // 
@@ -328,8 +333,7 @@
             // 
             // QuanLyTaiKhoan
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1482, 793);
             Controls.Add(lb_id);
             Controls.Add(groupBox3);
@@ -379,7 +383,7 @@
         private GroupBox groupBox11;
         private TextBox tx_email;
         private GroupBox groupBox10;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtp_dob;
         private GroupBox groupBox9;
         private TextBox tx_sdt;
         private GroupBox groupBox8;
