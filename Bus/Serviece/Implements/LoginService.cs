@@ -74,7 +74,7 @@ namespace Bus.Serviece.Implements
             }
         }
 
-        public object CheckLogin(string user, string password)
+        public dynamic CheckLogin(string user, string password)
         {
             try
             {
