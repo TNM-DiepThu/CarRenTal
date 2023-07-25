@@ -28,18 +28,20 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
         private void QuanLyTaiKhoan_Load(object sender, EventArgs e)
         {
             dtgv_data.Rows.Clear();
-            dtgv_data.ColumnCount = 6;
+            dtgv_data.ColumnCount = 7;
             dtgv_data.Columns[0].HeaderText = "ID";
             dtgv_data.Columns[1].HeaderText = "Họ và tên";
             dtgv_data.Columns[2].HeaderText = "Giới tính";
             dtgv_data.Columns[3].HeaderText = "Số điện thoại";
             dtgv_data.Columns[4].HeaderText = "Email";
             dtgv_data.Columns[5].HeaderText = "Địa chỉ";
+            dtgv_data.Columns[6].HeaderText = "Ngày sinh";
+
 
 
             foreach (var item in _lstNhanVien)
             {
-                dtgv_data.Rows.Add(item.Id, item.HoTen, (item.GioiTinh ? "Nam" : "Nữ"), item.SDT, item.Email, item.DiaChi);
+                dtgv_data.Rows.Add(item.Id, item.HoTen, (item.GioiTinh ? "Nam" : "Nữ"), item.SDT, item.Email, item.DiaChi, item.NgaySinh);
             }
         }
 
@@ -53,6 +55,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
                 tx_sdt.Text = dtgv_data.CurrentRow.Cells[3].Value.ToString();
                 tx_email.Text = dtgv_data.CurrentRow.Cells[4].Value.ToString();
                 tx_adress.Text = dtgv_data.CurrentRow.Cells[5].Value.ToString();
+                dtp_dob.Value = DateTime.Parse(dtgv_data.CurrentRow.Cells[6].Value.ToString());
                 TaiKhoan taiKhoan = _taiKhoanService.FindTaiKhoan(Guid.Parse(lb_id.Text));
                 tx_user.Text = taiKhoan.username;
                 tx_pass.Text = taiKhoan.password;
@@ -69,6 +72,24 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             tx_adress.Text = "";
             tx_user.Text = "";
             tx_pass.Text = "";
+            dtp_dob.Value = DateTime.Today;
+        }
+
+        private void bt_search_Click(object sender, EventArgs e)
+        {
+            if (tx_search.Text != null)
+            {
+                _lstNhanVien = _taiKhoanService.GetDataGrid(tx_search.Text);
+                QuanLyTaiKhoan_Load(null, null);
+            }
+        }
+
+        private void bt_add_Click(object sender, EventArgs e)
+        {
+            if ()
+            {
+
+            }
         }
     }
 }
