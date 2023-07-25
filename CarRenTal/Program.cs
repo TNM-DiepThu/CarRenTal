@@ -13,7 +13,7 @@ namespace CarRenTal
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainLoginForm());
+            Application.Run(new CarRenTal.View._7.QuanLyTaiKhoan.QuanLyTaiKhoan());
         }
     }
 }
