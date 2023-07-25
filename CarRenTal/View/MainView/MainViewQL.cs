@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarRenTal.View._7.QuanLyTaiKhoan;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace CarRenTal.View.MainView
         public MainViewQL()
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Font;
         }
 
         private Form currentFormChild;
@@ -97,7 +99,7 @@ namespace CarRenTal.View.MainView
 
         private void btnAccount_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new QuanLyTaiKhoan());
             ChangeBackGroundButton(btnAccount);
         }
 

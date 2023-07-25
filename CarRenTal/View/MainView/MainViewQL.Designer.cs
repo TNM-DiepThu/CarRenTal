@@ -169,6 +169,7 @@
             btnHome.Size = new Size(305, 193);
             btnHome.TabIndex = 3;
             btnHome.UseVisualStyleBackColor = true;
+            btnHome.Visible = false;
             btnHome.Click += btnHome_Click;
             // 
             // MainViewQL
