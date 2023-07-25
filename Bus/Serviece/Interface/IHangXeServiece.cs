@@ -11,6 +11,12 @@ namespace Bus.Serviece.Interface
     public interface IHangXeServiece
     {
         public List<HangXe> GetAllHangXe();
-        public bool CreatHangXe(HangXeVM p);
+        public string CreatHangXe(HangXeVM p);
+        public bool DeleteHangXe(Guid id);
+        public string UpdateHangXe(HangXe p);
+        public bool GetHangXeById(Guid id);
+        public bool GetHangXeByName(string name);
+        public string GetTenHangXe(Guid id);
+
     }
 }

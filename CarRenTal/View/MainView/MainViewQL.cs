@@ -16,6 +16,7 @@ namespace CarRenTal.View.MainView
         public MainViewQL()
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Font;
         }
 
         private Form currentFormChild;

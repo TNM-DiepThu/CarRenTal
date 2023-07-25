@@ -19,6 +19,7 @@ namespace Dal.Modal
         public string SDT { get; set; }
         [Phone]          
         public string CCCD { get; set;}
+        public DateTime NgaySinh { get; set;}
         
         public virtual ICollection<HoaDonThueXe> HoaDonThueXe { get; set; }
         public virtual ICollection<NguoiThan> NguoiThans { get; set; }

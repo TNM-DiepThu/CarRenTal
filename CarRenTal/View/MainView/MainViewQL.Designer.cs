@@ -158,7 +158,7 @@
             // 
             pn_main.Location = new Point(381, 98);
             pn_main.Name = "pn_main";
-            pn_main.Size = new Size(1874, 1047);
+            pn_main.Size = new Size(1500, 840);
             pn_main.TabIndex = 2;
             pn_main.Paint += panel1_Paint;
             // 
