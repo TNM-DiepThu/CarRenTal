@@ -12,7 +12,6 @@ namespace Dal.Modal
        
         public Guid Id { get; set; }
         public string LoaiBaoHiem { get; set; }
-        public DateTime ThoiHan { get; set; }
         public int TrangThai { get; set; }
         public ICollection<XeBaoHiem> xeBaoHiems { get; set; }
     }
