@@ -70,5 +70,10 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             tx_user.Text = "";
             tx_pass.Text = "";
         }
+
+        private void cbb_gioiTinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
