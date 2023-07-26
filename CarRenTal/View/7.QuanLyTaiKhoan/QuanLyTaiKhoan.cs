@@ -219,7 +219,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
-            if (lb_id.Text== null)
+            if (lb_id.Text == null)
             {
                 return;
             }
