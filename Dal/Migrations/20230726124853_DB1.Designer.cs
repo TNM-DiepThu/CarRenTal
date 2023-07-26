@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dal.Migrations
 {
     [DbContext(typeof(CarRentalDBContext))]
-    [Migration("20230722101006_DB5")]
-    partial class DB5
+    [Migration("20230726124853_DB1")]
+    partial class DB1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,9 +64,6 @@ namespace Dal.Migrations
                     b.Property<string>("LoaiBaoHiem")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("ThoiHan")
-                        .HasColumnType("DateTime");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -267,6 +264,9 @@ namespace Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime>("NgaySinh")
+                        .HasColumnType("DateTime");
+
                     b.Property<string>("SDT")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -353,7 +353,7 @@ namespace Dal.Migrations
 
                     b.Property<string>("CCCD")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("DiaChi")
                         .IsRequired()
@@ -389,6 +389,10 @@ namespace Dal.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DiaChi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 

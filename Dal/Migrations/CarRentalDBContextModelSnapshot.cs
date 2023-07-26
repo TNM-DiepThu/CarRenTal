@@ -63,9 +63,6 @@ namespace Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<DateTime>("ThoiHan")
-                        .HasColumnType("DateTime");
-
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
 

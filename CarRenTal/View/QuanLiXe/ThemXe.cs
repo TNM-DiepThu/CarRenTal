@@ -26,5 +26,10 @@ namespace CarRenTal.View.QuanLiXe
         {
 
         }
+
+        private void ThemXe_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
