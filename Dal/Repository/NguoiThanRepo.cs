@@ -24,7 +24,13 @@ namespace Dal.Repository
         {
             try
             {
-                db.nguoiThans.Update(nguoiThan);
+              //  db.nguoiThans.Update(nguoiThan);
+              db.nguoiThans.FirstOrDefault(x => x.Id==nguoiThan.Id).Name=nguoiThan.Name;
+              db.nguoiThans.FirstOrDefault(x => x.Id==nguoiThan.Id).GioiTinh=nguoiThan.GioiTinh;
+              db.nguoiThans.FirstOrDefault(x => x.Id==nguoiThan.Id).DiaChi=nguoiThan.DiaChi;
+              db.nguoiThans.FirstOrDefault(x => x.Id==nguoiThan.Id).SDT=nguoiThan.SDT;
+              db.nguoiThans.FirstOrDefault(x => x.Id==nguoiThan.Id).CCCD=nguoiThan.CCCD;
+              db.nguoiThans.FirstOrDefault(x => x.Id==nguoiThan.Id).IdKhachHang=nguoiThan.IdKhachHang;
                 db.SaveChanges();
                 return true;
             }
