@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dal.Migrations
 {
     [DbContext(typeof(CarRentalDBContext))]
-    [Migration("20230722095145_DB3")]
-    partial class DB3
+    [Migration("20230725161414_DB")]
+    partial class DB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -252,8 +252,9 @@ namespace Dal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CCCD")
-                        .HasColumnType("int");
+                    b.Property<string>("CCCD")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("DiaChi")
                         .IsRequired()
@@ -266,8 +267,13 @@ namespace Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("SDT")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("NgaySinh")
+                        .HasColumnType("DateTime");
+
+                    b.Property<string>("SDT")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("Id");
 
@@ -348,8 +354,9 @@ namespace Dal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CCCD")
-                        .HasColumnType("int");
+                    b.Property<string>("CCCD")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("DiaChi")
                         .IsRequired()
@@ -366,8 +373,10 @@ namespace Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("SDT")
-                        .HasColumnType("int");
+                    b.Property<string>("SDT")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("Id");
 
@@ -386,6 +395,10 @@ namespace Dal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<bool>("GioiTinh")
                         .HasColumnType("Bit");
 
@@ -399,8 +412,10 @@ namespace Dal.Migrations
                     b.Property<DateTime>("NgaySinh")
                         .HasColumnType("DateTime");
 
-                    b.Property<int>("SDT")
-                        .HasColumnType("int");
+                    b.Property<string>("SDT")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");

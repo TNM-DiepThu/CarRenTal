@@ -28,26 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button3 = new Button();
+            btnCreate = new Button();
             textBox7 = new TextBox();
             cbbThietBi = new ComboBox();
             groupBox1 = new GroupBox();
             grbCam = new GroupBox();
-            btnTurnOff = new Button();
-            btnTurnOn = new Button();
-            button8 = new Button();
-            button7 = new Button();
+            btnTurnOffCam = new Button();
+            btnTurnOnCam = new Button();
+            btnCheckQrNT = new Button();
+            btnCheckQrKH = new Button();
             picBQuetMa = new PictureBox();
             label16 = new Label();
-            button4 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            btnExit = new Button();
+            btnResetNT = new Button();
+            btnResetKH = new Button();
             label9 = new Label();
-            textBox8 = new TextBox();
             label10 = new Label();
             textBox9 = new TextBox();
             label11 = new Label();
-            textBox10 = new TextBox();
             label12 = new Label();
             textBox11 = new TextBox();
             label13 = new Label();
@@ -56,11 +54,9 @@
             label15 = new Label();
             txtSdtKH = new TextBox();
             label8 = new Label();
-            txtNgaySinhKH = new TextBox();
             label7 = new Label();
             txtDiaChiKH = new TextBox();
             label6 = new Label();
-            txtGioiTinhKH = new TextBox();
             label5 = new Label();
             txtCCCDKH = new TextBox();
             label4 = new Label();
@@ -68,19 +64,25 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            dtpNgaySinhKh = new DateTimePicker();
+            dtpNgaySinhNT = new DateTimePicker();
+            cbbGioiTinhKH = new ComboBox();
+            cbbGioiTinhNT = new ComboBox();
+            btnUpdate = new Button();
             groupBox1.SuspendLayout();
             grbCam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBQuetMa).BeginInit();
             SuspendLayout();
             // 
-            // button3
+            // btnCreate
             // 
-            button3.Location = new Point(885, 895);
-            button3.Name = "button3";
-            button3.Size = new Size(112, 34);
-            button3.TabIndex = 67;
-            button3.Text = "Thêm";
-            button3.UseVisualStyleBackColor = true;
+            btnCreate.Location = new Point(784, 895);
+            btnCreate.Name = "btnCreate";
+            btnCreate.Size = new Size(112, 34);
+            btnCreate.TabIndex = 67;
+            btnCreate.Text = "Thêm";
+            btnCreate.UseVisualStyleBackColor = true;
+            btnCreate.Click += btnCreate_Click;
             // 
             // textBox7
             // 
@@ -100,8 +102,8 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(grbCam);
-            groupBox1.Controls.Add(button8);
-            groupBox1.Controls.Add(button7);
+            groupBox1.Controls.Add(btnCheckQrNT);
+            groupBox1.Controls.Add(btnCheckQrKH);
             groupBox1.Controls.Add(picBQuetMa);
             groupBox1.Controls.Add(cbbThietBi);
             groupBox1.Controls.Add(label16);
@@ -114,8 +116,8 @@
             // 
             // grbCam
             // 
-            grbCam.Controls.Add(btnTurnOff);
-            grbCam.Controls.Add(btnTurnOn);
+            grbCam.Controls.Add(btnTurnOffCam);
+            grbCam.Controls.Add(btnTurnOnCam);
             grbCam.Location = new Point(36, 143);
             grbCam.Name = "grbCam";
             grbCam.Size = new Size(330, 82);
@@ -123,41 +125,41 @@
             grbCam.TabStop = false;
             grbCam.Text = "Camera";
             // 
-            // btnTurnOff
+            // btnTurnOffCam
             // 
-            btnTurnOff.Location = new Point(212, 30);
-            btnTurnOff.Name = "btnTurnOff";
-            btnTurnOff.Size = new Size(112, 34);
-            btnTurnOff.TabIndex = 40;
-            btnTurnOff.Text = "Tắt";
-            btnTurnOff.UseVisualStyleBackColor = true;
+            btnTurnOffCam.Location = new Point(212, 30);
+            btnTurnOffCam.Name = "btnTurnOffCam";
+            btnTurnOffCam.Size = new Size(112, 34);
+            btnTurnOffCam.TabIndex = 40;
+            btnTurnOffCam.Text = "Tắt";
+            btnTurnOffCam.UseVisualStyleBackColor = true;
             // 
-            // btnTurnOn
+            // btnTurnOnCam
             // 
-            btnTurnOn.Location = new Point(78, 30);
-            btnTurnOn.Name = "btnTurnOn";
-            btnTurnOn.Size = new Size(112, 34);
-            btnTurnOn.TabIndex = 39;
-            btnTurnOn.Text = "Bật ";
-            btnTurnOn.UseVisualStyleBackColor = true;
+            btnTurnOnCam.Location = new Point(78, 30);
+            btnTurnOnCam.Name = "btnTurnOnCam";
+            btnTurnOnCam.Size = new Size(112, 34);
+            btnTurnOnCam.TabIndex = 39;
+            btnTurnOnCam.Text = "Bật ";
+            btnTurnOnCam.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btnCheckQrNT
             // 
-            button8.Location = new Point(216, 527);
-            button8.Name = "button8";
-            button8.Size = new Size(150, 33);
-            button8.TabIndex = 42;
-            button8.Text = "Người thân";
-            button8.UseVisualStyleBackColor = true;
+            btnCheckQrNT.Location = new Point(216, 527);
+            btnCheckQrNT.Name = "btnCheckQrNT";
+            btnCheckQrNT.Size = new Size(150, 33);
+            btnCheckQrNT.TabIndex = 42;
+            btnCheckQrNT.Text = "Người thân";
+            btnCheckQrNT.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnCheckQrKH
             // 
-            button7.Location = new Point(46, 527);
-            button7.Name = "button7";
-            button7.Size = new Size(150, 33);
-            button7.TabIndex = 41;
-            button7.Text = "Khách hàng";
-            button7.UseVisualStyleBackColor = true;
+            btnCheckQrKH.Location = new Point(46, 527);
+            btnCheckQrKH.Name = "btnCheckQrKH";
+            btnCheckQrKH.Size = new Size(150, 33);
+            btnCheckQrKH.TabIndex = 41;
+            btnCheckQrKH.Text = "Khách hàng";
+            btnCheckQrKH.UseVisualStyleBackColor = true;
             // 
             // picBQuetMa
             // 
@@ -176,32 +178,32 @@
             label16.TabIndex = 36;
             label16.Text = "Chọn thiết bị";
             // 
-            // button4
+            // btnExit
             // 
-            button4.Location = new Point(1040, 895);
-            button4.Name = "button4";
-            button4.Size = new Size(112, 34);
-            button4.TabIndex = 68;
-            button4.Text = "Thoát";
-            button4.UseVisualStyleBackColor = true;
+            btnExit.Location = new Point(1040, 895);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(112, 34);
+            btnExit.TabIndex = 68;
+            btnExit.Text = "Thoát";
+            btnExit.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnResetNT
             // 
-            button2.Location = new Point(1040, 819);
-            button2.Name = "button2";
-            button2.Size = new Size(112, 34);
-            button2.TabIndex = 66;
-            button2.Text = "Nhập lại";
-            button2.UseVisualStyleBackColor = true;
+            btnResetNT.Location = new Point(1040, 819);
+            btnResetNT.Name = "btnResetNT";
+            btnResetNT.Size = new Size(112, 34);
+            btnResetNT.TabIndex = 66;
+            btnResetNT.Text = "Nhập lại";
+            btnResetNT.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnResetKH
             // 
-            button1.Location = new Point(676, 819);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 34);
-            button1.TabIndex = 65;
-            button1.Text = "Nhập lại";
-            button1.UseVisualStyleBackColor = true;
+            btnResetKH.Location = new Point(676, 819);
+            btnResetKH.Name = "btnResetKH";
+            btnResetKH.Size = new Size(112, 34);
+            btnResetKH.TabIndex = 65;
+            btnResetKH.Text = "Nhập lại";
+            btnResetKH.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -211,13 +213,6 @@
             label9.Size = new Size(117, 25);
             label9.TabIndex = 63;
             label9.Text = "Số điện thoại";
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(869, 665);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(283, 31);
-            textBox8.TabIndex = 62;
             // 
             // label10
             // 
@@ -243,13 +238,6 @@
             label11.Size = new Size(65, 25);
             label11.TabIndex = 59;
             label11.Text = "Địa chỉ";
-            // 
-            // textBox10
-            // 
-            textBox10.Location = new Point(869, 465);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(283, 31);
-            textBox10.TabIndex = 58;
             // 
             // label12
             // 
@@ -318,13 +306,6 @@
             label8.TabIndex = 50;
             label8.Text = "Số điện thoại";
             // 
-            // txtNgaySinhKH
-            // 
-            txtNgaySinhKH.Location = new Point(505, 665);
-            txtNgaySinhKH.Name = "txtNgaySinhKH";
-            txtNgaySinhKH.Size = new Size(283, 31);
-            txtNgaySinhKH.TabIndex = 49;
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -349,13 +330,6 @@
             label6.Size = new Size(65, 25);
             label6.TabIndex = 46;
             label6.Text = "Địa chỉ";
-            // 
-            // txtGioiTinhKH
-            // 
-            txtGioiTinhKH.Location = new Point(505, 465);
-            txtGioiTinhKH.Name = "txtGioiTinhKH";
-            txtGioiTinhKH.Size = new Size(283, 31);
-            txtGioiTinhKH.TabIndex = 45;
             // 
             // label5
             // 
@@ -418,23 +392,68 @@
             label1.TabIndex = 38;
             label1.Text = "Chi tiết thông tin khách hàng";
             // 
+            // dtpNgaySinhKh
+            // 
+            dtpNgaySinhKh.Location = new Point(505, 664);
+            dtpNgaySinhKh.Name = "dtpNgaySinhKh";
+            dtpNgaySinhKh.Size = new Size(276, 31);
+            dtpNgaySinhKh.TabIndex = 70;
+            // 
+            // dtpNgaySinhNT
+            // 
+            dtpNgaySinhNT.Location = new Point(876, 664);
+            dtpNgaySinhNT.Name = "dtpNgaySinhNT";
+            dtpNgaySinhNT.Size = new Size(276, 31);
+            dtpNgaySinhNT.TabIndex = 71;
+            // 
+            // cbbGioiTinhKH
+            // 
+            cbbGioiTinhKH.FormattingEnabled = true;
+            cbbGioiTinhKH.Items.AddRange(new object[] { "Nam", "Nữ" });
+            cbbGioiTinhKH.Location = new Point(510, 465);
+            cbbGioiTinhKH.Name = "cbbGioiTinhKH";
+            cbbGioiTinhKH.Size = new Size(278, 33);
+            cbbGioiTinhKH.TabIndex = 72;
+            cbbGioiTinhKH.SelectedIndexChanged += cbbGioiTinhKH_SelectedIndexChanged;
+            // 
+            // cbbGioiTinhNT
+            // 
+            cbbGioiTinhNT.FormattingEnabled = true;
+            cbbGioiTinhNT.Location = new Point(869, 465);
+            cbbGioiTinhNT.Name = "cbbGioiTinhNT";
+            cbbGioiTinhNT.Size = new Size(278, 33);
+            cbbGioiTinhNT.TabIndex = 73;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(913, 895);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(112, 34);
+            btnUpdate.TabIndex = 74;
+            btnUpdate.Text = "Cập nhật";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
             // TTKHchiTiet
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1229, 968);
-            Controls.Add(button3);
+            Controls.Add(btnUpdate);
+            Controls.Add(cbbGioiTinhNT);
+            Controls.Add(cbbGioiTinhKH);
+            Controls.Add(dtpNgaySinhNT);
+            Controls.Add(dtpNgaySinhKh);
+            Controls.Add(btnCreate);
             Controls.Add(textBox7);
             Controls.Add(groupBox1);
-            Controls.Add(button4);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnExit);
+            Controls.Add(btnResetNT);
+            Controls.Add(btnResetKH);
             Controls.Add(label9);
-            Controls.Add(textBox8);
             Controls.Add(label10);
             Controls.Add(textBox9);
             Controls.Add(label11);
-            Controls.Add(textBox10);
             Controls.Add(label12);
             Controls.Add(textBox11);
             Controls.Add(label13);
@@ -443,11 +462,9 @@
             Controls.Add(label15);
             Controls.Add(txtSdtKH);
             Controls.Add(label8);
-            Controls.Add(txtNgaySinhKH);
             Controls.Add(label7);
             Controls.Add(txtDiaChiKH);
             Controls.Add(label6);
-            Controls.Add(txtGioiTinhKH);
             Controls.Add(label5);
             Controls.Add(txtCCCDKH);
             Controls.Add(label4);
@@ -456,7 +473,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "TTKHchiTiet";
-            Text = "TTKHchiTiet";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Thông tin khách hàng chi tiết";
             Load += TTKHchiTiet_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -468,26 +486,24 @@
 
         #endregion
 
-        private Button button3;
+        private Button btnCreate;
         private TextBox textBox7;
         private ComboBox cbbThietBi;
         private GroupBox groupBox1;
         private GroupBox grbCam;
-        private Button btnTurnOff;
-        private Button btnTurnOn;
-        private Button button8;
-        private Button button7;
+        private Button btnTurnOffCam;
+        private Button btnTurnOnCam;
+        private Button btnCheckQrNT;
+        private Button btnCheckQrKH;
         private PictureBox picBQuetMa;
         private Label label16;
-        private Button button4;
-        private Button button2;
-        private Button button1;
+        private Button btnExit;
+        private Button btnResetNT;
+        private Button btnResetKH;
         private Label label9;
-        private TextBox textBox8;
         private Label label10;
         private TextBox textBox9;
         private Label label11;
-        private TextBox textBox10;
         private Label label12;
         private TextBox textBox11;
         private Label label13;
@@ -496,11 +512,9 @@
         private Label label15;
         private TextBox txtSdtKH;
         private Label label8;
-        private TextBox txtNgaySinhKH;
         private Label label7;
         private TextBox txtDiaChiKH;
         private Label label6;
-        private TextBox txtGioiTinhKH;
         private Label label5;
         private TextBox txtCCCDKH;
         private Label label4;
@@ -508,5 +522,10 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private DateTimePicker dtpNgaySinhKh;
+        private DateTimePicker dtpNgaySinhNT;
+        private ComboBox cbbGioiTinhKH;
+        private ComboBox cbbGioiTinhNT;
+        private Button btnUpdate;
     }
 }
