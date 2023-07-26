@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualBasic;
+﻿using Bus.Serviece.Implements;
+using Dal.Modal;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,32 +15,61 @@ namespace CarRenTal.View._5._QuanLyKhachHang
 {
     public partial class TTKHchiTiet : Form
     {
-        public QLKHView _QLKHView;
-        public event EventHandler MyEvent;
-        
+        public QLKHView _QLKHView; //Create from QLKh at Add Kh
+        List<KhachHang> _lstKH;
+        List<NguoiThan> _lstNT;
+        KhachHangService _khachHangService;
+        NguoiThanService _NguoiThanService;
+        //public event EventHandler MyEvent;
 
-        Guid _id = Guid.Empty;
-        public TTKHchiTiet()
+
+        //Guid _id = Guid.Empty;
+        public TTKHchiTiet(QLKHView QLKH)
         {
             InitializeComponent();
-
+            this._QLKHView = QLKH;
+            _lstKH = new List<KhachHang>();
+            _lstNT = new List<NguoiThan>();
+            _khachHangService = new KhachHangService();
+            _NguoiThanService = new NguoiThanService();
         }
-        public TTKHchiTiet(Guid id)
-        {
-            InitializeComponent();
-            _id = id;
-            
-        }
-
         private void TTKHchiTiet_Load(object sender, EventArgs e)
         {
-            MyEvent(this, EventArgs.Empty);
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            //_QLKHView.dgvQLKH.Rows.Add(){ };
+            try
+            {
+                var kh = new KhachHang()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = txtHoTenKH.Text,
+                    GioiTinh = bool.Parse(cbbGioiTinhKH.Text),
+                    DiaChi = txtDiaChiKH.Text,
+                    SDT = txtSdtKH.Text,
+                    CCCD = txtCCCDKH.Text,
+                    NgaySinh = DateTime.Parse(dtpNgaySinhKh.Text)
+                };
+                _lstKH.Add(kh);
+                MessageBox.Show("Thêm thành công");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Thêm thất bại");
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
 
         }
 
-        public void MyMethod(string data)
+        private void cbbGioiTinhKH_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtHoTenKH.Text = MyEvent.ToString();
+
         }
     }
 }
