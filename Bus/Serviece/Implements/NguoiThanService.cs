@@ -32,5 +32,9 @@ namespace Bus.Serviece.Implements
         {
             return _nguoiThanRepo.Update(nguoiThan);
         }
+        public NguoiThan GetNguoiThan(Guid idKH)
+        {
+           return _nguoiThanRepo.GetALL().FirstOrDefault(p => p.IdKhachHang == idKH);
+        }
     }
 }
