@@ -64,13 +64,15 @@
             label3 = new Label();
             label2 = new Label();
             groupBox3 = new GroupBox();
+            lb_idKH = new Label();
             dtgv_data = new DataGridView();
             tx_search = new TextBox();
-            button5 = new Button();
+            bt_search = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             dtp_ngaySinhKH = new DateTimePicker();
             cbb_gtinhKH = new ComboBox();
             cbb_gtinhNT = new ComboBox();
+            bt_exit = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pic_Cam).BeginInit();
@@ -206,10 +208,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(860, 607);
+            button2.Location = new Point(1086, 515);
             button2.Margin = new Padding(2);
             button2.Name = "button2";
-            button2.Size = new Size(139, 46);
+            button2.Size = new Size(227, 31);
             button2.TabIndex = 99;
             button2.Text = "Nhập lại";
             button2.UseVisualStyleBackColor = true;
@@ -217,12 +219,13 @@
             // 
             // button1
             // 
-            button1.Location = new Point(1100, 607);
+            button1.DialogResult = DialogResult.OK;
+            button1.Location = new Point(835, 610);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(141, 46);
+            button1.Size = new Size(156, 75);
             button1.TabIndex = 98;
-            button1.Text = "Lưu lại";
+            button1.Text = "Lưu lại và thoát";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -391,6 +394,7 @@
             tx_cccdKH.Name = "tx_cccdKH";
             tx_cccdKH.Size = new Size(227, 27);
             tx_cccdKH.TabIndex = 2;
+            tx_cccdKH.TextChanged += tx_cccdKH_TextChanged;
             // 
             // label4
             // 
@@ -435,15 +439,26 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(lb_idKH);
             groupBox3.Controls.Add(dtgv_data);
             groupBox3.Controls.Add(tx_search);
-            groupBox3.Controls.Add(button5);
+            groupBox3.Controls.Add(bt_search);
             groupBox3.Location = new Point(12, 282);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(745, 425);
             groupBox3.TabIndex = 103;
             groupBox3.TabStop = false;
             groupBox3.Text = "Khách hàng từng thuê";
+            // 
+            // lb_idKH
+            // 
+            lb_idKH.AutoSize = true;
+            lb_idKH.Location = new Point(17, 44);
+            lb_idKH.Name = "lb_idKH";
+            lb_idKH.Size = new Size(50, 20);
+            lb_idKH.TabIndex = 100;
+            lb_idKH.Text = "label1";
+            lb_idKH.Visible = false;
             // 
             // dtgv_data
             // 
@@ -456,6 +471,7 @@
             dtgv_data.RowTemplate.Height = 29;
             dtgv_data.Size = new Size(725, 332);
             dtgv_data.TabIndex = 0;
+            dtgv_data.CellClick += dtgv_data_CellClick;
             // 
             // tx_search
             // 
@@ -465,15 +481,16 @@
             tx_search.Size = new Size(371, 27);
             tx_search.TabIndex = 78;
             // 
-            // button5
+            // bt_search
             // 
-            button5.Location = new Point(541, 45);
-            button5.Margin = new Padding(2);
-            button5.Name = "button5";
-            button5.Size = new Size(90, 27);
-            button5.TabIndex = 99;
-            button5.Text = "Nhập lại";
-            button5.UseVisualStyleBackColor = true;
+            bt_search.Location = new Point(541, 45);
+            bt_search.Margin = new Padding(2);
+            bt_search.Name = "bt_search";
+            bt_search.Size = new Size(90, 27);
+            bt_search.TabIndex = 99;
+            bt_search.Text = "Tìm kiếm";
+            bt_search.UseVisualStyleBackColor = true;
+            bt_search.Click += bt_search_Click;
             // 
             // timer1
             // 
@@ -506,6 +523,17 @@
             cbb_gtinhNT.Size = new Size(227, 28);
             cbb_gtinhNT.TabIndex = 105;
             // 
+            // bt_exit
+            // 
+            bt_exit.Location = new Point(1086, 610);
+            bt_exit.Margin = new Padding(2);
+            bt_exit.Name = "bt_exit";
+            bt_exit.Size = new Size(156, 75);
+            bt_exit.TabIndex = 98;
+            bt_exit.Text = "Thoát";
+            bt_exit.UseVisualStyleBackColor = true;
+            bt_exit.Click += bt_exit_Click;
+            // 
             // ChonKhachHangForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -519,6 +547,7 @@
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
+            Controls.Add(bt_exit);
             Controls.Add(button1);
             Controls.Add(tx_sdtNT);
             Controls.Add(label9);
@@ -596,9 +625,11 @@
         private DataGridView dtgv_data;
         private System.Windows.Forms.Timer timer1;
         private TextBox tx_search;
-        private Button button5;
+        private Button bt_search;
         private DateTimePicker dtp_ngaySinhKH;
         private ComboBox cbb_gtinhKH;
         private ComboBox cbb_gtinhNT;
+        private Label lb_idKH;
+        private Button bt_exit;
     }
 }

@@ -29,8 +29,13 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            comboBox1 = new ComboBox();
             cbb_hangXe = new ComboBox();
             cbb_nhienLieu = new ComboBox();
+            label18 = new Label();
+            label20 = new Label();
+            label19 = new Label();
+            label17 = new Label();
             cbb_soGhe = new ComboBox();
             groupBox2 = new GroupBox();
             bt_deleteAll = new Button();
@@ -53,7 +58,7 @@
             label3 = new Label();
             label4 = new Label();
             groupBox5 = new GroupBox();
-            button3 = new Button();
+            bt_chooseCurtomer = new Button();
             label7 = new Label();
             lb_idKhach = new Label();
             label5 = new Label();
@@ -79,11 +84,6 @@
             tx_chiTiet = new TextBox();
             label8 = new Label();
             label9 = new Label();
-            comboBox1 = new ComboBox();
-            label17 = new Label();
-            label18 = new Label();
-            label19 = new Label();
-            label20 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgv_xeChon).BeginInit();
@@ -114,6 +114,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin xe";
             // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(93, 96);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 0;
+            // 
             // cbb_hangXe
             // 
             cbb_hangXe.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -132,6 +141,46 @@
             cbb_nhienLieu.Name = "cbb_nhienLieu";
             cbb_nhienLieu.Size = new Size(151, 28);
             cbb_nhienLieu.TabIndex = 1;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label18.Location = new Point(6, 104);
+            label18.Name = "label18";
+            label18.Size = new Size(62, 20);
+            label18.TabIndex = 2;
+            label18.Text = "Hộp số:";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label20.Location = new Point(278, 104);
+            label20.Name = "label20";
+            label20.Size = new Size(70, 20);
+            label20.TabIndex = 2;
+            label20.Text = "Hãng xe:";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label19.Location = new Point(278, 52);
+            label19.Name = "label19";
+            label19.Size = new Size(84, 20);
+            label19.TabIndex = 2;
+            label19.Text = "Nhiên liệu:";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label17.Location = new Point(6, 50);
+            label17.Name = "label17";
+            label17.Size = new Size(60, 20);
+            label17.TabIndex = 2;
+            label17.Text = "Số ghế:";
             // 
             // cbb_soGhe
             // 
@@ -347,7 +396,7 @@
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(button3);
+            groupBox5.Controls.Add(bt_chooseCurtomer);
             groupBox5.Controls.Add(label7);
             groupBox5.Controls.Add(lb_idKhach);
             groupBox5.Controls.Add(label5);
@@ -360,14 +409,15 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Thông tin khách hàng";
             // 
-            // button3
+            // bt_chooseCurtomer
             // 
-            button3.Location = new Point(18, 103);
-            button3.Name = "button3";
-            button3.Size = new Size(435, 37);
-            button3.TabIndex = 2;
-            button3.Text = "Chọn khách hàng";
-            button3.UseVisualStyleBackColor = true;
+            bt_chooseCurtomer.Location = new Point(18, 103);
+            bt_chooseCurtomer.Name = "bt_chooseCurtomer";
+            bt_chooseCurtomer.Size = new Size(435, 37);
+            bt_chooseCurtomer.TabIndex = 2;
+            bt_chooseCurtomer.Text = "Chọn khách hàng";
+            bt_chooseCurtomer.UseVisualStyleBackColor = true;
+            bt_chooseCurtomer.Click += bt_chooseCurtomer_Click;
             // 
             // label7
             // 
@@ -618,55 +668,6 @@
             label9.TabIndex = 2;
             label9.Text = "Loại tài sản:";
             // 
-            // comboBox1
-            // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(93, 96);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 0;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label17.Location = new Point(6, 50);
-            label17.Name = "label17";
-            label17.Size = new Size(60, 20);
-            label17.TabIndex = 2;
-            label17.Text = "Số ghế:";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label18.Location = new Point(6, 104);
-            label18.Name = "label18";
-            label18.Size = new Size(62, 20);
-            label18.TabIndex = 2;
-            label18.Text = "Hộp số:";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label19.Location = new Point(278, 52);
-            label19.Name = "label19";
-            label19.Size = new Size(84, 20);
-            label19.TabIndex = 2;
-            label19.Text = "Nhiên liệu:";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label20.Location = new Point(278, 104);
-            label20.Name = "label20";
-            label20.Size = new Size(70, 20);
-            label20.TabIndex = 2;
-            label20.Text = "Hãng xe:";
-            // 
             // ChoThueXeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -725,7 +726,7 @@
         private DateTimePicker dtp_ngayThue;
         private GroupBox groupBox5;
         private GroupBox groupBox6;
-        private Button button3;
+        private Button bt_chooseCurtomer;
         private Label label7;
         private Label lb_idKhach;
         private Label label5;
