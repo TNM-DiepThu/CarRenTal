@@ -12,8 +12,8 @@ namespace Dal.Modal
        
         public Guid ID { get; set; }    
         public string BienSo {get ; set; }
-        public int SoKhung { get; set; }
-        public int SoMay { get; set; }
+        public string SoKhung { get; set; }
+        public string SoMay { get; set; }
         public decimal DonGia { get; set; }
         public int SoCongTo { get; set; }
         public int TrangThai { get; set; }
