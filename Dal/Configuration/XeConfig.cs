@@ -16,8 +16,8 @@ namespace Dal.Configuration
             builder.ToTable("Xe");
             builder.HasKey(x => x.ID);
             builder.Property(x => x.BienSo).HasColumnType("nvarchar(100)").IsRequired();
-            builder.Property(x => x.SoKhung).HasColumnType("int").IsRequired();
-            builder.Property(x => x.SoMay).HasColumnType("int").IsRequired();
+            builder.Property(x => x.SoKhung).HasColumnType("nvarchar(100)").IsRequired();
+            builder.Property(x => x.SoMay).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x => x.DonGia).HasColumnType("DECIMAL").IsRequired();
             builder.Property(x => x.SoCongTo).HasColumnType("int").IsRequired();
             builder.Property(x => x.TrangThai).HasColumnType("int").IsRequired();

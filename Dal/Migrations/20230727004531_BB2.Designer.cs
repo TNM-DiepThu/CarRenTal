@@ -4,6 +4,7 @@ using Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dal.Migrations
 {
     [DbContext(typeof(CarRentalDBContext))]
-    partial class CarRentalDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230727004531_BB2")]
+    partial class BB2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -523,13 +525,11 @@ namespace Dal.Migrations
                     b.Property<int>("SoCongTo")
                         .HasColumnType("int");
 
-                    b.Property<string>("SoKhung")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("SoKhung")
+                        .HasColumnType("int");
 
-                    b.Property<string>("SoMay")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("SoMay")
+                        .HasColumnType("int");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
