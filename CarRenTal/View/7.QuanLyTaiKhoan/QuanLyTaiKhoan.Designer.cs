@@ -100,7 +100,7 @@
             // groupBox11
             // 
             groupBox11.Controls.Add(tx_email);
-            groupBox11.Location = new Point(1154, 26);
+            groupBox11.Location = new Point(1151, 26);
             groupBox11.Name = "groupBox11";
             groupBox11.Size = new Size(214, 82);
             groupBox11.TabIndex = 1;
@@ -117,7 +117,7 @@
             // groupBox10
             // 
             groupBox10.Controls.Add(dtp_dob);
-            groupBox10.Location = new Point(886, 26);
+            groupBox10.Location = new Point(922, 26);
             groupBox10.Name = "groupBox10";
             groupBox10.Size = new Size(214, 82);
             groupBox10.TabIndex = 1;
@@ -135,7 +135,7 @@
             // groupBox9
             // 
             groupBox9.Controls.Add(tx_sdt);
-            groupBox9.Location = new Point(666, 26);
+            groupBox9.Location = new Point(693, 26);
             groupBox9.Name = "groupBox9";
             groupBox9.Size = new Size(214, 82);
             groupBox9.TabIndex = 1;
@@ -152,7 +152,7 @@
             // groupBox8
             // 
             groupBox8.Controls.Add(tx_adress);
-            groupBox8.Location = new Point(446, 26);
+            groupBox8.Location = new Point(464, 26);
             groupBox8.Name = "groupBox8";
             groupBox8.Size = new Size(214, 82);
             groupBox8.TabIndex = 1;
@@ -170,7 +170,7 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(cbb_gioiTinh);
-            groupBox7.Location = new Point(226, 26);
+            groupBox7.Location = new Point(235, 26);
             groupBox7.Name = "groupBox7";
             groupBox7.Size = new Size(214, 82);
             groupBox7.TabIndex = 1;
