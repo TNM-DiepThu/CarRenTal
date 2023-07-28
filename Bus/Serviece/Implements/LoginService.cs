@@ -74,16 +74,19 @@ namespace Bus.Serviece.Implements
             }
         }
 
-        public dynamic CheckLogin(string user, string password)
+        public TaiKhoan CheckLogin(string user, string password)
         {
             try
             {
-                var result = from t in _lstTaiKhoan
+                var lstresult = from t in _lstTaiKhoan
                              join n in _lstNhanVien on t.IdNhanVien equals n.Id
                              join c in _lstChucVu on n.IdChucVu equals c.Id
                              where (t.username == user && t.password == password && t.TrangThai == 1)
-                             select new { ten = n.HoTen, chucVu = c.TenChucVu };
-                return result.ToList()[0];
+                             select t;
+                var result= lstresult.ToList()[0];
+                result.NhanVien = _lstNhanVien.FirstOrDefault(p => p.Id == result.IdNhanVien);
+                result.NhanVien.ChucVu = _lstChucVu.FirstOrDefault(p => p.Id == result.NhanVien.IdChucVu);
+                return result;
             }
             catch (Exception)
             {

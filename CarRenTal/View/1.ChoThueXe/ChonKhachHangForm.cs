@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,19 +18,28 @@ using ZXing;
 
 namespace CarRenTal.View._1.ChoThueXe
 {
+
     public partial class ChonKhachHangForm : Form
     {
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice finalFrame = new VideoCaptureDevice();
         int currenInfor = 0;
         ChoThueXeService choThueXeService = new ChoThueXeService();
-        KhachHang khachHangChon = new KhachHang();
+       public  KhachHang khachHangChon = new KhachHang();
         List<KhachHang> _lstKhachHang;
         public ChonKhachHangForm()
         {
             InitializeComponent();
         }
 
+
+        private void ChonKhachHangForm_Load(object sender, EventArgs e)
+        {
+            SetUpCam();
+            _lstKhachHang = choThueXeService.GetKhachHang("");
+            LoadData();
+        }
+        #region SetUpCam quét QR
         private void CurentInfo(int button)
         {
             if (button == currenInfor)
@@ -42,7 +52,8 @@ namespace CarRenTal.View._1.ChoThueXe
             bt_start.Enabled = true;
 
         }
-        private void ChonKhachHangForm_Load(object sender, EventArgs e)
+
+        private void SetUpCam()
         {
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo filter in filterInfoCollection)
@@ -50,10 +61,7 @@ namespace CarRenTal.View._1.ChoThueXe
                 cbb_chooseDrives.Items.Add(filter.Name);
             }
             cbb_chooseDrives.SelectedIndex = 2;
-            _lstKhachHang = choThueXeService.GetKhachHang("");
-            LoadData();
         }
-
         private void bt_start_Click(object sender, EventArgs e)
         {
             timer1.Start();
@@ -76,6 +84,7 @@ namespace CarRenTal.View._1.ChoThueXe
                 finalFrame.SignalToStop();
                 finalFrame.WaitForStop();
             }
+
         }
         void ScanQR()
         {
@@ -138,27 +147,6 @@ namespace CarRenTal.View._1.ChoThueXe
                 finalFrame.WaitForStop();
             }
         }
-        void LoadData()
-        {
-            dtgv_data.Rows.Clear();
-            dtgv_data.ColumnCount = 7;
-            dtgv_data.Columns[0].HeaderText = "ID";
-            dtgv_data.Columns[1].HeaderText = "Họ và tên";
-            dtgv_data.Columns[2].HeaderText = "Giới tính";
-            dtgv_data.Columns[3].HeaderText = "Địa chỉ";
-            dtgv_data.Columns[4].HeaderText = "SDT";
-            dtgv_data.Columns[5].HeaderText = "CCCD";
-            dtgv_data.Columns[6].HeaderText = "Ngày sinh";
-
-            if (_lstKhachHang == null)
-            {
-                return;
-            }
-            foreach (var item in _lstKhachHang)
-            {
-                dtgv_data.Rows.Add(item.Id, item.Name, item.GioiTinh, item.DiaChi, item.SDT, item.CCCD, item.NgaySinh);
-            }
-        }
         private void bt_khach_Click(object sender, EventArgs e)
         {
             CurentInfo(1);
@@ -186,15 +174,43 @@ namespace CarRenTal.View._1.ChoThueXe
                 bt_nguoiThan.BackColor = Color.White;
             }
         }
+        #endregion
+        void LoadData()
+        {
+            dtgv_data.Rows.Clear();
+            dtgv_data.ColumnCount = 7;
+            dtgv_data.Columns[0].HeaderText = "ID";
+            dtgv_data.Columns[0].Visible = false;
+            dtgv_data.Columns[1].HeaderText = "Họ và tên";
+            dtgv_data.Columns[2].HeaderText = "Giới tính";
+            dtgv_data.Columns[3].HeaderText = "Địa chỉ";
+            dtgv_data.Columns[4].HeaderText = "SDT";
+            dtgv_data.Columns[5].HeaderText = "CCCD";
+            dtgv_data.Columns[6].HeaderText = "Ngày sinh";
+
+            if (_lstKhachHang == null)
+            {
+                return;
+            }
+            foreach (var item in _lstKhachHang)
+            {
+                dtgv_data.Rows.Add(item.Id, item.Name, item.GioiTinh ? "Nam" : "Nữ", item.DiaChi, item.SDT, item.CCCD, item.NgaySinh);
+            }
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
+            lb_idKH.Text = "";
             tx_cccdKH.Text = "";
             tx_nameKH.Text = "";
             tx_diaChiKH.Text = "";
             tx_cccdNT.Text = "";
             tx_nameNT.Text = "";
             tx_diaChiNT.Text = "";
+            tx_sdtKH.Text = "";
+            tx_sdtNT.Text = "";
+
         }
         string checkInfor()
         {
@@ -236,6 +252,11 @@ namespace CarRenTal.View._1.ChoThueXe
         private void button1_Click(object sender, EventArgs e)
         {
             string check = checkInfor();
+            bool isNew = true;
+            if (choThueXeService.FindByCCCD(tx_cccdKH.Text) != null)
+            {
+                isNew = false;
+            }
             if (check != null)
             {
                 MessageBox.Show("" + check);
@@ -263,10 +284,89 @@ namespace CarRenTal.View._1.ChoThueXe
                 IdKhachHang = khachHang.Id,
             };
 
-            if (choThueXeService.CreateKH(khachHang, nguoiThan))
+
+            if (isNew)
             {
-                MessageBox.Show("thành công");
+                if (choThueXeService.CreateKH(khachHang, nguoiThan))
+                {
+                    MessageBox.Show("Thành công");
+                    khachHangChon = khachHang;
+                    this.Close();
+                }
             }
+            else
+            {
+
+                if (choThueXeService.UpdateKH(khachHang, nguoiThan))
+                {
+                    MessageBox.Show("Thành công");
+                    khachHangChon = khachHang;
+                    this.Close();
+                }
+            }
+        }
+
+        private void dtgv_data_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lb_idKH.Text = dtgv_data.CurrentRow.Cells[0].Value.ToString();
+            tx_nameKH.Text = dtgv_data.CurrentRow.Cells[1].Value.ToString();
+            cbb_gtinhKH.SelectedIndex = dtgv_data.CurrentRow.Cells[2].Value.ToString() == "Nam" ? 0 : 1;
+            tx_diaChiKH.Text = dtgv_data.CurrentRow.Cells[3].Value.ToString();
+            tx_sdtKH.Text = dtgv_data.CurrentRow.Cells[4].Value.ToString();
+            tx_cccdKH.Text = dtgv_data.CurrentRow.Cells[5].Value.ToString();
+            dtp_ngaySinhKH.Value = DateTime.Parse(dtgv_data.CurrentRow.Cells[6].Value.ToString());
+            ShowTN(lb_idKH.Text);
+
+        }
+        private void ShowTN(string id)
+        {
+            NguoiThan nguoiThan = choThueXeService.FindNTbyIdKH(Guid.Parse(id));
+
+            tx_nameNT.Text = nguoiThan.Name.ToString();
+            cbb_gtinhNT.SelectedIndex = nguoiThan.GioiTinh ? 0 : 1;
+            tx_diaChiNT.Text = nguoiThan.DiaChi.ToString();
+            tx_sdtNT.Text = nguoiThan.SDT.ToString();
+            tx_cccdNT.Text = nguoiThan.CCCD.ToString();
+        }
+
+        private void tx_cccdKH_TextChanged(object sender, EventArgs e)
+        {
+            if (tx_cccdKH.Text.Length != 12)
+            {
+                return;
+            }
+            KhachHang khach = choThueXeService.FindByCCCD(tx_cccdKH.Text);
+            if (lb_idKH.Text.Length < 10)
+            {
+                lb_idKH.Text = Guid.NewGuid().ToString();
+            }
+            if (khach != null && khach.Id != Guid.Parse(lb_idKH.Text))
+            {
+                var result = MessageBox.Show("Bạn có muốn tải lên!", "Đã có thông tin khách hàng này trong hệ thống", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    lb_idKH.Text = khach.Id.ToString();
+                    tx_nameKH.Text = khach.Name.ToString();
+                    cbb_gtinhKH.SelectedIndex = khach.GioiTinh ? 0 : 1;
+                    tx_diaChiKH.Text = khach.DiaChi.ToString();
+                    tx_sdtKH.Text = khach.SDT.ToString();
+                    tx_cccdKH.Text = khach.CCCD.ToString();
+                    dtp_ngaySinhKH.Value = khach.NgaySinh;
+                    ShowTN(lb_idKH.Text);
+                }
+            }
+
+        }
+
+        private void bt_search_Click(object sender, EventArgs e)
+        {
+            _lstKhachHang = choThueXeService.GetKhachHang(tx_search.Text);
+            LoadData();
+        }
+
+        private void bt_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dal.Modal;
 using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace Bus.Serviece.Implements
 {
@@ -70,17 +71,48 @@ namespace Bus.Serviece.Implements
             var result = from xe in lstXe
                          join hd in lstHoaDonChitiet on xe.ID equals hd.IdXe
                          join bd in lstBaoDuong on xe.ID equals bd.IdXe
-                         join bh in lstXeBaoHiem on xe.ID equals bh.IdXe
                          join lx in lstLoaiXe on xe.IdLoaiXe equals lx.Id
                          join hx in lstHangXe on lx.IdHangXe equals hx.Id
 
                          select xe;
             return result.ToList();
         }
+        public List<HangXe> GetHangXe()
+        {
+            return hangXeRepo.GetALL().Where(p => p.TrangThai == 1).ToList();
+        }
         public List<KhachHang> GetKhachHang(string name)
         {
-            return khachHangRepo.GetALL().Where(p=>p.Name.Contains(name)).ToList();
+            return khachHangRepo.GetALL().Where(p=>p.Name.ToLower().Contains(name.ToLower()) || p.CCCD==name).ToList();
+        }
+        public KhachHang FindByCCCD(string cccd)
+        {
+             return khachHangRepo.GetALL().FirstOrDefault(p => p.CCCD==cccd);
+        }
+        public NguoiThan FindNTbyIdKH(Guid id)
+        {
+            return nguoiThanRepo.GetALL().FirstOrDefault(p => p.IdKhachHang == id);
         }
 
+        public bool UpdateKH(KhachHang khachHang, NguoiThan nguoiThan)
+        {
+            try
+            {
+                khachHang.Id = lstKhachHang.FirstOrDefault(p=>p.CCCD==khachHang.CCCD).Id;
+                nguoiThan.IdKhachHang = khachHang.Id;
+                nguoiThan.Id = lstNguoiThan.FirstOrDefault(p=>p.IdKhachHang==khachHang.Id).Id;
+                bool addKH = khachHangRepo.Update(khachHang);
+                bool addNT = nguoiThanRepo.Update(nguoiThan);
+                lstKhachHang = khachHangRepo.GetALL();
+                lstNguoiThan = nguoiThanRepo.GetALL();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
     }
 }
