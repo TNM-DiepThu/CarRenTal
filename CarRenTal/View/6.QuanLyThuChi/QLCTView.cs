@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace CarRenTal.View._6.QuanLyThuChi
 {
-    public partial class QuanLyThuChiView : Form
+    public partial class QLCTView : Form
     {
-        public QuanLyThuChiView()
+        public QLCTView()
         {
             InitializeComponent();
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
