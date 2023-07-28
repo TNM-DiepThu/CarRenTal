@@ -77,6 +77,10 @@ namespace Bus.Serviece.Implements
                          select xe;
             return result.ToList();
         }
+        public List<HangXe> GetHangXe()
+        {
+            return hangXeRepo.GetALL().Where(p => p.TrangThai == 1).ToList();
+        }
         public List<KhachHang> GetKhachHang(string name)
         {
             return khachHangRepo.GetALL().Where(p=>p.Name.ToLower().Contains(name.ToLower()) || p.CCCD==name).ToList();

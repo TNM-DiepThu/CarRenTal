@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            comboBox1 = new ComboBox();
+            cbb_hopSo = new ComboBox();
             cbb_hangXe = new ComboBox();
             cbb_nhienLieu = new ComboBox();
             label18 = new Label();
@@ -44,7 +44,6 @@
             bt_search = new Button();
             tx_search = new TextBox();
             dtgv_xeChon = new DataGridView();
-            dtgv_xeSS = new DataGridView();
             label15 = new Label();
             label14 = new Label();
             nud_maxGia = new NumericUpDown();
@@ -66,8 +65,8 @@
             tx_nameKhach = new TextBox();
             groupBox6 = new GroupBox();
             button4 = new Button();
-            button2 = new Button();
             cbb_trangThai = new ComboBox();
+            bt_pay = new Button();
             label13 = new Label();
             label12 = new Label();
             label11 = new Label();
@@ -75,7 +74,7 @@
             tx_phiThanhToan = new TextBox();
             tx_coc = new TextBox();
             tx_phiThue = new TextBox();
-            groupBox7 = new GroupBox();
+            gb_layXe = new GroupBox();
             bt_taiSan = new ComboBox();
             cbb_typeGiayTo = new ComboBox();
             label6 = new Label();
@@ -84,22 +83,23 @@
             tx_chiTiet = new TextBox();
             label8 = new Label();
             label9 = new Label();
+            dtgv_xeSS = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgv_xeChon).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtgv_xeSS).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nud_maxGia).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nud_minGia).BeginInit();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
-            groupBox7.SuspendLayout();
+            gb_layXe.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgv_xeSS).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(cbb_hopSo);
             groupBox1.Controls.Add(cbb_hangXe);
             groupBox1.Controls.Add(cbb_nhienLieu);
             groupBox1.Controls.Add(label18);
@@ -114,14 +114,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin xe";
             // 
-            // comboBox1
+            // cbb_hopSo
             // 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(93, 96);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 0;
+            cbb_hopSo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbb_hopSo.FormattingEnabled = true;
+            cbb_hopSo.Items.AddRange(new object[] { "Hộp số sàn", "Hộp số tự động" });
+            cbb_hopSo.Location = new Point(93, 96);
+            cbb_hopSo.Name = "cbb_hopSo";
+            cbb_hopSo.Size = new Size(151, 28);
+            cbb_hopSo.TabIndex = 0;
             // 
             // cbb_hangXe
             // 
@@ -218,6 +219,7 @@
             bt_deleteAll.TabIndex = 2;
             bt_deleteAll.Text = "Xóa hết";
             bt_deleteAll.UseVisualStyleBackColor = true;
+            bt_deleteAll.Click += bt_deleteAll_Click;
             // 
             // dt_delete
             // 
@@ -227,6 +229,7 @@
             dt_delete.TabIndex = 2;
             dt_delete.Text = "Xóa";
             dt_delete.UseVisualStyleBackColor = true;
+            dt_delete.Click += dt_delete_Click;
             // 
             // bt_add
             // 
@@ -236,6 +239,7 @@
             bt_add.TabIndex = 2;
             bt_add.Text = "Thêm";
             bt_add.UseVisualStyleBackColor = true;
+            bt_add.Click += bt_add_Click;
             // 
             // bt_search
             // 
@@ -255,6 +259,9 @@
             // 
             // dtgv_xeChon
             // 
+            dtgv_xeChon.AllowUserToAddRows = false;
+            dtgv_xeChon.AllowUserToDeleteRows = false;
+            dtgv_xeChon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgv_xeChon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgv_xeChon.Location = new Point(13, 396);
             dtgv_xeChon.Name = "dtgv_xeChon";
@@ -262,16 +269,7 @@
             dtgv_xeChon.RowTemplate.Height = 29;
             dtgv_xeChon.Size = new Size(964, 219);
             dtgv_xeChon.TabIndex = 0;
-            // 
-            // dtgv_xeSS
-            // 
-            dtgv_xeSS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgv_xeSS.Location = new Point(13, 86);
-            dtgv_xeSS.Name = "dtgv_xeSS";
-            dtgv_xeSS.RowHeadersWidth = 51;
-            dtgv_xeSS.RowTemplate.Height = 29;
-            dtgv_xeSS.Size = new Size(964, 243);
-            dtgv_xeSS.TabIndex = 0;
+
             // 
             // label15
             // 
@@ -365,6 +363,7 @@
             dtp_ngayTra.Name = "dtp_ngayTra";
             dtp_ngayTra.Size = new Size(141, 27);
             dtp_ngayTra.TabIndex = 3;
+            dtp_ngayTra.ValueChanged += dtp_ngayTra_ValueChanged;
             // 
             // dtp_ngayThue
             // 
@@ -373,6 +372,7 @@
             dtp_ngayThue.Name = "dtp_ngayThue";
             dtp_ngayThue.Size = new Size(141, 27);
             dtp_ngayThue.TabIndex = 3;
+            dtp_ngayThue.ValueChanged += dtp_ngayThue_ValueChanged;
             // 
             // label3
             // 
@@ -469,8 +469,8 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(button4);
-            groupBox6.Controls.Add(button2);
             groupBox6.Controls.Add(cbb_trangThai);
+            groupBox6.Controls.Add(bt_pay);
             groupBox6.Controls.Add(label13);
             groupBox6.Controls.Add(label12);
             groupBox6.Controls.Add(label11);
@@ -484,6 +484,7 @@
             groupBox6.TabIndex = 2;
             groupBox6.TabStop = false;
             groupBox6.Text = "Thanh toán hóa đơn";
+
             // 
             // button4
             // 
@@ -494,23 +495,25 @@
             button4.Text = "Hủy";
             button4.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            button2.Location = new Point(43, 309);
-            button2.Name = "button2";
-            button2.Size = new Size(162, 51);
-            button2.TabIndex = 3;
-            button2.Text = "Thanh toán";
-            button2.UseVisualStyleBackColor = true;
-            // 
             // cbb_trangThai
             // 
+            cbb_trangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_trangThai.FormattingEnabled = true;
-            cbb_trangThai.Items.AddRange(new object[] { "Đã cọc", "Đã lấy xe" });
-            cbb_trangThai.Location = new Point(188, 53);
+            cbb_trangThai.Items.AddRange(new object[] { "Đã cọc", "Đã nhận xe" });
+            cbb_trangThai.Location = new Point(188, 56);
             cbb_trangThai.Name = "cbb_trangThai";
             cbb_trangThai.Size = new Size(223, 28);
             cbb_trangThai.TabIndex = 0;
+            cbb_trangThai.SelectedIndexChanged += cbb_trangThai_SelectedIndexChanged_1;
+            // 
+            // bt_pay
+            // 
+            bt_pay.Location = new Point(43, 309);
+            bt_pay.Name = "bt_pay";
+            bt_pay.Size = new Size(162, 51);
+            bt_pay.TabIndex = 3;
+            bt_pay.Text = "Thanh toán";
+            bt_pay.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -579,23 +582,23 @@
             tx_phiThue.Size = new Size(223, 38);
             tx_phiThue.TabIndex = 1;
             // 
-            // groupBox7
+            // gb_layXe
             // 
-            groupBox7.Controls.Add(bt_taiSan);
-            groupBox7.Controls.Add(cbb_typeGiayTo);
-            groupBox7.Controls.Add(label6);
-            groupBox7.Controls.Add(tx_maHopDong);
-            groupBox7.Controls.Add(label16);
-            groupBox7.Controls.Add(tx_chiTiet);
-            groupBox7.Controls.Add(label8);
-            groupBox7.Controls.Add(label9);
-            groupBox7.Location = new Point(1001, 158);
-            groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(453, 237);
-            groupBox7.TabIndex = 2;
-            groupBox7.TabStop = false;
-            groupBox7.Text = "Thế chấp và hợp đồng";
-            groupBox7.Visible = false;
+            gb_layXe.Controls.Add(bt_taiSan);
+            gb_layXe.Controls.Add(cbb_typeGiayTo);
+            gb_layXe.Controls.Add(label6);
+            gb_layXe.Controls.Add(tx_maHopDong);
+            gb_layXe.Controls.Add(label16);
+            gb_layXe.Controls.Add(tx_chiTiet);
+            gb_layXe.Controls.Add(label8);
+            gb_layXe.Controls.Add(label9);
+            gb_layXe.Location = new Point(1001, 158);
+            gb_layXe.Name = "gb_layXe";
+            gb_layXe.Size = new Size(453, 237);
+            gb_layXe.TabIndex = 2;
+            gb_layXe.TabStop = false;
+            gb_layXe.Text = "Thế chấp và hợp đồng";
+            gb_layXe.Visible = false;
             // 
             // bt_taiSan
             // 
@@ -668,13 +671,26 @@
             label9.TabIndex = 2;
             label9.Text = "Loại tài sản:";
             // 
+            // dtgv_xeSS
+            // 
+            dtgv_xeSS.AllowUserToAddRows = false;
+            dtgv_xeSS.AllowUserToDeleteRows = false;
+            dtgv_xeSS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgv_xeSS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgv_xeSS.Location = new Point(13, 86);
+            dtgv_xeSS.Name = "dtgv_xeSS";
+            dtgv_xeSS.RowHeadersWidth = 51;
+            dtgv_xeSS.RowTemplate.Height = 29;
+            dtgv_xeSS.Size = new Size(964, 243);
+            dtgv_xeSS.TabIndex = 0;
+            // 
             // ChoThueXeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1482, 793);
             Controls.Add(groupBox6);
-            Controls.Add(groupBox7);
+            Controls.Add(gb_layXe);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -687,7 +703,6 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgv_xeChon).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtgv_xeSS).EndInit();
             ((System.ComponentModel.ISupportInitialize)nud_maxGia).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -698,8 +713,9 @@
             groupBox5.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
-            groupBox7.ResumeLayout(false);
-            groupBox7.PerformLayout();
+            gb_layXe.ResumeLayout(false);
+            gb_layXe.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgv_xeSS).EndInit();
             ResumeLayout(false);
         }
 
@@ -712,7 +728,6 @@
         private Button bt_search;
         private TextBox tx_search;
         private DataGridView dtgv_xeChon;
-        private DataGridView dtgv_xeSS;
         private NumericUpDown nud_maxGia;
         private GroupBox groupBox3;
         private Label label2;
@@ -732,7 +747,6 @@
         private Label label5;
         private TextBox tx_canCuoc;
         private TextBox tx_nameKhach;
-        private ComboBox cbb_trangThai;
         private Label label13;
         private Label label12;
         private Label label11;
@@ -740,7 +754,7 @@
         private TextBox tx_phiThanhToan;
         private TextBox tx_coc;
         private TextBox tx_phiThue;
-        private GroupBox groupBox7;
+        private GroupBox gb_layXe;
         private ComboBox bt_taiSan;
         private ComboBox cbb_typeGiayTo;
         private Label label6;
@@ -753,13 +767,15 @@
         private Label label15;
         private Label label14;
         private Button button4;
-        private Button button2;
+        private Button bt_pay;
         private TextBox tx_maHopDong;
         private Label label16;
-        private ComboBox comboBox1;
+        private ComboBox cbb_hopSo;
         private Label label18;
         private Label label20;
         private Label label19;
         private Label label17;
+        private ComboBox cbb_trangThai;
+        private DataGridView dtgv_xeSS;
     }
 }
