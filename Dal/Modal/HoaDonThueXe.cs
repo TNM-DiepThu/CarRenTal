@@ -13,6 +13,7 @@ namespace Dal.Modal
         public Guid Id { get; set; }
         public DateTime NgayTao { get; set; }
         public int SoHopDong { get; set; }
+        public int TrangThai { get; set; }
         public Guid IdKhachHang { get; set; }
         public virtual KhachHang KhachHang { get; set;}
         public Guid IdNhanVien {get; set;}
