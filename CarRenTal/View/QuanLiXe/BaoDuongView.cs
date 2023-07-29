@@ -34,7 +34,7 @@ namespace CarRenTal.View.QuanLiXe
         private void LoadData()
         {
             int stt = 1;
-            dtg_show.ColumnCount = 7;
+            dtg_show.ColumnCount = 8;
             dtg_show.Columns[0].Name = "STT";
             dtg_show.Columns[1].Name = "Id";
             dtg_show.Columns[1].Visible = false;
@@ -42,13 +42,14 @@ namespace CarRenTal.View.QuanLiXe
             dtg_show.Columns[3].Name = "Ngày kết thúc";
             dtg_show.Columns[4].Name = "Chi phí";
             dtg_show.Columns[5].Name = "Số công tơ bảo dưỡng";
-            dtg_show.Columns[6].Name = "Trạng thái";
+            dtg_show.Columns[7].Name = "Trạng thái";
+            dtg_show.Columns[6].Name = "Chi Tiết";
             dtg_show.Rows.Clear();
             foreach (var x in _baoduong.GetAll(xeId))
             {
                 string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
 
-                dtg_show.Rows.Add(stt++, x.Id, x.NgayDangKiem, x.NgayHetHan, x.ChiPhi, x.SoCongToBaoDuong, trangThaiAsString);
+                dtg_show.Rows.Add(stt++, x.Id, x.NgayDangKiem, x.NgayHetHan, x.ChiPhi, x.SoCongToBaoDuong,x.ChiTiet, trangThaiAsString);
             }
         }
 
@@ -71,6 +72,7 @@ namespace CarRenTal.View.QuanLiXe
                 b.NgayHetHan = DateTime.Parse(dtp_kt.Text);
                 b.ChiPhi = decimal.Parse(tb_cphi.Text);
                 b.SoCongToBaoDuong = int.Parse(tb_ct.Text);
+                b.ChiTiet = tb_chitiet.Text;
                 b.IdXe = xeId;
             }
             return b;
@@ -91,7 +93,7 @@ namespace CarRenTal.View.QuanLiXe
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
-            if(_baoduong.Edit(GetData(), xeId))
+            if (_baoduong.Edit(GetData(), xeId))
             {
                 MessageBox.Show("Sửa thành công");
                 _id = Guid.Empty;
@@ -113,6 +115,7 @@ namespace CarRenTal.View.QuanLiXe
             dtp_kt.Text = obj.NgayHetHan.ToString();
             tb_cphi.Text = obj.ChiPhi.ToString();
             tb_ct.Text = obj.SoCongToBaoDuong.ToString();
+            tb_chitiet.Text = obj.ChiTiet.ToString();
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 var id = dtg_show.Rows[e.RowIndex].Cells["Id"].Value;

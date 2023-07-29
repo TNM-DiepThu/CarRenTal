@@ -16,6 +16,7 @@ namespace Dal.Modal
         public decimal ChiPhi { get; set; }
         public int SoCongToBaoDuong { get; set; }
         public int TrangThai { get; set; }
+        public string ChiTiet { get; set; }
         public Guid IdXe { get; set; }
         public virtual Xe Xe { get; set; }
     }
