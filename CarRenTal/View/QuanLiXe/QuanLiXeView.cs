@@ -1,5 +1,7 @@
 ﻿using Bus.Serviece.Implements;
 using Bus.Serviece.Interface;
+using CarRenTal.View.QuanLiXe;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +20,7 @@ namespace CarRenTal
         IXeServiece _xe;
         IXeBaoHiemServiece _baoHiem;
         IDangKiemServiece _dangkiem;
+        private Guid selectedXeId;
         public QuanLiXeView()
         {
             InitializeComponent();
@@ -82,6 +85,31 @@ namespace CarRenTal
 
 
                 dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+            }
+        }
+
+        private void dtg_show_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo chỉ xử lý khi người dùng chọn một hàng (không phải tiêu đề cột)
+            {
+                DataGridViewRow row = dtg_show.Rows[e.RowIndex];
+                selectedXeId = (Guid)row.Cells["Id"].Value;
+            }
+        }
+
+        private void bt_dk_Click(object sender, EventArgs e)
+        {
+            if (selectedXeId != Guid.Empty) // Đảm bảo đã chọn một xe trước khi mở Form BaoDuong
+            {
+                // Tạo Form mới chứa DataGridView của BaoDuong
+                using (var baoDuongForm = new BaoDuongView(selectedXeId))
+                {
+                    baoDuongForm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện bảo dưỡng.");
             }
         }
     }
