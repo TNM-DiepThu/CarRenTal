@@ -39,6 +39,8 @@
             label4 = new Label();
             bt_add = new Button();
             bt_edit = new Button();
+            tb_chitiet = new TextBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dtg_show).BeginInit();
             SuspendLayout();
             // 
@@ -123,9 +125,9 @@
             // 
             // bt_add
             // 
-            bt_add.Location = new Point(558, 279);
+            bt_add.Location = new Point(554, 325);
             bt_add.Name = "bt_add";
-            bt_add.Size = new Size(221, 61);
+            bt_add.Size = new Size(246, 44);
             bt_add.TabIndex = 4;
             bt_add.Text = "Thêm";
             bt_add.UseVisualStyleBackColor = true;
@@ -133,13 +135,30 @@
             // 
             // bt_edit
             // 
-            bt_edit.Location = new Point(558, 358);
+            bt_edit.Location = new Point(554, 375);
             bt_edit.Name = "bt_edit";
-            bt_edit.Size = new Size(221, 61);
+            bt_edit.Size = new Size(246, 44);
             bt_edit.TabIndex = 4;
             bt_edit.Text = "Sửa";
             bt_edit.UseVisualStyleBackColor = true;
             bt_edit.Click += bt_edit_Click;
+            // 
+            // tb_chitiet
+            // 
+            tb_chitiet.Location = new Point(554, 273);
+            tb_chitiet.Name = "tb_chitiet";
+            tb_chitiet.Size = new Size(250, 27);
+            tb_chitiet.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(554, 246);
+            label5.Name = "label5";
+            label5.Size = new Size(56, 20);
+            label5.TabIndex = 3;
+            label5.Text = "Chi tiết";
+            label5.Click += label2_Click;
             // 
             // BaoDuongView
             // 
@@ -148,6 +167,7 @@
             ClientSize = new Size(847, 450);
             Controls.Add(bt_edit);
             Controls.Add(bt_add);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -155,6 +175,7 @@
             Controls.Add(dtp_kt);
             Controls.Add(dtp_bd);
             Controls.Add(tb_cphi);
+            Controls.Add(tb_chitiet);
             Controls.Add(tb_ct);
             Controls.Add(dtg_show);
             Name = "BaoDuongView";
@@ -177,5 +198,7 @@
         private Label label4;
         private Button bt_add;
         private Button bt_edit;
+        private TextBox tb_chitiet;
+        private Label label5;
     }
 }
