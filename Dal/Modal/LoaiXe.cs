@@ -16,7 +16,6 @@ namespace Dal.Modal
         public int SoGhe { get; set; }
         public string LoaiSoXe { get; set; }
         public int TrangThai { get; set; }
-        public string NhienLieuTieuThu { get;set; }
         public virtual ICollection<Xe> Xe { get; set; }
         public Guid IdHangXe { get; set; }
         public virtual HangXe HangXe { get; set; }

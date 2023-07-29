@@ -19,7 +19,6 @@ namespace Dal.Configuration
             builder.Property(x => x.LoaiNguyenLieu).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x => x.SoGhe).HasColumnType("int").IsRequired();
             builder.Property(x => x.LoaiSoXe).HasColumnType("nvarchar(100)").IsRequired();
-            builder.Property(x => x.NhienLieuTieuThu).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(x => x.TrangThai).HasColumnType("int").IsRequired();
             builder.HasOne(x => x.HangXe).WithMany(x => x.LoaiXe).HasForeignKey(x=>x.IdHangXe);
         }
