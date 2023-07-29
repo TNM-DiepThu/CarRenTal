@@ -23,7 +23,6 @@ namespace Bus.ViewModal
         public int SoGhe { get; set; }
         public string LoaiSoXe { get; set; }
         public int TrangThai { get; set; }
-        public string NhienLieuTieuThu { get; set; }
         public string TenHangXe { get; set; }
         public Guid IdHang { get; set; }
         public LoaiXeVM(LoaiXe loaiXe)
