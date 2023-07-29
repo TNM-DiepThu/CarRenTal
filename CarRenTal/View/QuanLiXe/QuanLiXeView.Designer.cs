@@ -1,6 +1,6 @@
 ﻿namespace CarRenTal
 {
-    partial class QuanLiXe
+    partial class QuanLiXeView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dtg_qlx = new DataGridView();
+            dtg_show = new DataGridView();
             tb_seach = new TextBox();
             bt_4cho = new Button();
             bt_loaihopso = new Button();
             bt_dhdk = new Button();
             bt_hhdk = new Button();
-            bt_addxe = new Button();
-            ((System.ComponentModel.ISupportInitialize)dtg_qlx).BeginInit();
+            bt_add = new Button();
+            ((System.ComponentModel.ISupportInitialize)dtg_show).BeginInit();
             SuspendLayout();
             // 
-            // dtg_qlx
+            // dtg_show
             // 
-            dtg_qlx.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtg_qlx.Location = new Point(42, 105);
-            dtg_qlx.Name = "dtg_qlx";
-            dtg_qlx.RowHeadersWidth = 51;
-            dtg_qlx.RowTemplate.Height = 29;
-            dtg_qlx.Size = new Size(976, 301);
-            dtg_qlx.TabIndex = 0;
+            dtg_show.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtg_show.Location = new Point(42, 105);
+            dtg_show.Name = "dtg_show";
+            dtg_show.RowHeadersWidth = 51;
+            dtg_show.RowTemplate.Height = 29;
+            dtg_show.Size = new Size(976, 301);
+            dtg_show.TabIndex = 0;
             // 
             // tb_seach
             // 
@@ -91,14 +91,14 @@
             bt_hhdk.Text = "Hết hạn đăng kiểm";
             bt_hhdk.UseVisualStyleBackColor = true;
             // 
-            // bt_addxe
+            // bt_add
             // 
-            bt_addxe.Location = new Point(831, 426);
-            bt_addxe.Name = "bt_addxe";
-            bt_addxe.Size = new Size(187, 39);
-            bt_addxe.TabIndex = 2;
-            bt_addxe.Text = "Thêm xe";
-            bt_addxe.UseVisualStyleBackColor = true;
+            bt_add.Location = new Point(831, 426);
+            bt_add.Name = "bt_add";
+            bt_add.Size = new Size(187, 39);
+            bt_add.TabIndex = 2;
+            bt_add.Text = "Thêm xe";
+            bt_add.UseVisualStyleBackColor = true;
             // 
             // QuanLiXe
             // 
@@ -108,26 +108,26 @@
             Controls.Add(bt_hhdk);
             Controls.Add(bt_dhdk);
             Controls.Add(bt_loaihopso);
-            Controls.Add(bt_addxe);
+            Controls.Add(bt_add);
             Controls.Add(bt_4cho);
             Controls.Add(tb_seach);
-            Controls.Add(dtg_qlx);
+            Controls.Add(dtg_show);
             Name = "QuanLiXe";
             Text = "QuanLiXe";
             Load += QuanLiXe_Load;
-            ((System.ComponentModel.ISupportInitialize)dtg_qlx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dtg_qlx;
+        private DataGridView dtg_show;
         private TextBox tb_seach;
         private Button bt_4cho;
         private Button bt_loaihopso;
         private Button bt_dhdk;
         private Button bt_hhdk;
-        private Button bt_addxe;
+        private Button bt_add;
     }
 }

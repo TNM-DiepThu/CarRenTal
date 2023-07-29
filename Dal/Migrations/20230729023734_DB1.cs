@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Dal.Migrations
 {
-    public partial class DB : Migration
+    public partial class DB1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,6 @@ namespace Dal.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LoaiBaoHiem = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    ThoiHan = table.Column<DateTime>(type: "DateTime", nullable: false),
                     TrangThai = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -193,6 +192,7 @@ namespace Dal.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NgayTao = table.Column<DateTime>(type: "DateTime", nullable: false),
                     SoHopDong = table.Column<int>(type: "int", nullable: false),
+                    TrangThai = table.Column<int>(type: "int", nullable: false),
                     IdKhachHang = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IdNhanVien = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -239,21 +239,20 @@ namespace Dal.Migrations
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BienSo = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    SoKhung = table.Column<int>(type: "int", nullable: false),
-                    SoMay = table.Column<int>(type: "int", nullable: false),
+                    SoKhung = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    SoMay = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     DonGia = table.Column<decimal>(type: "DECIMAL", nullable: false),
                     SoCongTo = table.Column<int>(type: "int", nullable: false),
                     TrangThai = table.Column<int>(type: "int", nullable: false),
                     IdLoaiXe = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LoaiXeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IdMauSac = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Xe", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Xe_Loai_xe_LoaiXeId",
-                        column: x => x.LoaiXeId,
+                        name: "FK_Xe_Loai_xe_IdLoaiXe",
+                        column: x => x.IdLoaiXe,
                         principalTable: "Loai_xe",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -295,7 +294,7 @@ namespace Dal.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NgayDangKiem = table.Column<DateTime>(type: "DateTime", nullable: false),
                     NgayHetHan = table.Column<DateTime>(type: "DateTime", nullable: false),
-                    TrangThai = table.Column<int>(type: "int", nullable: false),
+                    ChiPhi = table.Column<decimal>(type: "DECIMAL", nullable: false),
                     IdXe = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -449,7 +448,8 @@ namespace Dal.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Đang_kiem_IdXe",
                 table: "Đang_kiem",
-                column: "IdXe");
+                column: "IdXe",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Hoa_đon_chi_tiet_IdHoaDon",
@@ -508,14 +508,14 @@ namespace Dal.Migrations
                 column: "IdTS");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Xe_IdLoaiXe",
+                table: "Xe",
+                column: "IdLoaiXe");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Xe_IdMauSac",
                 table: "Xe",
                 column: "IdMauSac");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Xe_LoaiXeId",
-                table: "Xe",
-                column: "LoaiXeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Xe_bao_hiem_IdHangBaoHiem",

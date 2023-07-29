@@ -21,7 +21,7 @@ namespace Dal.Modal
         public virtual LoaiXe LoaiXe { get; set; }
         public Guid IdMauSac { get; set; }
         public virtual MauSac MauSac { get; set; }
-        public ICollection<DangKiem> DangKiem { get; set; }
+        public virtual DangKiem DangKiem { get; set; }
         public ICollection<XeBaoHiem> xeBaoHiems { get; set; }
         public ICollection <BaoDuong> baoDuongs { get; set; }
         public ICollection <HoaDonChiTiet> HoaDonChiTiets { get; set; }

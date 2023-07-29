@@ -1,5 +1,4 @@
 ﻿using Dal.Data;
-using Dal.Migrations;
 using Dal.Modal;
 using System;
 using System.Collections.Generic;
