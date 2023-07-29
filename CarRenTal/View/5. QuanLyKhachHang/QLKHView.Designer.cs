@@ -51,6 +51,7 @@
             btnUpdate2 = new Button();
             groupBox3 = new GroupBox();
             groupBox4 = new GroupBox();
+            btnClearTTTN = new Button();
             txtIDNT = new Label();
             btnCreateTn = new Button();
             btnUpdateTn = new Button();
@@ -60,20 +61,24 @@
             txtSDTTn = new TextBox();
             label11 = new Label();
             label10 = new Label();
-            dtpNgaySinhTN = new DateTimePicker();
-            label9 = new Label();
             cbbGioiTinhTN = new ComboBox();
             txtHoTenTn = new TextBox();
             label2 = new Label();
             label1 = new Label();
             lbSoLuongXe = new Label();
             groupBox5 = new GroupBox();
+            groupBox6 = new GroupBox();
+            lbTongTienKhachThue = new Label();
+            groupBox7 = new GroupBox();
+            lbXedaThue = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvQLKH).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox7.SuspendLayout();
             SuspendLayout();
             // 
             // dgvQLKH
@@ -99,7 +104,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(1063, 619);
+            btnUpdate.Location = new Point(1018, 727);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(145, 45);
             btnUpdate.TabIndex = 30;
@@ -235,6 +240,7 @@
             btnCreate.TabIndex = 1;
             btnCreate.Text = "Thêm";
             btnCreate.UseVisualStyleBackColor = true;
+            btnCreate.Visible = false;
             btnCreate.Click += btnCreate_Click;
             // 
             // groupBox2
@@ -293,6 +299,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(btnClearTTTN);
             groupBox4.Controls.Add(txtIDNT);
             groupBox4.Controls.Add(btnCreateTn);
             groupBox4.Controls.Add(btnUpdateTn);
@@ -302,8 +309,6 @@
             groupBox4.Controls.Add(txtSDTTn);
             groupBox4.Controls.Add(label11);
             groupBox4.Controls.Add(label10);
-            groupBox4.Controls.Add(dtpNgaySinhTN);
-            groupBox4.Controls.Add(label9);
             groupBox4.Controls.Add(cbbGioiTinhTN);
             groupBox4.Controls.Add(txtHoTenTn);
             groupBox4.Controls.Add(label2);
@@ -314,6 +319,16 @@
             groupBox4.TabIndex = 34;
             groupBox4.TabStop = false;
             groupBox4.Text = "Người thân";
+            // 
+            // btnClearTTTN
+            // 
+            btnClearTTTN.Location = new Point(52, 319);
+            btnClearTTTN.Name = "btnClearTTTN";
+            btnClearTTTN.Size = new Size(147, 44);
+            btnClearTTTN.TabIndex = 5;
+            btnClearTTTN.Text = "Clear";
+            btnClearTTTN.UseVisualStyleBackColor = true;
+            btnClearTTTN.Click += btnClearTTTN_Click;
             // 
             // txtIDNT
             // 
@@ -327,17 +342,18 @@
             // 
             // btnCreateTn
             // 
-            btnCreateTn.Location = new Point(58, 319);
+            btnCreateTn.Location = new Point(88, 206);
             btnCreateTn.Name = "btnCreateTn";
             btnCreateTn.Size = new Size(157, 44);
             btnCreateTn.TabIndex = 80;
             btnCreateTn.Text = "Thêm";
             btnCreateTn.UseVisualStyleBackColor = true;
+            btnCreateTn.Visible = false;
             btnCreateTn.Click += btnCreateTn_Click;
             // 
             // btnUpdateTn
             // 
-            btnUpdateTn.Location = new Point(298, 319);
+            btnUpdateTn.Location = new Point(265, 319);
             btnUpdateTn.Name = "btnUpdateTn";
             btnUpdateTn.Size = new Size(147, 44);
             btnUpdateTn.TabIndex = 4;
@@ -347,15 +363,15 @@
             // 
             // txtDiaChiTn
             // 
-            txtDiaChiTn.Location = new Point(235, 270);
+            txtDiaChiTn.Location = new Point(25, 260);
             txtDiaChiTn.Name = "txtDiaChiTn";
-            txtDiaChiTn.Size = new Size(210, 31);
+            txtDiaChiTn.Size = new Size(420, 31);
             txtDiaChiTn.TabIndex = 81;
             txtDiaChiTn.TextChanged += textBox4_TextChanged;
             // 
             // txtCCCDTn
             // 
-            txtCCCDTn.Location = new Point(20, 270);
+            txtCCCDTn.Location = new Point(17, 166);
             txtCCCDTn.Name = "txtCCCDTn";
             txtCCCDTn.Size = new Size(198, 31);
             txtCCCDTn.TabIndex = 81;
@@ -363,7 +379,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(228, 230);
+            label12.Location = new Point(17, 216);
             label12.Name = "label12";
             label12.Size = new Size(65, 25);
             label12.TabIndex = 80;
@@ -380,7 +396,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(20, 230);
+            label11.Location = new Point(25, 126);
             label11.Name = "label11";
             label11.Size = new Size(84, 25);
             label11.TabIndex = 80;
@@ -394,23 +410,6 @@
             label10.Size = new Size(117, 25);
             label10.TabIndex = 80;
             label10.Text = "Số điện thoại";
-            // 
-            // dtpNgaySinhTN
-            // 
-            dtpNgaySinhTN.Format = DateTimePickerFormat.Short;
-            dtpNgaySinhTN.Location = new Point(20, 166);
-            dtpNgaySinhTN.Name = "dtpNgaySinhTN";
-            dtpNgaySinhTN.Size = new Size(198, 31);
-            dtpNgaySinhTN.TabIndex = 80;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(20, 126);
-            label9.Name = "label9";
-            label9.Size = new Size(91, 25);
-            label9.TabIndex = 80;
-            label9.Text = "Ngày sinh";
             // 
             // cbbGioiTinhTN
             // 
@@ -452,9 +451,9 @@
             lbSoLuongXe.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lbSoLuongXe.Location = new Point(185, 42);
             lbSoLuongXe.Name = "lbSoLuongXe";
-            lbSoLuongXe.Size = new Size(63, 22);
+            lbSoLuongXe.Size = new Size(67, 22);
             lbSoLuongXe.TabIndex = 35;
-            lbSoLuongXe.Text = "label13";
+            lbSoLuongXe.Text = "Loading";
             // 
             // groupBox5
             // 
@@ -467,10 +466,54 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Số lượng xe khách đã thuê";
             // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(lbTongTienKhachThue);
+            groupBox6.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox6.Location = new Point(1018, 606);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(458, 96);
+            groupBox6.TabIndex = 37;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Tổng tiền xe khách đã thuê";
+            // 
+            // lbTongTienKhachThue
+            // 
+            lbTongTienKhachThue.AutoSize = true;
+            lbTongTienKhachThue.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lbTongTienKhachThue.Location = new Point(185, 42);
+            lbTongTienKhachThue.Name = "lbTongTienKhachThue";
+            lbTongTienKhachThue.Size = new Size(67, 22);
+            lbTongTienKhachThue.TabIndex = 35;
+            lbTongTienKhachThue.Text = "Loading";
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(lbXedaThue);
+            groupBox7.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox7.Location = new Point(1018, 504);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(458, 96);
+            groupBox7.TabIndex = 38;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Những con xe khách đã thuê";
+            // 
+            // lbXedaThue
+            // 
+            lbXedaThue.AutoSize = true;
+            lbXedaThue.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lbXedaThue.Location = new Point(185, 42);
+            lbXedaThue.Name = "lbXedaThue";
+            lbXedaThue.Size = new Size(67, 22);
+            lbXedaThue.TabIndex = 35;
+            lbXedaThue.Text = "Loading";
+            // 
             // QLKHView
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1478, 784);
+            Controls.Add(groupBox7);
+            Controls.Add(groupBox6);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(groupBox2);
@@ -492,6 +535,10 @@
             groupBox4.PerformLayout();
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -524,8 +571,6 @@
         private TextBox txtSDTTn;
         private Label label11;
         private Label label10;
-        private DateTimePicker dtpNgaySinhTN;
-        private Label label9;
         private ComboBox cbbGioiTinhTN;
         private TextBox txtHoTenTn;
         private Label label2;
@@ -536,5 +581,10 @@
         private Label lbSoLuongXe;
         private GroupBox groupBox5;
         private Label txtIDNT;
+        private GroupBox groupBox6;
+        private Label lbTongTienKhachThue;
+        private GroupBox groupBox7;
+        private Label lbXedaThue;
+        private Button btnClearTTTN;
     }
 }

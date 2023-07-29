@@ -109,11 +109,20 @@ namespace CarRenTal.View._5._QuanLyKhachHang
             {
                 txtIDNT.Text = nguoiThan.Id.ToString();
                 txtHoTenTn.Text = nguoiThan.Name;
-                cbbGioiTinhTN.SelectedIndex = nguoiThan.GioiTinh ? 1 : 0;
+                cbbGioiTinhTN.SelectedIndex = nguoiThan.GioiTinh ? 0 : 1;
                 txtDiaChiTn.Text = nguoiThan.DiaChi;
                 txtSDTTn.Text = nguoiThan.SDT;
                 txtCCCDTn.Text = nguoiThan.CCCD;
             }
+
+            decimal[] result = _kHService.GetNumberXe(Guid.Parse(textIDkh.Text));
+
+            if (result != null)
+            {
+                lbSoLuongXe.Text = result[0].ToString();
+                lbTongTienKhachThue.Text = result[1].ToString();
+            }
+
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -135,7 +144,6 @@ namespace CarRenTal.View._5._QuanLyKhachHang
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Thêm thất bại");
             }
         }
@@ -194,15 +202,16 @@ namespace CarRenTal.View._5._QuanLyKhachHang
             }
 
             //regex SĐT
-            Regex regex1 = new Regex(@"^(0 | 84)(2(0[3 - 9] | 1[0 - 6 | 8 | 9] | 2[0 - 2 | 5 - 9] | 3[2 - 9] | 4[0 - 9] | 5[1 | 2 | 4 - 9] | 6[0 - 3 | 9] | 7[0 - 7] | 8[0 - 9] | 9[0 - 4 | 6 | 7 | 9]) | 3[2 - 9] | 5[5 | 6 | 8 | 9] | 7[0 | 6 - 9] | 8[0 - 6 | 8 | 9] | 9[0 - 4 | 6 - 9])([0 - 9]{ 7 })$");
-            //paramater = @"0(3\d{8}|9\d{8}|8\d{8}|5\d{8}|7\d{8})";
-            if (!regex1.IsMatch(sdt))
+            //Regex regex1 = new Regex(@"^(0 | 84)(2(0[3 - 9] | 1[0 - 6 | 8 | 9] | 2[0 - 2 | 5 - 9] | 3[2 - 9] | 4[0 - 9] | 5[1 | 2 | 4 - 9] | 6[0 - 3 | 9] | 7[0 - 7] | 8[0 - 9] | 9[0 - 4 | 6 | 7 | 9]) | 3[2 - 9] | 5[5 | 6 | 8 | 9] | 7[0 | 6 - 9] | 8[0 - 6 | 8 | 9] | 9[0 - 4 | 6 - 9])([0 - 9]{ 7 })$");
+            paramater = @"0(3\d{8}|9\d{8}|8\d{8}|5\d{8}|7\d{8})";
+            regex = new Regex(paramater);
+            if (!regex.IsMatch(sdt))
             {
                 return "số điện thoại không hợp lệ";
             }
             Regex regex2 = new Regex(@"^(?=.*?[0-9])$");
             // regex CCCD 
-            if (cccd.Length == 12 && !regex2.IsMatch(cccd))
+            if (cccd.Length != 12 && !regex2.IsMatch(cccd))
             {
                 return "Căn cước công dân phải là 12 ký tự và phải là số";
             }
@@ -228,10 +237,9 @@ namespace CarRenTal.View._5._QuanLyKhachHang
             dgvQLKH.Columns[5].Name = "Số CCCD";
             dgvQLKH.Columns[6].Name = "Ngày sinh";
 
-
             _lstKhachHang = _kHService.GetALL();
 
-            foreach (var i in _lstKhachHang.Where(c => c.Name.Contains(txtSearch.Text)))
+            foreach (var i in _lstKhachHang.Where(c => c.Name.ToLower().Contains(txtSearch.Text.ToLower())))
             {
                 dgvQLKH.Rows.Add(i.Id, i.Name, (i.GioiTinh ? "Nam" : "Nữ"), i.DiaChi, i.SDT, i.CCCD, i.NgaySinh);
             }
@@ -241,7 +249,7 @@ namespace CarRenTal.View._5._QuanLyKhachHang
         {
             txtHoTenKH.Text = "";
             cbbGioiTinhKH.Text = "";
-            dtpNgaySinhKh.Text = "";
+            dtpNgaySinhKh.Text = DateTime.Today.ToString();
             txtCCCDKH.Text = "";
             txtDiaChiKH.Text = "";
             txtSdtKH.Text = "";
@@ -285,6 +293,12 @@ namespace CarRenTal.View._5._QuanLyKhachHang
         {
             try
             {
+                string regex = regexInfo(txtHoTenTn.Text, cbbGioiTinhTN.SelectedIndex, txtDiaChiTn.Text, txtSDTTn.Text, txtCCCDTn.Text, "abc");
+                if (regex != null)
+                {
+                    MessageBox.Show("" + regex);
+                    return;
+                }
                 _NTService.UpdateNguoiThan(new NguoiThan()
                 {
                     Id = Guid.Parse(txtIDNT.Text),
@@ -303,6 +317,15 @@ namespace CarRenTal.View._5._QuanLyKhachHang
 
                 MessageBox.Show("Sửa thất bại" + "Lỗi: " + ex);
             }
+        }
+
+        private void btnClearTTTN_Click(object sender, EventArgs e)
+        {
+            txtHoTenTn.Text = "";
+            cbbGioiTinhTN.Text = "";
+            txtCCCDTn.Text = "";
+            txtDiaChiTn.Text = "";
+            txtSDTTn.Text = "";
         }
     }
 }

@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarRenTal.View._4._QuanLyHoaDon
+namespace CarRenTal.View._6.QuanLyThuChi
 {
-    public partial class CreateCustomer : Form
+    public partial class QLCTView : Form
     {
-        public CreateCustomer()
+        public QLCTView()
         {
             InitializeComponent();
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
