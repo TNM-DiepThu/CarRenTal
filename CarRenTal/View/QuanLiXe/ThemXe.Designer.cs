@@ -29,33 +29,29 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
             label2 = new Label();
-            textBox2 = new TextBox();
+            tb_bienso = new TextBox();
             label3 = new Label();
-            textBox3 = new TextBox();
+            tb_sokhung = new TextBox();
             label4 = new Label();
-            textBox4 = new TextBox();
+            tb_somay = new TextBox();
             label5 = new Label();
-            textBox5 = new TextBox();
+            tb_dongia = new TextBox();
             label6 = new Label();
-            textBox6 = new TextBox();
             label7 = new Label();
-            textBox7 = new TextBox();
             label8 = new Label();
-            textBox8 = new TextBox();
             label9 = new Label();
-            textBox9 = new TextBox();
             label10 = new Label();
-            textBox10 = new TextBox();
-            label11 = new Label();
-            label12 = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            textBox11 = new TextBox();
-            textBox12 = new TextBox();
-            textBox13 = new TextBox();
-            textBox14 = new TextBox();
+            tb_chiphi = new TextBox();
+            button1 = new Button();
+            cb_mausac = new ComboBox();
+            cb_name = new ComboBox();
+            rd_1 = new RadioButton();
+            rd_0 = new RadioButton();
+            dtp_ndk = new DateTimePicker();
+            dtp_nhh = new DateTimePicker();
+            lb = new Label();
+            tb_sct = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -67,13 +63,6 @@
             label1.TabIndex = 0;
             label1.Text = "Tên xe";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(25, 42);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(251, 27);
-            textBox1.TabIndex = 1;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -83,12 +72,12 @@
             label2.TabIndex = 0;
             label2.Text = "Biển số";
             // 
-            // textBox2
+            // tb_bienso
             // 
-            textBox2.Location = new Point(25, 95);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(251, 27);
-            textBox2.TabIndex = 1;
+            tb_bienso.Location = new Point(25, 95);
+            tb_bienso.Name = "tb_bienso";
+            tb_bienso.Size = new Size(251, 27);
+            tb_bienso.TabIndex = 1;
             // 
             // label3
             // 
@@ -99,12 +88,12 @@
             label3.TabIndex = 0;
             label3.Text = "Số khung";
             // 
-            // textBox3
+            // tb_sokhung
             // 
-            textBox3.Location = new Point(25, 148);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(251, 27);
-            textBox3.TabIndex = 1;
+            tb_sokhung.Location = new Point(25, 148);
+            tb_sokhung.Name = "tb_sokhung";
+            tb_sokhung.Size = new Size(251, 27);
+            tb_sokhung.TabIndex = 1;
             // 
             // label4
             // 
@@ -115,12 +104,12 @@
             label4.TabIndex = 0;
             label4.Text = "Số máy";
             // 
-            // textBox4
+            // tb_somay
             // 
-            textBox4.Location = new Point(25, 201);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(251, 27);
-            textBox4.TabIndex = 1;
+            tb_somay.Location = new Point(25, 201);
+            tb_somay.Name = "tb_somay";
+            tb_somay.Size = new Size(251, 27);
+            tb_somay.TabIndex = 1;
             // 
             // label5
             // 
@@ -131,12 +120,12 @@
             label5.TabIndex = 0;
             label5.Text = "Đơn giá";
             // 
-            // textBox5
+            // tb_dongia
             // 
-            textBox5.Location = new Point(25, 254);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(251, 27);
-            textBox5.TabIndex = 1;
+            tb_dongia.Location = new Point(25, 254);
+            tb_dongia.Name = "tb_dongia";
+            tb_dongia.Size = new Size(251, 27);
+            tb_dongia.TabIndex = 1;
             // 
             // label6
             // 
@@ -147,173 +136,155 @@
             label6.TabIndex = 0;
             label6.Text = "Màu sắc";
             // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(25, 307);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(251, 27);
-            textBox6.TabIndex = 1;
-            // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(25, 337);
+            label7.Location = new Point(25, 390);
             label7.Name = "label7";
             label7.Size = new Size(75, 20);
             label7.TabIndex = 0;
             label7.Text = "Trạng thái";
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(25, 360);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(251, 27);
-            textBox7.TabIndex = 1;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Location = new Point(300, 19);
             label8.Name = "label8";
-            label8.Size = new Size(50, 20);
+            label8.Size = new Size(118, 20);
             label8.TabIndex = 0;
-            label8.Text = "label1";
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(300, 42);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(251, 27);
-            textBox8.TabIndex = 1;
+            label8.Text = "Ngày đăng kiểm";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Location = new Point(300, 72);
             label9.Name = "label9";
-            label9.Size = new Size(50, 20);
+            label9.Size = new Size(97, 20);
             label9.TabIndex = 0;
-            label9.Text = "label1";
-            // 
-            // textBox9
-            // 
-            textBox9.Location = new Point(300, 95);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(251, 27);
-            textBox9.TabIndex = 1;
+            label9.Text = "Ngày hết hạn";
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Location = new Point(300, 125);
             label10.Name = "label10";
-            label10.Size = new Size(50, 20);
+            label10.Size = new Size(55, 20);
             label10.TabIndex = 0;
-            label10.Text = "label1";
+            label10.Text = "Chi phí";
             // 
-            // textBox10
+            // tb_chiphi
             // 
-            textBox10.Location = new Point(300, 148);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(251, 27);
-            textBox10.TabIndex = 1;
+            tb_chiphi.Location = new Point(300, 148);
+            tb_chiphi.Name = "tb_chiphi";
+            tb_chiphi.Size = new Size(251, 27);
+            tb_chiphi.TabIndex = 1;
             // 
-            // label11
+            // button1
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(300, 178);
-            label11.Name = "label11";
-            label11.Size = new Size(50, 20);
-            label11.TabIndex = 0;
-            label11.Text = "label1";
+            button1.Location = new Point(324, 307);
+            button1.Name = "button1";
+            button1.Size = new Size(138, 77);
+            button1.TabIndex = 2;
+            button1.Text = "Thêm Xe";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // label12
+            // cb_mausac
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(300, 231);
-            label12.Name = "label12";
-            label12.Size = new Size(50, 20);
-            label12.TabIndex = 0;
-            label12.Text = "label1";
+            cb_mausac.FormattingEnabled = true;
+            cb_mausac.Location = new Point(25, 306);
+            cb_mausac.Name = "cb_mausac";
+            cb_mausac.Size = new Size(251, 28);
+            cb_mausac.TabIndex = 3;
             // 
-            // label13
+            // cb_name
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(300, 284);
-            label13.Name = "label13";
-            label13.Size = new Size(50, 20);
-            label13.TabIndex = 0;
-            label13.Text = "label1";
+            cb_name.FormattingEnabled = true;
+            cb_name.Location = new Point(25, 42);
+            cb_name.Name = "cb_name";
+            cb_name.Size = new Size(251, 28);
+            cb_name.TabIndex = 3;
             // 
-            // label14
+            // rd_1
             // 
-            label14.AutoSize = true;
-            label14.Location = new Point(300, 337);
-            label14.Name = "label14";
-            label14.Size = new Size(50, 20);
-            label14.TabIndex = 0;
-            label14.Text = "label1";
+            rd_1.AutoSize = true;
+            rd_1.Location = new Point(25, 413);
+            rd_1.Name = "rd_1";
+            rd_1.Size = new Size(102, 24);
+            rd_1.TabIndex = 4;
+            rd_1.TabStop = true;
+            rd_1.Text = "Hoạt động";
+            rd_1.UseVisualStyleBackColor = true;
             // 
-            // textBox11
+            // rd_0
             // 
-            textBox11.Location = new Point(300, 201);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(251, 27);
-            textBox11.TabIndex = 1;
+            rd_0.AutoSize = true;
+            rd_0.Location = new Point(25, 434);
+            rd_0.Name = "rd_0";
+            rd_0.Size = new Size(179, 24);
+            rd_0.TabIndex = 4;
+            rd_0.TabStop = true;
+            rd_0.Text = "Tạm ngừng hoạt động";
+            rd_0.UseVisualStyleBackColor = true;
             // 
-            // textBox12
+            // dtp_ndk
             // 
-            textBox12.Location = new Point(300, 254);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(251, 27);
-            textBox12.TabIndex = 1;
+            dtp_ndk.Location = new Point(300, 43);
+            dtp_ndk.Name = "dtp_ndk";
+            dtp_ndk.Size = new Size(250, 27);
+            dtp_ndk.TabIndex = 5;
             // 
-            // textBox13
+            // dtp_nhh
             // 
-            textBox13.Location = new Point(300, 307);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(251, 27);
-            textBox13.TabIndex = 1;
+            dtp_nhh.Location = new Point(300, 95);
+            dtp_nhh.Name = "dtp_nhh";
+            dtp_nhh.Size = new Size(250, 27);
+            dtp_nhh.TabIndex = 5;
             // 
-            // textBox14
+            // lb
             // 
-            textBox14.Location = new Point(300, 360);
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(251, 27);
-            textBox14.TabIndex = 1;
+            lb.AutoSize = true;
+            lb.Location = new Point(25, 337);
+            lb.Name = "lb";
+            lb.Size = new Size(81, 20);
+            lb.TabIndex = 0;
+            lb.Text = "Số công tơ";
+            // 
+            // tb_sct
+            // 
+            tb_sct.Location = new Point(25, 360);
+            tb_sct.Name = "tb_sct";
+            tb_sct.Size = new Size(251, 27);
+            tb_sct.TabIndex = 1;
             // 
             // ThemXe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1144, 450);
-            Controls.Add(textBox14);
-            Controls.Add(textBox7);
-            Controls.Add(textBox13);
-            Controls.Add(textBox6);
-            Controls.Add(textBox12);
-            Controls.Add(textBox5);
-            Controls.Add(textBox11);
-            Controls.Add(textBox4);
-            Controls.Add(label14);
+            ClientSize = new Size(602, 500);
+            Controls.Add(dtp_nhh);
+            Controls.Add(dtp_ndk);
+            Controls.Add(rd_0);
+            Controls.Add(rd_1);
+            Controls.Add(cb_name);
+            Controls.Add(cb_mausac);
+            Controls.Add(button1);
+            Controls.Add(tb_sct);
+            Controls.Add(tb_dongia);
+            Controls.Add(tb_somay);
             Controls.Add(label7);
-            Controls.Add(label13);
             Controls.Add(label6);
-            Controls.Add(label12);
+            Controls.Add(lb);
             Controls.Add(label5);
-            Controls.Add(label11);
             Controls.Add(label4);
-            Controls.Add(textBox10);
-            Controls.Add(textBox3);
+            Controls.Add(tb_chiphi);
+            Controls.Add(tb_sokhung);
             Controls.Add(label10);
             Controls.Add(label3);
-            Controls.Add(textBox9);
-            Controls.Add(textBox2);
+            Controls.Add(tb_bienso);
             Controls.Add(label9);
             Controls.Add(label2);
-            Controls.Add(textBox8);
             Controls.Add(label8);
-            Controls.Add(textBox1);
             Controls.Add(label1);
             Name = "ThemXe";
             Text = "ThemXe";
@@ -324,15 +295,15 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox tb_name;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox tb_bienso;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox tb_sokhung;
         private Label label4;
-        private TextBox textBox4;
+        private TextBox tb_somay;
         private Label label5;
-        private TextBox textBox5;
+        private TextBox tb_dongia;
         private Label label6;
         private TextBox textBox6;
         private Label label7;
@@ -342,14 +313,15 @@
         private Label label9;
         private TextBox textBox9;
         private Label label10;
-        private TextBox textBox10;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label14;
-        private TextBox textBox11;
-        private TextBox textBox12;
-        private TextBox textBox13;
-        private TextBox textBox14;
+        private TextBox tb_chiphi;
+        private Button button1;
+        private ComboBox cb_mausac;
+        private ComboBox cb_name;
+        private RadioButton rd_1;
+        private RadioButton rd_0;
+        private DateTimePicker dtp_ndk;
+        private DateTimePicker dtp_nhh;
+        private Label lb;
+        private TextBox tb_sct;
     }
 }

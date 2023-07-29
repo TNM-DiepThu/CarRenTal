@@ -13,14 +13,59 @@ namespace Bus.Serviece.Implements
     public class XeServiece : IXeServiece
     {
         CarRentalDBContext _context;
+        string namelx;
+        string namems;
         public XeServiece()
         {
             _context = new CarRentalDBContext();
         }
 
-        public bool Add(XeVM v)
+        public bool Add(XeVM v,DangKiem dk)
         {
-            throw new NotImplementedException();
+            try
+            {                              
+                var xe = new Xe()
+                 {
+                        ID = Guid.NewGuid(),
+                        BienSo = v.BienSo,
+                        SoKhung = v.SoKhung,
+                        SoMay = v.SoMay,
+                        SoCongTo = v.SoCongTo,
+                        DonGia = v.DonGia,                       
+                    };
+                LoaiXe lx = _context.loaiXes.FirstOrDefault(h => h.Name == v.TenXe);
+                if (lx != null)
+                {
+                    xe.IdLoaiXe = lx.Id;
+                }
+
+                MauSac ms = _context.mauSacs.FirstOrDefault(h => h.TenMauSac == v.MauSac);
+                if (ms != null)
+                {
+                    xe.IdMauSac = ms.Id;
+                }
+
+                dk = new DangKiem()
+                {
+                    Id = Guid.NewGuid(),
+                    NgayDangKiem = dk.NgayDangKiem,
+                    NgayHetHan = dk.NgayHetHan,
+                    ChiPhi = dk.ChiPhi,
+                    IdXe = xe.ID,
+                };
+
+
+                _context.Add(xe);
+                _context.Add(dk);
+                _context.SaveChanges();
+                return true;
+                
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
         public List<XeVM> GetAll()

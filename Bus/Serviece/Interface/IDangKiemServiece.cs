@@ -11,5 +11,7 @@ namespace Bus.Serviece.Interface
     {
         public List<DangKiem> GetAll();
         public DateTime NgayHHDangKiem(Guid id);
+
+        public bool Add(DangKiem p);
     }
 }

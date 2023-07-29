@@ -15,7 +15,7 @@ namespace Bus.Serviece.Interface
         public int GetLoaiXe(Guid Id);
         public string GetTenLoaiXe(Guid Id);
         public string GetTenHangXe(Guid Id);
-        public bool Add(XeVM v);
+        public bool Add(XeVM v,DangKiem dk);
 
     }
 }
