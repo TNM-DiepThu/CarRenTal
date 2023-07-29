@@ -137,7 +137,8 @@ namespace Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdXe");
+                    b.HasIndex("IdXe")
+                        .IsUnique();
 
                     b.ToTable("Đang_kiem", (string)null);
                 });
@@ -609,8 +610,8 @@ namespace Dal.Migrations
             modelBuilder.Entity("Dal.Modal.DangKiem", b =>
                 {
                     b.HasOne("Dal.Modal.Xe", "Xe")
-                        .WithMany("DangKiem")
-                        .HasForeignKey("IdXe")
+                        .WithOne("DangKiem")
+                        .HasForeignKey("Dal.Modal.DangKiem", "IdXe")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -833,7 +834,8 @@ namespace Dal.Migrations
 
             modelBuilder.Entity("Dal.Modal.Xe", b =>
                 {
-                    b.Navigation("DangKiem");
+                    b.Navigation("DangKiem")
+                        .IsRequired();
 
                     b.Navigation("HoaDonChiTiets");
 

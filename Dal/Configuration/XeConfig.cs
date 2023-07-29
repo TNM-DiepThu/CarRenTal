@@ -23,7 +23,9 @@ namespace Dal.Configuration
             builder.Property(x => x.TrangThai).HasColumnType("int").IsRequired();
             builder.HasOne(x => x.MauSac).WithMany(c => c.Xes).HasForeignKey(y => y.IdMauSac);
             builder.HasOne(x => x.LoaiXe).WithMany(c => c.Xe).HasForeignKey(y => y.IdLoaiXe);
-            
+           
+
+
 
         }
     }

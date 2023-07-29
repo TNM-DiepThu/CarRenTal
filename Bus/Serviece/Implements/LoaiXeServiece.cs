@@ -39,7 +39,6 @@ namespace Bus.Serviece.Implements
                         LoaiNguyenLieu = p.LoaiNguyenLieu,
                         SoGhe = p.SoGhe,
                         LoaiSoXe = p.LoaiSoXe,
-                        NhienLieuTieuThu = p.NhienLieuTieuThu,
                         TrangThai = p.TrangThai,
                     };
                     HangXe hangXe = _context.hangXes.FirstOrDefault(h => h.Name == tenhangxe);
@@ -84,7 +83,6 @@ namespace Bus.Serviece.Implements
             x.LoaiNguyenLieu = p.LoaiNguyenLieu;
             x.SoGhe = p.SoGhe;
             x.LoaiSoXe = p.LoaiSoXe;
-            x.NhienLieuTieuThu = p.NhienLieuTieuThu;
             x.TrangThai = p.TrangThai;
 
             try

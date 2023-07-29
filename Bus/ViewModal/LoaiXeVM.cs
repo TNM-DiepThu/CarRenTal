@@ -36,7 +36,6 @@ namespace Bus.ViewModal
             this.SoGhe = loaiXe.SoGhe;
             this.LoaiSoXe = loaiXe.LoaiSoXe;
             this.TrangThai = loaiXe.TrangThai;
-            this.NhienLieuTieuThu = loaiXe.NhienLieuTieuThu;
             this.TenHangXe = _hangXeServiece.GetTenHangXe(loaiXe.IdHangXe);
         }
     }

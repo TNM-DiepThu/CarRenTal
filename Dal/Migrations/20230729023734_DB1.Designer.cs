@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dal.Migrations
 {
     [DbContext(typeof(CarRentalDBContext))]
-    [Migration("20230725161414_DB")]
-    partial class DB
+    [Migration("20230729023734_DB1")]
+    partial class DB1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,9 +64,6 @@ namespace Dal.Migrations
                     b.Property<string>("LoaiBaoHiem")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("ThoiHan")
-                        .HasColumnType("DateTime");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -128,6 +125,9 @@ namespace Dal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("ChiPhi")
+                        .HasColumnType("DECIMAL");
+
                     b.Property<Guid>("IdXe")
                         .HasColumnType("uniqueidentifier");
 
@@ -137,12 +137,10 @@ namespace Dal.Migrations
                     b.Property<DateTime>("NgayHetHan")
                         .HasColumnType("DateTime");
 
-                    b.Property<int>("TrangThai")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("IdXe");
+                    b.HasIndex("IdXe")
+                        .IsUnique();
 
                     b.ToTable("Đang_kiem", (string)null);
                 });
@@ -235,6 +233,9 @@ namespace Dal.Migrations
                         .HasColumnType("DateTime");
 
                     b.Property<int>("SoHopDong")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrangThai")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -522,26 +523,25 @@ namespace Dal.Migrations
                     b.Property<Guid>("IdMauSac")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("LoaiXeId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("SoCongTo")
                         .HasColumnType("int");
 
-                    b.Property<int>("SoKhung")
-                        .HasColumnType("int");
+                    b.Property<string>("SoKhung")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("SoMay")
-                        .HasColumnType("int");
+                    b.Property<string>("SoMay")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("IdMauSac");
+                    b.HasIndex("IdLoaiXe");
 
-                    b.HasIndex("LoaiXeId");
+                    b.HasIndex("IdMauSac");
 
                     b.ToTable("Xe", (string)null);
                 });
@@ -612,8 +612,8 @@ namespace Dal.Migrations
             modelBuilder.Entity("Dal.Modal.DangKiem", b =>
                 {
                     b.HasOne("Dal.Modal.Xe", "Xe")
-                        .WithMany("DangKiem")
-                        .HasForeignKey("IdXe")
+                        .WithOne("DangKiem")
+                        .HasForeignKey("Dal.Modal.DangKiem", "IdXe")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -731,15 +731,15 @@ namespace Dal.Migrations
 
             modelBuilder.Entity("Dal.Modal.Xe", b =>
                 {
-                    b.HasOne("Dal.Modal.MauSac", "MauSac")
-                        .WithMany("Xes")
-                        .HasForeignKey("IdMauSac")
+                    b.HasOne("Dal.Modal.LoaiXe", "LoaiXe")
+                        .WithMany("Xe")
+                        .HasForeignKey("IdLoaiXe")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Dal.Modal.LoaiXe", "LoaiXe")
-                        .WithMany("Xe")
-                        .HasForeignKey("LoaiXeId")
+                    b.HasOne("Dal.Modal.MauSac", "MauSac")
+                        .WithMany("Xes")
+                        .HasForeignKey("IdMauSac")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -836,7 +836,8 @@ namespace Dal.Migrations
 
             modelBuilder.Entity("Dal.Modal.Xe", b =>
                 {
-                    b.Navigation("DangKiem");
+                    b.Navigation("DangKiem")
+                        .IsRequired();
 
                     b.Navigation("HoaDonChiTiets");
 
