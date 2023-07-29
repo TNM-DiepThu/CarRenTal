@@ -22,12 +22,12 @@ namespace CarRenTal.View.QuanLiXe
         CarRentalDBContext _context;
         Guid _id;
         ILoaiXeServiece _loaiXeServiece;
-        IHangXeServiece _dshxe;      
+        IHangXeServiece _dshxe;
         public LoaiXeView()
         {
             _context = new CarRentalDBContext();
             _loaiXeServiece = new LoaiXeServiece();
-            _dshxe = new HangXeServiece();           
+            _dshxe = new HangXeServiece();
             InitializeComponent();
             cbb_hangxe.Items.Clear(); // Xóa các phần tử cũ (nếu có)
             foreach (var hangXe in _dshxe.GetAllHangXe())
@@ -38,14 +38,14 @@ namespace CarRenTal.View.QuanLiXe
         }
         private string GetTrangThaiAsString(int trangThai)
         {
-            return trangThai == 0 ? "Hoạt động" : "Ngừng hoạt động";
+            return trangThai == 1 ? "Hoạt động" : "Ngừng hoạt động";
         }
 
         private void LoadData()
         {
             //List<LoaiXe> danhSachLoaiXe = _loaiXeServiece.GetAll();
             int stt = 1;
-            dtg_show.ColumnCount = 9;
+            dtg_show.ColumnCount = 8;
             dtg_show.Columns[0].Name = "STT";
             dtg_show.Columns[1].Name = "Id";
             dtg_show.Columns[1].Visible = false;
@@ -53,15 +53,14 @@ namespace CarRenTal.View.QuanLiXe
             dtg_show.Columns[3].Name = "Loại nhiên liệu";
             dtg_show.Columns[4].Name = "Số ghế";
             dtg_show.Columns[5].Name = "Loại số xe";
-            dtg_show.Columns[6].Name = "Nhiên liệu tiêu thụ";
-            dtg_show.Columns[7].Name = "Hãng xe";
-            dtg_show.Columns[8].Name = "Trạng Thái";
+            dtg_show.Columns[6].Name = "Hãng xe";
+            dtg_show.Columns[7].Name = "Trạng Thái";
             dtg_show.Rows.Clear();
             foreach (var x in _loaiXeServiece.GetAll())
             {
                 string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
                 string tenHangXe = x.TenHangXe;
-                dtg_show.Rows.Add(stt++, x.Id, x.Name, x.LoaiNguyenLieu, x.SoGhe, x.LoaiSoXe, x.NhienLieuTieuThu, tenHangXe, trangThaiAsString);
+                dtg_show.Rows.Add(stt++, x.Id, x.Name, x.LoaiNguyenLieu, x.SoGhe, x.LoaiSoXe, tenHangXe, trangThaiAsString);
             }
         }
 
@@ -88,7 +87,6 @@ namespace CarRenTal.View.QuanLiXe
                 lxview.LoaiNguyenLieu = tb_lnl.Text;
                 lxview.SoGhe = int.Parse(tb_soghe.Text);
                 lxview.LoaiSoXe = tb_loaisoxe.Text;
-                lxview.NhienLieuTieuThu = tb_nltt.Text;
                 lxview.TrangThai = rd_0.Checked ? 1 : 0;
 
             };
@@ -116,7 +114,6 @@ namespace CarRenTal.View.QuanLiXe
             tb_lnl.Text = obj.LoaiNguyenLieu;
             tb_soghe.Text = obj.SoGhe.ToString();
             tb_loaisoxe.Text = obj.LoaiSoXe;
-            tb_nltt.Text = obj.NhienLieuTieuThu;
 
 
             rd_0.Checked = (obj.TrangThai == 0) ? true : false;
@@ -202,8 +199,7 @@ namespace CarRenTal.View.QuanLiXe
                 view.Name = tb_name.Text; // tb_name là TextBox chứa tên loại xe
                 view.LoaiNguyenLieu = tb_lnl.Text; // tb_lnl là TextBox chứa loại nhiên liệu
                 view.SoGhe = Int32.Parse(tb_soghe.Text); // tb_soghe là TextBox chứa số ghế (đã ép kiểu thành int)
-                view.LoaiSoXe = tb_loaisoxe.Text; // tb_loaisoxe là TextBox chứa loại số xe
-                view.NhienLieuTieuThu = tb_nltt.Text; // tb_nltt là TextBox chứa nhiên liệu tiêu thụ
+                view.LoaiSoXe = tb_loaisoxe.Text; // tb_loaisoxe là TextBox chứa loại số xe // tb_nltt là TextBox chứa nhiên liệu tiêu thụ
                 view.TenHangXe = cbb_hangxe.Text; // cbb_hangxe là ComboBox chứa Tên hãng xe
                 view.TrangThai = rd_1.Checked ? 1 : 0; // rd_1 là RadioButton chứa Trạng thái (0: Hoạt động, 1: Ngừng hoạt động)
             }
