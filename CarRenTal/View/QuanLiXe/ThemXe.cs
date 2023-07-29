@@ -61,7 +61,7 @@ namespace CarRenTal.View.QuanLiXe
                 {
                     MessageBox.Show("giá trị ko hợp lệ");
                 }
-                xes.TrangThai = rd_1.Checked ? 1 : 0;
+                xes.TrangThai = rd_0.Checked ? 0 : 1;
                 xes.TenXe = cb_name.Text;
                 xes.MauSac = cb_mausac.Text;
             }
@@ -72,8 +72,8 @@ namespace CarRenTal.View.QuanLiXe
             
             DangKiem dangKiem = new DangKiem();
             {               
-                dangKiem.NgayDangKiem = dtp_ndk.Value;
-                dangKiem.NgayHetHan = dtp_ndk.Value;
+                dangKiem.NgayDangKiem =DateTime.Parse(dtp_ndk.Text);
+                dangKiem.NgayHetHan = DateTime.Parse(dtp_nhh.Text);
                 dangKiem.ChiPhi = int.Parse( tb_chiphi.Text);               
             }
             return dangKiem;
