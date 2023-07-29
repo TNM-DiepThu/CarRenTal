@@ -40,16 +40,16 @@ namespace CarRenTal
         {
             if (trangThai == 0)
             {
-                return "Bị xoá ";
+                return "đang hoạt động";
 
             }
             if (trangThai == 1)
             {
-                return "đang hoạt động";
+                return "ngừng hoạt động";
             }
             else
             {
-                return "ngừng hoạt động";
+                return "bị xoá";
 
             }
 
