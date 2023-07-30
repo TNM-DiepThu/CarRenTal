@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -31,6 +32,138 @@ namespace CarRenTal.View.QuanLiXe
             InitializeComponent();
             addCCB();
         }
+        private bool IsInteger(string input)
+        {
+            return int.TryParse(input, out _);
+        }
+
+        // Phương thức kiểm tra số thập phân hợp lệ
+        private bool IsDecimal(string input)
+        {
+            return decimal.TryParse(input, out _);
+        }
+        private bool ContainsSpecialCharacters(string input)
+        {
+            string pattern = @"^[a-zA-Z0-9 ]+$";
+            return !Regex.IsMatch(input, pattern);
+        }
+        private bool Checkvali()
+        {
+            // Kiểm tra tên xe không được để trống
+            if (string.IsNullOrWhiteSpace(cb_name.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Tên xe.");
+                return false;
+            }
+            if (ContainsSpecialCharacters(cb_name.Text))
+            {
+                MessageBox.Show("Tên xe không được chứa kí tự đặc biệt.");
+                return false;
+            }
+
+            // Kiểm tra biển số không được để trống
+            if (string.IsNullOrWhiteSpace(tb_bienso.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Biển số.");
+                return false;
+            }
+            if (ContainsSpecialCharacters(tb_bienso.Text))
+            {
+                MessageBox.Show("Tên xe không được chứa kí tự đặc biệt.");
+                return false;
+            }
+
+            // Kiểm tra số khung không được để trống
+            if (string.IsNullOrWhiteSpace(tb_sokhung.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Số khung.");
+                return false;
+            }
+            if (ContainsSpecialCharacters(tb_sokhung.Text))
+            {
+                MessageBox.Show("Tên xe không được chứa kí tự đặc biệt.");
+                return false;
+            }
+
+            // Kiểm tra số máy không được để trống
+            if (string.IsNullOrWhiteSpace(tb_somay.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Số máy.");
+                return false;
+            }
+            if (ContainsSpecialCharacters(tb_somay.Text))
+            {
+                MessageBox.Show("Tên xe không được chứa kí tự đặc biệt.");
+                return false;
+            }
+            // Kiểm tra đơn giá không được để trống
+            if (string.IsNullOrWhiteSpace(tb_dongia.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Đơn giá.");
+                return false;
+            }
+
+            // Kiểm tra màu sắc không được để trống
+            if (string.IsNullOrWhiteSpace(cb_mausac.Text))
+            {
+                MessageBox.Show("Vui lòng chọn Màu sắc.");
+                return false;
+            }
+
+            // Kiểm tra số công tơ không được để trống
+            if (string.IsNullOrWhiteSpace(tb_sct.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Số công tơ.");
+                return false;
+            }
+
+            // Kiểm tra chi phí không được để trống
+            if (string.IsNullOrWhiteSpace(tb_chiphi.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Chi phí.");
+                return false;
+            }
+
+            // Kiểm tra ngày đăng kiểm không được để trống
+            if (dtp_ndk.Value == null)
+            {
+                MessageBox.Show("Vui lòng chọn Ngày đăng kiểm.");
+                return false;
+            }
+
+            // Kiểm tra ngày hết hạn không được để trống
+            if (dtp_nhh.Value == null)
+            {
+                MessageBox.Show("Vui lòng chọn Ngày hết hạn.");
+                return false;
+            }
+            if (dtp_ndk.Value > dtp_nhh.Value)
+            {
+                MessageBox.Show("Ngày đăng kí phải nhỏ hơn ngày hết hạn");
+                return false;
+            }
+            if (!IsInteger(tb_sct.Text))
+            {
+                MessageBox.Show("Số công tơ phải là số nguyên.");
+                return false;
+            }
+
+            // Kiểm tra Đơn giá
+            if (!IsDecimal(tb_dongia.Text))
+            {
+                MessageBox.Show("Đơn giá phải là số.");
+                return false;
+            }
+            //Kiểm tra chi phí
+            if (!IsDecimal(tb_chiphi.Text))
+            {
+                MessageBox.Show("Chi phí phải là số.");
+                return false;
+            }
+
+
+            return true; // Tất cả các trường đều hợp lệ
+        }
         private void addCCB()
         {
             cb_mausac.Items.Clear(); // Xóa các phần tử cũ (nếu có)
@@ -44,7 +177,7 @@ namespace CarRenTal.View.QuanLiXe
                 cb_name.Items.Add(x.Name);
             }
         }
-        
+
         private XeVM GetDaTa()
         {
             XeVM xes = new XeVM();
@@ -69,30 +202,42 @@ namespace CarRenTal.View.QuanLiXe
         }
         private DangKiem GetDataDK()
         {
-            
+
             DangKiem dangKiem = new DangKiem();
-            {               
-                dangKiem.NgayDangKiem =DateTime.Parse(dtp_ndk.Text);
+            {
+                dangKiem.NgayDangKiem = DateTime.Parse(dtp_ndk.Text);
                 dangKiem.NgayHetHan = DateTime.Parse(dtp_nhh.Text);
-                dangKiem.ChiPhi = int.Parse( tb_chiphi.Text);               
+                dangKiem.ChiPhi = int.Parse(tb_chiphi.Text);
             }
             return dangKiem;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (_xesv.Add(GetDaTa(), GetDataDK()))
+            if (Checkvali() == true)
             {
 
-                MessageBox.Show("Thêm thành công");
+                if (_xesv.Add(GetDaTa(), GetDataDK()))
+                {
+
+                    MessageBox.Show("Thêm thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Thêm không thành công");
+                }
             }
-            else
-            {
-                MessageBox.Show("Thêm không thành công");
-            }
-            }
-           
+        }
+
+        private void ThemXe_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
+}
 

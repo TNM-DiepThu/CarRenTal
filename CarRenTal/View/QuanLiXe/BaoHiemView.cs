@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComboBox = System.Windows.Forms.ComboBox;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace CarRenTal.View.QuanLiXe
 {
@@ -68,11 +70,18 @@ namespace CarRenTal.View.QuanLiXe
 
                 MessageBox.Show("Loại bảo hiểm đã tồn tại");
             }
+            else if (tb_name.Text == "" || !(rd_0.Checked || rd_1.Checked))
+            {
+                MessageBox.Show("Nhập giá trị");
+            }
+            else
             if (_baohiem.Add(GetData()))
             {
                 MessageBox.Show("Thêm thành công");
                 LoadData();
             }
+
+
             else
             {
                 MessageBox.Show("Thêm không thành công");
@@ -102,7 +111,12 @@ namespace CarRenTal.View.QuanLiXe
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
-            if (_baohiem.Edit(GetData()))
+            if (tb_name.Text == "" || !(rd_0.Checked || rd_1.Checked))
+            {
+                MessageBox.Show("Nhập giá trị");
+            }
+            else
+                       if (_baohiem.Edit(GetData()))
             {
 
                 MessageBox.Show("Thành công");
@@ -137,6 +151,14 @@ namespace CarRenTal.View.QuanLiXe
             {
                 MessageBox.Show("Vui lòng chọn một dòng để xóa.", "Chưa chọn dòng", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        private bool IsTextBoxNullOrEmpty(TextBox textBox)
+        {
+            return string.IsNullOrEmpty(textBox.Text);
+        }
+        private bool IsComboBoxNullOrEmpty(ComboBox comboBox)
+        {
+            return comboBox.SelectedIndex == -1;
         }
     }
 }

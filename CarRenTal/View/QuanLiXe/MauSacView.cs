@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -55,11 +56,29 @@ namespace CarRenTal.View.QuanLiXe
             }
             return mauSacVM;
         }
-
-        private void bt_add_Click(object sender, EventArgs e)
+        private bool ContainsSpecialCharacters(string input)
         {
+            string pattern = @"^[a-zA-Z0-9 ]+$"; // Cho phép kí tự chữ, số và khoảng trắng
+            return !Regex.IsMatch(input, pattern);
+        }
+        private bool AreFieldsValid()
+        {
+            // Kiểm tra tên xe không được để trống
+            if (string.IsNullOrWhiteSpace(tb_name.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Tên màu sắc.");
+                return false;
+            }
+            return true;
+        }
+            private void bt_add_Click(object sender, EventArgs e)
+        {
+            if(tb_name.Text.Length == 0 || AreFieldsValid() == true ) {
+                MessageBox.Show("Nhập đủ dữ liệu hoặc không nhập dữ liệu đặc biệt");
+            }
+            else { 
             MessageBox.Show( _mau.Creat(GetData()));
-            LoadData();
+            LoadData();}
         }
 
         private void bt_edit_Click(object sender, EventArgs e)

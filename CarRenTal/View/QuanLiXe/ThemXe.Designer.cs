@@ -2,6 +2,7 @@
 {
     partial class ThemXe
     {
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -171,6 +172,7 @@
             label10.Size = new Size(55, 20);
             label10.TabIndex = 0;
             label10.Text = "Chi phí";
+            label10.Click += label10_Click;
             // 
             // tb_chiphi
             // 
@@ -181,7 +183,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(324, 307);
+            button1.Location = new Point(353, 387);
             button1.Name = "button1";
             button1.Size = new Size(138, 77);
             button1.TabIndex = 2;
@@ -261,7 +263,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(602, 500);
+            ClientSize = new Size(571, 500);
             Controls.Add(dtp_nhh);
             Controls.Add(dtp_ndk);
             Controls.Add(rd_0);
@@ -288,6 +290,7 @@
             Controls.Add(label1);
             Name = "ThemXe";
             Text = "ThemXe";
+            Load += ThemXe_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -16,6 +16,8 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
+using TextBox = System.Windows.Forms.TextBox;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace CarRenTal.View
 {
@@ -78,8 +80,8 @@ namespace CarRenTal.View
         private HangXe GetDataFrom2()
         {
             HangXe hxview = new HangXe();
-            {   
-                hxview.Id = _id; 
+            {
+                hxview.Id = _id;
                 hxview.Name = textBox1.Text;
                 hxview.TrangThai = rd_hd.Checked ? 1 : 0;
             };
@@ -88,13 +90,13 @@ namespace CarRenTal.View
 
         private void bt_add_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            if (textBox1.Text == ""|| !(rd_hd.Checked || rd_khd.Checked))
             {
-                MessageBox.Show("Please enter the code");
+                MessageBox.Show("Nhập dữ liệu");
             }
             else if (_hangXeServiece.GetAllHangXe().Any(x => x.Name == textBox1.Text))
             {
-                MessageBox.Show("Code already exists");
+                MessageBox.Show("Hãng đã tồn tại ");
             }
             else
             {
@@ -143,8 +145,8 @@ namespace CarRenTal.View
                     _id = hangXeId;
                 }
             }
-            
-            
+
+
         }
 
         private void bt_del_Click(object sender, EventArgs e)
@@ -180,10 +182,22 @@ namespace CarRenTal.View
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == ""|| !(rd_hd.Checked || rd_khd.Checked))
+            {
+                MessageBox.Show("Nhập dữ liệu");
+            }
+            else if (_hangXeServiece.GetAllHangXe().Any(x => x.Name == textBox1.Text))
+            {
+                MessageBox.Show("Tên đã tồn tại");
+            }
+            else
+            {
+                MessageBox.Show(_hangXeServiece.UpdateHangXe(GetDataFrom2()));
+                DataLoad();
+            }
+        }      
 
-            MessageBox.Show(_hangXeServiece.UpdateHangXe(GetDataFrom2()));
-            DataLoad();
-        }
+
     }
-    
+
 }
