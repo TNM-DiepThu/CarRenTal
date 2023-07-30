@@ -49,7 +49,7 @@ namespace CarRenTal.View.QuanLiXe
             {
                 string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
 
-                dtg_show.Rows.Add(stt++, x.Id, x.NgayDangKiem, x.NgayHetHan, x.ChiPhi, x.SoCongToBaoDuong,x.ChiTiet, trangThaiAsString);
+                dtg_show.Rows.Add(stt++, x.Id, x.NgayDangKiem, x.NgayHetHan, x.ChiPhi, x.SoCongToBaoDuong, x.ChiTiet, trangThaiAsString);
             }
         }
 
@@ -80,6 +80,11 @@ namespace CarRenTal.View.QuanLiXe
 
         private void bt_add_Click(object sender, EventArgs e)
         {
+            if (dtp_bd == null || dtp_kt == null || tb_chitiet == null || tb_ct == null || tb_cphi == null)
+            {
+                MessageBox.Show(" Nhập đủ giá trị");
+            }
+            else
             if (_baoduong.Add(GetData(), xeId))
             {
                 MessageBox.Show("Thêm thành công");
@@ -93,6 +98,11 @@ namespace CarRenTal.View.QuanLiXe
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
+            if (dtp_bd == null || dtp_kt == null || tb_chitiet == null || tb_ct == null || tb_cphi == null)
+            {
+                MessageBox.Show(" Nhập đủ giá trị");
+            }
+            else
             if (_baoduong.Edit(GetData(), xeId))
             {
                 MessageBox.Show("Sửa thành công");
@@ -128,14 +138,12 @@ namespace CarRenTal.View.QuanLiXe
         }
         private void Auto()
         {
-            if (_baoduong.update(1))
-            {
-                MessageBox.Show("update time");
-            }
-            else
-            {
-                MessageBox.Show("update time");
-            }
+            _baoduong.update(1);
+        }
+
+        private void BaoDuongView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

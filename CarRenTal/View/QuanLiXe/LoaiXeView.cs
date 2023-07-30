@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComboBox = System.Windows.Forms.ComboBox;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace CarRenTal.View.QuanLiXe
 {
@@ -35,6 +37,30 @@ namespace CarRenTal.View.QuanLiXe
                 cbb_hangxe.Items.Add(hangXe.Name);
             }
             LoadData();
+        }
+        private void LoaiXeView_Load(object sender, EventArgs e)
+        {
+            // ...
+            tb_name.KeyPress += tb_name_KeyPress;
+            tb_lnl.KeyPress += tb_lnl_KeyPress;
+        }
+
+        private void tb_name_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho phép nhập chữ cái, chữ số và dấu cách
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tb_lnl_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho phép nhập chữ cái và chữ số
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
         }
         private string GetTrangThaiAsString(int trangThai)
         {
@@ -69,10 +95,7 @@ namespace CarRenTal.View.QuanLiXe
 
         }
 
-        private void LoaiXeView_Load(object sender, EventArgs e)
-        {
 
-        }
         //private LoaiXe GetDataFrom()
         //{
 
@@ -81,27 +104,43 @@ namespace CarRenTal.View.QuanLiXe
         //}
         private void bt_add_Click(object sender, EventArgs e)
         {
-            LoaiXe lxview = new LoaiXe();
+            bool tb1 = IsComboBoxNullOrEmpty(tb_lnl);
+            bool tb2 = IsTextBoxNullOrEmpty(tb_name);
+            bool tb3 = IsComboBoxNullOrEmpty(tb_loaisoxe);
+            bool cb1 = IsComboBoxNullOrEmpty(cbb_hangxe);
+            bool cb2 = IsComboBoxNullOrEmpty(tb_soghe);
+            if (tb1 || tb2 || cb1 || cb2 || tb3 || !(rd_0.Checked || rd_1.Checked))
             {
-                lxview.Name = tb_name.Text;
-                lxview.LoaiNguyenLieu = tb_lnl.Text;
-                lxview.SoGhe = int.Parse(tb_soghe.Text);
-                lxview.LoaiSoXe = tb_loaisoxe.Text;
-                lxview.TrangThai = rd_0.Checked ? 1 : 0;
-
-            };
-
-            HangXe hangXe = _context.hangXes.FirstOrDefault(h => h.Name == cbb_hangxe.Text);
-            if (hangXe != null)
-            {
-                lxview.IdHangXe = hangXe.Id;
-                lxview.HangXe = hangXe;
+                MessageBox.Show("Nhập đủ giá trị");
             }
-            _context.Add(lxview);
-            _context.SaveChanges();
-            _loaiXeServiece.Creat(lxview);
-            // Hiển thị lại dữ liệu trên DataGridView
-            LoadData();
+            else
+            {
+                LoaiXe lxview = new LoaiXe();
+                {
+                    lxview.Name = tb_name.Text;
+                    lxview.LoaiNguyenLieu = tb_lnl.Text;
+                    lxview.SoGhe = int.Parse(tb_soghe.Text);
+                    lxview.LoaiSoXe = tb_loaisoxe.Text;
+                    lxview.TrangThai = rd_0.Checked ? 1 : 0;
+
+                };
+
+                HangXe hangXe = _context.hangXes.FirstOrDefault(h => h.Name == cbb_hangxe.Text);
+                if (hangXe != null)
+                {
+                    lxview.IdHangXe = hangXe.Id;
+                    lxview.HangXe = hangXe;
+                }
+                _context.Add(lxview);
+                _context.SaveChanges(); if (_loaiXeServiece.Creat(lxview))
+                {
+                    MessageBox.Show("Thành công");
+                    LoadData();
+                }
+                else { MessageBox.Show("Không thành công"); }
+
+
+            }
         }
 
         private void dtg_show_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -122,37 +161,20 @@ namespace CarRenTal.View.QuanLiXe
 
             var id = dtg_show.Rows[e.RowIndex].Cells["Id"].Value;
 
-            // Kiểm tra xem giá trị Id có tồn tại và là Guid hợp lệ không
+
             if (id != null && Guid.TryParse(id.ToString(), out Guid hangXeId))
             {
-                // Lưu Id vào biến tạm thời _id
+
                 _id = hangXeId;
 
-                // Tìm loại xe đã chọn và lấy tên hãng xe tương ứng
+
                 var selectedLoaiXe = _loaiXeServiece.GetAll().FirstOrDefault(c => c.IdHang == _id);
                 if (selectedLoaiXe != null)
                 {
-                    // Lấy tên hãng xe từ đối tượng LoaiXe đã chọn
                     string tenHangXe = selectedLoaiXe.TenHangXe;
-
-                    // Đặt tên hãng xe vào ComboBox
                     cbb_hangxe.Text = tenHangXe;
                 }
             }
-
-
-            //if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            //{
-            //    // Lấy giá trị của cột Id từ cell được chọn
-            //    var id = dtg_show.Rows[e.RowIndex].Cells["Id"].Value;
-
-            //    // Kiểm tra xem giá trị Id có tồn tại và là Guid hợp lệ không
-            //    if (id != null && Guid.TryParse(id.ToString(), out Guid hangXeId))
-            //    {
-            //        // Lưu Id vào biến tạm thời selectedHangXeId
-            //        _id = hangXeId;
-            //    }
-            //}
         }
 
         private void cbb_hangxe_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,19 +229,39 @@ namespace CarRenTal.View.QuanLiXe
         }
         private void bt_edit_Click(object sender, EventArgs e)
         {
-            var updatedData = GetDataFrom2();
-
-            // Gọi phương thức cập nhật dữ liệu trong cơ sở dữ liệu
-            if (_loaiXeServiece.Edit(updatedData))
+            bool tb1 = IsComboBoxNullOrEmpty(tb_lnl);
+            bool tb2 = IsTextBoxNullOrEmpty(tb_name);
+            bool tb3 = IsComboBoxNullOrEmpty(tb_loaisoxe);
+            bool cb1 = IsComboBoxNullOrEmpty(cbb_hangxe);
+            bool cb2 = IsComboBoxNullOrEmpty(tb_soghe);
+            if (tb1 || tb2 || cb1 || cb2 || tb3 || !(rd_0.Checked || rd_1.Checked))
             {
-                // Cập nhật thành công, cập nhật lại DataGridView
-                LoadData();
+                MessageBox.Show("Nhập đủ giá trị");
             }
             else
             {
-                // Cập nhật không thành công, xử lý thông báo lỗi nếu cần
-                MessageBox.Show("Cập nhật không thành công. Hãy thử lại sau.");
+                var updatedData = GetDataFrom2();
+
+                // Gọi phương thức cập nhật dữ liệu trong cơ sở dữ liệu
+                if (_loaiXeServiece.Edit(updatedData))
+                {
+                    MessageBox.Show("Thành công");
+                    LoadData();
+                }
+                else
+                {
+                    // Cập nhật không thành công, xử lý thông báo lỗi nếu cần
+                    MessageBox.Show("Cập nhật không thành công. Hãy thử lại sau.");
+                }
             }
+        }
+        private bool IsTextBoxNullOrEmpty(TextBox textBox)
+        {
+            return string.IsNullOrEmpty(textBox.Text);
+        }
+        private bool IsComboBoxNullOrEmpty(ComboBox comboBox)
+        {
+            return comboBox.SelectedIndex == -1;
         }
     }
 }

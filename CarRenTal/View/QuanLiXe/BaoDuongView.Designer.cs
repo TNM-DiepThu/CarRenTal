@@ -59,28 +59,28 @@
             // 
             tb_ct.Location = new Point(554, 216);
             tb_ct.Name = "tb_ct";
-            tb_ct.Size = new Size(250, 27);
+            tb_ct.Size = new Size(360, 27);
             tb_ct.TabIndex = 1;
             // 
             // tb_cphi
             // 
             tb_cphi.Location = new Point(554, 163);
             tb_cphi.Name = "tb_cphi";
-            tb_cphi.Size = new Size(250, 27);
+            tb_cphi.Size = new Size(360, 27);
             tb_cphi.TabIndex = 1;
             // 
             // dtp_bd
             // 
             dtp_bd.Location = new Point(554, 57);
             dtp_bd.Name = "dtp_bd";
-            dtp_bd.Size = new Size(250, 27);
+            dtp_bd.Size = new Size(360, 27);
             dtp_bd.TabIndex = 2;
             // 
             // dtp_kt
             // 
             dtp_kt.Location = new Point(554, 110);
             dtp_kt.Name = "dtp_kt";
-            dtp_kt.Size = new Size(250, 27);
+            dtp_kt.Size = new Size(360, 27);
             dtp_kt.TabIndex = 2;
             dtp_kt.ValueChanged += dateTimePicker2_ValueChanged;
             // 
@@ -125,9 +125,9 @@
             // 
             // bt_add
             // 
-            bt_add.Location = new Point(554, 325);
+            bt_add.Location = new Point(554, 375);
             bt_add.Name = "bt_add";
-            bt_add.Size = new Size(246, 44);
+            bt_add.Size = new Size(177, 44);
             bt_add.TabIndex = 4;
             bt_add.Text = "Thêm";
             bt_add.UseVisualStyleBackColor = true;
@@ -135,9 +135,9 @@
             // 
             // bt_edit
             // 
-            bt_edit.Location = new Point(554, 375);
+            bt_edit.Location = new Point(737, 375);
             bt_edit.Name = "bt_edit";
-            bt_edit.Size = new Size(246, 44);
+            bt_edit.Size = new Size(177, 44);
             bt_edit.TabIndex = 4;
             bt_edit.Text = "Sửa";
             bt_edit.UseVisualStyleBackColor = true;
@@ -146,8 +146,9 @@
             // tb_chitiet
             // 
             tb_chitiet.Location = new Point(554, 273);
+            tb_chitiet.Multiline = true;
             tb_chitiet.Name = "tb_chitiet";
-            tb_chitiet.Size = new Size(250, 27);
+            tb_chitiet.Size = new Size(360, 96);
             tb_chitiet.TabIndex = 1;
             // 
             // label5
@@ -164,7 +165,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(847, 450);
+            ClientSize = new Size(959, 460);
             Controls.Add(bt_edit);
             Controls.Add(bt_add);
             Controls.Add(label5);
@@ -180,6 +181,7 @@
             Controls.Add(dtg_show);
             Name = "BaoDuongView";
             Text = "BaoDuongView";
+            Load += BaoDuongView_Load;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);
             PerformLayout();

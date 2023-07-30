@@ -30,6 +30,7 @@ namespace Bus.Serviece.Implements
                     NgayDangKiem = p.NgayDangKiem,
                     NgayHetHan = p.NgayHetHan,
                     ChiPhi = p.ChiPhi,
+                    
                    
             };
 

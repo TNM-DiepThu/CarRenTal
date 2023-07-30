@@ -1,6 +1,10 @@
 ﻿using Bus.Serviece.Implements;
 using Bus.Serviece.Interface;
+using Bus.ViewModal;
 using CarRenTal.View.QuanLiXe;
+using Dal.Data;
+using Dal.Modal;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
@@ -66,7 +70,8 @@ namespace CarRenTal
             dtg_show.Columns[1].Name = "Id";
             dtg_show.Columns[1].Visible = false;
             dtg_show.Columns[2].Name = "Hãng Xe";
-            dtg_show.Columns[3].Name = "Tên xe";
+            dtg_show.Columns[3].Name = "Loại xe";
+            dtg_show.Columns[4].Name = "Tên xe";
             dtg_show.Columns[5].Name = "Biển Số";
             dtg_show.Columns[6].Name = "Số khung";
             dtg_show.Columns[7].Name = "Số Máy";
@@ -87,6 +92,7 @@ namespace CarRenTal
                 dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
             }
         }
+
 
         private void dtg_show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -111,6 +117,80 @@ namespace CarRenTal
             {
                 MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện bảo dưỡng.");
             }
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(cb_lsg.Text, out int soGheFilter))
+            {
+                var filteredXes = _xe.GetAll().Where(x => x.SoGhe == soGheFilter);
+                dtg_show.Rows.Clear();
+                int stt = 1;
+                foreach (var x in filteredXes)
+                {
+                    string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
+                    string TenhangXe = x.TenHangXe;
+                    int LoaiXe = x.SoGhe;
+
+                    dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+                }
+            }
+            else
+            {
+                // Nếu giá trị nhập vào không hợp lệ, hiển thị toàn bộ dữ liệu lên DataGridView
+                LoadData();
+            }
+        }
+
+        private void bt_add_Click(object sender, EventArgs e)
+        {
+            using (var addform = new ThemXe())
+            {
+                addform.ShowDialog();
+            }
+        }
+
+        private void tb_seach_TextChanged(object sender, EventArgs e)
+        {
+            string tenXeFilter = tb_seach.Text;
+            var filteredXes = _xe.GetAll().Where(x => x.TenXe.Contains(tenXeFilter));
+            dtg_show.Rows.Clear();
+            int stt = 1;
+            foreach (var x in filteredXes)
+            {
+                string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
+                string TenhangXe = x.TenHangXe;
+                int LoaiXe = x.SoGhe;
+
+                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+            }
+
+        }
+        private void DisplayFilteredXes(IEnumerable<XeVM> filteredXes)
+        {
+            dtg_show.Rows.Clear();
+            int stt = 1;
+            foreach (var x in filteredXes)
+            {
+                string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
+                string TenhangXe = x.TenHangXe;
+                int LoaiXe = x.SoGhe;
+
+                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+            }
+        }
+        private void bt_hhdk_Click(object sender, EventArgs e)
+        {
+            var filteredXes = _xe.GetAll().Where(x => x.TrangThaiDangKiem == "Còn hạn");
+
+            DisplayFilteredXes(filteredXes);
+        }
+        private void bt_dhdk_Click(object sender, EventArgs e)
+        {
+            var filteredXes = _xe.GetAll().Where(x => x.TrangThaiDangKiem == "Hết hạn");
+
+            // Hiển thị kết quả lọc lên DataGridView
+            DisplayFilteredXes(filteredXes);
         }
     }
 }
