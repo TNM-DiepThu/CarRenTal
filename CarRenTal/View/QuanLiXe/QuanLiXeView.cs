@@ -36,7 +36,7 @@ namespace CarRenTal
 
         private void QuanLiXe_Load(object sender, EventArgs e)
         {
-
+            LoadData();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace CarRenTal
 
         }
 
-        private void LoadData()
+        public void LoadData()
         {
             int stt = 1;
             dtg_show.ColumnCount = 13;
@@ -85,11 +85,12 @@ namespace CarRenTal
             {
                 string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
                 string TenhangXe = x.TenHangXe;
+                string TenXe = x.TenXe;
                 int LoaiXe = x.SoGhe;
 
 
 
-                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
             }
         }
 
@@ -191,6 +192,60 @@ namespace CarRenTal
 
             // Hiển thị kết quả lọc lên DataGridView
             DisplayFilteredXes(filteredXes);
+        }
+
+
+        private void bt_edit_Click(object sender, EventArgs e)
+        {
+            if (selectedXeId != Guid.Empty) // Đảm bảo đã chọn một xe trước khi mở Form BaoDuong
+            {
+                // Tạo Form mới chứa DataGridView của BaoDuong
+                using (var edit = new EditXeView(selectedXeId))
+                {
+                    edit.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện xem bảo dưỡng.");
+            }
+        }
+        public void RefreshDataGridView()
+        {
+
+
+        }
+
+        private void bt_bh_Click(object sender, EventArgs e)
+        {
+            if (selectedXeId != Guid.Empty) // Đảm bảo đã chọn một xe trước khi mở Form BaoDuong
+            {
+                // Tạo Form mới chứa DataGridView của BaoDuong
+                using (var bh = new XeBaoHiemView(selectedXeId))
+                {
+                    bh.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện xem.");
+            }
+        }
+
+        private void bt_dk_Click_1(object sender, EventArgs e)
+        {
+            if (selectedXeId != Guid.Empty) // Đảm bảo đã chọn một xe trước khi mở Form BaoDuong
+            {
+                // Tạo Form mới chứa DataGridView của BaoDuong
+                using (var bh = new DangKiemView(selectedXeId))
+                {
+                    bh.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện xem.");
+            }
         }
     }
 }

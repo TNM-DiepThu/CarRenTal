@@ -47,9 +47,39 @@ namespace Bus.Serviece.Implements
            
         }
 
+        public bool Edit(DangKiem p, Guid id)
+        {
+            try
+            {
+                var bd = _context.dangKiems.FirstOrDefault(x => x.Id == p.Id);
+                if (bd != null)
+                {
+                    bd.NgayDangKiem = p.NgayDangKiem;
+                    bd.NgayHetHan = p.NgayHetHan;
+                    bd.ChiPhi = p.ChiPhi;
+                    _context.Update(bd);
+                    _context.SaveChanges();
+                    return true;
+                }
+                return false;
+
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
         public List<DangKiem> GetAll()
         {
             List<DangKiem> dsDangKiem = _context.dangKiems.ToList();
+            return dsDangKiem;
+        }
+
+        public List<DangKiem> GetAllDK(Guid id)
+        {
+            List<DangKiem> dsDangKiem = _context.dangKiems.Where(x => x.IdXe == id).ToList();
             return dsDangKiem;
         }
 
