@@ -123,5 +123,31 @@ namespace Bus.Serviece.Implements
             // Nếu không tìm thấy, trả về một giá trị mặc định hoặc chuỗi rỗng
             return string.Empty;
         }
+
+        public bool UpdateM(XeVM v)
+        {
+            if (v == null) return false;
+
+            var xe = _context.xes.FirstOrDefault(c => c.ID == v.ID);
+            if (xe == null) return false;
+
+            xe.BienSo = v.BienSo;
+            xe.SoKhung = v.SoKhung;
+            xe.SoMay = v.SoMay;
+            xe.DonGia = v.DonGia;
+            xe.SoCongTo = v.SoCongTo;
+            xe.TrangThai = v.TrangThai;
+            
+            try
+            {
+                _context.Update(xe);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {               
+                return false;
+            }
+        }
     }
 }

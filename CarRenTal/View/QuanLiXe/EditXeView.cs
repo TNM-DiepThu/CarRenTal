@@ -15,22 +15,21 @@ using System.Windows.Forms;
 
 namespace CarRenTal.View.QuanLiXe
 {
-    public partial class ThemXe : Form
+    public partial class EditXeView : Form
     {
-        IXeServiece _xesv;
-        IMauSacServiece _mauSacServiece;
-        ILoaiXeServiece _loaiXeServiece;
-        IDangKiemServiece _dk;
-        Guid _id;
-        Guid _id2;
-        public ThemXe()
+        private Guid _id;
+        private Guid xeId;
+        IXeServiece _xes;
+        IMauSacServiece _mau;
+        ILoaiXeServiece _loai;
+
+        public EditXeView(Guid id)
         {
-            _xesv = new XeServiece();
-            _mauSacServiece = new MauSacServiece();
-            _loaiXeServiece = new LoaiXeServiece();
-            _dk = new DangKiemServiece();
             InitializeComponent();
-            addCCB();
+            _id = id;
+            _xes = new XeServiece();
+            _mau = new MauSacServiece();
+            _loai = new LoaiXeServiece();
         }
         private bool IsInteger(string input)
         {
@@ -48,18 +47,7 @@ namespace CarRenTal.View.QuanLiXe
             return !Regex.IsMatch(input, pattern);
         }
         private bool Checkvali()
-        {
-            // Kiểm tra tên xe không được để trống
-            if (string.IsNullOrWhiteSpace(cb_name.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Tên xe.");
-                return false;
-            }
-            if (ContainsSpecialCharacters(cb_name.Text))
-            {
-                MessageBox.Show("Tên xe không được chứa kí tự đặc biệt.");
-                return false;
-            }
+        {    
 
             // Kiểm tra biển số không được để trống
             if (string.IsNullOrWhiteSpace(tb_bienso.Text))
@@ -103,13 +91,6 @@ namespace CarRenTal.View.QuanLiXe
                 return false;
             }
 
-            // Kiểm tra màu sắc không được để trống
-            if (string.IsNullOrWhiteSpace(cb_mausac.Text))
-            {
-                MessageBox.Show("Vui lòng chọn Màu sắc.");
-                return false;
-            }
-
             // Kiểm tra số công tơ không được để trống
             if (string.IsNullOrWhiteSpace(tb_sct.Text))
             {
@@ -118,30 +99,7 @@ namespace CarRenTal.View.QuanLiXe
             }
 
             // Kiểm tra chi phí không được để trống
-            if (string.IsNullOrWhiteSpace(tb_chiphi.Text))
-            {
-                MessageBox.Show("Vui lòng nhập Chi phí.");
-                return false;
-            }
 
-            // Kiểm tra ngày đăng kiểm không được để trống
-            if (dtp_ndk.Value == null)
-            {
-                MessageBox.Show("Vui lòng chọn Ngày đăng kiểm.");
-                return false;
-            }
-
-            // Kiểm tra ngày hết hạn không được để trống
-            if (dtp_nhh.Value == null)
-            {
-                MessageBox.Show("Vui lòng chọn Ngày hết hạn.");
-                return false;
-            }
-            if (dtp_ndk.Value > dtp_nhh.Value)
-            {
-                MessageBox.Show("Ngày đăng kí phải nhỏ hơn ngày hết hạn");
-                return false;
-            }
             if (!IsInteger(tb_sct.Text))
             {
                 MessageBox.Show("Số công tơ phải là số nguyên.");
@@ -154,34 +112,15 @@ namespace CarRenTal.View.QuanLiXe
                 MessageBox.Show("Đơn giá phải là số.");
                 return false;
             }
-            //Kiểm tra chi phí
-            if (!IsDecimal(tb_chiphi.Text))
-            {
-                MessageBox.Show("Chi phí phải là số.");
-                return false;
-            }
 
 
             return true; // Tất cả các trường đều hợp lệ
-        }
-        private void addCCB()
-        {
-            cb_mausac.Items.Clear(); // Xóa các phần tử cũ (nếu có)
-            foreach (var x in _mauSacServiece.GetAll())
-            {
-                cb_mausac.Items.Add(x.TenMauSac);
-            }
-            cb_name.Items.Clear(); // Xóa các phần tử cũ (nếu có)
-            foreach (var x in _loaiXeServiece.GetAll())
-            {
-                cb_name.Items.Add(x.Name);
-            }
-        }
-
+        }       
         private XeVM GetDaTa()
         {
             XeVM xes = new XeVM();
             {
+                xes.ID = _id;
                 xes.BienSo = tb_bienso.Text;
                 xes.SoKhung = tb_sokhung.Text;
                 xes.SoMay = tb_somay.Text;
@@ -195,55 +134,24 @@ namespace CarRenTal.View.QuanLiXe
                     MessageBox.Show("giá trị ko hợp lệ");
                 }
                 xes.TrangThai = rd_0.Checked ? 0 : 1;
-                xes.TenXe = cb_name.Text;
-                xes.MauSac = cb_mausac.Text;
             }
             return xes;
         }
-        private DangKiem GetDataDK()
-        {
-
-            DangKiem dangKiem = new DangKiem();
-            {
-                dangKiem.NgayDangKiem = DateTime.Parse(dtp_ndk.Text);
-                dangKiem.NgayHetHan = DateTime.Parse(dtp_nhh.Text);
-                dangKiem.ChiPhi = int.Parse(tb_chiphi.Text);
-            }
-            return dangKiem;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (Checkvali() == true)
-            {
-
-                if (_xesv.Add(GetDaTa(), GetDataDK()))
-                {
-
-                    MessageBox.Show("Thêm thành công");
-                }
-                else
-                {
-                    MessageBox.Show("Thêm không thành công");
-                }
-            }
-        }
-
-        private void ThemXe_Load(object sender, EventArgs e)
+        private void EditXeView_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label10_Click(object sender, EventArgs e)
+        private void bt_edit_Click(object sender, EventArgs e)
         {
+            if (_xes.UpdateM(GetDaTa()))
+
+                MessageBox.Show("Thành công");
+
+
+            else MessageBox.Show("Không thành công");
+
 
         }
-
-        private void ThemXe_FormClosed(object sender, FormClosedEventArgs e)
-        {
-          
-        }
-        
     }
 }
-

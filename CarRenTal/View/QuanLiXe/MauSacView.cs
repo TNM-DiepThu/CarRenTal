@@ -83,9 +83,14 @@ namespace CarRenTal.View.QuanLiXe
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
+            if(_id!=Guid.Empty) { 
             MessageBox.Show(_mau.Edit(GetData()));
             LoadData();
-            _id = Guid.Empty;
+            }
+            else {
+                MessageBox.Show("Chọn đối tượng");
+                    }
+                
         }
 
         private void dtg_show_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -13,5 +13,8 @@ namespace Bus.Serviece.Interface
         public bool Add(BaoHiemVM vm);      
         public bool Delete(Guid id);
         public bool Edit(BaoHiemVM vm);
+        public string GetTenBaoHiem(Guid id);
+        public Guid GetIdBaoHiemByLoaiBaoHiem(string loaiBaoHiem);
+        
     }
 }

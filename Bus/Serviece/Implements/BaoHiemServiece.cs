@@ -83,5 +83,32 @@ namespace Bus.Serviece.Implements
             List<BaoHiemVM> lstbaoHiemVMs = lstbaohiem.Select(x => new BaoHiemVM(x)).ToList();
             return lstbaoHiemVMs;
         }
+
+        public Guid GetIdBaoHiemByLoaiBaoHiem(string loaiBaoHiem)
+        {
+
+            BaoHiem baoHiem = _context.baoHiems.FirstOrDefault(bh => bh.LoaiBaoHiem == loaiBaoHiem);
+
+            if (baoHiem != null)
+            {
+                return baoHiem.Id;
+            }
+
+            return Guid.Empty;
+        }
+
+        public string GetTenBaoHiem(Guid id)
+        {
+            BaoHiem x = _context.baoHiems.FirstOrDefault(h => h.Id == id);
+
+            // Kiểm tra xem có tìm thấy hãng xe có Id là idHangXe không
+            if (x != null)
+            {
+                return x.LoaiBaoHiem;
+            }
+
+            // Nếu không tìm thấy, trả về một giá trị mặc định hoặc chuỗi rỗng
+            return string.Empty;
+        }
     }
 }
