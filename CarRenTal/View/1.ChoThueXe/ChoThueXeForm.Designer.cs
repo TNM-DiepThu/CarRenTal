@@ -44,6 +44,7 @@
             bt_search = new Button();
             tx_search = new TextBox();
             dtgv_xeChon = new DataGridView();
+            dtgv_xeSS = new DataGridView();
             label15 = new Label();
             label14 = new Label();
             nud_maxGia = new NumericUpDown();
@@ -75,18 +76,20 @@
             tx_coc = new TextBox();
             tx_phiThue = new TextBox();
             gb_layXe = new GroupBox();
-            bt_taiSan = new ComboBox();
+            cbb_taiSan = new ComboBox();
             cbb_typeGiayTo = new ComboBox();
             label6 = new Label();
+            tx_giaTRi = new NumericUpDown();
             tx_maHopDong = new TextBox();
             label16 = new Label();
             tx_chiTiet = new TextBox();
+            label21 = new Label();
             label8 = new Label();
             label9 = new Label();
-            dtgv_xeSS = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgv_xeChon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgv_xeSS).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nud_maxGia).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nud_minGia).BeginInit();
@@ -94,7 +97,7 @@
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
             gb_layXe.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgv_xeSS).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tx_giaTRi).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -118,11 +121,12 @@
             // 
             cbb_hopSo.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_hopSo.FormattingEnabled = true;
-            cbb_hopSo.Items.AddRange(new object[] { "Hộp số sàn", "Hộp số tự động" });
+            cbb_hopSo.Items.AddRange(new object[] { "Tất cả", "Số sàn", "Số tự động" });
             cbb_hopSo.Location = new Point(93, 96);
             cbb_hopSo.Name = "cbb_hopSo";
             cbb_hopSo.Size = new Size(151, 28);
             cbb_hopSo.TabIndex = 0;
+            cbb_hopSo.SelectedIndexChanged += cbb_soGhe_SelectedIndexChanged;
             // 
             // cbb_hangXe
             // 
@@ -132,16 +136,18 @@
             cbb_hangXe.Name = "cbb_hangXe";
             cbb_hangXe.Size = new Size(151, 28);
             cbb_hangXe.TabIndex = 0;
+            cbb_hangXe.SelectedIndexChanged += cbb_soGhe_SelectedIndexChanged;
             // 
             // cbb_nhienLieu
             // 
             cbb_nhienLieu.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_nhienLieu.FormattingEnabled = true;
-            cbb_nhienLieu.Items.AddRange(new object[] { "Xăng ", "Dầu", "Điện" });
+            cbb_nhienLieu.Items.AddRange(new object[] { "Tất cả", "Xăng", "Dầu", "Điện" });
             cbb_nhienLieu.Location = new Point(368, 44);
             cbb_nhienLieu.Name = "cbb_nhienLieu";
             cbb_nhienLieu.Size = new Size(151, 28);
             cbb_nhienLieu.TabIndex = 1;
+            cbb_nhienLieu.SelectedIndexChanged += cbb_soGhe_SelectedIndexChanged;
             // 
             // label18
             // 
@@ -187,11 +193,12 @@
             // 
             cbb_soGhe.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_soGhe.FormattingEnabled = true;
-            cbb_soGhe.Items.AddRange(new object[] { "4", "7", "16" });
+            cbb_soGhe.Items.AddRange(new object[] { "Tất cả", "4", "7", "16" });
             cbb_soGhe.Location = new Point(93, 42);
             cbb_soGhe.Name = "cbb_soGhe";
             cbb_soGhe.Size = new Size(151, 28);
             cbb_soGhe.TabIndex = 0;
+            cbb_soGhe.SelectedIndexChanged += cbb_soGhe_SelectedIndexChanged;
             // 
             // groupBox2
             // 
@@ -243,12 +250,13 @@
             // 
             // bt_search
             // 
-            bt_search.Location = new Point(676, 40);
+            bt_search.Location = new Point(666, 26);
             bt_search.Name = "bt_search";
-            bt_search.Size = new Size(94, 29);
+            bt_search.Size = new Size(138, 43);
             bt_search.TabIndex = 2;
             bt_search.Text = "Tìm kiếm";
             bt_search.UseVisualStyleBackColor = true;
+            bt_search.Click += bt_search_Click;
             // 
             // tx_search
             // 
@@ -265,11 +273,27 @@
             dtgv_xeChon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgv_xeChon.Location = new Point(13, 396);
             dtgv_xeChon.Name = "dtgv_xeChon";
+            dtgv_xeChon.ReadOnly = true;
             dtgv_xeChon.RowHeadersWidth = 51;
             dtgv_xeChon.RowTemplate.Height = 29;
             dtgv_xeChon.Size = new Size(964, 219);
             dtgv_xeChon.TabIndex = 0;
-
+            dtgv_xeChon.RowsAdded += dtgv_xeChon_RowsAdded;
+            dtgv_xeChon.RowsRemoved += dtgv_xeChon_RowsRemoved;
+            // 
+            // dtgv_xeSS
+            // 
+            dtgv_xeSS.AllowUserToAddRows = false;
+            dtgv_xeSS.AllowUserToDeleteRows = false;
+            dtgv_xeSS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgv_xeSS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgv_xeSS.Location = new Point(13, 86);
+            dtgv_xeSS.Name = "dtgv_xeSS";
+            dtgv_xeSS.ReadOnly = true;
+            dtgv_xeSS.RowHeadersWidth = 51;
+            dtgv_xeSS.RowTemplate.Height = 29;
+            dtgv_xeSS.Size = new Size(964, 243);
+            dtgv_xeSS.TabIndex = 0;
             // 
             // label15
             // 
@@ -277,9 +301,9 @@
             label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label15.Location = new Point(13, 40);
             label15.Name = "label15";
-            label15.Size = new Size(166, 20);
+            label15.Size = new Size(162, 20);
             label15.TabIndex = 2;
-            label15.Text = "Thông tin xe sẵn sàng:";
+            label15.Text = "Thông tin xe sẵn sàng";
             // 
             // label14
             // 
@@ -300,6 +324,7 @@
             nud_maxGia.Size = new Size(150, 27);
             nud_maxGia.TabIndex = 1;
             nud_maxGia.Value = new decimal(new int[] { 100000000, 0, 0, 0 });
+            nud_maxGia.ValueChanged += nud_maxGia_ValueChanged;
             // 
             // groupBox3
             // 
@@ -342,6 +367,7 @@
             nud_minGia.Name = "nud_minGia";
             nud_minGia.Size = new Size(141, 27);
             nud_minGia.TabIndex = 1;
+            nud_minGia.ValueChanged += nud_minGia_ValueChanged;
             // 
             // groupBox4
             // 
@@ -358,7 +384,8 @@
             // 
             // dtp_ngayTra
             // 
-            dtp_ngayTra.Format = DateTimePickerFormat.Short;
+            dtp_ngayTra.CustomFormat = "dd-MM-yyyy";
+            dtp_ngayTra.Format = DateTimePickerFormat.Custom;
             dtp_ngayTra.Location = new Point(283, 28);
             dtp_ngayTra.Name = "dtp_ngayTra";
             dtp_ngayTra.Size = new Size(141, 27);
@@ -367,7 +394,8 @@
             // 
             // dtp_ngayThue
             // 
-            dtp_ngayThue.Format = DateTimePickerFormat.Short;
+            dtp_ngayThue.CustomFormat = "dd-MM-yyyy";
+            dtp_ngayThue.Format = DateTimePickerFormat.Custom;
             dtp_ngayThue.Location = new Point(62, 29);
             dtp_ngayThue.Name = "dtp_ngayThue";
             dtp_ngayThue.Size = new Size(141, 27);
@@ -478,29 +506,29 @@
             groupBox6.Controls.Add(tx_phiThanhToan);
             groupBox6.Controls.Add(tx_coc);
             groupBox6.Controls.Add(tx_phiThue);
-            groupBox6.Location = new Point(1001, 401);
+            groupBox6.Location = new Point(1001, 451);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(453, 388);
+            groupBox6.Size = new Size(453, 338);
             groupBox6.TabIndex = 2;
             groupBox6.TabStop = false;
             groupBox6.Text = "Thanh toán hóa đơn";
-
             // 
             // button4
             // 
-            button4.Location = new Point(249, 309);
+            button4.Location = new Point(249, 266);
             button4.Name = "button4";
             button4.Size = new Size(162, 51);
             button4.TabIndex = 3;
             button4.Text = "Hủy";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // cbb_trangThai
             // 
             cbb_trangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_trangThai.FormattingEnabled = true;
-            cbb_trangThai.Items.AddRange(new object[] { "Đã cọc", "Đã nhận xe" });
-            cbb_trangThai.Location = new Point(188, 56);
+            cbb_trangThai.Items.AddRange(new object[] { "Cọc xe", "Nhận xe" });
+            cbb_trangThai.Location = new Point(188, 42);
             cbb_trangThai.Name = "cbb_trangThai";
             cbb_trangThai.Size = new Size(223, 28);
             cbb_trangThai.TabIndex = 0;
@@ -508,18 +536,19 @@
             // 
             // bt_pay
             // 
-            bt_pay.Location = new Point(43, 309);
+            bt_pay.Location = new Point(32, 266);
             bt_pay.Name = "bt_pay";
             bt_pay.Size = new Size(162, 51);
             bt_pay.TabIndex = 3;
             bt_pay.Text = "Thanh toán";
             bt_pay.UseVisualStyleBackColor = true;
+            bt_pay.Click += bt_pay_Click;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(6, 233);
+            label13.Location = new Point(6, 219);
             label13.Name = "label13";
             label13.Size = new Size(149, 20);
             label13.TabIndex = 2;
@@ -529,7 +558,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(9, 178);
+            label12.Location = new Point(9, 164);
             label12.Name = "label12";
             label12.Size = new Size(173, 20);
             label12.TabIndex = 2;
@@ -539,7 +568,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(6, 111);
+            label11.Location = new Point(9, 106);
             label11.Name = "label11";
             label11.Size = new Size(74, 20);
             label11.TabIndex = 2;
@@ -549,7 +578,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(6, 56);
+            label10.Location = new Point(6, 42);
             label10.Name = "label10";
             label10.Size = new Size(145, 20);
             label10.TabIndex = 2;
@@ -558,58 +587,66 @@
             // tx_phiThanhToan
             // 
             tx_phiThanhToan.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            tx_phiThanhToan.Location = new Point(188, 221);
+            tx_phiThanhToan.Location = new Point(188, 207);
             tx_phiThanhToan.Name = "tx_phiThanhToan";
             tx_phiThanhToan.ReadOnly = true;
             tx_phiThanhToan.Size = new Size(223, 38);
             tx_phiThanhToan.TabIndex = 1;
+            tx_phiThanhToan.Text = "0";
             // 
             // tx_coc
             // 
             tx_coc.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            tx_coc.Location = new Point(188, 166);
+            tx_coc.Location = new Point(188, 152);
             tx_coc.Name = "tx_coc";
             tx_coc.ReadOnly = true;
             tx_coc.Size = new Size(223, 38);
             tx_coc.TabIndex = 1;
+            tx_coc.Text = "0";
             // 
             // tx_phiThue
             // 
             tx_phiThue.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            tx_phiThue.Location = new Point(188, 108);
+            tx_phiThue.Location = new Point(188, 94);
             tx_phiThue.Name = "tx_phiThue";
             tx_phiThue.ReadOnly = true;
             tx_phiThue.Size = new Size(223, 38);
             tx_phiThue.TabIndex = 1;
+            tx_phiThue.Text = "0";
+            tx_phiThue.TextChanged += tx_phiThue_TextChanged;
             // 
             // gb_layXe
             // 
-            gb_layXe.Controls.Add(bt_taiSan);
+            gb_layXe.Controls.Add(cbb_taiSan);
             gb_layXe.Controls.Add(cbb_typeGiayTo);
             gb_layXe.Controls.Add(label6);
+            gb_layXe.Controls.Add(tx_giaTRi);
             gb_layXe.Controls.Add(tx_maHopDong);
             gb_layXe.Controls.Add(label16);
             gb_layXe.Controls.Add(tx_chiTiet);
+            gb_layXe.Controls.Add(label21);
             gb_layXe.Controls.Add(label8);
             gb_layXe.Controls.Add(label9);
             gb_layXe.Location = new Point(1001, 158);
             gb_layXe.Name = "gb_layXe";
-            gb_layXe.Size = new Size(453, 237);
+            gb_layXe.Size = new Size(453, 287);
             gb_layXe.TabIndex = 2;
             gb_layXe.TabStop = false;
             gb_layXe.Text = "Thế chấp và hợp đồng";
             gb_layXe.Visible = false;
             // 
-            // bt_taiSan
+            // cbb_taiSan
             // 
-            bt_taiSan.FormattingEnabled = true;
-            bt_taiSan.Location = new Point(188, 86);
-            bt_taiSan.Name = "bt_taiSan";
-            bt_taiSan.Size = new Size(223, 28);
-            bt_taiSan.TabIndex = 4;
+            cbb_taiSan.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbb_taiSan.FormattingEnabled = true;
+            cbb_taiSan.Location = new Point(188, 86);
+            cbb_taiSan.Name = "cbb_taiSan";
+            cbb_taiSan.Size = new Size(223, 28);
+            cbb_taiSan.TabIndex = 4;
             // 
             // cbb_typeGiayTo
             // 
+            cbb_typeGiayTo.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_typeGiayTo.FormattingEnabled = true;
             cbb_typeGiayTo.Location = new Point(188, 37);
             cbb_typeGiayTo.Name = "cbb_typeGiayTo";
@@ -626,9 +663,20 @@
             label6.TabIndex = 2;
             label6.Text = "Loại giấy tờ:";
             // 
+            // tx_giaTRi
+            // 
+            tx_giaTRi.Enabled = false;
+            tx_giaTRi.Increment = new decimal(new int[] { 100000, 0, 0, 0 });
+            tx_giaTRi.Location = new Point(188, 146);
+            tx_giaTRi.Maximum = new decimal(new int[] { 1410065408, 2, 0, 0 });
+            tx_giaTRi.Name = "tx_giaTRi";
+            tx_giaTRi.ReadOnly = true;
+            tx_giaTRi.Size = new Size(223, 27);
+            tx_giaTRi.TabIndex = 1;
+            // 
             // tx_maHopDong
             // 
-            tx_maHopDong.Location = new Point(188, 190);
+            tx_maHopDong.Location = new Point(188, 241);
             tx_maHopDong.Name = "tx_maHopDong";
             tx_maHopDong.ReadOnly = true;
             tx_maHopDong.Size = new Size(223, 27);
@@ -638,7 +686,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.Location = new Point(19, 197);
+            label16.Location = new Point(19, 248);
             label16.Name = "label16";
             label16.Size = new Size(106, 20);
             label16.TabIndex = 2;
@@ -646,16 +694,26 @@
             // 
             // tx_chiTiet
             // 
-            tx_chiTiet.Location = new Point(188, 138);
+            tx_chiTiet.Location = new Point(188, 196);
             tx_chiTiet.Name = "tx_chiTiet";
             tx_chiTiet.Size = new Size(223, 27);
             tx_chiTiet.TabIndex = 1;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label21.Location = new Point(19, 148);
+            label21.Name = "label21";
+            label21.Size = new Size(56, 20);
+            label21.TabIndex = 2;
+            label21.Text = "Giá trị:";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(19, 145);
+            label8.Location = new Point(19, 196);
             label8.Name = "label8";
             label8.Size = new Size(63, 20);
             label8.TabIndex = 2;
@@ -670,19 +728,6 @@
             label9.Size = new Size(92, 20);
             label9.TabIndex = 2;
             label9.Text = "Loại tài sản:";
-            // 
-            // dtgv_xeSS
-            // 
-            dtgv_xeSS.AllowUserToAddRows = false;
-            dtgv_xeSS.AllowUserToDeleteRows = false;
-            dtgv_xeSS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgv_xeSS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgv_xeSS.Location = new Point(13, 86);
-            dtgv_xeSS.Name = "dtgv_xeSS";
-            dtgv_xeSS.RowHeadersWidth = 51;
-            dtgv_xeSS.RowTemplate.Height = 29;
-            dtgv_xeSS.Size = new Size(964, 243);
-            dtgv_xeSS.TabIndex = 0;
             // 
             // ChoThueXeForm
             // 
@@ -703,6 +748,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgv_xeChon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgv_xeSS).EndInit();
             ((System.ComponentModel.ISupportInitialize)nud_maxGia).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -715,7 +761,7 @@
             groupBox6.PerformLayout();
             gb_layXe.ResumeLayout(false);
             gb_layXe.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgv_xeSS).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tx_giaTRi).EndInit();
             ResumeLayout(false);
         }
 
@@ -755,10 +801,9 @@
         private TextBox tx_coc;
         private TextBox tx_phiThue;
         private GroupBox gb_layXe;
-        private ComboBox bt_taiSan;
+        private ComboBox cbb_taiSan;
         private ComboBox cbb_typeGiayTo;
         private Label label6;
-        private TextBox tx_chiTiet;
         private Label label8;
         private Label label9;
         private Button bt_deleteAll;
@@ -777,5 +822,8 @@
         private Label label17;
         private ComboBox cbb_trangThai;
         private DataGridView dtgv_xeSS;
+        private Label label21;
+        private NumericUpDown tx_giaTRi;
+        private TextBox tx_chiTiet;
     }
 }
