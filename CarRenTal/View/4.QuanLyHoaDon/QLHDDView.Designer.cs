@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            bt_hoanThanh = new Button();
-            bt_dangThue = new Button();
-            bt_datCoc = new Button();
             pn_hoaDon = new Panel();
             groupBox2 = new GroupBox();
             dtp_endDate = new DateTimePicker();
@@ -41,8 +37,11 @@
             groupBox3 = new GroupBox();
             bt_clear = new Button();
             bt_chiTiet = new Button();
+            lb_id = new Label();
+            label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            tx_soHopDong = new TextBox();
             tx_nguoiTao = new TextBox();
             tx_canCuoc = new TextBox();
             label1 = new Label();
@@ -50,57 +49,11 @@
             bt_search = new Button();
             tx_search = new TextBox();
             dtgv_data = new DataGridView();
-            groupBox1.SuspendLayout();
             pn_hoaDon.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgv_data).BeginInit();
             SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(bt_hoanThanh);
-            groupBox1.Controls.Add(bt_dangThue);
-            groupBox1.Controls.Add(bt_datCoc);
-            groupBox1.Location = new Point(18, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1452, 159);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            // 
-            // bt_hoanThanh
-            // 
-            bt_hoanThanh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            bt_hoanThanh.Location = new Point(969, 9);
-            bt_hoanThanh.Name = "bt_hoanThanh";
-            bt_hoanThanh.Size = new Size(483, 150);
-            bt_hoanThanh.TabIndex = 0;
-            bt_hoanThanh.Text = "Hóa đơn đã hoàn thành";
-            bt_hoanThanh.UseVisualStyleBackColor = true;
-            bt_hoanThanh.Click += bt_hoanThanh_Click;
-            // 
-            // bt_dangThue
-            // 
-            bt_dangThue.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            bt_dangThue.Location = new Point(497, 9);
-            bt_dangThue.Name = "bt_dangThue";
-            bt_dangThue.Size = new Size(475, 150);
-            bt_dangThue.TabIndex = 0;
-            bt_dangThue.Text = "Hóa đơn đang  cho thuê";
-            bt_dangThue.UseVisualStyleBackColor = true;
-            bt_dangThue.Click += bt_dangThue_Click;
-            // 
-            // bt_datCoc
-            // 
-            bt_datCoc.BackColor = Color.LightGray;
-            bt_datCoc.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            bt_datCoc.Location = new Point(0, 9);
-            bt_datCoc.Name = "bt_datCoc";
-            bt_datCoc.Size = new Size(502, 150);
-            bt_datCoc.TabIndex = 0;
-            bt_datCoc.Text = "Hóa đơn đã đặt cọc";
-            bt_datCoc.UseVisualStyleBackColor = false;
-            bt_datCoc.Click += bt_datCoc_Click;
             // 
             // pn_hoaDon
             // 
@@ -109,9 +62,9 @@
             pn_hoaDon.Controls.Add(bt_search);
             pn_hoaDon.Controls.Add(tx_search);
             pn_hoaDon.Controls.Add(dtgv_data);
-            pn_hoaDon.Location = new Point(18, 179);
+            pn_hoaDon.Location = new Point(18, 12);
             pn_hoaDon.Name = "pn_hoaDon";
-            pn_hoaDon.Size = new Size(1452, 602);
+            pn_hoaDon.Size = new Size(1452, 769);
             pn_hoaDon.TabIndex = 1;
             // 
             // groupBox2
@@ -129,19 +82,23 @@
             // 
             // dtp_endDate
             // 
-            dtp_endDate.Format = DateTimePickerFormat.Short;
+            dtp_endDate.CustomFormat = "dd-MM-yyyy";
+            dtp_endDate.Format = DateTimePickerFormat.Custom;
             dtp_endDate.Location = new Point(247, 59);
             dtp_endDate.Name = "dtp_endDate";
             dtp_endDate.Size = new Size(167, 27);
             dtp_endDate.TabIndex = 0;
+            dtp_endDate.ValueChanged += dtp_startDate_ValueChanged;
             // 
             // dtp_startDate
             // 
-            dtp_startDate.Format = DateTimePickerFormat.Short;
+            dtp_startDate.CustomFormat = "dd-MM-yyyy";
+            dtp_startDate.Format = DateTimePickerFormat.Custom;
             dtp_startDate.Location = new Point(25, 59);
             dtp_startDate.Name = "dtp_startDate";
             dtp_startDate.Size = new Size(143, 27);
             dtp_startDate.TabIndex = 0;
+            dtp_startDate.ValueChanged += dtp_startDate_ValueChanged;
             // 
             // label6
             // 
@@ -167,22 +124,25 @@
             // 
             groupBox3.Controls.Add(bt_clear);
             groupBox3.Controls.Add(bt_chiTiet);
+            groupBox3.Controls.Add(lb_id);
+            groupBox3.Controls.Add(label4);
             groupBox3.Controls.Add(label3);
             groupBox3.Controls.Add(label2);
+            groupBox3.Controls.Add(tx_soHopDong);
             groupBox3.Controls.Add(tx_nguoiTao);
             groupBox3.Controls.Add(tx_canCuoc);
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(tx_ten);
             groupBox3.Location = new Point(989, 166);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(445, 399);
+            groupBox3.Size = new Size(445, 534);
             groupBox3.TabIndex = 12;
             groupBox3.TabStop = false;
             groupBox3.Text = "Thông tin hóa đơn";
             // 
             // bt_clear
             // 
-            bt_clear.Location = new Point(243, 305);
+            bt_clear.Location = new Point(254, 417);
             bt_clear.Name = "bt_clear";
             bt_clear.Size = new Size(118, 62);
             bt_clear.TabIndex = 2;
@@ -191,34 +151,61 @@
             // 
             // bt_chiTiet
             // 
-            bt_chiTiet.Location = new Point(59, 305);
+            bt_chiTiet.Location = new Point(70, 417);
             bt_chiTiet.Name = "bt_chiTiet";
             bt_chiTiet.Size = new Size(118, 62);
             bt_chiTiet.TabIndex = 2;
             bt_chiTiet.Text = "Chi tiết hóa đơn";
             bt_chiTiet.UseVisualStyleBackColor = true;
+            bt_chiTiet.Click += bt_chiTiet_Click;
+            // 
+            // lb_id
+            // 
+            lb_id.AutoSize = true;
+            lb_id.Location = new Point(18, 494);
+            lb_id.Name = "lb_id";
+            lb_id.Size = new Size(81, 20);
+            lb_id.TabIndex = 1;
+            lb_id.Text = "id_hoaDon";
+            lb_id.Visible = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(29, 304);
+            label4.Name = "label4";
+            label4.Size = new Size(95, 20);
+            label4.TabIndex = 1;
+            label4.Text = "Số hợp đồng";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(18, 206);
+            label3.Location = new Point(18, 211);
             label3.Name = "label3";
-            label3.Size = new Size(77, 20);
+            label3.Size = new Size(97, 20);
             label3.TabIndex = 1;
-            label3.Text = "Người tạo";
+            label3.Text = "Thời gian tạo";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(18, 117);
             label2.Name = "label2";
-            label2.Size = new Size(89, 20);
+            label2.Size = new Size(101, 20);
             label2.TabIndex = 1;
-            label2.Text = "Số căn cước";
+            label2.Text = "Tên người đặt";
+            // 
+            // tx_soHopDong
+            // 
+            tx_soHopDong.Location = new Point(70, 341);
+            tx_soHopDong.Name = "tx_soHopDong";
+            tx_soHopDong.Size = new Size(343, 27);
+            tx_soHopDong.TabIndex = 0;
             // 
             // tx_nguoiTao
             // 
-            tx_nguoiTao.Location = new Point(59, 243);
+            tx_nguoiTao.Location = new Point(59, 248);
             tx_nguoiTao.Name = "tx_nguoiTao";
             tx_nguoiTao.Size = new Size(343, 27);
             tx_nguoiTao.TabIndex = 0;
@@ -255,11 +242,12 @@
             bt_search.TabIndex = 11;
             bt_search.Text = "Tìm kiếm";
             bt_search.UseVisualStyleBackColor = true;
+            bt_search.Click += bt_search_Click;
             // 
             // tx_search
             // 
             tx_search.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tx_search.Location = new Point(38, 81);
+            tx_search.Location = new Point(78, 81);
             tx_search.Name = "tx_search";
             tx_search.PlaceholderText = "Nhập tên khách hàng hoặc căn cước";
             tx_search.Size = new Size(620, 34);
@@ -267,13 +255,18 @@
             // 
             // dtgv_data
             // 
+            dtgv_data.AllowUserToAddRows = false;
+            dtgv_data.AllowUserToDeleteRows = false;
+            dtgv_data.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgv_data.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgv_data.Location = new Point(16, 174);
+            dtgv_data.Location = new Point(-6, 255);
             dtgv_data.Name = "dtgv_data";
+            dtgv_data.ReadOnly = true;
             dtgv_data.RowHeadersWidth = 51;
             dtgv_data.RowTemplate.Height = 29;
-            dtgv_data.Size = new Size(967, 391);
+            dtgv_data.Size = new Size(967, 413);
             dtgv_data.TabIndex = 9;
+            dtgv_data.CellClick += dtgv_data_CellClick;
             // 
             // QLHDDView
             // 
@@ -281,12 +274,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1482, 793);
             Controls.Add(pn_hoaDon);
-            Controls.Add(groupBox1);
             Margin = new Padding(2);
             Name = "QLHDDView";
             Text = "QLHDDView";
             Load += QLHDDView_Load;
-            groupBox1.ResumeLayout(false);
             pn_hoaDon.ResumeLayout(false);
             pn_hoaDon.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -298,11 +289,6 @@
         }
 
         #endregion
-
-        private GroupBox groupBox1;
-        private Button bt_hoanThanh;
-        private Button bt_dangThue;
-        private Button bt_datCoc;
         private Panel pn_hoaDon;
         private GroupBox groupBox2;
         private DateTimePicker dtp_endDate;
@@ -321,5 +307,8 @@
         private Button bt_search;
         private TextBox tx_search;
         private DataGridView dtgv_data;
+        private Label label4;
+        private TextBox tx_soHopDong;
+        private Label lb_id;
     }
 }
