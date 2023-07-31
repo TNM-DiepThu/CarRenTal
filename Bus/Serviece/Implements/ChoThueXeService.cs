@@ -22,6 +22,10 @@ namespace Bus.Serviece.Implements
         TaiSanTheChapRepo taiSanRepo = new TaiSanTheChapRepo();
         KhachHangRepo khachHangRepo = new KhachHangRepo();
         NguoiThanRepo nguoiThanRepo = new NguoiThanRepo();
+        DangKiemRepo dangKiemRepo = new DangKiemRepo();
+        MauSacRepo mauSacRepo= new MauSacRepo();
+        HoaDonThueXeRepo hoaDonRepo = new HoaDonThueXeRepo();
+        TheChapRepo theChapRepo= new TheChapRepo();
         List<Xe> lstXe;
         List<HoaDonChiTiet> lstHoaDonChitiet;
         List<BaoDuong> lstBaoDuong;
@@ -32,6 +36,7 @@ namespace Bus.Serviece.Implements
         List<TaiSanTheChap> lstTaiSan;
         List<KhachHang> lstKhachHang;
         List<NguoiThan> lstNguoiThan;
+        List<DangKiem> lstDangKiem;
         public ChoThueXeService()
         {
             lstXe = xeRepo.GetXe();
@@ -44,6 +49,7 @@ namespace Bus.Serviece.Implements
             lstGiayToTheChap = giayToRepo.GetALL();
             lstKhachHang = khachHangRepo.GetALL();
             lstNguoiThan = nguoiThanRepo.GetALL();
+            lstDangKiem= dangKiemRepo.GetALL();
         }
 
         public bool CreateKH(KhachHang khachHang, NguoiThan nguoiThan)
@@ -66,20 +72,92 @@ namespace Bus.Serviece.Implements
 
         }
 
-        public List<Xe> DataXe(DateTime startDate, DateTime endDate, int minPrice, int maxPrice)
+        public List<Xe> DataXe(DateTime startDate, DateTime endDate,List<HoaDonChiTiet> xeDaChon)
         {
-            var result = from xe in lstXe
-                         join hd in lstHoaDonChitiet on xe.ID equals hd.IdXe
-                         join bd in lstBaoDuong on xe.ID equals bd.IdXe
-                         join lx in lstLoaiXe on xe.IdLoaiXe equals lx.Id
-                         join hx in lstHangXe on lx.IdHangXe equals hx.Id
+            //var resul2 = from xe in lstXe                 
+            //             join hd in lstHoaDonChitiet on xe.ID equals hd.IdXe
+            //             join bd in lstBaoDuong on xe.ID equals bd.IdXe
+            //             join lx in lstLoaiXe on xe.IdLoaiXe equals lx.Id
+            //             join hx in lstHangXe on lx.IdHangXe equals hx.Id
+            //             join dk in lstDangKiem on xe.ID equals dk.Id
+            //             where xe.TrangThai!=1 ||
+            //             (((startDate>hd.NgayBatDau&&startDate<hd.NgayKetThuc)||(endDate > hd.NgayBatDau && endDate < hd.NgayKetThuc))&& (hd.TrangThai==2&& hd.TrangThai==3))||
+            //             bd.TrangThai==0|| dk.NgayHetHan<endDate||
+            //             hx.Id!= hangXe||
+            //             lx.LoaiNguyenLieu!=nhienLieu||
+            //             lx.SoGhe!= soGhe||
+            //             lx.LoaiNguyenLieu!= nhienLieu                        
+            //             select xe;
+            if (startDate.Date>endDate)
+            {
+                return new List<Xe>();
+            }
+            List<Xe> result = xeRepo.GetXe();
+            // Loại xe đã chọn
+            var checkDK = from xe in lstXe
+                      join hd in xeDaChon on xe.ID equals hd.IdXe
+                      where (((startDate >= hd.NgayBatDau && startDate <= hd.NgayKetThuc) || (endDate >= hd.NgayBatDau && endDate <= hd.NgayKetThuc)))
+                      select xe;
+            if (checkDK != null && result != null)
+            {
+                result.RemoveAll(r => checkDK.Any(a => a.ID == r.ID));
+            }
+            //kiểm tra đăng kiểm
+             checkDK = from xe in lstXe
+                          join dk in lstDangKiem on xe.ID equals dk.IdXe
+                          where dk.NgayHetHan < endDate
+                          select xe;
 
-                         select xe;
+            if (checkDK != null && result != null)
+            {
+                result.RemoveAll(r => checkDK.Any(a => a.ID == r.ID));
+            }
+            //kiểm tra xe có đang cho thuê hay không
+            checkDK = from xe in lstXe
+                          join hd in lstHoaDonChitiet on xe.ID equals hd.IdXe
+                          where (((startDate >= hd.NgayBatDau && startDate <= hd.NgayKetThuc) || (endDate >= hd.NgayBatDau && endDate <= hd.NgayKetThuc)) && (hd.TrangThai == 2 || hd.TrangThai == 1)) 
+                          select xe;
+            if (checkDK != null && result != null)
+            {
+                result.RemoveAll(r => checkDK.Any(a => a.ID == r.ID));
+            }
+            //kiểm tra xe có đang bảo dưỡng hay không
+            checkDK = from xe in lstXe
+                          join bd in lstBaoDuong on xe.ID equals bd.IdXe
+                          where bd.TrangThai ==1
+                          select xe;
+            if (checkDK != null && result != null)
+            {
+                result.RemoveAll(r => checkDK.Any(a => a.ID == r.ID));
+            }
+            //kiểm tra xe  hoạt động
+            checkDK = from xe in lstXe
+                      where xe.TrangThai != 1
+                      select xe;
+
+            if (checkDK != null && result != null)
+            {
+                result.RemoveAll(r => checkDK.Any(a => a.ID == r.ID));
+            }
+           
+            if (result==null)
+            {
+                return result; 
+            }
+            foreach (var item in result)
+            {
+                item.MauSac = mauSacRepo.GetALL().FirstOrDefault(p => p.Id == item.IdMauSac);
+                item.LoaiXe = lstLoaiXe.FirstOrDefault(p => p.Id == item.IdLoaiXe);
+                item.LoaiXe.HangXe = lstHangXe.FirstOrDefault(p => p.Id == item.LoaiXe.IdHangXe);
+            }
             return result.ToList();
         }
         public List<HangXe> GetHangXe()
         {
-            return hangXeRepo.GetALL().Where(p => p.TrangThai == 1).ToList();
+            List<HangXe> hangXes = new List<HangXe>();
+            hangXes.Add(new HangXe() { Id=Guid.NewGuid(),Name="Tất cả"});
+            hangXes.AddRange( hangXeRepo.GetALL().Where(p => p.TrangThai == 1).ToList());
+            return hangXes;
         }
         public List<KhachHang> GetKhachHang(string name)
         {
@@ -113,6 +191,46 @@ namespace Bus.Serviece.Implements
                 return false;
             }
 
+        }
+
+        public int CreateSoHopDong()
+        {
+            int max=1;
+            foreach (var item in hoaDonRepo.GetALL())
+            {
+                if (item.SoHopDong>max)
+                {
+                    max = item.SoHopDong;
+                }
+            }
+            max++;
+            return max;
+        }
+
+        public void CreateHD(HoaDonThueXe hd)
+        {
+            hoaDonRepo.Create(hd);
+        }
+
+        public void CreateHDCT(HoaDonChiTiet hdct)
+        {
+            hoaDonChiTietRepo.Create(hdct);
+            lstHoaDonChitiet = hoaDonChiTietRepo.GetALL();
+        }
+
+        public List<GiayToTheChap> GetGiayTo()
+        {
+           return giayToRepo.GetALL();
+        }
+
+        public List<TaiSanTheChap> GetTaiSan()
+        {
+            return taiSanRepo.GetALL();
+        }
+
+        public void CreateTC(TheChap theChap)
+        {
+            theChapRepo.Create(theChap);
         }
     }
 }

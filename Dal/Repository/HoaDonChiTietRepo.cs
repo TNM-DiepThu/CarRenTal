@@ -24,7 +24,9 @@ namespace Dal.Repository
         {
             try
             {
-                db.hoaDonChiTiets.Update(hoaDonChiTiet);
+                //db.hoaDonChiTiets.Update(hoaDonChiTiet);
+
+                db.hoaDonChiTiets.FirstOrDefault(t => t.Id == hoaDonChiTiet.Id).TrangThai = hoaDonChiTiet.TrangThai;              
                 db.SaveChanges();
                 return true;
             }

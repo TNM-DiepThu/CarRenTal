@@ -24,7 +24,13 @@ namespace Dal.Repository
         {
             try
             {
-                db.theChaps.Update(theChap);
+               // db.theChaps.Update(theChap);
+               db.theChaps.FirstOrDefault(p=>p.Id==theChap.Id).IdTS= theChap.IdTS;
+               db.theChaps.FirstOrDefault(p=>p.Id==theChap.Id).IdHDCT= theChap.IdHDCT;
+               db.theChaps.FirstOrDefault(p=>p.Id==theChap.Id).MoTa= theChap.MoTa;
+               db.theChaps.FirstOrDefault(p=>p.Id==theChap.Id).IdGiayTo= theChap.IdGiayTo;
+               db.theChaps.FirstOrDefault(p=>p.Id==theChap.Id).TinhTrang= theChap.TinhTrang;
+
                 db.SaveChanges();
                 return true;
             }
