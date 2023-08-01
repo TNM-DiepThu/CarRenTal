@@ -71,32 +71,32 @@ namespace CarRenTal.View.MainView
 
         private void btnQLX_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new QuanLiXeView());
             ChangeBackGroundButton(btnQLX);
 
         }
 
         private void btnQLHD_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new View._4._QuanLyHoaDon.QLHDDView());
             ChangeBackGroundButton(btnQLHD);
         }
 
         private void btnQLNV_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new View._7.QuanLyTaiKhoan.QuanLyTaiKhoan());
             ChangeBackGroundButton(btnQLNV);
         }
 
         private void btnQLKH_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new View._5._QuanLyKhachHang.QLKHView());
             ChangeBackGroundButton(btnQLKH);
         }
 
         private void btnQLTC_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new View._6.QuanLyThuChi.ChiTietThuChiView());
             ChangeBackGroundButton(btnQLTC);
         }
 

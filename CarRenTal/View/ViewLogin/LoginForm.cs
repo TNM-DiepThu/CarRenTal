@@ -52,8 +52,8 @@ namespace CarRenTal.View.ViewLogin
                 {
                     if (result.NhanVien.ChucVu.TenChucVu == "Nhân viên")
                     {
-                        View.MainView.MainViewQL main = new View.MainView.MainViewQL(result);
                         this.Hide();
+                        View.MainView.MainViewQL main = new View.MainView.MainViewQL(result);
                         main.Show();
                         this.Show();
                     }
