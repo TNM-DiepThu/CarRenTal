@@ -39,6 +39,7 @@
             pn_main = new Panel();
             btnHome = new Button();
             grb_Funtion.SuspendLayout();
+            pn_main.SuspendLayout();
             SuspendLayout();
             // 
             // grb_Funtion
@@ -156,6 +157,7 @@
             // 
             // pn_main
             // 
+            pn_main.Controls.Add(btnHome);
             pn_main.Location = new Point(381, 98);
             pn_main.Name = "pn_main";
             pn_main.Size = new Size(1500, 840);
@@ -164,7 +166,7 @@
             // 
             // btnHome
             // 
-            btnHome.Location = new Point(37, 12);
+            btnHome.Location = new Point(3, 3);
             btnHome.Name = "btnHome";
             btnHome.Size = new Size(305, 193);
             btnHome.TabIndex = 3;
@@ -178,7 +180,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Main2;
             ClientSize = new Size(1892, 944);
-            Controls.Add(btnHome);
             Controls.Add(pn_main);
             Controls.Add(grb_Funtion);
             Name = "MainViewQL";
@@ -186,6 +187,7 @@
             Text = "Car Rental";
             Load += MainViewQL_Load;
             grb_Funtion.ResumeLayout(false);
+            pn_main.ResumeLayout(false);
             ResumeLayout(false);
         }
 

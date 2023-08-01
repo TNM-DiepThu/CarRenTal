@@ -29,16 +29,11 @@
         private void InitializeComponent()
         {
             dgvDoanhThu = new DataGridView();
-            btnExit = new Button();
+            btnXuatDL = new Button();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            label4 = new Label();
-            dgvBaoHiem = new DataGridView();
-            label5 = new Label();
-            dgvDangKiem = new DataGridView();
-            label6 = new Label();
-            dgvBaoDuong = new DataGridView();
+            dgvKhoanChi = new DataGridView();
             groupBox1 = new GroupBox();
             lbLoiNhuan = new Label();
             lbChi = new Label();
@@ -46,14 +41,12 @@
             label8 = new Label();
             label7 = new Label();
             btnSearch = new Button();
-            tbSearch = new TextBox();
+            txtSearch = new TextBox();
             dtTimeSearch = new DateTimePicker();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvDoanhThu).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvBaoHiem).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDangKiem).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvBaoDuong).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvKhoanChi).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -61,24 +54,29 @@
             // 
             // dgvDoanhThu
             // 
+            dgvDoanhThu.AllowUserToAddRows = false;
+            dgvDoanhThu.AllowUserToDeleteRows = false;
             dgvDoanhThu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDoanhThu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDoanhThu.Location = new Point(12, 126);
             dgvDoanhThu.Name = "dgvDoanhThu";
+            dgvDoanhThu.ReadOnly = true;
             dgvDoanhThu.RowHeadersWidth = 62;
             dgvDoanhThu.RowTemplate.Height = 33;
             dgvDoanhThu.Size = new Size(1000, 260);
             dgvDoanhThu.TabIndex = 31;
             dgvDoanhThu.CellContentClick += dgvDoanhThu_CellContentClick;
             // 
-            // btnExit
+            // btnXuatDL
             // 
-            btnExit.Location = new Point(1280, 711);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(155, 49);
-            btnExit.TabIndex = 30;
-            btnExit.Text = "Thoát";
-            btnExit.UseVisualStyleBackColor = true;
+            btnXuatDL.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnXuatDL.Location = new Point(1280, 711);
+            btnXuatDL.Name = "btnXuatDL";
+            btnXuatDL.Size = new Size(155, 49);
+            btnXuatDL.TabIndex = 30;
+            btnXuatDL.Text = "Xuất dữ liệu";
+            btnXuatDL.UseVisualStyleBackColor = true;
+            btnXuatDL.Click += btnXuatDL_Click;
             // 
             // label1
             // 
@@ -108,63 +106,20 @@
             label3.TabIndex = 36;
             label3.Text = "Khoản tiền chi";
             // 
-            // label4
+            // dgvKhoanChi
             // 
-            label4.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(12, 446);
-            label4.Name = "label4";
-            label4.Size = new Size(193, 42);
-            label4.TabIndex = 37;
-            label4.Text = "Bảo hiểm";
-            // 
-            // dgvBaoHiem
-            // 
-            dgvBaoHiem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBaoHiem.Location = new Point(12, 481);
-            dgvBaoHiem.Name = "dgvBaoHiem";
-            dgvBaoHiem.RowHeadersWidth = 62;
-            dgvBaoHiem.RowTemplate.Height = 33;
-            dgvBaoHiem.Size = new Size(1000, 66);
-            dgvBaoHiem.TabIndex = 38;
-            dgvBaoHiem.CellContentClick += dgvBaoHiem_CellContentClick;
-            // 
-            // label5
-            // 
-            label5.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(12, 552);
-            label5.Name = "label5";
-            label5.Size = new Size(193, 42);
-            label5.TabIndex = 39;
-            label5.Text = "Đăng kiểm";
-            // 
-            // dgvDangKiem
-            // 
-            dgvDangKiem.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDangKiem.Location = new Point(12, 584);
-            dgvDangKiem.Name = "dgvDangKiem";
-            dgvDangKiem.RowHeadersWidth = 62;
-            dgvDangKiem.RowTemplate.Height = 33;
-            dgvDangKiem.Size = new Size(1000, 66);
-            dgvDangKiem.TabIndex = 40;
-            // 
-            // label6
-            // 
-            label6.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(12, 653);
-            label6.Name = "label6";
-            label6.Size = new Size(193, 42);
-            label6.TabIndex = 41;
-            label6.Text = "Bảo Dưỡng";
-            // 
-            // dgvBaoDuong
-            // 
-            dgvBaoDuong.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBaoDuong.Location = new Point(12, 684);
-            dgvBaoDuong.Name = "dgvBaoDuong";
-            dgvBaoDuong.RowHeadersWidth = 62;
-            dgvBaoDuong.RowTemplate.Height = 33;
-            dgvBaoDuong.Size = new Size(1000, 66);
-            dgvBaoDuong.TabIndex = 42;
+            dgvKhoanChi.AllowUserToAddRows = false;
+            dgvKhoanChi.AllowUserToDeleteRows = false;
+            dgvKhoanChi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvKhoanChi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvKhoanChi.Location = new Point(12, 437);
+            dgvKhoanChi.Name = "dgvKhoanChi";
+            dgvKhoanChi.ReadOnly = true;
+            dgvKhoanChi.RowHeadersWidth = 62;
+            dgvKhoanChi.RowTemplate.Height = 33;
+            dgvKhoanChi.Size = new Size(1000, 335);
+            dgvKhoanChi.TabIndex = 38;
+            dgvKhoanChi.CellContentClick += dgvBaoHiem_CellContentClick;
             // 
             // groupBox1
             // 
@@ -184,29 +139,31 @@
             // lbLoiNhuan
             // 
             lbLoiNhuan.AutoSize = true;
-            lbLoiNhuan.Location = new Point(200, 163);
+            lbLoiNhuan.Location = new Point(193, 163);
             lbLoiNhuan.Name = "lbLoiNhuan";
-            lbLoiNhuan.Size = new Size(89, 25);
+            lbLoiNhuan.Size = new Size(22, 25);
             lbLoiNhuan.TabIndex = 40;
-            lbLoiNhuan.Text = "Lợi nhuận";
+            lbLoiNhuan.Text = "0";
             // 
             // lbChi
             // 
             lbChi.AutoSize = true;
-            lbChi.Location = new Point(203, 116);
+            lbChi.Location = new Point(193, 118);
             lbChi.Name = "lbChi";
-            lbChi.Size = new Size(37, 25);
+            lbChi.Size = new Size(22, 25);
             lbChi.TabIndex = 39;
-            lbChi.Text = "Chi";
+            lbChi.Text = "0";
+            lbChi.TextChanged += lbDoanhThu_TextChanged;
             // 
             // lbDoanhThu
             // 
             lbDoanhThu.AutoSize = true;
             lbDoanhThu.Location = new Point(193, 55);
             lbDoanhThu.Name = "lbDoanhThu";
-            lbDoanhThu.Size = new Size(96, 25);
+            lbDoanhThu.Size = new Size(22, 25);
             lbDoanhThu.TabIndex = 38;
-            lbDoanhThu.Text = "Doanh thu";
+            lbDoanhThu.Text = "0";
+            lbDoanhThu.TextChanged += lbDoanhThu_TextChanged;
             // 
             // label8
             // 
@@ -234,20 +191,24 @@
             btnSearch.TabIndex = 27;
             btnSearch.Text = "Tìm kiếm";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.TextChanged += lbDoanhThu_TextChanged;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // tbSearch
+            // txtSearch
             // 
-            tbSearch.Location = new Point(21, 31);
-            tbSearch.Name = "tbSearch";
-            tbSearch.Size = new Size(441, 31);
-            tbSearch.TabIndex = 28;
+            txtSearch.Location = new Point(21, 31);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(441, 31);
+            txtSearch.TabIndex = 28;
             // 
             // dtTimeSearch
             // 
+            dtTimeSearch.Format = DateTimePickerFormat.Short;
             dtTimeSearch.Location = new Point(18, 39);
             dtTimeSearch.Name = "dtTimeSearch";
             dtTimeSearch.Size = new Size(236, 31);
             dtTimeSearch.TabIndex = 32;
+            dtTimeSearch.ValueChanged += dtTimeSearch_ValueChanged;
             // 
             // groupBox2
             // 
@@ -262,7 +223,7 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(btnSearch);
-            groupBox3.Controls.Add(tbSearch);
+            groupBox3.Controls.Add(txtSearch);
             groupBox3.Location = new Point(325, 37);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(687, 73);
@@ -278,23 +239,16 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(dgvBaoDuong);
-            Controls.Add(label6);
-            Controls.Add(dgvDangKiem);
-            Controls.Add(label5);
-            Controls.Add(dgvBaoHiem);
-            Controls.Add(label4);
+            Controls.Add(dgvKhoanChi);
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(dgvDoanhThu);
-            Controls.Add(btnExit);
+            Controls.Add(btnXuatDL);
             Name = "ChiTietThuChiView";
-            Text = "ChiTietThuChiView";
-            Load += ChiTietThuChiView_Load;
+            Text = "Quản lý thu chi";
+            Load += lbDoanhThu_TextChanged;
             ((System.ComponentModel.ISupportInitialize)dgvDoanhThu).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvBaoHiem).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvDangKiem).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvBaoDuong).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvKhoanChi).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -306,12 +260,12 @@
 
         #endregion
         private DataGridView dgvDoanhThu;
-        private Button btnExit;
+        private Button btnXuatDL;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
-        private DataGridView dgvBaoHiem;
+        private DataGridView dgvKhoanChi;
         private Label label5;
         private DataGridView dgvDangKiem;
         private Label label6;
@@ -323,7 +277,7 @@
         private Label label8;
         private Label label7;
         private Button btnSearch;
-        private TextBox tbSearch;
+        private TextBox txtSearch;
         private DateTimePicker dtTimeSearch;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
