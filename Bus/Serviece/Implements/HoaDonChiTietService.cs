@@ -11,13 +11,13 @@ namespace Bus.Serviece.Implements
     
     public class HoaDonChiTietService
     {
-        HoaDonChiTietRepo HDCTRepo;
+        HoaDonChiTietRepo HDCTRepo = new HoaDonChiTietRepo();
         List<HoaDonChiTiet> _lstHDCT;
 
-        XeRepo XeRepo;
+        XeRepo XeRepo = new XeRepo();
         List<Xe> _lstXe;
 
-        ChiPhiPhatSinhRepo CPSTRepo;
+        ChiPhiPhatSinhRepo CPSTRepo = new ChiPhiPhatSinhRepo();
         List<ChiPhiPhatSinh> _lstCPPS;
 
 

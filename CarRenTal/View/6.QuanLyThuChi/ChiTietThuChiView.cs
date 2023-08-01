@@ -244,7 +244,9 @@ namespace CarRenTal.View._6.QuanLyThuChi
                 filePath = dialog.FileName;
             }
             export2Excel(dgvDoanhThu, filePath);
+
             //XuatExcel(dgvDoanhThu, "Doanh thu", "Doanh thu ngày " + dtTimeSearch.Value.ToString());
+
         }
         private void export2Excel(DataGridView g, string duongDan)
         {
@@ -262,6 +264,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             //  obj.ActiveWorkbook.SaveCopyAs(duongDan + ".xlsx");
             obj.ActiveWorkbook.SaveAs(duongDan);
             obj.ActiveWorkbook.Saved = true;
+
         }
         //public void XuatExcel(DataGridView dtTB, string sheetName, string title)
         //{
