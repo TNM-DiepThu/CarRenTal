@@ -50,7 +50,14 @@ namespace CarRenTal.View.ViewLogin
                 var result = loginService.CheckLogin(tx_user.Text, tx_pass.Text);
                 if (result != null)
                 {
-                    MessageBox.Show("Đăng nhập thành công");
+                    if (result.NhanVien.ChucVu.TenChucVu == "Nhân viên")
+                    {
+                        View.MainView.MainViewQL main = new View.MainView.MainViewQL(result);
+                        this.Hide();
+                        main.Show();
+                        this.Show();
+                    }
+                   
                 }
                 else
                 {

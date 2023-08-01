@@ -28,6 +28,10 @@ namespace CarRenTal.View._1.ChoThueXe
             nhanVienLogin = nhanVien;
         }
 
+        public ChoThueXeForm()
+        {
+        }
+
         public void LoadKhachHang(KhachHang khachHang)
         {
             if (khachHang == null) { return; }
