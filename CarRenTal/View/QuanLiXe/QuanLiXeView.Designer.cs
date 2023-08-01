@@ -51,7 +51,7 @@
             dtg_show.Name = "dtg_show";
             dtg_show.RowHeadersWidth = 51;
             dtg_show.RowTemplate.Height = 29;
-            dtg_show.Size = new Size(976, 301);
+            dtg_show.Size = new Size(1428, 629);
             dtg_show.TabIndex = 0;
             dtg_show.CellClick += dtg_show_CellClick;
             // 
@@ -85,7 +85,7 @@
             // 
             // bt_add
             // 
-            bt_add.Location = new Point(831, 427);
+            bt_add.Location = new Point(1282, 741);
             bt_add.Name = "bt_add";
             bt_add.Size = new Size(187, 39);
             bt_add.TabIndex = 2;
@@ -95,7 +95,7 @@
             // 
             // bt_bd
             // 
-            bt_bd.Location = new Point(42, 427);
+            bt_bd.Location = new Point(42, 742);
             bt_bd.Name = "bt_bd";
             bt_bd.Size = new Size(154, 39);
             bt_bd.TabIndex = 2;
@@ -134,7 +134,7 @@
             // 
             // bt_edit
             // 
-            bt_edit.Location = new Point(638, 427);
+            bt_edit.Location = new Point(1089, 741);
             bt_edit.Margin = new Padding(3, 4, 3, 4);
             bt_edit.Name = "bt_edit";
             bt_edit.Size = new Size(187, 39);
@@ -145,7 +145,7 @@
             // 
             // bt_bh
             // 
-            bt_bh.Location = new Point(203, 427);
+            bt_bh.Location = new Point(203, 742);
             bt_bh.Margin = new Padding(3, 4, 3, 4);
             bt_bh.Name = "bt_bh";
             bt_bh.Size = new Size(154, 39);
@@ -156,7 +156,7 @@
             // 
             // bt_dk
             // 
-            bt_dk.Location = new Point(363, 427);
+            bt_dk.Location = new Point(363, 742);
             bt_dk.Margin = new Padding(3, 4, 3, 4);
             bt_dk.Name = "bt_dk";
             bt_dk.Size = new Size(154, 39);
@@ -169,7 +169,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1057, 500);
+            ClientSize = new Size(1482, 793);
             Controls.Add(bt_dk);
             Controls.Add(bt_bh);
             Controls.Add(bt_edit);
