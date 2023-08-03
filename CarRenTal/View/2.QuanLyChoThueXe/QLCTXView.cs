@@ -95,7 +95,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 int stt = 0;
                 foreach (var item in _lstHDCT)
                 {
-                    string tThai2 = CheckTrangThai(item.TrangThai, item.NgayBatDau,item.NgayKetThuc, tThai);
+                    string tThai2 = CheckTrangThai(item.TrangThai, item.NgayBatDau, item.NgayKetThuc, tThai);
                     dtgv_data.Rows.Add(item.Id, item.Xe.LoaiXe.Name, item.Xe.BienSo, item.HoaDonThueXe.KhachHang.Name, item.NgayBatDau.Date, item.NgayKetThuc.Date, item.TienCoc, item.TongTien, tThai2);
                     if (tThai2 == "Quá hạn nhận xe" || tThai2 == "Quá hạn trả xe")
                     {
@@ -107,7 +107,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
             bt_cancels_Click(null, null);
         }
 
-        private string CheckTrangThai(int trangThai, DateTime dateNhan,DateTime dateTra, int tThai)
+        private string CheckTrangThai(int trangThai, DateTime dateNhan, DateTime dateTra, int tThai)
         {
             if (tThai == 1)
             {
@@ -211,6 +211,25 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 }
 
             }
+            else if (dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Đang cho thuê")
+            {
+                if (cbb_trangThai.SelectedIndex == 2) return;
+                if (cbb_trangThai.SelectedIndex == 0 || cbb_trangThai.SelectedIndex == 3)
+                {
+                    if (cbb_trangThai.SelectedIndex==3)
+                    {
+                        
+                    }
+                    hoaDonCT.TrangThai = cbb_trangThai.SelectedIndex;
+                    hdService.UpdateHDCT(hoaDonCT);
+                    hdService.UpdateTheChap(new TheChap() {Id=hoaDonCT.Id});
+                }
+                else
+                {
+                    MessageBox.Show("Chỉ có thế chuyển trạng thái thành hủy hoặc hoàn thành");
+                }
+                LoadData(trangThai, null); return;
+            }
         }
 
         private string CheckTheChap()
@@ -252,7 +271,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
             }
             if (hoaDonCT.TrangThai == 1)
             {
-                if (cbb_trangThai.SelectedIndex==2)
+                if (cbb_trangThai.SelectedIndex == 2)
                 {
                     tx_giaTri.Text = (hoaDonCT.DonGia * 30).ToString();
                     tx_thanhToan.Text = (decimal.Parse(tx_giaTri.Text) + (hoaDonCT.TongTien - hoaDonCT.TienCoc)).ToString();
@@ -260,13 +279,13 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 }
                 if (cbb_trangThai.SelectedIndex == 5)
                 {
-                    tx_thanhToan.Text = (-hoaDonCT.TienCoc*2).ToString();
+                    tx_thanhToan.Text = (-hoaDonCT.TienCoc * 2).ToString();
                     return;
                 }
-                if (cbb_trangThai.SelectedIndex!=1)
+                if (cbb_trangThai.SelectedIndex != 1)
                 {
                     tx_giaTri.Text = "";
-                    tx_thanhToan.Text=0.ToString();
+                    tx_thanhToan.Text = 0.ToString();
                 }
             }
         }
@@ -276,7 +295,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
             if (hoaDonCT != null)
             {
                 ThongTinKhach form = new ThongTinKhach(hoaDonCT.HoaDonThueXe.KhachHang);
-                form.ShowDialog();              
+                form.ShowDialog();
             }
         }
     }

@@ -16,6 +16,7 @@ namespace Bus.Serviece.Implements
         KhachHangRepo KhachHangRepo= new KhachHangRepo();
         XeRepo xeRepo = new XeRepo();
         LoaiXeRepo loaiXeRepo = new LoaiXeRepo();
+        LoaiPhuPhiRepo loaiPhuPhiRepo = new LoaiPhuPhiRepo();
         GiayToTheChapRepo giayToRepo= new GiayToTheChapRepo();
         TaiSanTheChapRepo taiSanRepo= new TaiSanTheChapRepo();
         TheChapRepo theChapRepo= new TheChapRepo();
@@ -46,6 +47,10 @@ namespace Bus.Serviece.Implements
         public List<TaiSanTheChap> GetTaiSan()
         {
             return taiSanRepo.GetALL().ToList();
+        }
+        public List<LoaiPhuPhi> GetLoaiPhuPhi()
+        {
+            return loaiPhuPhiRepo.GetALL().ToList();
         }
 
 
@@ -102,6 +107,14 @@ namespace Bus.Serviece.Implements
         public void CreateTheChap(TheChap theChap)
         {
             theChapRepo.Create(theChap);
+        }
+
+        public void UpdateTheChap(TheChap theChap)
+        {
+            theChap=theChapRepo.GetAll().FirstOrDefault(p=>p.IdHDCT==theChap.Id);
+            theChap.TinhTrang = 2;
+            theChapRepo.Update(theChap);
+
         }
     }
 }
