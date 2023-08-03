@@ -40,6 +40,12 @@
             bt_edit = new Button();
             bt_bh = new Button();
             bt_dk = new Button();
+            bt_hx = new Button();
+            bt_qllx = new Button();
+            label3 = new Label();
+            label4 = new Label();
+            cb_seachms = new ComboBox();
+            cb_seachhx = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dtg_show).BeginInit();
             SuspendLayout();
             // 
@@ -51,13 +57,13 @@
             dtg_show.Name = "dtg_show";
             dtg_show.RowHeadersWidth = 51;
             dtg_show.RowTemplate.Height = 29;
-            dtg_show.Size = new Size(1428, 629);
+            dtg_show.Size = new Size(1428, 543);
             dtg_show.TabIndex = 0;
             dtg_show.CellClick += dtg_show_CellClick;
             // 
             // tb_seach
             // 
-            tb_seach.Location = new Point(42, 40);
+            tb_seach.Location = new Point(42, 43);
             tb_seach.Name = "tb_seach";
             tb_seach.Size = new Size(293, 27);
             tb_seach.TabIndex = 1;
@@ -65,19 +71,19 @@
             // 
             // bt_dhdk
             // 
-            bt_dhdk.Location = new Point(853, 41);
+            bt_dhdk.Location = new Point(1199, 27);
             bt_dhdk.Name = "bt_dhdk";
-            bt_dhdk.Size = new Size(165, 29);
+            bt_dhdk.Size = new Size(204, 58);
             bt_dhdk.TabIndex = 2;
-            bt_dhdk.Text = "Đến hạn đăng kiểm";
+            bt_dhdk.Text = "Hết hạn đăng kiểm";
             bt_dhdk.UseVisualStyleBackColor = true;
             bt_dhdk.Click += bt_dhdk_Click;
             // 
             // bt_hhdk
             // 
-            bt_hhdk.Location = new Point(638, 41);
+            bt_hhdk.Location = new Point(974, 27);
             bt_hhdk.Name = "bt_hhdk";
-            bt_hhdk.Size = new Size(165, 29);
+            bt_hhdk.Size = new Size(204, 58);
             bt_hhdk.TabIndex = 2;
             bt_hhdk.Text = "Còn hạn đăng kiểm";
             bt_hhdk.UseVisualStyleBackColor = true;
@@ -85,9 +91,9 @@
             // 
             // bt_add
             // 
-            bt_add.Location = new Point(1282, 741);
+            bt_add.Location = new Point(1232, 699);
             bt_add.Name = "bt_add";
-            bt_add.Size = new Size(187, 39);
+            bt_add.Size = new Size(187, 58);
             bt_add.TabIndex = 2;
             bt_add.Text = "Thêm xe";
             bt_add.UseVisualStyleBackColor = true;
@@ -95,9 +101,9 @@
             // 
             // bt_bd
             // 
-            bt_bd.Location = new Point(42, 742);
+            bt_bd.Location = new Point(42, 699);
             bt_bd.Name = "bt_bd";
-            bt_bd.Size = new Size(154, 39);
+            bt_bd.Size = new Size(154, 58);
             bt_bd.TabIndex = 2;
             bt_bd.Text = "Xem bảo dưỡng Xe";
             bt_bd.UseVisualStyleBackColor = true;
@@ -112,6 +118,7 @@
             cb_lsg.Name = "cb_lsg";
             cb_lsg.Size = new Size(151, 28);
             cb_lsg.TabIndex = 3;
+            cb_lsg.SelectedIndexChanged += cb_lsg_SelectedIndexChanged;
             cb_lsg.TextChanged += comboBox1_TextChanged;
             // 
             // label1
@@ -134,10 +141,10 @@
             // 
             // bt_edit
             // 
-            bt_edit.Location = new Point(1089, 741);
+            bt_edit.Location = new Point(991, 699);
             bt_edit.Margin = new Padding(3, 4, 3, 4);
             bt_edit.Name = "bt_edit";
-            bt_edit.Size = new Size(187, 39);
+            bt_edit.Size = new Size(187, 58);
             bt_edit.TabIndex = 5;
             bt_edit.Text = "Sửa";
             bt_edit.UseVisualStyleBackColor = true;
@@ -145,10 +152,10 @@
             // 
             // bt_bh
             // 
-            bt_bh.Location = new Point(203, 742);
+            bt_bh.Location = new Point(202, 699);
             bt_bh.Margin = new Padding(3, 4, 3, 4);
             bt_bh.Name = "bt_bh";
-            bt_bh.Size = new Size(154, 39);
+            bt_bh.Size = new Size(154, 58);
             bt_bh.TabIndex = 6;
             bt_bh.Text = "Xem bảo hiểm xe";
             bt_bh.UseVisualStyleBackColor = true;
@@ -156,24 +163,89 @@
             // 
             // bt_dk
             // 
-            bt_dk.Location = new Point(363, 742);
+            bt_dk.Location = new Point(363, 699);
             bt_dk.Margin = new Padding(3, 4, 3, 4);
             bt_dk.Name = "bt_dk";
-            bt_dk.Size = new Size(154, 39);
+            bt_dk.Size = new Size(154, 58);
             bt_dk.TabIndex = 7;
             bt_dk.Text = "Xem đăng kiểm xe";
             bt_dk.UseVisualStyleBackColor = true;
             bt_dk.Click += bt_dk_Click_1;
+            // 
+            // bt_hx
+            // 
+            bt_hx.Location = new Point(523, 699);
+            bt_hx.Name = "bt_hx";
+            bt_hx.Size = new Size(154, 58);
+            bt_hx.TabIndex = 8;
+            bt_hx.Text = "Quản lí hãng xe";
+            bt_hx.UseVisualStyleBackColor = true;
+            bt_hx.Click += bt_hx_Click;
+            // 
+            // bt_qllx
+            // 
+            bt_qllx.Location = new Point(683, 699);
+            bt_qllx.Name = "bt_qllx";
+            bt_qllx.Size = new Size(154, 58);
+            bt_qllx.TabIndex = 8;
+            bt_qllx.Text = "Quản lí loại xe";
+            bt_qllx.UseVisualStyleBackColor = true;
+            bt_qllx.Click += bt_qllx_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(720, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(160, 20);
+            label3.TabIndex = 4;
+            label3.Text = "Tìm kiếm theo hãng xe";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(552, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(162, 20);
+            label4.TabIndex = 4;
+            label4.Text = "Tìm kiếm theo màu sắc";
+            // 
+            // cb_seachms
+            // 
+            cb_seachms.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_seachms.FormattingEnabled = true;
+            cb_seachms.Location = new Point(552, 42);
+            cb_seachms.Name = "cb_seachms";
+            cb_seachms.Size = new Size(151, 28);
+            cb_seachms.TabIndex = 9;
+            cb_seachms.SelectedIndexChanged += cb_seachms_SelectedIndexChanged;
+            cb_seachms.TextChanged += cb_seachms_TextChanged;
+            // 
+            // cb_seachhx
+            // 
+            cb_seachhx.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_seachhx.FormattingEnabled = true;
+            cb_seachhx.Location = new Point(720, 43);
+            cb_seachhx.Name = "cb_seachhx";
+            cb_seachhx.Size = new Size(151, 28);
+            cb_seachhx.TabIndex = 9;
+            cb_seachhx.TextChanged += cb_seachhx_TextChanged;
             // 
             // QuanLiXeView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1482, 793);
+            Controls.Add(cb_seachhx);
+            Controls.Add(cb_seachms);
+            Controls.Add(bt_qllx);
+            Controls.Add(bt_hx);
             Controls.Add(bt_dk);
             Controls.Add(bt_bh);
             Controls.Add(bt_edit);
             Controls.Add(label2);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(cb_lsg);
             Controls.Add(bt_hhdk);
@@ -185,6 +257,7 @@
             Name = "QuanLiXeView";
             Text = "QuanLiXe";
             Load += QuanLiXe_Load;
+            Click += QuanLiXeView_Click;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -204,5 +277,11 @@
         private Button bt_edit;
         private Button bt_bh;
         private Button bt_dk;
+        private Button bt_hx;
+        private Button bt_qllx;
+        private Label label3;
+        private Label label4;
+        private ComboBox cb_seachms;
+        private ComboBox cb_seachhx;
     }
 }

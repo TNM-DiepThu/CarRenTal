@@ -11,10 +11,10 @@ namespace Bus.ViewModal
 {
     public class XeVM
     {
-        
+
         public XeVM()
         {
-            
+
         }
         IXeBaoHiemServiece _baohiem;
         IDangKiemServiece _dangkiem;
@@ -27,15 +27,15 @@ namespace Bus.ViewModal
         public int SoCongTo { get; set; }
         public int TrangThai { get; set; }
         public int SoGhe { get; set; }
-        public string MauSac { get;set; }
+        public string MauSac { get; set; }
         public string TrangThaiDangKiem { get; set; }
         public string TrangThaiBaoHiem { get; set; }
         public Guid IdBaoHiem { get; set; }
         public string TenHangXe { get; set; }
         public string TenXe { get; set; }
-        public DateTime NgayKetThucBaoHiem{ get; set;}
-        public DateTime NgayHetHanDangKiem{ get; set;}
-      
+        public DateTime NgayKetThucBaoHiem { get; set; }
+        public DateTime NgayHetHanDangKiem { get; set; }
+
         public XeVM(Xe x)
         {
             _baohiem = new XeBaoHiemServiece();
@@ -54,16 +54,18 @@ namespace Bus.ViewModal
 
             this.TenHangXe = _xe.GetTenHangXe(x.IdLoaiXe);
 
-            this.NgayKetThucBaoHiem = _baohiem.NgayHHBaoHiem(x.ID);          
-
-            if (NgayKetThucBaoHiem >= DateTime.Now.AddDays(3))
-            {
-                TrangThaiBaoHiem = "Còn hạn";
-            }
-            else if (NgayKetThucBaoHiem > DateTime.Now)
+            this.NgayKetThucBaoHiem = _baohiem.NgayHHBaoHiem(x.ID);
+            if (NgayKetThucBaoHiem > DateTime.Now && NgayKetThucBaoHiem <= DateTime.Now.AddDays(7))
             {
                 TrangThaiBaoHiem = "Sắp hết hạn";
             }
+            else
+
+           if (NgayKetThucBaoHiem > DateTime.Now.AddDays(7))
+            {
+                TrangThaiBaoHiem = "Còn hạn";
+            }
+
             else
             {
                 TrangThaiBaoHiem = "Hết hạn";
@@ -71,16 +73,16 @@ namespace Bus.ViewModal
 
 
             this.NgayHetHanDangKiem = _dangkiem.NgayHHDangKiem(x.ID);
-
-            // Xác định trạng thái đăng kiểm của xe dựa vào ngày hết hạn đăng kiểm và thời gian hiện tại
-            if (NgayHetHanDangKiem >= DateTime.Now.AddDays(3))
-            {
-                TrangThaiDangKiem = "Còn hạn";
-            }
-            else if (NgayHetHanDangKiem > DateTime.Now)
+            if (NgayHetHanDangKiem > DateTime.Now && NgayHetHanDangKiem <= DateTime.Now.AddDays(7))
             {
                 TrangThaiDangKiem = "Sắp hết hạn";
             }
+            else
+            if (NgayHetHanDangKiem > DateTime.Now.AddDays(7))
+            {
+                TrangThaiDangKiem = "Còn hạn";
+            }
+
             else
             {
                 TrangThaiDangKiem = "Hết hạn";

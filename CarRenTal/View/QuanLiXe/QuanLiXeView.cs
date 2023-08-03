@@ -24,6 +24,8 @@ namespace CarRenTal
         IXeServiece _xe;
         IXeBaoHiemServiece _baoHiem;
         IDangKiemServiece _dangkiem;
+        IMauSacServiece _mau;
+        IHangXeServiece _hangXe;
         private Guid selectedXeId;
         public QuanLiXeView()
         {
@@ -31,9 +33,28 @@ namespace CarRenTal
             _xe = new XeServiece();
             _baoHiem = new XeBaoHiemServiece();
             _dangkiem = new DangKiemServiece();
+            _mau = new MauSacServiece();
+            _hangXe = new HangXeServiece();
             LoadData();
+            addCCB();
         }
+        private void addCCB()
+        {
+            cb_seachms.Items.Clear();
+            cb_seachms.Items.Add("");
+            foreach (var x in _mau.GetAll())
+            {
+                cb_seachms.Items.Add(x.TenMauSac);
 
+            }
+
+            cb_seachhx.Items.Clear();
+            cb_seachhx.Items.Add("");
+            foreach (var x in _hangXe.GetAllHangXe())
+            {
+                cb_seachhx.Items.Add(x.Name);
+            }
+        }
         private void QuanLiXe_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -145,7 +166,7 @@ namespace CarRenTal
 
         private void bt_add_Click(object sender, EventArgs e)
         {
-            using (var addform = new ThemXe())
+            using (var addform = new ThemXe(this))
             {
                 addform.ShowDialog();
             }
@@ -246,6 +267,69 @@ namespace CarRenTal
             {
                 MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện xem.");
             }
+        }
+
+        private void bt_hx_Click(object sender, EventArgs e)
+        {
+            var hangxe = new View.HangXeView();
+            {
+                hangxe.ShowDialog();
+            }
+        }
+
+        private void bt_qllx_Click(object sender, EventArgs e)
+        {
+            var loaixe = new View.QuanLiXe.LoaiXeView();
+            {
+                loaixe.ShowDialog();
+            }
+        }
+
+        private void cb_lsg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_seachms_TextChanged(object sender, EventArgs e)
+        {
+            string mausac = cb_seachms.Text;
+            var filterms = _xe.GetAll().Where(x => x.MauSac.Contains(mausac));
+            dtg_show.Rows.Clear();
+            int stt = 1;
+            foreach (var x in filterms)
+            {
+                string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
+                string TenhangXe = x.TenHangXe;
+                int LoaiXe = x.SoGhe;
+
+                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+            }
+        }
+
+        private void cb_seachhx_TextChanged(object sender, EventArgs e)
+        {
+            string hangxe = cb_seachhx.Text;
+            var filterhx = _xe.GetAll().Where(x => x.TenHangXe.Contains(hangxe));
+            dtg_show.Rows.Clear();
+            int stt = 1;
+            foreach (var x in filterhx)
+            {
+                string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
+                string TenhangXe = x.TenHangXe;
+                int LoaiXe = x.SoGhe;
+
+                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+            }
+        }
+
+        private void cb_seachms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QuanLiXeView_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

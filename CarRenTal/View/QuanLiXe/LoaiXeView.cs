@@ -113,6 +113,10 @@ namespace CarRenTal.View.QuanLiXe
             {
                 MessageBox.Show("Nhập đủ giá trị");
             }
+            else if (_loaiXeServiece.GetAll().Any(x => x.Name == tb_name.Text))
+            {
+                MessageBox.Show("Tên loại xe đã tồn tại ");
+            }
             else
             {
                 LoaiXe lxview = new LoaiXe();
@@ -137,7 +141,10 @@ namespace CarRenTal.View.QuanLiXe
                     MessageBox.Show("Thành công");
                     LoadData();
                 }
-                else { MessageBox.Show("Không thành công"); }
+                else
+                {
+                    MessageBox.Show("Không thành công");
+                }
 
 
             }
@@ -237,6 +244,10 @@ namespace CarRenTal.View.QuanLiXe
             if (tb1 || tb2 || cb1 || cb2 || tb3 || !(rd_0.Checked || rd_1.Checked))
             {
                 MessageBox.Show("Nhập đủ giá trị");
+            }
+            else if (_loaiXeServiece.GetAll().Any(x => x.Name == tb_name.Text))
+            {
+                MessageBox.Show("Tên loại xe đã tồn tại ");
             }
             else
             {
