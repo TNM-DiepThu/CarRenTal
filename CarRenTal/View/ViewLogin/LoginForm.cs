@@ -21,6 +21,7 @@ namespace CarRenTal.View.ViewLogin
         {
             InitializeComponent();
             loginService = new LoginService();
+
         }
 
         private void lb_forgotPass_Click(object sender, EventArgs e)

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarRenTal.View.QuanLyChoThueXe
+namespace CarRenTal.View._2.QuanLyChoThueXe
 {
-    public partial class HistoryCTX : Form
+    public partial class PhuPhi : Form
     {
-        public HistoryCTX()
+        public PhuPhi()
         {
             InitializeComponent();
         }

@@ -76,9 +76,11 @@ namespace CarRenTal.View._1.ChoThueXe
             cbb_hangXe.DataSource = service.GetHangXe();
             cbb_hangXe.DisplayMember = "Name";
             cbb_hangXe.ValueMember = "Id";
+
             cbb_typeGiayTo.DataSource = service.GetGiayTo();
             cbb_typeGiayTo.DisplayMember = "LoaiGiayTo";
             cbb_typeGiayTo.ValueMember = "Id";
+
             cbb_taiSan.DataSource = service.GetTaiSan();
             cbb_taiSan.DisplayMember = "LoaiTaiSan";
             cbb_taiSan.ValueMember = "Id";
