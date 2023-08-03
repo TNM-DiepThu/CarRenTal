@@ -1,4 +1,5 @@
 ﻿using CarRenTal.View._7.QuanLyTaiKhoan;
+using Dal.Modal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +14,10 @@ namespace CarRenTal.View.MainView
 {
     public partial class MainViewQL : Form
     {
-        public MainViewQL()
+        TaiKhoan tk = new TaiKhoan();
+        public MainViewQL(TaiKhoan tk)
         {
+            tk = this.tk;
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.Font;
         }
@@ -44,13 +47,13 @@ namespace CarRenTal.View.MainView
             btnQLNV.BackColor = Color.White;
             btnQLKH.BackColor = Color.White;
             btnQLTC.BackColor = Color.White;
-            btnAccount.BackColor = Color.White;
+            btnDangXuat.BackColor = Color.White;
 
             buttonAction.BackColor = Color.LightBlue;
         }
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HangXeView());
+            OpenChildForm(new View._1.ChoThueXe.ChoThueXeForm(tk.NhanVien));
             ChangeBackGroundButton(btnQLCTX);
             //btnQLCTX.BackColor = Color.Blue;
 
@@ -68,39 +71,39 @@ namespace CarRenTal.View.MainView
 
         private void btnQLX_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new QuanLiXeView());
             ChangeBackGroundButton(btnQLX);
 
         }
 
         private void btnQLHD_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new View._4._QuanLyHoaDon.QLHDDView());
             ChangeBackGroundButton(btnQLHD);
         }
 
         private void btnQLNV_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new View._7.QuanLyTaiKhoan.QuanLyTaiKhoan());
             ChangeBackGroundButton(btnQLNV);
         }
 
         private void btnQLKH_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new View._5._QuanLyKhachHang.QLKHView());
             ChangeBackGroundButton(btnQLKH);
         }
 
         private void btnQLTC_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new HangXeView());
+            OpenChildForm(new View._6.QuanLyThuChi.ChiTietThuChiView());
             ChangeBackGroundButton(btnQLTC);
         }
 
         private void btnAccount_Click(object sender, EventArgs e)
         {
             OpenChildForm(new QuanLyTaiKhoan());
-            ChangeBackGroundButton(btnAccount);
+            ChangeBackGroundButton(btnDangXuat);
         }
 
         private void btnHome_Click(object sender, EventArgs e)

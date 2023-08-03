@@ -19,22 +19,33 @@ namespace Bus.Serviece.Implements
         ChiPhiPhatSinhRepo CPPSRepo = new ChiPhiPhatSinhRepo();
         List<ChiPhiPhatSinh> _lstChiPhiPhatSinh;
 
+       
+
         Xe_BaoHiemRepo xe_BaoHiemRepo= new Xe_BaoHiemRepo();
         DangKiemRepo DangKiemRepo = new DangKiemRepo();
         BaoDuongRepo baoDuongRepo = new BaoDuongRepo();
         List<BaoHiem> _lstBHX;
-        List<DangKiemRepo> _lstĐKX;
-        List<BaoDuongRepo> _lstBDX;
+        List<DangKiem> _lstĐKX;
+        List<BaoDuong> _lstBDX;
         public XeService()
         {
-                _lstXe = new List<Xe>();
+            _lstXe = new List<Xe>();
             _lstLoaiXe = new List<LoaiXe>();
             _lstChiPhiPhatSinh = new List<ChiPhiPhatSinh>();
+            _lstBHX = new List<BaoHiem>();
+            _lstBDX = new List<BaoDuong>();
+            _lstĐKX = new List<DangKiem>();
         }
 
         public List<Xe> GetAll()
         {
-            return xeRepo.GetXe().ToList();
+            _lstLoaiXe = loaiXeRepo.GetALL();
+            List < Xe >  xeCanLay = xeRepo.GetXe();
+            foreach (var i in xeCanLay)
+            {
+                i.LoaiXe = _lstLoaiXe.FirstOrDefault(c => c.Id == i.IdLoaiXe);
+            }
+            return xeCanLay;
         }
 
         public List<XeBaoHiem> GetAllBHX()

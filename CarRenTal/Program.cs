@@ -1,3 +1,4 @@
+using CarRenTal.View.MainView;
 using CarRenTal.View.ViewLogin;
 
 namespace CarRenTal
@@ -13,7 +14,7 @@ namespace CarRenTal
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new QuanLiXeView());
+            Application.Run(new View.ViewLogin.MainLoginForm());
         }
     }
 }
