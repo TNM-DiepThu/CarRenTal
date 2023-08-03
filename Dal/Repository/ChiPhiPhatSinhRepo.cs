@@ -46,5 +46,19 @@ namespace Dal.Repository
                 return false;
             }
         }
+
+        public bool RemoveAll(ChiPhiPhatSinh chiPhiPhatSinh)
+        {
+            try
+            {
+                db.chiPhiPhatSinhs.RemoveRange(db.chiPhiPhatSinhs.Where(p=>p.IdHDCT==chiPhiPhatSinh.IdHDCT));
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
