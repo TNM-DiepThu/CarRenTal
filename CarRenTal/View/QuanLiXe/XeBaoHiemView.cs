@@ -91,6 +91,9 @@ namespace CarRenTal.View.QuanLiXe
             {
                 MessageBox.Show("Nhập giá trị");
             }
+            else if (dtp_bd.Value > dtp_kt.Value) { MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc"); }
+            else
+
             if (_bhsv.Add(GetData(), xeId)) { MessageBox.Show("Thành công"); }
             else { MessageBox.Show("Không thành công"); }
         }
@@ -101,6 +104,8 @@ namespace CarRenTal.View.QuanLiXe
             {
                 MessageBox.Show("Nhập giá trị");
             }
+            else if (dtp_bd.Value > dtp_kt.Value) { MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc"); }
+            else
             if (_bhsv.Edit(GetData(), xeId)) { MessageBox.Show("Thành công"); }
             else { MessageBox.Show("Không thành công"); }
         }

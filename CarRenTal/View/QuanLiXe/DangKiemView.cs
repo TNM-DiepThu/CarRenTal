@@ -82,9 +82,12 @@ namespace CarRenTal.View.QuanLiXe
             if (dtp_bd == null || dtp_kt == null || tb_cp.Text == "")
             {
                 MessageBox.Show("Nhập đủ dữ liệu");
-            }else
-            if(_id==Guid.Empty) { MessageBox.Show("vui lòng click vào STT"); }else
-            if (_dk.Edit(GetData(),xeId))
+            }
+            else
+            if (_id == Guid.Empty) { MessageBox.Show("vui lòng click vào STT"); }
+            else if (dtp_bd.Value > dtp_kt.Value) { MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc"); }
+            else
+            if (_dk.Edit(GetData(), xeId))
             {
                 MessageBox.Show("thành công");
             }

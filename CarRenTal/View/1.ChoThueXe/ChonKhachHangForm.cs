@@ -25,7 +25,7 @@ namespace CarRenTal.View._1.ChoThueXe
         VideoCaptureDevice finalFrame = new VideoCaptureDevice();
         int currenInfor = 0;
         ChoThueXeService choThueXeService = new ChoThueXeService();
-       public  KhachHang khachHangChon = new KhachHang();
+        public KhachHang khachHangChon = new KhachHang();
         List<KhachHang> _lstKhachHang;
         public ChonKhachHangForm()
         {

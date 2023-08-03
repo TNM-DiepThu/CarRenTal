@@ -21,16 +21,20 @@ namespace CarRenTal.View.QuanLiXe
         IMauSacServiece _mauSacServiece;
         ILoaiXeServiece _loaiXeServiece;
         IDangKiemServiece _dk;
+        IHangXeServiece _hx;
         Guid _id;
         Guid _id2;
-        public ThemXe()
+        QuanLiXeView _quanLiXeView;
+        public ThemXe(QuanLiXeView quanLiXeView)
         {
             _xesv = new XeServiece();
             _mauSacServiece = new MauSacServiece();
             _loaiXeServiece = new LoaiXeServiece();
             _dk = new DangKiemServiece();
+            _hx = new HangXeServiece();
             InitializeComponent();
             addCCB();
+            _quanLiXeView = quanLiXeView;
         }
         private bool IsInteger(string input)
         {
@@ -176,6 +180,12 @@ namespace CarRenTal.View.QuanLiXe
             {
                 cb_name.Items.Add(x.Name);
             }
+            cb_hangxe.Items.Clear();
+            foreach (var x in _hx.GetAllHangXe())
+            {
+                cb_hangxe.Items.Add(x.Name);
+            }
+
         }
 
         private XeVM GetDaTa()
@@ -228,7 +238,21 @@ namespace CarRenTal.View.QuanLiXe
                 }
             }
         }
+        private List<string> tenHangXeList;
+        private List<string> tenXeList;
+        private void LoadTenXeByTenHangXe()
+        {
+            // Lấy danh sách TenXe từ bảng LoaiXe dựa vào TenHangXe đã chọn
+            string selectedTenHangXe = cb_hangxe.SelectedItem as string;
+            if (selectedTenHangXe != null)
+            {
+                tenXeList = _loaiXeServiece.GetAll().Where(l => l.TenHangXe == selectedTenHangXe).Select(l => l.Name).ToList();
 
+                // Đổ danh sách TenXe vào combobox cb_tenxe
+                cb_name.Items.Clear();
+                cb_name.Items.AddRange(tenXeList.ToArray());
+            }
+        }
         private void ThemXe_Load(object sender, EventArgs e)
         {
 
@@ -241,9 +265,13 @@ namespace CarRenTal.View.QuanLiXe
 
         private void ThemXe_FormClosed(object sender, FormClosedEventArgs e)
         {
-          
+            _quanLiXeView.LoadData();
         }
-        
+
+        private void cb_hangxe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadTenXeByTenHangXe();
+        }
     }
 }
 
