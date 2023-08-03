@@ -61,6 +61,8 @@
             dtgv_data.RowTemplate.Height = 29;
             dtgv_data.Size = new Size(610, 280);
             dtgv_data.TabIndex = 0;
+            dtgv_data.RowsAdded += dtgv_data_RowsAdded;
+            dtgv_data.RowsRemoved += dtgv_data_RowsRemoved;
             // 
             // tx_tongTien
             // 
@@ -82,6 +84,7 @@
             // 
             // cbb_loaiPP
             // 
+            cbb_loaiPP.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_loaiPP.FormattingEnabled = true;
             cbb_loaiPP.Location = new Point(138, 140);
             cbb_loaiPP.Name = "cbb_loaiPP";
@@ -147,6 +150,7 @@
             bt_huy.TabIndex = 6;
             bt_huy.Text = "Xóa";
             bt_huy.UseVisualStyleBackColor = true;
+            bt_huy.Click += bt_huy_Click;
             // 
             // bt_ok
             // 
@@ -156,6 +160,7 @@
             bt_ok.TabIndex = 6;
             bt_ok.Text = "Hoàn thành";
             bt_ok.UseVisualStyleBackColor = true;
+            bt_ok.Click += bt_ok_Click;
             // 
             // groupBox1
             // 
@@ -216,6 +221,8 @@
             Controls.Add(label1);
             Controls.Add(tx_tongTien);
             Controls.Add(dtgv_data);
+            MaximumSize = new Size(1091, 561);
+            MinimumSize = new Size(1091, 561);
             Name = "PhuPhi";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Phụ phí thuê xe";

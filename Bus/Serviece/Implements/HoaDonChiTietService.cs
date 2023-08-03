@@ -15,6 +15,7 @@ namespace Bus.Serviece.Implements
         HoaDonThueXeRepo HoaDonThueXeRepo= new HoaDonThueXeRepo();
         KhachHangRepo KhachHangRepo= new KhachHangRepo();
         XeRepo xeRepo = new XeRepo();
+        ChiPhiPhatSinhRepo phuPhiRepo= new ChiPhiPhatSinhRepo();
         LoaiXeRepo loaiXeRepo = new LoaiXeRepo();
         LoaiPhuPhiRepo loaiPhuPhiRepo = new LoaiPhuPhiRepo();
         GiayToTheChapRepo giayToRepo= new GiayToTheChapRepo();
@@ -96,10 +97,15 @@ namespace Bus.Serviece.Implements
                 hdct.HoaDonThueXe.KhachHang= KhachHangRepo.GetALL().FirstOrDefault(p => p.Id == hdct.HoaDonThueXe.IdKhachHang);
                 hdct.Xe.LoaiXe= loaiXeRepo.GetALL().FirstOrDefault(p => p.Id == hdct.Xe.IdLoaiXe);
                 hdct.theChaps= theChapRepo.GetAll().Where(p=>p.IdHDCT==hdct.Id).ToList();
+                hdct.chiPhiPhatSinhs= phuPhiRepo.GetALL().Where(p=>p.IdHDCT==hdct.Id).ToList();
+                foreach (var item in hdct.chiPhiPhatSinhs)
+                {
+                    item.LoaiPhuPhi= loaiPhuPhiRepo.GetALL().FirstOrDefault(p=>p.Id==item.IdLPP);
+                }
             }
             if (timKiem != null)
             {
-                lstHDCT = lstHDCT.Where(p => p.HoaDonThueXe.KhachHang.Name.Contains(timKiem) || p.HoaDonThueXe.KhachHang.CCCD.Contains(timKiem)).ToList();
+                lstHDCT = lstHDCT.Where(p => p.HoaDonThueXe.KhachHang.Name.ToUpper().Contains(timKiem.ToUpper()) || p.HoaDonThueXe.KhachHang.CCCD.Contains(timKiem.ToUpper())).ToList();
             }
             return lstHDCT;
         }
@@ -115,6 +121,16 @@ namespace Bus.Serviece.Implements
             theChap.TinhTrang = 2;
             theChapRepo.Update(theChap);
 
+        }
+
+        public void CreatePhuPhi(ChiPhiPhatSinh phuPhi)
+        {
+            phuPhiRepo.Create(phuPhi);
+        }
+
+        public void RemoveChiPhi(ChiPhiPhatSinh chiPhiPhatSinh)
+        {
+            phuPhiRepo.RemoveAll(chiPhiPhatSinh);
         }
     }
 }

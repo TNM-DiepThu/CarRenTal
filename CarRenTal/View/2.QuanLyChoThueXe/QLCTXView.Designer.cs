@@ -66,6 +66,9 @@
             bt_chiTiet = new Button();
             tx_tenKhach = new TextBox();
             groupBox2 = new GroupBox();
+            label5 = new Label();
+            tx_phuPhi = new TextBox();
+            bt_addPP = new Button();
             label6 = new Label();
             cbb_loaiTaiSan = new ComboBox();
             label4 = new Label();
@@ -463,6 +466,9 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label5);
+            groupBox2.Controls.Add(tx_phuPhi);
+            groupBox2.Controls.Add(bt_addPP);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(cbb_loaiTaiSan);
             groupBox2.Controls.Add(label4);
@@ -473,10 +479,41 @@
             groupBox2.Controls.Add(tx_giaTri);
             groupBox2.Location = new Point(1111, 161);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(354, 301);
+            groupBox2.Size = new Size(354, 379);
             groupBox2.TabIndex = 10;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin thế chấp";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(19, 291);
+            label5.Name = "label5";
+            label5.Size = new Size(109, 20);
+            label5.TabIndex = 14;
+            label5.Text = "Số tiền phụ phí";
+            // 
+            // tx_phuPhi
+            // 
+            tx_phuPhi.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            tx_phuPhi.Location = new Point(19, 324);
+            tx_phuPhi.Name = "tx_phuPhi";
+            tx_phuPhi.ReadOnly = true;
+            tx_phuPhi.Size = new Size(226, 34);
+            tx_phuPhi.TabIndex = 13;
+            tx_phuPhi.Text = "0";
+            // 
+            // bt_addPP
+            // 
+            bt_addPP.Font = new Font("Times New Roman", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            bt_addPP.Location = new Point(250, 324);
+            bt_addPP.Margin = new Padding(2);
+            bt_addPP.Name = "bt_addPP";
+            bt_addPP.Size = new Size(83, 39);
+            bt_addPP.TabIndex = 12;
+            bt_addPP.Text = "Thêm";
+            bt_addPP.UseVisualStyleBackColor = true;
+            bt_addPP.Click += bt_addPP_Click;
             // 
             // label6
             // 
@@ -493,7 +530,7 @@
             cbb_loaiTaiSan.FormattingEnabled = true;
             cbb_loaiTaiSan.Location = new Point(19, 124);
             cbb_loaiTaiSan.Name = "cbb_loaiTaiSan";
-            cbb_loaiTaiSan.Size = new Size(302, 28);
+            cbb_loaiTaiSan.Size = new Size(314, 28);
             cbb_loaiTaiSan.TabIndex = 6;
             // 
             // label4
@@ -511,7 +548,7 @@
             cbb_loaiGiayTo.FormattingEnabled = true;
             cbb_loaiGiayTo.Location = new Point(19, 60);
             cbb_loaiGiayTo.Name = "cbb_loaiGiayTo";
-            cbb_loaiGiayTo.Size = new Size(302, 28);
+            cbb_loaiGiayTo.Size = new Size(314, 28);
             cbb_loaiGiayTo.TabIndex = 4;
             // 
             // label7
@@ -536,7 +573,7 @@
             // 
             tx_chiTiet.Location = new Point(19, 251);
             tx_chiTiet.Name = "tx_chiTiet";
-            tx_chiTiet.Size = new Size(302, 27);
+            tx_chiTiet.Size = new Size(314, 27);
             tx_chiTiet.TabIndex = 0;
             // 
             // tx_giaTri
@@ -544,7 +581,7 @@
             tx_giaTri.Enabled = false;
             tx_giaTri.Location = new Point(19, 188);
             tx_giaTri.Name = "tx_giaTri";
-            tx_giaTri.Size = new Size(302, 27);
+            tx_giaTri.Size = new Size(314, 27);
             tx_giaTri.TabIndex = 0;
             // 
             // gr_chucVu
@@ -583,9 +620,9 @@
             groupBox5.Controls.Add(tx_thanhToan);
             groupBox5.Controls.Add(bt_cancels);
             groupBox5.Controls.Add(bt_continue);
-            groupBox5.Location = new Point(1111, 468);
+            groupBox5.Location = new Point(1111, 546);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(354, 313);
+            groupBox5.Size = new Size(354, 240);
             groupBox5.TabIndex = 12;
             groupBox5.TabStop = false;
             groupBox5.Text = "Thanh toán";
@@ -593,7 +630,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(23, 49);
+            label18.Location = new Point(19, 37);
             label18.Name = "label18";
             label18.Size = new Size(75, 20);
             label18.TabIndex = 9;
@@ -604,16 +641,16 @@
             cbb_trangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_trangThai.FormattingEnabled = true;
             cbb_trangThai.Items.AddRange(new object[] { "Đã hủy", "Đã đóng cọc", "Đang thuê", "Đã hoàn thành", "Không đến lấy xe", "Bồi thường cọc" });
-            cbb_trangThai.Location = new Point(23, 86);
+            cbb_trangThai.Location = new Point(19, 70);
             cbb_trangThai.Name = "cbb_trangThai";
-            cbb_trangThai.Size = new Size(302, 28);
+            cbb_trangThai.Size = new Size(314, 28);
             cbb_trangThai.TabIndex = 8;
             cbb_trangThai.SelectedIndexChanged += cbb_trangThai_SelectedIndexChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(19, 131);
+            label3.Location = new Point(19, 111);
             label3.Name = "label3";
             label3.Size = new Size(157, 20);
             label3.TabIndex = 6;
@@ -622,17 +659,17 @@
             // tx_thanhToan
             // 
             tx_thanhToan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            tx_thanhToan.Location = new Point(19, 168);
+            tx_thanhToan.Location = new Point(19, 144);
             tx_thanhToan.Name = "tx_thanhToan";
             tx_thanhToan.ReadOnly = true;
-            tx_thanhToan.Size = new Size(302, 34);
+            tx_thanhToan.Size = new Size(314, 34);
             tx_thanhToan.TabIndex = 4;
             tx_thanhToan.Text = "0";
             // 
             // bt_cancels
             // 
             bt_cancels.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            bt_cancels.Location = new Point(194, 249);
+            bt_cancels.Location = new Point(183, 197);
             bt_cancels.Margin = new Padding(2);
             bt_cancels.Name = "bt_cancels";
             bt_cancels.Size = new Size(129, 38);
@@ -644,7 +681,7 @@
             // bt_continue
             // 
             bt_continue.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            bt_continue.Location = new Point(23, 249);
+            bt_continue.Location = new Point(10, 197);
             bt_continue.Margin = new Padding(2);
             bt_continue.Name = "bt_continue";
             bt_continue.Size = new Size(129, 38);
@@ -746,5 +783,8 @@
         private TextBox tx_thanhToan;
         private Button bt_cancels;
         private Button bt_continue;
+        private Label label5;
+        private TextBox tx_phuPhi;
+        private Button bt_addPP;
     }
 }

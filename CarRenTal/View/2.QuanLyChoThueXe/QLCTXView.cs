@@ -70,6 +70,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
         }
         private void SetBackGround()
         {
+            hoaDonCT = null;
             bt_dangThue.BackColor = SystemColors.Window;
             bt_denNgay.BackColor = SystemColors.Window;
             bt_nhanXe.BackColor = SystemColors.Window;
@@ -147,6 +148,15 @@ namespace CarRenTal.View.QuanLyChoThueXe
                     cbb_loaiTaiSan.SelectedValue = hoaDonCT.theChaps.ToList()[0].IdTS;
                     tx_giaTri.Text = hoaDonCT.theChaps.ToList()[0].GiaTri.ToString();
                     tx_chiTiet.Text = hoaDonCT.theChaps.ToList()[0].MoTa;
+                    if (hoaDonCT.chiPhiPhatSinhs != null)
+                    {
+                        decimal sum = 0;
+                        foreach (var item in hoaDonCT.chiPhiPhatSinhs)
+                        {
+                            sum += item.GiaTien;
+                        }
+                        tx_phuPhi.Text = sum.ToString();
+                    }
                 }
             }
         }
@@ -216,19 +226,27 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 if (cbb_trangThai.SelectedIndex == 2) return;
                 if (cbb_trangThai.SelectedIndex == 0 || cbb_trangThai.SelectedIndex == 3)
                 {
-                    if (cbb_trangThai.SelectedIndex==3)
-                    {
-                        
-                    }
                     hoaDonCT.TrangThai = cbb_trangThai.SelectedIndex;
                     hdService.UpdateHDCT(hoaDonCT);
-                    hdService.UpdateTheChap(new TheChap() {Id=hoaDonCT.Id});
+                    hdService.UpdateTheChap(new TheChap() { Id = hoaDonCT.Id });
                 }
                 else
                 {
                     MessageBox.Show("Chỉ có thế chuyển trạng thái thành hủy hoặc hoàn thành");
                 }
                 LoadData(trangThai, null); return;
+            }
+            else if (dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Đến ngày trả")
+            {
+                if (cbb_trangThai.SelectedIndex != 0|| cbb_trangThai.SelectedIndex != 3)
+                {
+                    MessageBox.Show("Chỉ có thế chuyển trạng thái thành hủy hoặc hoàn thành");
+                }
+                else 
+                {
+                    hoaDonCT.TrangThai= cbb_trangThai.SelectedIndex;
+                    hdService.UpdateHDCT(hoaDonCT);
+                }
             }
         }
 
@@ -256,9 +274,10 @@ namespace CarRenTal.View.QuanLyChoThueXe
             tx_chiTiet.Text = "";
             tx_giaTri.Text = "";
             tx_sdt.Text = "";
-            tx_search.Text = "";
+           // tx_search.Text = "";
             tx_tenKhach.Text = "";
             tx_thanhToan.Text = "0";
+            tx_phuPhi.Text = "0";
             cbb_trangThai.SelectedIndex = -1;
             hoaDonCT = null;
         }
@@ -288,14 +307,36 @@ namespace CarRenTal.View.QuanLyChoThueXe
                     tx_thanhToan.Text = 0.ToString();
                 }
             }
+            else if (hoaDonCT.TrangThai==2)
+            {
+                if (cbb_trangThai.SelectedIndex==3)
+                {
+                    tx_thanhToan.Text = tx_phuPhi.Text;
+                }
+                else
+                {
+                    tx_thanhToan.Text = 0.ToString();
+                }
+            }
         }
 
         private void bt_chiTiet_Click(object sender, EventArgs e)
         {
+            using (ThongTinKhach form = new ThongTinKhach(hoaDonCT.HoaDonThueXe.KhachHang))
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void bt_addPP_Click(object sender, EventArgs e)
+        {
             if (hoaDonCT != null)
             {
-                ThongTinKhach form = new ThongTinKhach(hoaDonCT.HoaDonThueXe.KhachHang);
-                form.ShowDialog();
+                using (PhuPhi form = new PhuPhi(hoaDonCT))
+                {
+                    form.ShowDialog();
+                }
+                LoadData(trangThai, null);
             }
         }
     }
