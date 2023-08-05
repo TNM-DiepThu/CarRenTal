@@ -90,6 +90,7 @@ namespace CarRenTal.View.QuanLiXe
             if (_dk.Edit(GetData(), xeId))
             {
                 MessageBox.Show("thành công");
+                LoadData();
             }
             else { MessageBox.Show("Không thành công"); }
         }
