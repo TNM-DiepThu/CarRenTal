@@ -99,7 +99,7 @@
             tx_pass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             tx_pass.Location = new Point(111, 373);
             tx_pass.Name = "tx_pass";
-            tx_pass.Size = new Size(338, 34);
+            tx_pass.Size = new Size(348, 34);
             tx_pass.TabIndex = 2;
             tx_pass.UseSystemPasswordChar = true;
             // 
@@ -134,7 +134,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(571, 675);
+            ClientSize = new Size(574, 722);
             Controls.Add(pn_login);
             Name = "LoginForm";
             Text = "LoginForm";
