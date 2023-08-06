@@ -74,6 +74,22 @@ namespace CarRenTal.View.MainView
 
         private void MainViewQL_Load(object sender, EventArgs e)
         {
+            btnChoThueXe_Click(null, null);
+            CheckPower();
+        }
+
+        private void CheckPower()
+        {
+            if (_tk.NhanVien.ChucVu.TenChucVu == "Quản lý")
+            {
+                return;
+            }
+
+            btnQLX.Visible = false;
+            btnQLHD.Visible = false;
+            btnQLNV.Visible = false;
+            btnQLKH.Visible = false;
+            btnQLTC.Visible = false;
 
         }
 
@@ -116,16 +132,21 @@ namespace CarRenTal.View.MainView
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn đăng xuất không", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         private void btnChoThueXe_Click(object sender, EventArgs e)
         {
             OpenChildForm(new View._1.ChoThueXe.ChoThueXeForm(_tk.NhanVien));
             ChangeBackGroundButton(btnChoThueXe);
+        }
+
+        private void MainViewQL_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

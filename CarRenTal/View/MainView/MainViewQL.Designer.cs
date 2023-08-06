@@ -52,6 +52,7 @@
             grb_Funtion.Controls.Add(btnQLHD);
             grb_Funtion.Controls.Add(btnQLX);
             grb_Funtion.Controls.Add(btnQLCTX);
+            grb_Funtion.FlatStyle = FlatStyle.System;
             grb_Funtion.Location = new Point(9, 286);
             grb_Funtion.Margin = new Padding(2);
             grb_Funtion.Name = "grb_Funtion";
@@ -77,16 +78,16 @@
             // 
             // btnDangXuat
             // 
-            btnDangXuat.FlatAppearance.BorderSize = 0;
+            btnDangXuat.FlatAppearance.BorderSize = 2;
             btnDangXuat.FlatStyle = FlatStyle.Flat;
             btnDangXuat.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDangXuat.Location = new Point(24, 480);
+            btnDangXuat.ForeColor = Color.Red;
+            btnDangXuat.Location = new Point(4, 602);
             btnDangXuat.Margin = new Padding(2);
             btnDangXuat.Name = "btnDangXuat";
-            btnDangXuat.Size = new Size(307, 50);
+            btnDangXuat.Size = new Size(349, 50);
             btnDangXuat.TabIndex = 7;
             btnDangXuat.Text = "Đăng xuất";
-            btnDangXuat.TextAlign = ContentAlignment.MiddleLeft;
             btnDangXuat.UseVisualStyleBackColor = true;
             btnDangXuat.Click += btnDangXuat_Click;
             // 
@@ -198,9 +199,12 @@
             Controls.Add(pn_main);
             Controls.Add(grb_Funtion);
             Margin = new Padding(2);
+            MaximumSize = new Size(1914, 1000);
+            MinimumSize = new Size(1914, 1000);
             Name = "MainViewQL";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Car Rental";
+            FormClosing += MainViewQL_FormClosing;
             Load += MainViewQL_Load;
             grb_Funtion.ResumeLayout(false);
             ResumeLayout(false);
