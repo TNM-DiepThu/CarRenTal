@@ -18,15 +18,19 @@ namespace Bus.Serviece.Implements
         List<LoaiXe> _lstLoaiXe;
         ChiPhiPhatSinhRepo CPPSRepo = new ChiPhiPhatSinhRepo();
         List<ChiPhiPhatSinh> _lstChiPhiPhatSinh;
+        HoaDonThueXeRepo HoaDonThueXeRepo = new HoaDonThueXeRepo();
+        HoaDonChiTietRepo HoaDonChiTietRepo = new HoaDonChiTietRepo();
 
-       
 
         Xe_BaoHiemRepo xe_BaoHiemRepo= new Xe_BaoHiemRepo();
         DangKiemRepo DangKiemRepo = new DangKiemRepo();
         BaoDuongRepo baoDuongRepo = new BaoDuongRepo();
+
         List<BaoHiem> _lstBHX;
         List<DangKiem> _lstĐKX;
         List<BaoDuong> _lstBDX;
+        List<HoaDonThueXe> _lstHĐTX;
+        List<HoaDonChiTiet> _lstHĐCT;
         public XeService()
         {
             _lstXe = new List<Xe>();
@@ -35,6 +39,8 @@ namespace Bus.Serviece.Implements
             _lstBHX = new List<BaoHiem>();
             _lstBDX = new List<BaoDuong>();
             _lstĐKX = new List<DangKiem>();
+            _lstHĐTX = new List<HoaDonThueXe>();
+            _lstHĐCT = new List<HoaDonChiTiet>();
         }
 
         public List<Xe> GetAll()
@@ -46,6 +52,14 @@ namespace Bus.Serviece.Implements
                 i.LoaiXe = _lstLoaiXe.FirstOrDefault(c => c.Id == i.IdLoaiXe);
             }
             return xeCanLay;
+        }
+        public List<HoaDonThueXe> GetAllHDTX()
+        {
+            return HoaDonThueXeRepo.GetALL().ToList();
+        }
+        public List<HoaDonChiTiet> GetAllHDCT()
+        {
+            return HoaDonChiTietRepo.GetALL().ToList();
         }
 
         public List<XeBaoHiem> GetAllBHX()
