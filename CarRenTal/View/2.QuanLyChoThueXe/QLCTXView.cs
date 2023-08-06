@@ -165,6 +165,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
         {
             if (hoaDonCT == null)
             {
+                MessageBox.Show("Chỉ có thế chuyển trạng thái về khách không đến lấy xe");
                 return;
             }
             if (hoaDonCT.TrangThai == 1)
@@ -234,11 +235,11 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 {
                     MessageBox.Show("Chỉ có thế chuyển trạng thái thành hủy hoặc hoàn thành");
                 }
-                LoadData(trangThai, null); return;
+            
             }
-            else if (dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Đến ngày trả")
+            else if (dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Đến ngày trả"|| dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Quá hạn trả xe")
             {
-                if (cbb_trangThai.SelectedIndex != 0|| cbb_trangThai.SelectedIndex != 3)
+                if (cbb_trangThai.SelectedIndex != 0 && cbb_trangThai.SelectedIndex != 3)
                 {
                     MessageBox.Show("Chỉ có thế chuyển trạng thái thành hủy hoặc hoàn thành");
                 }
@@ -248,6 +249,8 @@ namespace CarRenTal.View.QuanLyChoThueXe
                     hdService.UpdateHDCT(hoaDonCT);
                 }
             }
+            hdService.UpdateData();
+            LoadData(trangThai, null);
         }
 
         private string CheckTheChap()

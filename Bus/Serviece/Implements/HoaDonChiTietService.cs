@@ -1,5 +1,7 @@
 ﻿using Dal.Modal;
 using Dal.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +24,7 @@ namespace Bus.Serviece.Implements
         TaiSanTheChapRepo taiSanRepo= new TaiSanTheChapRepo();
         TheChapRepo theChapRepo= new TheChapRepo();
         List<HoaDonChiTiet> _lstHDCT;
-
+        HoaDonService hoaDonService = new HoaDonService();
         XeRepo XeRepo = new XeRepo();
         List<Xe> _lstXe;
 
@@ -131,6 +133,53 @@ namespace Bus.Serviece.Implements
         public void RemoveChiPhi(ChiPhiPhatSinh chiPhiPhatSinh)
         {
             phuPhiRepo.RemoveAll(chiPhiPhatSinh);
+        }
+
+        public LoaiXe Top1XeDay()
+        {
+            List<HoaDonChiTiet> lstHDCT = HDCTRepo.GetALL();
+            foreach (var hdct in lstHDCT)
+            {
+                hdct.Xe = xeRepo.GetXe().FirstOrDefault(p => p.ID == hdct.IdXe);
+                hdct.HoaDonThueXe = HoaDonThueXeRepo.GetALL().FirstOrDefault(p => p.Id == hdct.IdHoaDon);
+                hdct.HoaDonThueXe.KhachHang = KhachHangRepo.GetALL().FirstOrDefault(p => p.Id == hdct.HoaDonThueXe.IdKhachHang);
+                hdct.Xe.LoaiXe = loaiXeRepo.GetALL().FirstOrDefault(p => p.Id == hdct.Xe.IdLoaiXe);
+                hdct.chiPhiPhatSinhs = phuPhiRepo.GetALL().Where(p => p.IdHDCT == hdct.Id).ToList();
+                foreach (var item in hdct.chiPhiPhatSinhs)
+                {
+                    item.LoaiPhuPhi = loaiPhuPhiRepo.GetALL().FirstOrDefault(p => p.Id == item.IdLPP);
+                }
+            }
+            var mostRentedVehicleType = lstHDCT
+            .GroupBy(detail => detail.Xe.IdLoaiXe)
+            .Select(group => new
+            {
+                LoaiXeId = group.Key,
+                Count = group.Count()
+            })
+            .OrderByDescending(item => item.Count)
+            .FirstOrDefault();
+
+            if (mostRentedVehicleType != null)
+            {
+                var loaiXe = loaiXeRepo.GetALL()
+                    .Where(loai => loai.Id == mostRentedVehicleType.LoaiXeId)
+                    .FirstOrDefault();
+
+                return loaiXe;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void UpdateData()
+        {
+            foreach (var item in HoaDonThueXeRepo.GetALL())
+            {
+                hoaDonService.CheckHoaDon(item);
+            }
         }
     }
 }
