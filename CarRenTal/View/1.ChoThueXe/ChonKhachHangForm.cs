@@ -289,7 +289,6 @@ namespace CarRenTal.View._1.ChoThueXe
             {
                 if (choThueXeService.CreateKH(khachHang, nguoiThan))
                 {
-                    MessageBox.Show("Thành công");
                     khachHangChon = khachHang;
                     this.Close();
                 }
@@ -299,7 +298,6 @@ namespace CarRenTal.View._1.ChoThueXe
 
                 if (choThueXeService.UpdateKH(khachHang, nguoiThan))
                 {
-                    MessageBox.Show("Thành công");
                     khachHangChon = khachHang;
                     this.Close();
                 }
