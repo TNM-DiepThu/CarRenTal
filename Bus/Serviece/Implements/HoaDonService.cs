@@ -17,15 +17,6 @@ namespace Bus.Serviece.Implements
 
         public int CheckHoaDon(HoaDonThueXe hd)
         {
-            foreach (var item in hoaDonChiTietRepo.GetALL())
-            {
-                if (item.NgayBatDau.Date < DateTime.Now.Date && item.TrangThai == 1)
-                {
-                    item.TrangThai = 4;
-                    hoaDonChiTietRepo.Update(item);
-                }
-            }
-
             hd.HoaDonChiTiets = hoaDonChiTietRepo.GetALL().Where(p => p.IdHoaDon == hd.Id).ToList();
             int hoanThanh = 0, thucHien = 0, huy = 0, soLuong = 0;
             foreach (var hdct in hd.HoaDonChiTiets)
