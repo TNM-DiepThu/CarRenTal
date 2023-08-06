@@ -325,6 +325,10 @@ namespace CarRenTal.View.QuanLyChoThueXe
 
         private void bt_chiTiet_Click(object sender, EventArgs e)
         {
+            if (hoaDonCT == null)
+            {
+                return;
+            }
             using (ThongTinKhach form = new ThongTinKhach(hoaDonCT.HoaDonThueXe.KhachHang))
             {
                 form.ShowDialog();

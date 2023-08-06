@@ -50,11 +50,12 @@ namespace CarRenTal.View.ViewLogin
             {
                 var result = loginService.CheckLogin(tx_user.Text, tx_pass.Text);
                 if (result != null)
-                {                   
-                        this.Hide();
-                        View.MainView.MainViewQL main = new View.MainView.MainViewQL(result);
-                        main.Show();
-                        this.Show();                  
+                {
+                    tx_pass.Text = "";
+                    this.Hide();
+                    View.MainView.MainViewQL main = new View.MainView.MainViewQL(result);
+                    main.Show();
+                    this.Show();
 
                 }
                 else
