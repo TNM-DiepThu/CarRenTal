@@ -1,5 +1,6 @@
 using CarRenTal.View.MainView;
 using CarRenTal.View.ViewLogin;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CarRenTal
 {
@@ -14,10 +15,10 @@ namespace CarRenTal
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-     //       Application.Run(new View._1.ChoThueXe.ChoThueXeForm(new Dal.Modal.NhanVien() {Id= Guid.Parse("BC8C0A62-8157-475F-BB06-598569ACE162") }));
-           Application.Run(new QuanLiXeView() );
-         //   Application.Run(new View._2.QuanLyChoThueXe.PhuPhi());
-            
+            //       Application.Run(new View._1.ChoThueXe.ChoThueXeForm(new Dal.Modal.NhanVien() {Id= Guid.Parse("BC8C0A62-8157-475F-BB06-598569ACE162") }));
+            //Application.Run(new View.MainView.MainViewQL());
+            Application.Run(new View.ViewLogin.MainLoginForm());
+
         }
     }
 }

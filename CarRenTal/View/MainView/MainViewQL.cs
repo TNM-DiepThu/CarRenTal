@@ -1,4 +1,5 @@
 ﻿using CarRenTal.View._7.QuanLyTaiKhoan;
+using CarRenTal.View.QuanLyChoThueXe;
 using Dal.Modal;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
+using ZXing.QrCode.Internal;
 
 namespace CarRenTal.View.MainView
 {
     public partial class MainViewQL : Form
     {
-        TaiKhoan tk = new TaiKhoan();
+        TaiKhoan _tk = new TaiKhoan();
         public MainViewQL(TaiKhoan tk)
         {
-            tk = this.tk;
+            _tk = tk;
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.Font;
+        }
+
+        public MainViewQL()
+        {
         }
 
         private Form currentFormChild;
@@ -41,6 +48,7 @@ namespace CarRenTal.View.MainView
 
         private void ChangeBackGroundButton(Button buttonAction)
         {
+            btnChoThueXe.BackColor = Color.White;
             btnQLCTX.BackColor = Color.White;
             btnQLX.BackColor = Color.White;
             btnQLHD.BackColor = Color.White;
@@ -53,7 +61,7 @@ namespace CarRenTal.View.MainView
         }
         public void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new View._1.ChoThueXe.ChoThueXeForm(tk.NhanVien));
+            OpenChildForm(new View.QuanLyChoThueXe.QLCTXView(_tk.NhanVien));
             ChangeBackGroundButton(btnQLCTX);
             //btnQLCTX.BackColor = Color.Blue;
 
@@ -96,7 +104,7 @@ namespace CarRenTal.View.MainView
 
         private void btnQLTC_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new View._6.QuanLyThuChi.ChiTietThuChiView());
+            OpenChildForm(new View._6.QuanLyThuChi.QLCTView());
             ChangeBackGroundButton(btnQLTC);
         }
 
@@ -106,13 +114,18 @@ namespace CarRenTal.View.MainView
             ChangeBackGroundButton(btnDangXuat);
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
+        private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            if (currentFormChild != null)
+            if (MessageBox.Show("Bạn có muốn đăng xuất không", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                currentFormChild.Close(); // if form open is close
+                this.Close();
             }
-            MessageBox.Show("đã click");
+        }
+
+        private void btnChoThueXe_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new View._1.ChoThueXe.ChoThueXeForm(_tk.NhanVien));
+            ChangeBackGroundButton(btnChoThueXe);
         }
     }
 }

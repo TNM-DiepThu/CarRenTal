@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainViewQL));
             grb_Funtion = new GroupBox();
+            btnChoThueXe = new Button();
             btnDangXuat = new Button();
             btnQLTC = new Button();
             btnQLKH = new Button();
@@ -42,6 +44,7 @@
             // 
             // grb_Funtion
             // 
+            grb_Funtion.Controls.Add(btnChoThueXe);
             grb_Funtion.Controls.Add(btnDangXuat);
             grb_Funtion.Controls.Add(btnQLTC);
             grb_Funtion.Controls.Add(btnQLKH);
@@ -57,30 +60,45 @@
             grb_Funtion.TabIndex = 0;
             grb_Funtion.TabStop = false;
             // 
+            // btnChoThueXe
+            // 
+            btnChoThueXe.FlatAppearance.BorderSize = 0;
+            btnChoThueXe.FlatStyle = FlatStyle.Flat;
+            btnChoThueXe.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            btnChoThueXe.Location = new Point(24, 43);
+            btnChoThueXe.Margin = new Padding(2);
+            btnChoThueXe.Name = "btnChoThueXe";
+            btnChoThueXe.Size = new Size(307, 50);
+            btnChoThueXe.TabIndex = 8;
+            btnChoThueXe.Text = "Cho thuê xe";
+            btnChoThueXe.TextAlign = ContentAlignment.MiddleLeft;
+            btnChoThueXe.UseVisualStyleBackColor = true;
+            btnChoThueXe.Click += btnChoThueXe_Click;
+            // 
             // btnDangXuat
             // 
             btnDangXuat.FlatAppearance.BorderSize = 0;
             btnDangXuat.FlatStyle = FlatStyle.Flat;
             btnDangXuat.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDangXuat.Location = new Point(13, 394);
+            btnDangXuat.Location = new Point(24, 480);
             btnDangXuat.Margin = new Padding(2);
             btnDangXuat.Name = "btnDangXuat";
-            btnDangXuat.Size = new Size(256, 50);
+            btnDangXuat.Size = new Size(307, 50);
             btnDangXuat.TabIndex = 7;
             btnDangXuat.Text = "Đăng xuất";
             btnDangXuat.TextAlign = ContentAlignment.MiddleLeft;
             btnDangXuat.UseVisualStyleBackColor = true;
-            btnDangXuat.Click += btnAccount_Click;
+            btnDangXuat.Click += btnDangXuat_Click;
             // 
             // btnQLTC
             // 
             btnQLTC.FlatAppearance.BorderSize = 0;
             btnQLTC.FlatStyle = FlatStyle.Flat;
             btnQLTC.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            btnQLTC.Location = new Point(13, 332);
+            btnQLTC.Location = new Point(24, 418);
             btnQLTC.Margin = new Padding(2);
             btnQLTC.Name = "btnQLTC";
-            btnQLTC.Size = new Size(256, 50);
+            btnQLTC.Size = new Size(307, 50);
             btnQLTC.TabIndex = 6;
             btnQLTC.Text = "Quản lý thu chi";
             btnQLTC.TextAlign = ContentAlignment.MiddleLeft;
@@ -92,10 +110,10 @@
             btnQLKH.FlatAppearance.BorderSize = 0;
             btnQLKH.FlatStyle = FlatStyle.Flat;
             btnQLKH.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            btnQLKH.Location = new Point(13, 270);
+            btnQLKH.Location = new Point(24, 356);
             btnQLKH.Margin = new Padding(2);
             btnQLKH.Name = "btnQLKH";
-            btnQLKH.Size = new Size(256, 50);
+            btnQLKH.Size = new Size(307, 50);
             btnQLKH.TabIndex = 5;
             btnQLKH.Text = "Quản lý khách hàng";
             btnQLKH.TextAlign = ContentAlignment.MiddleLeft;
@@ -107,10 +125,10 @@
             btnQLNV.FlatAppearance.BorderSize = 0;
             btnQLNV.FlatStyle = FlatStyle.Flat;
             btnQLNV.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            btnQLNV.Location = new Point(13, 209);
+            btnQLNV.Location = new Point(24, 295);
             btnQLNV.Margin = new Padding(2);
             btnQLNV.Name = "btnQLNV";
-            btnQLNV.Size = new Size(256, 50);
+            btnQLNV.Size = new Size(307, 50);
             btnQLNV.TabIndex = 4;
             btnQLNV.Text = "Quản lý nhân viên";
             btnQLNV.TextAlign = ContentAlignment.MiddleLeft;
@@ -122,10 +140,10 @@
             btnQLHD.FlatAppearance.BorderSize = 0;
             btnQLHD.FlatStyle = FlatStyle.Flat;
             btnQLHD.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            btnQLHD.Location = new Point(13, 147);
+            btnQLHD.Location = new Point(24, 233);
             btnQLHD.Margin = new Padding(2);
             btnQLHD.Name = "btnQLHD";
-            btnQLHD.Size = new Size(256, 50);
+            btnQLHD.Size = new Size(307, 50);
             btnQLHD.TabIndex = 3;
             btnQLHD.Text = "Quản lý hóa đơn";
             btnQLHD.TextAlign = ContentAlignment.MiddleLeft;
@@ -137,10 +155,10 @@
             btnQLX.FlatAppearance.BorderSize = 0;
             btnQLX.FlatStyle = FlatStyle.Flat;
             btnQLX.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            btnQLX.Location = new Point(13, 86);
+            btnQLX.Location = new Point(24, 172);
             btnQLX.Margin = new Padding(2);
             btnQLX.Name = "btnQLX";
-            btnQLX.Size = new Size(256, 50);
+            btnQLX.Size = new Size(307, 50);
             btnQLX.TabIndex = 2;
             btnQLX.Text = "Quản lý xe";
             btnQLX.TextAlign = ContentAlignment.MiddleLeft;
@@ -152,10 +170,10 @@
             btnQLCTX.FlatAppearance.BorderSize = 0;
             btnQLCTX.FlatStyle = FlatStyle.Flat;
             btnQLCTX.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            btnQLCTX.Location = new Point(13, 24);
+            btnQLCTX.Location = new Point(24, 110);
             btnQLCTX.Margin = new Padding(2);
             btnQLCTX.Name = "btnQLCTX";
-            btnQLCTX.Size = new Size(256, 50);
+            btnQLCTX.Size = new Size(307, 50);
             btnQLCTX.TabIndex = 1;
             btnQLCTX.Text = "Quản lý cho thuê xe";
             btnQLCTX.TextAlign = ContentAlignment.MiddleLeft;
@@ -175,7 +193,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Main2;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1896, 953);
             Controls.Add(pn_main);
             Controls.Add(grb_Funtion);
@@ -199,5 +217,6 @@
         private Button btnQLNV;
         private Button btnQLHD;
         private Button btnQLX;
+        private Button btnChoThueXe;
     }
 }
