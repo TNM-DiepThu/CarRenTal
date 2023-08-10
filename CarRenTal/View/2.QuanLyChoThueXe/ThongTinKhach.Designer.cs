@@ -165,6 +165,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            MaximumSize = new Size(491, 619);
+            MinimumSize = new Size(491, 619);
             Name = "ThongTinKhach";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ThongTinKhach";

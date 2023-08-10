@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dal.Modal;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 
 namespace Bus.Serviece.Implements
 {
@@ -105,7 +106,7 @@ namespace Bus.Serviece.Implements
             //kiểm tra đăng kiểm
              checkDK = from xe in lstXe
                           join dk in lstDangKiem on xe.ID equals dk.IdXe
-                          where dk.NgayHetHan < endDate
+                          where dk.NgayHetHan < endDate 
                           select xe;
 
             if (checkDK != null && result != null)
