@@ -56,8 +56,8 @@ namespace Bus.Serviece.Implements
 
             }
             else hd.TrangThai = 2;
-            return hd.TrangThai;
             hoaDonRepo.Update(hd);
+            return hd.TrangThai;
 
 
 
