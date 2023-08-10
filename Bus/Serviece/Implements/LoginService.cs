@@ -123,8 +123,6 @@ namespace Bus.Serviece.Implements
                 TaiKhoan taiKhoan = lstTaiKhoan.ToList()[0];
                 taiKhoan.password = newPass;
                 return _taiKhoanRepo.UpdateTaiKhoan(taiKhoan);
-    
-
     }
             catch (Exception)
             {

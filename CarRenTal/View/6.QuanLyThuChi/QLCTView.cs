@@ -22,16 +22,33 @@ namespace CarRenTal.View._6.QuanLyThuChi
         decimal _HieuXuatThang = 3000000000;
         decimal _HieuXuatNam = 36000000000;
         int _amountCar = 0;
+ 
         public QLCTView()
         {
             InitializeComponent();
             _lstDoanhThu = new List<DoanhThu>();
 
         }
-
+        //private void OpenChildForm(Form childForm)
+        //{
+        //    if (currentFormChild != null)
+        //    {
+        //        currentFormChild.Close();
+        //    }
+        //    currentFormChild = childForm;
+        //    childForm.TopLevel = false;
+        //    childForm.FormBorderStyle = FormBorderStyle.None;
+        //    // childForm.Dock = DockStyle.Fill;
+        //    pn_show.Controls.Add(childForm);
+        //    // pnlBody.Tag = childForm;
+        //    childForm.BringToFront();
+        //    childForm.Show();
+        //}
         private void button1_Click(object sender, EventArgs e)
         {
             ChiTietThuChiView chiTietThuChiView = new ChiTietThuChiView();
+        chiTietThuChiView.TopLevel= true;
+            chiTietThuChiView.BringToFront();
             chiTietThuChiView.Show();
         }
 
