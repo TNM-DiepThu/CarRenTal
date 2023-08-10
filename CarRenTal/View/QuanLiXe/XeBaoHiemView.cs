@@ -70,7 +70,7 @@ namespace CarRenTal.View.QuanLiXe
         }
         private string GetTrangThaiAsString(int trangThai)
         {
-            return trangThai == 0 ? "Còn hạn" : "Hết hạn";
+            return trangThai == 1 ? "Còn hạn" : "Hết hạn";
         }
         private void addCCB()
         {
@@ -106,7 +106,7 @@ namespace CarRenTal.View.QuanLiXe
             }
             else if (dtp_bd.Value > dtp_kt.Value) { MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc"); }
             else
-            if (_bhsv.Edit(GetData(), xeId)) { MessageBox.Show("Thành công");LoadData(); }
+            if (_bhsv.Edit(GetData(), xeId)) { MessageBox.Show("Thành công"); LoadData(); }
             else { MessageBox.Show("Không thành công"); }
         }
 

@@ -90,7 +90,7 @@ namespace CarRenTal.View
 
         private void bt_add_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == ""|| !(rd_hd.Checked || rd_khd.Checked))
+            if (textBox1.Text == "" || !(rd_hd.Checked || rd_khd.Checked))
             {
                 MessageBox.Show("Nhập dữ liệu");
             }
@@ -182,7 +182,7 @@ namespace CarRenTal.View
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == ""|| !(rd_hd.Checked || rd_khd.Checked))
+            if (textBox1.Text == "" || !(rd_hd.Checked || rd_khd.Checked))
             {
                 MessageBox.Show("Nhập dữ liệu");
             }
@@ -195,7 +195,7 @@ namespace CarRenTal.View
                 MessageBox.Show(_hangXeServiece.UpdateHangXe(GetDataFrom2()));
                 DataLoad();
             }
-        }      
+        }
 
 
     }

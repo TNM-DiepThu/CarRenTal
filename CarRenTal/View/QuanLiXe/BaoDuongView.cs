@@ -29,7 +29,7 @@ namespace CarRenTal.View.QuanLiXe
         }
         private string GetTrangThaiAsString(int trangThai)
         {
-            return trangThai == 0 ? "Đang bão dưỡng" : "Kết thúc bảo dưỡng";
+            return trangThai == 1 ? "Đang bão dưỡng" : "Kết thúc bảo dưỡng";
         }
         private void LoadData()
         {

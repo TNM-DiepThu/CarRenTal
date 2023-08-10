@@ -42,24 +42,22 @@
             // dtg_show
             // 
             dtg_show.AllowUserToAddRows = false;
-            dtg_show.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtg_show.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtg_show.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dtg_show.ColumnHeadersHeight = 30;
-            dtg_show.Location = new Point(63, 9);
-            dtg_show.Margin = new Padding(3, 2, 3, 2);
+            dtg_show.Location = new Point(72, 12);
             dtg_show.Name = "dtg_show";
             dtg_show.RowHeadersWidth = 100;
             dtg_show.RowTemplate.Height = 29;
-            dtg_show.Size = new Size(546, 70);
+            dtg_show.Size = new Size(624, 93);
             dtg_show.TabIndex = 0;
             dtg_show.CellClick += dtg_show_CellClick;
             // 
             // bt_edit
             // 
-            bt_edit.Location = new Point(461, 111);
-            bt_edit.Margin = new Padding(3, 2, 3, 2);
+            bt_edit.Location = new Point(527, 148);
             bt_edit.Name = "bt_edit";
-            bt_edit.Size = new Size(139, 70);
+            bt_edit.Size = new Size(159, 93);
             bt_edit.TabIndex = 1;
             bt_edit.Text = "Sửa thông tin";
             bt_edit.UseVisualStyleBackColor = true;
@@ -67,60 +65,57 @@
             // 
             // dtp_bd
             // 
-            dtp_bd.Location = new Point(162, 111);
-            dtp_bd.Margin = new Padding(3, 2, 3, 2);
+            dtp_bd.Location = new Point(185, 148);
             dtp_bd.Name = "dtp_bd";
-            dtp_bd.Size = new Size(263, 23);
+            dtp_bd.Size = new Size(300, 27);
             dtp_bd.TabIndex = 2;
             // 
             // dtp_kt
             // 
-            dtp_kt.Location = new Point(162, 136);
-            dtp_kt.Margin = new Padding(3, 2, 3, 2);
+            dtp_kt.Location = new Point(185, 181);
             dtp_kt.Name = "dtp_kt";
-            dtp_kt.Size = new Size(263, 23);
+            dtp_kt.Size = new Size(300, 27);
             dtp_kt.TabIndex = 2;
             // 
             // tb_cp
             // 
-            tb_cp.Location = new Point(162, 160);
-            tb_cp.Margin = new Padding(3, 2, 3, 2);
+            tb_cp.Location = new Point(185, 213);
             tb_cp.Name = "tb_cp";
-            tb_cp.Size = new Size(263, 23);
+            tb_cp.Size = new Size(300, 27);
             tb_cp.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(63, 116);
+            label1.Location = new Point(72, 155);
             label1.Name = "label1";
-            label1.Size = new Size(78, 15);
+            label1.Size = new Size(99, 20);
             label1.TabIndex = 4;
             label1.Text = "Ngày bắt đầu";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(63, 141);
+            label2.Location = new Point(72, 188);
             label2.Name = "label2";
-            label2.Size = new Size(81, 15);
+            label2.Size = new Size(100, 20);
             label2.TabIndex = 4;
             label2.Text = "Ngày kết thúc";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(63, 166);
+            label3.Location = new Point(72, 221);
             label3.Name = "label3";
-            label3.Size = new Size(45, 15);
+            label3.Size = new Size(55, 20);
             label3.TabIndex = 4;
             label3.Text = "Chi phí";
             // 
             // DangKiemView
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(752, 210);
+            ClientSize = new Size(859, 280);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -129,8 +124,10 @@
             Controls.Add(dtp_bd);
             Controls.Add(bt_edit);
             Controls.Add(dtg_show);
-            Margin = new Padding(3, 2, 3, 2);
+            MaximumSize = new Size(877, 327);
+            MinimumSize = new Size(877, 327);
             Name = "DangKiemView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "DangKiemView";
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);

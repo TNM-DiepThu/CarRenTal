@@ -45,6 +45,7 @@
             label3 = new Label();
             label4 = new Label();
             cb_seachms = new ComboBox();
+            bt_lbh = new Button();
             cb_seachhx = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dtg_show).BeginInit();
             SuspendLayout();
@@ -52,8 +53,9 @@
             // dtg_show
             // 
             dtg_show.AllowUserToAddRows = false;
+            dtg_show.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtg_show.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtg_show.Location = new Point(42, 105);
+            dtg_show.Location = new Point(42, 106);
             dtg_show.Name = "dtg_show";
             dtg_show.RowHeadersWidth = 51;
             dtg_show.RowTemplate.Height = 29;
@@ -91,7 +93,7 @@
             // 
             // bt_add
             // 
-            bt_add.Location = new Point(1232, 699);
+            bt_add.Location = new Point(1283, 699);
             bt_add.Name = "bt_add";
             bt_add.Size = new Size(187, 58);
             bt_add.TabIndex = 2;
@@ -113,7 +115,7 @@
             // 
             cb_lsg.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_lsg.FormattingEnabled = true;
-            cb_lsg.Items.AddRange(new object[] { "", "4", "7", "16", "30", "35", "45", "47" });
+            cb_lsg.Items.AddRange(new object[] { "", "4", "7", "16" });
             cb_lsg.Location = new Point(379, 41);
             cb_lsg.Name = "cb_lsg";
             cb_lsg.Size = new Size(151, 28);
@@ -141,7 +143,7 @@
             // 
             // bt_edit
             // 
-            bt_edit.Location = new Point(991, 699);
+            bt_edit.Location = new Point(1090, 699);
             bt_edit.Margin = new Padding(3, 4, 3, 4);
             bt_edit.Name = "bt_edit";
             bt_edit.Size = new Size(187, 58);
@@ -221,6 +223,16 @@
             cb_seachms.SelectedIndexChanged += cb_seachms_SelectedIndexChanged;
             cb_seachms.TextChanged += cb_seachms_TextChanged;
             // 
+            // bt_lbh
+            // 
+            bt_lbh.Location = new Point(843, 699);
+            bt_lbh.Name = "bt_lbh";
+            bt_lbh.Size = new Size(154, 58);
+            bt_lbh.TabIndex = 10;
+            bt_lbh.Text = "Quản lý loại bảo hiểm";
+            bt_lbh.UseVisualStyleBackColor = true;
+            bt_lbh.Click += bt_lbh_Click;
+            // 
             // cb_seachhx
             // 
             cb_seachhx.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -228,8 +240,9 @@
             cb_seachhx.Location = new Point(720, 43);
             cb_seachhx.Name = "cb_seachhx";
             cb_seachhx.Size = new Size(151, 28);
-            cb_seachhx.TabIndex = 9;
-            cb_seachhx.TextChanged += cb_seachhx_TextChanged;
+            cb_seachhx.TabIndex = 11;
+            cb_seachhx.SelectedIndexChanged += cb_seachhx_SelectedIndexChanged;
+            cb_seachhx.TextChanged += cb_seachhx_TextChanged_1;
             // 
             // QuanLiXeView
             // 
@@ -237,6 +250,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1482, 793);
             Controls.Add(cb_seachhx);
+            Controls.Add(bt_lbh);
             Controls.Add(cb_seachms);
             Controls.Add(bt_qllx);
             Controls.Add(bt_hx);
@@ -254,6 +268,8 @@
             Controls.Add(bt_add);
             Controls.Add(tb_seach);
             Controls.Add(dtg_show);
+            MaximumSize = new Size(1500, 840);
+            MinimumSize = new Size(1500, 840);
             Name = "QuanLiXeView";
             Text = "QuanLiXe";
             Load += QuanLiXe_Load;
@@ -282,6 +298,7 @@
         private Label label3;
         private Label label4;
         private ComboBox cb_seachms;
+        private Button bt_lbh;
         private ComboBox cb_seachhx;
     }
 }

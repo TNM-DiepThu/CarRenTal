@@ -182,6 +182,7 @@
             tb_chiphi.Name = "tb_chiphi";
             tb_chiphi.Size = new Size(251, 27);
             tb_chiphi.TabIndex = 1;
+            tb_chiphi.TextChanged += tb_chiphi_TextChanged;
             // 
             // button1
             // 
@@ -313,7 +314,10 @@
             Controls.Add(label8);
             Controls.Add(label11);
             Controls.Add(label1);
+            MaximumSize = new Size(589, 584);
+            MinimumSize = new Size(589, 584);
             Name = "ThemXe";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ThemXe";
             FormClosed += ThemXe_FormClosed;
             Load += ThemXe_Load;

@@ -15,6 +15,7 @@ namespace Bus.Serviece.Interface
         public bool Edit(BaoHiemVM vm);
         public string GetTenBaoHiem(Guid id);
         public Guid GetIdBaoHiemByLoaiBaoHiem(string loaiBaoHiem);
+        public bool update(int trangthai);
         
     }
 }

@@ -137,7 +137,18 @@ namespace Bus.Serviece.Implements
             xe.DonGia = v.DonGia;
             xe.SoCongTo = v.SoCongTo;
             xe.TrangThai = v.TrangThai;
-            
+            LoaiXe lx = _context.loaiXes.FirstOrDefault(h => h.Name == v.TenXe);
+            if (lx != null)
+            {
+                xe.IdLoaiXe = lx.Id;
+            }
+
+            MauSac ms = _context.mauSacs.FirstOrDefault(h => h.TenMauSac == v.MauSac);
+            if (ms != null)
+            {
+                xe.IdMauSac = ms.Id;
+            }
+
             try
             {
                 _context.Update(xe);

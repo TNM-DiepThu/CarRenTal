@@ -105,7 +105,10 @@
             Controls.Add(label1);
             Controls.Add(tb_name);
             Controls.Add(dtg_show);
+            MaximumSize = new Size(688, 497);
+            MinimumSize = new Size(688, 497);
             Name = "MauSacView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MauSac";
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);

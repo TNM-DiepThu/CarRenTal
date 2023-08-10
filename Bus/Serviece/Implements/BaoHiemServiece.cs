@@ -110,5 +110,27 @@ namespace Bus.Serviece.Implements
             // Nếu không tìm thấy, trả về một giá trị mặc định hoặc chuỗi rỗng
             return string.Empty;
         }
+        public bool update(int trangthai)
+        {
+            try
+            {
+                var all = _context.xeBaoHiems.ToList();
+                foreach (var bd in all)
+                {
+                    if (bd.NgayKetThuc < DateTime.Now)
+                    {
+                        bd.TrangThai = 0;
+                    }
+                    else { bd.TrangThai = 1; }
+                }
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

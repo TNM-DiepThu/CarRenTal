@@ -66,18 +66,18 @@ namespace CarRenTal
         }
         private string GetTrangThaiAsString(int trangThai)
         {
-            if (trangThai == 0)
-            {
-                return "đang hoạt động";
-
-            }
             if (trangThai == 1)
             {
-                return "ngừng hoạt động";
+                return "Đang hoạt động";
+
+            }
+            if (trangThai == 0)
+            {
+                return "Ngừng hoạt động";
             }
             else
             {
-                return "bị xoá";
+                return "Bị xoá";
 
             }
 
@@ -88,6 +88,8 @@ namespace CarRenTal
             int stt = 1;
             dtg_show.ColumnCount = 13;
             dtg_show.Columns[0].Name = "STT";
+            dtg_show.Columns[0].Width = 40;
+
             dtg_show.Columns[1].Name = "Id";
             dtg_show.Columns[1].Visible = false;
             dtg_show.Columns[2].Name = "Hãng Xe";
@@ -221,7 +223,7 @@ namespace CarRenTal
             if (selectedXeId != Guid.Empty) // Đảm bảo đã chọn một xe trước khi mở Form BaoDuong
             {
                 // Tạo Form mới chứa DataGridView của BaoDuong
-                using (var edit = new EditXeView(selectedXeId))
+                using (var edit = new EditXeView(selectedXeId, this))
                 {
                     edit.ShowDialog();
                 }
@@ -330,6 +332,33 @@ namespace CarRenTal
         private void QuanLiXeView_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void bt_lbh_Click(object sender, EventArgs e)
+        {
+            var bhiem = new BaoHiemView();
+            bhiem.ShowDialog();
+        }
+
+        private void cb_seachhx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_seachhx_TextChanged_1(object sender, EventArgs e)
+        {
+            string hangxe = cb_seachhx.Text;
+            var filterhx = _xe.GetAll().Where(x => x.TenHangXe.Contains(hangxe));
+            dtg_show.Rows.Clear();
+            int stt = 1;
+            foreach (var x in filterhx)
+            {
+                string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
+                string TenhangXe = x.TenHangXe;
+                int LoaiXe = x.SoGhe;
+
+                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, x.TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+            }
         }
     }
 }

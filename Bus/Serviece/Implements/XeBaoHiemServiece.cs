@@ -32,7 +32,7 @@ namespace Bus.Serviece.Implements
         public DateTime NgayHHBaoHiem(Guid id)
         {
             XeBaoHiem baohiem = _context.xeBaoHiems.FirstOrDefault(h => h.IdXe == id);
-            if (baohiem != null)
+            if (baohiem != null )
             {
                 return baohiem.NgayKetThuc;
             }

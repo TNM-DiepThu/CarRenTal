@@ -54,93 +54,89 @@
             tb_lnl.DropDownStyle = ComboBoxStyle.DropDownList;
             tb_lnl.FormattingEnabled = true;
             tb_lnl.Items.AddRange(new object[] { "Xăng", "Dầu", "Điện" });
-            tb_lnl.Location = new Point(23, 79);
-            tb_lnl.Margin = new Padding(3, 2, 3, 2);
+            tb_lnl.Location = new Point(26, 105);
             tb_lnl.Name = "tb_lnl";
-            tb_lnl.Size = new Size(216, 23);
+            tb_lnl.Size = new Size(246, 28);
             tb_lnl.TabIndex = 5;
             tb_lnl.SelectedIndexChanged += cbb_hangxe_SelectedIndexChanged;
             // 
             // dtg_show
             // 
             dtg_show.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtg_show.Location = new Point(265, 9);
-            dtg_show.Margin = new Padding(3, 2, 3, 2);
+            dtg_show.Location = new Point(303, 12);
             dtg_show.Name = "dtg_show";
             dtg_show.RowHeadersWidth = 51;
             dtg_show.RowTemplate.Height = 29;
-            dtg_show.Size = new Size(738, 341);
+            dtg_show.Size = new Size(843, 455);
             dtg_show.TabIndex = 0;
             dtg_show.CellClick += dtg_show_CellClick;
             // 
             // tb_name
             // 
-            tb_name.Location = new Point(23, 36);
-            tb_name.Margin = new Padding(3, 2, 3, 2);
+            tb_name.Location = new Point(26, 48);
             tb_name.Name = "tb_name";
-            tb_name.Size = new Size(216, 23);
+            tb_name.Size = new Size(246, 27);
             tb_name.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 19);
+            label1.Location = new Point(26, 25);
             label1.Name = "label1";
-            label1.Size = new Size(62, 15);
+            label1.Size = new Size(80, 20);
             label1.TabIndex = 2;
             label1.Text = "Tên loại xe";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(23, 62);
+            label2.Location = new Point(26, 83);
             label2.Name = "label2";
-            label2.Size = new Size(84, 15);
+            label2.Size = new Size(105, 20);
             label2.TabIndex = 2;
             label2.Text = "Loại nhiên liệu";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(23, 104);
+            label3.Location = new Point(26, 139);
             label3.Name = "label3";
-            label3.Size = new Size(43, 15);
+            label3.Size = new Size(55, 20);
             label3.TabIndex = 2;
             label3.Text = "Số ghế";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(23, 148);
+            label4.Location = new Point(26, 197);
             label4.Name = "label4";
-            label4.Size = new Size(59, 15);
+            label4.Size = new Size(75, 20);
             label4.TabIndex = 2;
             label4.Text = "Loại số xe";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(23, 205);
+            label6.Location = new Point(26, 273);
             label6.Name = "label6";
-            label6.Size = new Size(51, 15);
+            label6.Size = new Size(64, 20);
             label6.TabIndex = 2;
             label6.Text = "Hãng xe";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(10, 245);
+            label7.Location = new Point(11, 327);
             label7.Name = "label7";
-            label7.Size = new Size(59, 15);
+            label7.Size = new Size(75, 20);
             label7.TabIndex = 2;
             label7.Text = "Trạng thái";
             // 
             // bt_add
             // 
-            bt_add.Location = new Point(10, 378);
-            bt_add.Margin = new Padding(3, 2, 3, 2);
+            bt_add.Location = new Point(11, 504);
             bt_add.Name = "bt_add";
-            bt_add.Size = new Size(98, 33);
+            bt_add.Size = new Size(112, 44);
             bt_add.TabIndex = 4;
             bt_add.Text = "Thêm ";
             bt_add.UseVisualStyleBackColor = true;
@@ -150,19 +146,17 @@
             // 
             cbb_hangxe.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_hangxe.FormattingEnabled = true;
-            cbb_hangxe.Location = new Point(23, 222);
-            cbb_hangxe.Margin = new Padding(3, 2, 3, 2);
+            cbb_hangxe.Location = new Point(26, 296);
             cbb_hangxe.Name = "cbb_hangxe";
-            cbb_hangxe.Size = new Size(216, 23);
+            cbb_hangxe.Size = new Size(246, 28);
             cbb_hangxe.TabIndex = 5;
             cbb_hangxe.SelectedIndexChanged += cbb_hangxe_SelectedIndexChanged;
             // 
             // bt_edit
             // 
-            bt_edit.Location = new Point(122, 378);
-            bt_edit.Margin = new Padding(3, 2, 3, 2);
+            bt_edit.Location = new Point(139, 504);
             bt_edit.Name = "bt_edit";
-            bt_edit.Size = new Size(98, 33);
+            bt_edit.Size = new Size(112, 44);
             bt_edit.TabIndex = 4;
             bt_edit.Text = "Sửa";
             bt_edit.UseVisualStyleBackColor = true;
@@ -170,10 +164,9 @@
             // 
             // bt_del
             // 
-            bt_del.Location = new Point(226, 378);
-            bt_del.Margin = new Padding(3, 2, 3, 2);
+            bt_del.Location = new Point(258, 504);
             bt_del.Name = "bt_del";
-            bt_del.Size = new Size(98, 33);
+            bt_del.Size = new Size(112, 44);
             bt_del.TabIndex = 4;
             bt_del.Text = "Xoá";
             bt_del.UseVisualStyleBackColor = true;
@@ -182,10 +175,9 @@
             // rd_0
             // 
             rd_0.AutoSize = true;
-            rd_0.Location = new Point(34, 272);
-            rd_0.Margin = new Padding(3, 2, 3, 2);
+            rd_0.Location = new Point(39, 363);
             rd_0.Name = "rd_0";
-            rd_0.Size = new Size(82, 19);
+            rd_0.Size = new Size(102, 24);
             rd_0.TabIndex = 6;
             rd_0.TabStop = true;
             rd_0.Text = "Hoạt động";
@@ -194,10 +186,9 @@
             // rd_1
             // 
             rd_1.AutoSize = true;
-            rd_1.Location = new Point(34, 295);
-            rd_1.Margin = new Padding(3, 2, 3, 2);
+            rd_1.Location = new Point(39, 393);
             rd_1.Name = "rd_1";
-            rd_1.Size = new Size(118, 19);
+            rd_1.Size = new Size(146, 24);
             rd_1.TabIndex = 6;
             rd_1.TabStop = true;
             rd_1.Text = "Không hoạt động";
@@ -207,11 +198,10 @@
             // 
             tb_soghe.DropDownStyle = ComboBoxStyle.DropDownList;
             tb_soghe.FormattingEnabled = true;
-            tb_soghe.Items.AddRange(new object[] { "4", "7", "16", "30", "35", "45", "47" });
-            tb_soghe.Location = new Point(23, 124);
-            tb_soghe.Margin = new Padding(3, 2, 3, 2);
+            tb_soghe.Items.AddRange(new object[] { "4", "7", "16" });
+            tb_soghe.Location = new Point(26, 165);
             tb_soghe.Name = "tb_soghe";
-            tb_soghe.Size = new Size(216, 23);
+            tb_soghe.Size = new Size(246, 28);
             tb_soghe.TabIndex = 5;
             tb_soghe.SelectedIndexChanged += cbb_hangxe_SelectedIndexChanged;
             // 
@@ -219,19 +209,18 @@
             // 
             tb_loaisoxe.DropDownStyle = ComboBoxStyle.DropDownList;
             tb_loaisoxe.FormattingEnabled = true;
-            tb_loaisoxe.Items.AddRange(new object[] { "Số sàn", "Số tự động", "số tự động vô cấp CVT", "số ly hợp kép DCT" });
-            tb_loaisoxe.Location = new Point(23, 172);
-            tb_loaisoxe.Margin = new Padding(3, 2, 3, 2);
+            tb_loaisoxe.Items.AddRange(new object[] { "Số sàn", "Số tự động" });
+            tb_loaisoxe.Location = new Point(26, 229);
             tb_loaisoxe.Name = "tb_loaisoxe";
-            tb_loaisoxe.Size = new Size(216, 23);
+            tb_loaisoxe.Size = new Size(246, 28);
             tb_loaisoxe.TabIndex = 5;
             tb_loaisoxe.SelectedIndexChanged += cbb_hangxe_SelectedIndexChanged;
             // 
             // LoaiXeView
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1013, 420);
+            ClientSize = new Size(1158, 560);
             Controls.Add(rd_1);
             Controls.Add(rd_0);
             Controls.Add(tb_lnl);
@@ -249,8 +238,10 @@
             Controls.Add(label1);
             Controls.Add(tb_name);
             Controls.Add(dtg_show);
-            Margin = new Padding(3, 2, 3, 2);
+            MaximumSize = new Size(1176, 607);
+            MinimumSize = new Size(1176, 607);
             Name = "LoaiXeView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "LoaiXeView";
             Load += LoaiXeView_Load;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();

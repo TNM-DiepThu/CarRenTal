@@ -131,7 +131,10 @@
             Controls.Add(label1);
             Controls.Add(tb_name);
             Controls.Add(dtg_show);
+            MaximumSize = new Size(743, 497);
+            MinimumSize = new Size(743, 497);
             Name = "BaoHiemView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "BaoHiemView";
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);

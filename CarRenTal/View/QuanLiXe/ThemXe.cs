@@ -85,7 +85,7 @@ namespace CarRenTal.View.QuanLiXe
             }
             if (ContainsSpecialCharacters(tb_sokhung.Text))
             {
-                MessageBox.Show("Tên xe không được chứa kí tự đặc biệt.");
+                MessageBox.Show("Số khung không được chứa kí tự đặc biệt.");
                 return false;
             }
 
@@ -97,7 +97,7 @@ namespace CarRenTal.View.QuanLiXe
             }
             if (ContainsSpecialCharacters(tb_somay.Text))
             {
-                MessageBox.Show("Tên xe không được chứa kí tự đặc biệt.");
+                MessageBox.Show("Số máy không được chứa kí tự đặc biệt.");
                 return false;
             }
             // Kiểm tra đơn giá không được để trống
@@ -271,6 +271,11 @@ namespace CarRenTal.View.QuanLiXe
         private void cb_hangxe_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadTenXeByTenHangXe();
+        }
+
+        private void tb_chiphi_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

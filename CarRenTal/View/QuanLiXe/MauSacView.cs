@@ -71,26 +71,31 @@ namespace CarRenTal.View.QuanLiXe
             }
             return true;
         }
-            private void bt_add_Click(object sender, EventArgs e)
+        private void bt_add_Click(object sender, EventArgs e)
         {
-            if(tb_name.Text.Length == 0 || AreFieldsValid() == true ) {
+            if (tb_name.Text.Length == 0 || AreFieldsValid() == true)
+            {
                 MessageBox.Show("Nhập đủ dữ liệu hoặc không nhập dữ liệu đặc biệt");
             }
-            else { 
-            MessageBox.Show( _mau.Creat(GetData()));
-            LoadData();}
+            else
+            {
+                MessageBox.Show(_mau.Creat(GetData()));
+                LoadData();
+            }
         }
 
         private void bt_edit_Click(object sender, EventArgs e)
         {
-            if(_id!=Guid.Empty) { 
-            MessageBox.Show(_mau.Edit(GetData()));
-            LoadData();
+            if (_id != Guid.Empty)
+            {
+                MessageBox.Show(_mau.Edit(GetData()));
+                LoadData();
             }
-            else {
+            else
+            {
                 MessageBox.Show("Chọn đối tượng");
-                    }
-                
+            }
+
         }
 
         private void dtg_show_CellClick(object sender, DataGridViewCellEventArgs e)

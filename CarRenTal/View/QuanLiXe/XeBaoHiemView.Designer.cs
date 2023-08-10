@@ -45,7 +45,7 @@
             // dtg_show
             // 
             dtg_show.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtg_show.Location = new Point(328, 16);
+            dtg_show.Location = new Point(329, 61);
             dtg_show.Margin = new Padding(3, 4, 3, 4);
             dtg_show.Name = "dtg_show";
             dtg_show.RowHeadersWidth = 51;
@@ -152,7 +152,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 476);
+            ClientSize = new Size(917, 509);
             Controls.Add(bt_edit);
             Controls.Add(bt_add);
             Controls.Add(LB1);
@@ -165,7 +165,10 @@
             Controls.Add(dtp_bd);
             Controls.Add(dtg_show);
             Margin = new Padding(3, 4, 3, 4);
+            MaximumSize = new Size(935, 556);
+            MinimumSize = new Size(935, 556);
             Name = "XeBaoHiemView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "XeBaoHiemView";
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);

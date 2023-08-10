@@ -179,7 +179,10 @@
             Controls.Add(tb_chitiet);
             Controls.Add(tb_ct);
             Controls.Add(dtg_show);
+            MaximumSize = new Size(977, 507);
+            MinimumSize = new Size(977, 507);
             Name = "BaoDuongView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "BaoDuongView";
             Load += BaoDuongView_Load;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();

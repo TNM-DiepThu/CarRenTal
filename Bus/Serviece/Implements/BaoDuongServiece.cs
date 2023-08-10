@@ -81,9 +81,9 @@ namespace Bus.Serviece.Implements
                 {
                     if(bd.NgayHetHan < DateTime.Now)
                     {
-                        bd.TrangThai = 1;
+                        bd.TrangThai = 0;
                     }
-                    else { bd.TrangThai = 0; }
+                    else { bd.TrangThai = 1; }
                 }
                 _context.SaveChanges();
                 return true;

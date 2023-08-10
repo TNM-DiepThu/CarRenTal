@@ -141,7 +141,10 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(ShowHangXe);
+            MaximumSize = new Size(818, 428);
+            MinimumSize = new Size(818, 428);
             Name = "HangXeView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "HangXeView";
             ((System.ComponentModel.ISupportInitialize)ShowHangXe).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
