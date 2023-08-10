@@ -60,7 +60,7 @@ namespace CarRenTal.View._1.ChoThueXe
             {
                 cbb_chooseDrives.Items.Add(filter.Name);
             }
-            cbb_chooseDrives.SelectedIndex = 2;
+            //   cbb_chooseDrives.SelectedIndex = 2;
         }
         private void bt_start_Click(object sender, EventArgs e)
         {

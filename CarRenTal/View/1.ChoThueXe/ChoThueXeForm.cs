@@ -270,7 +270,7 @@ namespace CarRenTal.View._1.ChoThueXe
                 tx_coc.Text = (int.Parse(tx_phiThue.Text) * 0.2).ToString();
                 if (heSo == 1)
                 {
-                    decimal sum = (decimal.Parse(tx_phiThue.Text) * heSo) + minTC;
+                    decimal sum = (decimal.Parse(tx_phiThue.Text) * heSo);
                     tx_phiThanhToan.Text = (sum).ToString();
                 }
                 else
