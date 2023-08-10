@@ -26,12 +26,17 @@ namespace Bus.Serviece.Implements
             List<XeBaoHiemVM> danhSachLoaiXeVM = danhSachLoaiXe.Select(loaiXe => new XeBaoHiemVM(loaiXe))
                 .Where(x => x.IdXe == id).ToList();
 
+            danhSachLoaiXeVM = danhSachLoaiXeVM
+        .OrderByDescending(x => x.LoaiBaoHiem == "Bảo hiểm trách nhiệm dân sự")
+        .ThenBy(x => x.LoaiBaoHiem)
+        .ToList();
+
             return danhSachLoaiXeVM;
         }
 
         public DateTime NgayHHBaoHiem(Guid id)
         {
-            XeBaoHiem baohiem = _context.xeBaoHiems.FirstOrDefault(h => h.IdXe == id);
+            XeBaoHiem baohiem = _context.xeBaoHiems.FirstOrDefault(h => h.IdXe == id && h.BaoHiem.LoaiBaoHiem == "Bảo hiểm trách nhiệm dân sự");
             if (baohiem != null )
             {
                 return baohiem.NgayKetThuc;

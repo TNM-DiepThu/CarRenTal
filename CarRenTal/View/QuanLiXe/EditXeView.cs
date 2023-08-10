@@ -155,13 +155,14 @@ namespace CarRenTal.View.QuanLiXe
             if (Checkvali() == true)
             {
                 if (_xes.UpdateM(GetDaTa()))
-
+                {
                     MessageBox.Show("Thành công");
+                    _quanLiXeView.LoadData();
+                }
 
-
-                else MessageBox.Show("Không thành công");
+                else { MessageBox.Show("Không thành công"); }
             }
-            _quanLiXeView.LoadData();
+
         }
         private void loadform()
         {
@@ -173,6 +174,8 @@ namespace CarRenTal.View.QuanLiXe
             cb_name.Text = obj.TenXe;
             tb_dongia.Text = obj.DonGia.ToString();
             cb_mausac.Text = obj.MauSac;
+            rd_0.Checked = (obj.TrangThai == 0) ? true : false;
+            rd_1.Checked = (obj.TrangThai == 1) ? true : false;
         }
         private List<string> tenXeList;
         private void LoadTenXeByTenHangXe()
