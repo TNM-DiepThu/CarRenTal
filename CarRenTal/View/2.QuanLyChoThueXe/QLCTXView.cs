@@ -296,7 +296,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 if (cbb_trangThai.SelectedIndex == 2)
                 {
                     tx_giaTri.Text = (hoaDonCT.DonGia * 30).ToString();
-                    tx_thanhToan.Text = (decimal.Parse(tx_giaTri.Text) + (hoaDonCT.TongTien - hoaDonCT.TienCoc)).ToString();
+                    tx_thanhToan.Text = ( hoaDonCT.TongTien - hoaDonCT.TienCoc).ToString();
                     return;
                 }
                 if (cbb_trangThai.SelectedIndex == 5)
