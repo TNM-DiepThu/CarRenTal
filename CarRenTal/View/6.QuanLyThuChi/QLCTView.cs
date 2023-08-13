@@ -22,7 +22,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
         decimal _HieuXuatThang = 3000000000;
         decimal _HieuXuatNam = 36000000000;
         int _amountCar = 0;
- 
+
         public QLCTView()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
         private void button1_Click(object sender, EventArgs e)
         {
             ChiTietThuChiView chiTietThuChiView = new ChiTietThuChiView();
-        chiTietThuChiView.TopLevel= true;
+            chiTietThuChiView.TopLevel = true;
             chiTietThuChiView.BringToFront();
             chiTietThuChiView.Show();
         }
