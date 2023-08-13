@@ -57,6 +57,10 @@ namespace Bus.Serviece.Implements
                  
                 if (regex.IsMatch(search))
                 {
+                    if (search.Length>7)
+                    {
+                        return null;
+                    }
                     _lstHoaDon = _lstHoaDon.Where(p => p.SoHopDong==int.Parse(search)).ToList();
                 }
                 _lstHoaDon = _lstHoaDon.Where(p => p.KhachHang.Name.ToLower().Contains(search.ToLower())).ToList();

@@ -21,6 +21,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
         List<HoaDonChiTiet> _lstHDCT;
         KhachHang kh;
         HoaDonChiTiet hoaDonCT;
+        HoaDonService hoaDonService = new HoaDonService();
         public QLCTXView()
         {
             InitializeComponent();
@@ -179,15 +180,25 @@ namespace CarRenTal.View.QuanLyChoThueXe
                     if (cbb_trangThai.SelectedIndex != 4)
                     {
                         MessageBox.Show("Chỉ có thế chuyển trạng thái về khách không đến lấy xe");
+                        return;
 
                     }
                     if (cbb_trangThai.SelectedIndex == 4)
                     {
                         hoaDonCT.TrangThai = 4;
                         hdService.UpdateHDCT(hoaDonCT);
+                         hoaDonService.CheckHoaDon(hoaDonCT.HoaDonThueXe);
                         MessageBox.Show("Thành công");
 
                     }
+                    LoadData(trangThai, null);
+                    return;
+                }
+                if (cbb_trangThai.SelectedIndex==0||cbb_trangThai.SelectedIndex==5 || cbb_trangThai.SelectedIndex == 4)
+                {
+                    hoaDonCT.TrangThai = cbb_trangThai.SelectedIndex;
+                    hdService.UpdateHDCT(hoaDonCT);
+                    hoaDonService.CheckHoaDon(hoaDonCT.HoaDonThueXe);
                     LoadData(trangThai, null);
                     return;
                 }
@@ -216,6 +227,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
                     hdService.CreateTheChap(theChap);
                     hoaDonCT.TrangThai = 2;
                     hdService.UpdateHDCT(hoaDonCT);
+                    hoaDonService.CheckHoaDon(hoaDonCT.HoaDonThueXe);
                     MessageBox.Show("Thành công");
                     LoadData(trangThai, null);
                     return;

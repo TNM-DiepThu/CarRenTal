@@ -103,7 +103,7 @@ namespace CarRenTal.View._4.QuanLyHoaDon
             tx_ngayTra.Text = hdct.NgayKetThuc.ToString();
             tx_tienCoc.Text = hdct.TienCoc.ToString();
             cbb_trangThai.SelectedIndex = hdct.TrangThai;
-            if (cbb_trangThai.SelectedIndex == 2 || cbb_trangThai.SelectedIndex == 3)
+            if (hdct.theChaps.ToList().Count!=0)
             {
                 cbb_giayTo.SelectedValue = hdct.theChaps.ToList()[0].IdGiayTo;
                 cbb_taiSan.SelectedValue = hdct.theChaps.ToList()[0].IdTS;
@@ -125,6 +125,7 @@ namespace CarRenTal.View._4.QuanLyHoaDon
             }
             hdct.TrangThai = cbb_trangThai.SelectedIndex;
             hoaDonService.UpdateHoaDon(hdct);
+
             if (cbb_trangThai.SelectedIndex==2|| cbb_trangThai.SelectedIndex == 3)
             {
                 TheChap theChap = new TheChap()
