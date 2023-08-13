@@ -21,7 +21,7 @@ namespace Bus.Serviece.Implements
         HoaDonThueXeRepo HoaDonThueXeRepo = new HoaDonThueXeRepo();
         HoaDonChiTietRepo HoaDonChiTietRepo = new HoaDonChiTietRepo();
         KhachHangRepo khachHangRepo = new KhachHangRepo();
-        NhanVienRepo NhanVienRepo = new NhanVienRepo(); 
+        NhanVienRepo NhanVienRepo = new NhanVienRepo();
         ChiPhiPhatSinhRepo chiPhiPhatSinhRepo = new ChiPhiPhatSinhRepo();
         LoaiPhuPhiRepo loaiPhuPhiRepo = new LoaiPhuPhiRepo();
 
@@ -34,7 +34,7 @@ namespace Bus.Serviece.Implements
         List<HoaDonChiTiet> _lstHĐCT;
         List<KhachHang> _lstKhachHang;
         List<NhanVien> _lstNhanVien;
-        
+
 
 
         XeService _XeService = new XeService();
@@ -58,9 +58,9 @@ namespace Bus.Serviece.Implements
             _lstNhanVien = NhanVienRepo.GetNhanVien();
         }
 
-        public List<DoanhThu>  GetDoanhThus(DateTime ngayBD) 
+        public List<DoanhThu> GetDoanhThus(DateTime ngayBD)
         {
-            List <DoanhThu> _lstDoanhThu = new List<DoanhThu> ();
+            List<DoanhThu> _lstDoanhThu = new List<DoanhThu>();
 
             var getMHD = from ct in _lstHĐCT
                          join hd in _lstHĐTX on ct.IdHoaDon equals hd.Id
@@ -68,13 +68,23 @@ namespace Bus.Serviece.Implements
                          join cp in _lstChiPhiPhatSinh on ct.Id equals cp.IdHDCT
                          join nv in _lstNhanVien on hd.IdNhanVien equals nv.Id
                          where ct.NgayBatDau == ngayBD && ct.TrangThai == 1 || ct.TrangThai == 2 || ct.TrangThai == 3 || ct.TrangThai == 4
-                         select new DoanhThu() { maHD = hd.SoHopDong, tenXe = xe.LoaiXe.Name, bienSo = xe.BienSo, ngayBD = ct.NgayBatDau, ngayKT = ct.NgayKetThuc, tienCoc = ct.TienCoc, donGia = xe.DonGia, phuPhi = cp.GiaTien,
-                             tongTien = ct.TongTien, tenNV = nv.HoTen
+                         select new DoanhThu()
+                         {
+                             maHD = hd.SoHopDong,
+                             tenXe = xe.LoaiXe.Name,
+                             bienSo = xe.BienSo,
+                             ngayBD = ct.NgayBatDau,
+                             ngayKT = ct.NgayKetThuc,
+                             tienCoc = ct.TienCoc,
+                             donGia = xe.DonGia,
+                             phuPhi = cp.GiaTien,
+                             tongTien = ct.TongTien,
+                             tenNV = nv.HoTen
                          };
             _lstDoanhThu.AddRange(getMHD);
             return _lstDoanhThu;
         }
-    
+
         public List<DoanhThu> GetDoanhThuThang(DateTime thang)
         {
             List<DoanhThu> _lstDoanhThu = new List<DoanhThu>();
@@ -181,7 +191,7 @@ namespace Bus.Serviece.Implements
                     item.LoaiPhuPhi = loaiPhuPhiRepo.GetALL().FirstOrDefault(p => p.Id == item.IdLPP);
                 }
             }
-            var mostRentedVehicleType = lstHDCT.Where(c => c.NgayBatDau.Month == thang.Month )
+            var mostRentedVehicleType = lstHDCT.Where(c => c.NgayBatDau.Month == thang.Month)
             .GroupBy(detail => detail.Xe.IdLoaiXe)
             .Select(group => new
             {
@@ -204,6 +214,6 @@ namespace Bus.Serviece.Implements
                 return null;
             }
         }
-        }
     }
+}
 

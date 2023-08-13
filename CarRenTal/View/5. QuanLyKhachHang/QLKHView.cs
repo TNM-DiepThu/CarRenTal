@@ -21,6 +21,7 @@ namespace CarRenTal.View._5._QuanLyKhachHang
         KhachHangService _kHService;
         List<NguoiThan> _lstNguoiThan;
         NguoiThanService _NTService;
+        int _count = 0;
 
 
         public event EventHandler MyEventHandler;
