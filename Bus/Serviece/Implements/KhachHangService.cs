@@ -15,17 +15,16 @@ namespace Bus.Serviece.Implements
         List<KhachHang> _lstKhachHang;
         HoaDonThueXeRepo _hoaDonThueXerepo = new HoaDonThueXeRepo();
         List<HoaDonThueXe> _lsthoaDonThueXes;
-        HoaDonChiTiet _HoaDonChiTietRepo = new HoaDonChiTiet();
+        HoaDonChiTietRepo _HoaDonChiTietRepo = new HoaDonChiTietRepo();
         List<HoaDonChiTiet> _lstHDCT;
         XeRepo _xeRepo = new XeRepo();
         List<Xe> _lstXe;
 
         public KhachHangService()
         {
-            _lstKhachHang = new List<KhachHang>();
-            _xeRepo = new XeRepo();
-            _lsthoaDonThueXes = new List<HoaDonThueXe>();
-            _lstHDCT = new List<HoaDonChiTiet>();
+            _lstKhachHang = _khachHangRepo.GetALL();
+            _lsthoaDonThueXes = _hoaDonThueXerepo.GetALL();
+            _lstHDCT = _HoaDonChiTietRepo.GetALL();
         }
         public List<KhachHang> GetALL()
         {
@@ -47,8 +46,8 @@ namespace Bus.Serviece.Implements
 
         public decimal[] GetNumberXe(Guid id)
         {
-            var result = from n in _lstKhachHang
-                         join t in _lsthoaDonThueXes on n.Id equals t.IdKhachHang
+            var result = from 
+                          t in _lsthoaDonThueXes 
                          join c in _lstHDCT on t.Id equals c.IdHoaDon
                          where t.IdKhachHang == id
                          select c;

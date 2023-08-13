@@ -48,6 +48,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             _lstDangKiem = new List<DangKiem>();
             _lstCPPS = new List<ChiPhiPhatSinh>();
             _lstKhoanChi = new List<KhoanChi>();
+            _lstDoanhThu = new List<DoanhThu>();
             _lstPhatSinh = new List<ChiPhiPhatSinh>();
             _LstHDTX = new List<HoaDonThueXe>();
             LoadDLDoanhThu(dtTimeSearch.Value);
@@ -57,19 +58,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
 
         public void ChiTietThuChiView_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < dgvDoanhThu.Rows.Count; i++)
-            {
-                _tongTien = (decimal)dgvDoanhThu.Rows[i].Cells[11].Value;
 
-                lbDoanhThu.Text = _tongTien.ToString();
-            }
-            for (int i = 0; i < dgvKhoanChi.Rows.Count; i++)
-            {
-                _tongChi = (decimal)dgvKhoanChi.Rows[i].Cells[1].Value;
-
-                lbChi.Text = _tongChi.ToString();
-            }
-            lbLoiNhuan.Text = (_tongTien - _tongChi).ToString();
         }
 
         public void LoadDLDoanhThu(DateTime dtBD)
@@ -90,7 +79,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             dgvDoanhThu.Columns[9].Name = "Số tiền cần thu";
             dgvDoanhThu.Columns[10].Name = "Tổng tiền";
             dgvDoanhThu.Columns[11].Name = "Nhân viên thực hiện";
-            _lstDoanhThu = _doanhThuService.GetDoanhThus(dtTimeSearch.Value.Date);
+            _lstDoanhThu = _doanhThuService.GetDoanhThus(dtBD);
             foreach (var i in _lstDoanhThu)
             {
                 dgvDoanhThu.Rows.Add(i.maHD, i.tenXe, i.bienSo, i.ngayBD, i.ngayKT, (i.ngayKT - i.ngayBD).Days, i.donGia, i.tienCoc, i.phuPhi, (i.tongTien - i.tienCoc) + i.phuPhi, i.tongTien, i.tenNV);
@@ -170,7 +159,6 @@ namespace CarRenTal.View._6.QuanLyThuChi
             }
 
             dgvDoanhThu.Rows.Clear();
-            dgvDoanhThu.Rows.Clear();
 
             dgvDoanhThu.ColumnCount = 12;
 
@@ -189,7 +177,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             _lstDoanhThu = _doanhThuService.GetDoanhThus(dtTimeSearch.Value.Date);
             foreach (var i in _lstDoanhThu.Where(c => c.tenXe.ToLower().Contains(txtSearch.Text.ToLower())))
             {
-                dgvDoanhThu.Rows.Add(i.maHD, i.tenXe, i.bienSo, i.ngayBD, i.ngayKT, i.ngayKT - i.ngayBD, i.donGia, i.tienCoc, i.phuPhi, i.tongTien - i.tienCoc, i.tongTien, i.tenNV);
+                dgvDoanhThu.Rows.Add(i.maHD, i.tenXe, i.bienSo, i.ngayBD, i.ngayKT, (i.ngayKT - i.ngayBD).Days, i.donGia, i.tienCoc, i.phuPhi, (i.tongTien - i.tienCoc) + i.phuPhi, i.tongTien, i.tenNV);
             }
 
             dgvKhoanChi.Rows.Clear();
@@ -344,7 +332,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L3", "L3");
             cl12.Value2 = "Nhân viên thực hiện";
             cl12.ColumnWidth = 20;
-            
+
 
             // Xác định hàng tiêu đề
             Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A3", "L3");
@@ -468,7 +456,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             {
                 for (int j = 0; j < dtTB.Columns.Count; j++)
                 {
-                    if (dtTB.Rows[i].Cells[j].Value != null) { oExcel.Cells[i + 4, j+1] = dtTB.Rows[i].Cells[j].Value.ToString(); }
+                    if (dtTB.Rows[i].Cells[j].Value != null) { oExcel.Cells[i + 4, j + 1] = dtTB.Rows[i].Cells[j].Value.ToString(); }
                 }
             }
 
@@ -537,7 +525,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
                 MessageBox.Show("Không có dữ liệu");
                 return;
             }
-           
+
         }
     }
 }
