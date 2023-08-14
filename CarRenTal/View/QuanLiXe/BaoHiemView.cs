@@ -33,7 +33,7 @@ namespace CarRenTal.View.QuanLiXe
         }
         private string GetTrangThaiAsString(int trangThai)
         {
-            return trangThai == 0 ? "Hoạt động" : "Không hoạt động";
+            return trangThai == 1 ? "Hoạt động" : "Không hoạt động";
         }
         private void LoadData()
         {
