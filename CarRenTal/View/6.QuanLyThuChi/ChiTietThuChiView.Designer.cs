@@ -224,7 +224,7 @@
             dtTimeSearch.Name = "dtTimeSearch";
             dtTimeSearch.Size = new Size(190, 27);
             dtTimeSearch.TabIndex = 32;
-            dtTimeSearch.Value = new DateTime(2023, 8, 10, 0, 0, 0, 0);
+            dtTimeSearch.Value = new DateTime(2023, 8, 14, 0, 0, 0, 0);
             dtTimeSearch.ValueChanged += dtTimeSearch_ValueChanged;
             // 
             // groupBox2

@@ -69,8 +69,6 @@
             groupBox5 = new GroupBox();
             groupBox6 = new GroupBox();
             lbTongTienKhachThue = new Label();
-            groupBox7 = new GroupBox();
-            lbXedaThue = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvQLKH).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -78,7 +76,6 @@
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
-            groupBox7.SuspendLayout();
             SuspendLayout();
             // 
             // dgvQLKH
@@ -474,7 +471,7 @@
             // 
             groupBox6.Controls.Add(lbTongTienKhachThue);
             groupBox6.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox6.Location = new Point(1018, 606);
+            groupBox6.Location = new Point(1018, 504);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(458, 96);
             groupBox6.TabIndex = 37;
@@ -491,32 +488,10 @@
             lbTongTienKhachThue.TabIndex = 35;
             lbTongTienKhachThue.Text = "Loading";
             // 
-            // groupBox7
-            // 
-            groupBox7.Controls.Add(lbXedaThue);
-            groupBox7.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox7.Location = new Point(1018, 504);
-            groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(458, 96);
-            groupBox7.TabIndex = 38;
-            groupBox7.TabStop = false;
-            groupBox7.Text = "Những con xe khách đã thuê";
-            // 
-            // lbXedaThue
-            // 
-            lbXedaThue.AutoSize = true;
-            lbXedaThue.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lbXedaThue.Location = new Point(185, 42);
-            lbXedaThue.Name = "lbXedaThue";
-            lbXedaThue.Size = new Size(56, 18);
-            lbXedaThue.TabIndex = 35;
-            lbXedaThue.Text = "Loading";
-            // 
             // QLKHView
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1478, 784);
-            Controls.Add(groupBox7);
             Controls.Add(groupBox6);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
@@ -541,8 +516,6 @@
             groupBox5.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
-            groupBox7.ResumeLayout(false);
-            groupBox7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -587,8 +560,6 @@
         private Label txtIDNT;
         private GroupBox groupBox6;
         private Label lbTongTienKhachThue;
-        private GroupBox groupBox7;
-        private Label lbXedaThue;
         private Button btnClearTTTN;
     }
 }
