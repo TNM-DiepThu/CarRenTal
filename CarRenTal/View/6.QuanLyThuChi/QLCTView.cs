@@ -95,7 +95,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
         {
             _lstHoaDonCT = DTService.GetDoanhThugay();
 
-            foreach (var i in _lstHoaDonCT.Where(c => c.NgayBatDau.Day == dtb.Day))
+            foreach (var i in _lstHoaDonCT.Where(c => c.NgayBatDau.Date == DateTime.Now.Date))
             {
                 _doanhThu += decimal.Parse((i.TongTien + i.chiPhiPhatSinhs.Sum(c => c.GiaTien)).ToString());
             }
@@ -104,7 +104,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             lbTDTNgay.Visible = true;
             lbHieuXuat.Text = ((_doanhThu / _HieuXuatNgay) * 100).ToString("#.###") + "%";
             lbXDCTNgay.Visible = true;
-            lbXDCTNgay.Text = _lstHoaDonCT.Count(c => c.NgayBatDau.Day == dtb.Day).ToString();
+            lbXDCTNgay.Text = _lstHoaDonCT.Count(c => c.NgayBatDau.Date == DateTime.Now.Date).ToString();
         }
         public void GetHSDoanhThuThang(DateTime dtb)
         {

@@ -218,7 +218,8 @@
             // 
             // dtTimeSearch
             // 
-            dtTimeSearch.Format = DateTimePickerFormat.Short;
+            dtTimeSearch.CustomFormat = "dd-MM-yyyy";
+            dtTimeSearch.Format = DateTimePickerFormat.Custom;
             dtTimeSearch.Location = new Point(14, 31);
             dtTimeSearch.Margin = new Padding(2);
             dtTimeSearch.Name = "dtTimeSearch";
