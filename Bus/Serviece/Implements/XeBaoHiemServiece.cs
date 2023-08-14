@@ -27,9 +27,9 @@ namespace Bus.Serviece.Implements
                 .Where(x => x.IdXe == id).ToList();
 
             danhSachLoaiXeVM = danhSachLoaiXeVM
-        .OrderByDescending(x => x.LoaiBaoHiem == "Bảo hiểm trách nhiệm dân sự")
-        .ThenBy(x => x.LoaiBaoHiem)
-        .ToList();
+                .OrderByDescending(x => x.LoaiBaoHiem == "Bảo hiểm trách nhiệm dân sự")
+                .ThenByDescending(x => x.NgayKetThuc) // Sắp xếp theo ngày kết thúc giảm dần
+                .ToList();
 
             return danhSachLoaiXeVM;
         }
