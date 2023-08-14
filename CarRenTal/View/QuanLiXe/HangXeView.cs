@@ -35,7 +35,7 @@ namespace CarRenTal.View
         }
         private string GetTrangThaiAsString(int trangThai)
         {
-            return trangThai == 0 ? "Hoạt động" : "Ngừng hoạt động";
+            return trangThai == 1 ? "Hoạt động" : "Ngừng hoạt động";
         }
         private void DataLoad()
         {

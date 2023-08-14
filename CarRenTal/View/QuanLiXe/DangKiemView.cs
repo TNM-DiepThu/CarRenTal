@@ -57,8 +57,10 @@ namespace CarRenTal.View.QuanLiXe
         {
             int rowIndex = e.RowIndex;
             if (rowIndex == _dk.GetAllDK(xeId).Count || rowIndex == -1) return;
+
+            _id = Guid.Parse(dtg_show.Rows[0].Cells[1].Value.ToString());
             //_id = Guid.Parse(dtg_show.Rows[rowIndex].Cells[1].Value.ToString());
-            _id = Guid.Parse(dtg_show.Rows[1].Cells[1].Value.ToString());
+
             var obj = _dk.GetAllDK(xeId).FirstOrDefault(c => c.Id == _id);
             dtp_bd.Text = obj.NgayDangKiem.ToString();
             dtp_kt.Text = obj.NgayHetHan.ToString();
@@ -104,5 +106,9 @@ namespace CarRenTal.View.QuanLiXe
             else { MessageBox.Show("Không thành công"); }
         }
 
+        private void dtg_show_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

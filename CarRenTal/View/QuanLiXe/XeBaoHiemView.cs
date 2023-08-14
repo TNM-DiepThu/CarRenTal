@@ -128,6 +128,7 @@ namespace CarRenTal.View.QuanLiXe
                     _id = bdid;
                 }
             }
+            cb_lbh.Text = obj.LoaiBaoHiem.ToString();
         }
     }
 }

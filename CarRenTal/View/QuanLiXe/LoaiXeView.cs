@@ -160,7 +160,7 @@ namespace CarRenTal.View.QuanLiXe
             tb_lnl.Text = obj.LoaiNguyenLieu;
             tb_soghe.Text = obj.SoGhe.ToString();
             tb_loaisoxe.Text = obj.LoaiSoXe;
-
+            cbb_hangxe.Text = obj.TenHangXe;
 
             rd_0.Checked = (obj.TrangThai == 1) ? true : false;
             rd_1.Checked = (obj.TrangThai == 0) ? true : false;

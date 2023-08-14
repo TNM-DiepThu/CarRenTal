@@ -41,6 +41,7 @@
             // 
             // dtg_show
             // 
+            dtg_show.AllowDrop = true;
             dtg_show.AllowUserToAddRows = false;
             dtg_show.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtg_show.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -52,6 +53,7 @@
             dtg_show.Size = new Size(624, 93);
             dtg_show.TabIndex = 0;
             dtg_show.CellClick += dtg_show_CellClick;
+            dtg_show.MouseClick += dtg_show_MouseClick;
             // 
             // bt_edit
             // 
