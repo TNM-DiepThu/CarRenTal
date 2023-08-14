@@ -176,8 +176,11 @@ namespace CarRenTal
 
         private void tb_seach_TextChanged(object sender, EventArgs e)
         {
-            string tenXeFilter = tb_seach.Text;
-            var filteredXes = _xe.GetAll().Where(x => x.TenXe.Contains(tenXeFilter));
+            string searchText = tb_seach.Text.ToLower(); 
+            var filteredXes = _xe.GetAll().Where(x =>
+                x.TenXe.ToLower().Contains(searchText) ||
+                x.BienSo.ToLower().Contains(searchText)); 
+
             dtg_show.Rows.Clear();
             int stt = 1;
             foreach (var x in filteredXes)
