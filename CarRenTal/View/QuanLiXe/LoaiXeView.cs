@@ -57,7 +57,7 @@ namespace CarRenTal.View.QuanLiXe
         private void tb_lnl_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Chỉ cho phép nhập chữ cái và chữ số
-            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
