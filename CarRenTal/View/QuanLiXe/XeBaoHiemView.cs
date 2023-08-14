@@ -20,7 +20,8 @@ namespace CarRenTal.View.QuanLiXe
         private Guid xeId;
         IXeBaoHiemServiece _bhsv;
         IBaoHiemServiece _bh;
-        public XeBaoHiemView(Guid id)
+        QuanLiXeView _quanLiXeView;
+        public XeBaoHiemView(Guid id, QuanLiXeView quanLiXeView)
         {
             InitializeComponent();
             xeId = id;
@@ -28,6 +29,8 @@ namespace CarRenTal.View.QuanLiXe
             _bh = new BaoHiemServiece();
             addCCB();
             LoadData();
+            _bh.update(1);
+            _quanLiXeView = quanLiXeView;
         }
         private void LoadData()
         {
@@ -129,6 +132,11 @@ namespace CarRenTal.View.QuanLiXe
                 }
             }
             cb_lbh.Text = obj.LoaiBaoHiem.ToString();
+        }
+
+        private void XeBaoHiemView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _quanLiXeView.LoadData();
         }
     }
 }

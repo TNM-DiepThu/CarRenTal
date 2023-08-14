@@ -24,11 +24,13 @@ namespace CarRenTal.View.QuanLiXe
         CarRentalDBContext _context;
         IBaoHiemServiece _baohiem;
         Guid _id;
+        QuanLiXeView _quanLiXeView;
         public BaoHiemView()
         {
             InitializeComponent();
             _context = new CarRentalDBContext();
             _baohiem = new BaoHiemServiece();
+
             LoadData();
         }
         private string GetTrangThaiAsString(int trangThai)
@@ -87,6 +89,10 @@ namespace CarRenTal.View.QuanLiXe
                 MessageBox.Show("Thêm không thành công");
             }
 
+        }
+        private void update()
+        {
+            _baohiem.update(1);
         }
 
         private void dtg_show_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -159,6 +165,11 @@ namespace CarRenTal.View.QuanLiXe
         private bool IsComboBoxNullOrEmpty(ComboBox comboBox)
         {
             return comboBox.SelectedIndex == -1;
+        }
+
+        private void BaoHiemView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }
