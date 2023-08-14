@@ -245,10 +245,7 @@ namespace CarRenTal.View.QuanLiXe
             {
                 MessageBox.Show("Nhập đủ giá trị");
             }
-            else if (_loaiXeServiece.GetAll().Any(x => x.Name == tb_name.Text))
-            {
-                MessageBox.Show("Tên loại xe đã tồn tại ");
-            }
+           
             else
             {
                 var updatedData = GetDataFrom2();
