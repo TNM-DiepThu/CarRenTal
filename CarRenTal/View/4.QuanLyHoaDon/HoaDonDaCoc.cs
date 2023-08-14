@@ -124,24 +124,51 @@ namespace CarRenTal.View._4.QuanLyHoaDon
                 MessageBox.Show("" + checkSave());
                 return;
             }
-            hdct.TrangThai = cbb_trangThai.SelectedIndex;
-            hoaDonService.UpdateHoaDon(hdct);
-
-            if (cbb_trangThai.SelectedIndex == 2 || cbb_trangThai.SelectedIndex == 3)
+            if (hdct.TrangThai != cbb_trangThai.SelectedIndex)
             {
-                TheChap theChap = new TheChap()
+                if (!(cbb_trangThai.SelectedIndex == 3 || cbb_trangThai.SelectedIndex == 2))
                 {
-                    Id = hdct.theChaps.ToList()[0].Id,
-                    IdGiayTo = Guid.Parse(cbb_giayTo.SelectedValue.ToString()),
-                    IdTS = Guid.Parse(cbb_taiSan.SelectedValue.ToString()),
-                    IdHDCT = hdct.Id,
-                    MoTa = tx_chiTiet.Text,
-                    TinhTrang = (cbb_trangThai.SelectedIndex == 3 ? 2 : 1),
-                };
-                hoaDonService.UpdateTheChap(theChap);
+                    hoaDonService.DeleteTheChap(hdct.Id);
+                }
+                else
+                {
+                    TheChap theChap = new TheChap()
+                    {
+                        Id = Guid.NewGuid(),
+                        IdGiayTo = Guid.Parse(cbb_giayTo.SelectedValue.ToString()),
+                        IdTS = Guid.Parse(cbb_taiSan.SelectedValue.ToString()),
+                        IdHDCT = hdct.Id,
+                        MoTa = tx_chiTiet.Text,
+                        TinhTrang = (cbb_trangThai.SelectedIndex == 3 ? 2 : 1),
+                    };
+                    hoaDonService.CreateTheChap(theChap);
+                }
+                hdct.TrangThai = cbb_trangThai.SelectedIndex;
+                hoaDonService.UpdateHoaDon(hdct);
+            }
+            else
+            {
+                hdct.TrangThai = cbb_trangThai.SelectedIndex;
+                hoaDonService.UpdateHoaDon(hdct);
+
+                if (cbb_trangThai.SelectedIndex == 2 || cbb_trangThai.SelectedIndex == 3)
+                {
+                    TheChap theChap = new TheChap()
+                    {
+                        Id = hdct.theChaps.ToList()[0].Id,
+                        IdGiayTo = Guid.Parse(cbb_giayTo.SelectedValue.ToString()),
+                        IdTS = Guid.Parse(cbb_taiSan.SelectedValue.ToString()),
+                        IdHDCT = hdct.Id,
+                        MoTa = tx_chiTiet.Text,
+                        TinhTrang = (cbb_trangThai.SelectedIndex == 3 ? 2 : 1),
+                    };
+                    hoaDonService.UpdateTheChap(theChap);
+                }
             }
             hoaDon.TrangThai = hoaDonService.CheckHoaDon(hoaDon);
-            MessageBox.Show("Thành công");
+            this.Close();
+           // LoadData();
+         //   MessageBox.Show("Thành công");
         }
         private string checkSave()
         {
