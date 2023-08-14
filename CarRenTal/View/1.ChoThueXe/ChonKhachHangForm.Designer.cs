@@ -162,7 +162,7 @@
             pic_Cam.Location = new Point(389, 24);
             pic_Cam.Margin = new Padding(2);
             pic_Cam.Name = "pic_Cam";
-            pic_Cam.Size = new Size(317, 221);
+            pic_Cam.Size = new Size(266, 221);
             pic_Cam.SizeMode = PictureBoxSizeMode.StretchImage;
             pic_Cam.TabIndex = 38;
             pic_Cam.TabStop = false;

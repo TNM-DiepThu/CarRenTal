@@ -85,7 +85,7 @@ namespace Bus.Serviece.Implements
             }
             else if (tThai == 1)
             {
-                 lstHDCT = HDCTRepo.GetALL().Where(p => p.TrangThai == tThai).ToList();
+                 lstHDCT = HDCTRepo.GetALL().Where(p => p.TrangThai == tThai&& p.NgayBatDau.Date<=DateTime.Now.Date).ToList();
             }
             else
             {
@@ -120,6 +120,10 @@ namespace Bus.Serviece.Implements
         public void UpdateTheChap(TheChap theChap)
         {
             theChap=theChapRepo.GetAll().FirstOrDefault(p=>p.IdHDCT==theChap.Id);
+            if (theChap == null)
+            {
+                return;
+            }
             theChap.TinhTrang = 2;
             theChapRepo.Update(theChap);
 

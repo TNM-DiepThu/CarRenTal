@@ -92,11 +92,10 @@ namespace CarRenTal.View._4._QuanLyHoaDon
         private void bt_chiTiet_Click(object sender, EventArgs e)
         {
             HoaDonThueXe hoaDon = lstHoaDon.FirstOrDefault(p => p.Id == Guid.Parse(lb_id.Text));
-            using (HoaDonDaCoc form = new HoaDonDaCoc(hoaDon))
-            {
-                form.ShowDialog();
-                lstHoaDon.FirstOrDefault(p => p.Id == form.hoaDon.Id).TrangThai = form.hoaDon.TrangThai;
-            };
+            HoaDonDaCoc form = new HoaDonDaCoc(hoaDon);
+             form.ShowDialog ();
+            lstHoaDon.FirstOrDefault(p => p.Id == form.hoaDon.Id).TrangThai = form.hoaDon.TrangThai;
+           
 
 
             LoadData(dtp_startDate.Value.Date, dtp_endDate.Value.Date, "");
