@@ -58,83 +58,57 @@ namespace Bus.Serviece.Implements
             _lstNhanVien = NhanVienRepo.GetNhanVien();
         }
 
-        public List<DoanhThu> GetDoanhThus(DateTime ngayBD)
+        public List<DoanhThu> GetDoanhThus(DateTime date)
         {
             List<DoanhThu> _lstDoanhThu = new List<DoanhThu>();
+            _lstHĐCT = _XeService.GetAllHDCT().Where(c=>c.NgayBatDau.Date == date.Date).ToList();
+            foreach (var hdct in _lstHĐCT)
+            {
+               hdct.Xe = xeRepo.GetXe().FirstOrDefault(p => p.ID == hdct.IdXe);
+                hdct.HoaDonThueXe = HoaDonThueXeRepo.GetALL().FirstOrDefault(p => p.Id == hdct.IdHoaDon);
+                hdct.HoaDonThueXe.KhachHang = khachHangRepo.GetALL().FirstOrDefault(p => p.Id == hdct.HoaDonThueXe.IdKhachHang);
+                hdct.Xe.LoaiXe = loaiXeRepo.GetALL().FirstOrDefault(p => p.Id == hdct.Xe.IdLoaiXe);
+                hdct.chiPhiPhatSinhs = chiPhiPhatSinhRepo.GetALL().Where(p => p.IdHDCT == hdct.Id).ToList();
+                foreach (var item in hdct.chiPhiPhatSinhs)
+                {
+                    item.LoaiPhuPhi = loaiPhuPhiRepo.GetALL().FirstOrDefault(p => p.Id == item.IdLPP);
+                }
+            }
+            foreach (var item in _lstHĐCT)
+            {
+               DoanhThu dtc = new DoanhThu()
+               {
+                   maHD = item.HoaDonThueXe.SoHopDong,
+                   tenXe = item.Xe.LoaiXe.Name,
+                   bienSo = item.Xe.BienSo,
+                   ngayBD = item.NgayBatDau,
+                   ngayKT = item.NgayKetThuc,
+                   tienCoc = item.TienCoc,
+                   donGia = item.DonGia,
+                   tongTien = item.TongTien,
+                   tenNV = item.HoaDonThueXe.KhachHang.Name,
+               };
+                decimal tong = 0;
+                foreach (var item2 in item.chiPhiPhatSinhs) 
+                {
+                    tong += item2.GiaTien;
+                }
+                dtc.phuPhi = tong;
+                _lstDoanhThu.Add(dtc);
 
-            var getMHD = from ct in _lstHĐCT
-                         join hd in _lstHĐTX on ct.IdHoaDon equals hd.Id
-                         join xe in _lstXe on ct.IdXe equals xe.ID
-                         join cp in _lstChiPhiPhatSinh on ct.Id equals cp.IdHDCT
-                         join nv in _lstNhanVien on hd.IdNhanVien equals nv.Id
-                         where ct.NgayBatDau == ngayBD && ct.TrangThai == 1 || ct.TrangThai == 2 || ct.TrangThai == 3 || ct.TrangThai == 4
-                         select new DoanhThu()
-                         {
-                             maHD = hd.SoHopDong,
-                             tenXe = xe.LoaiXe.Name,
-                             bienSo = xe.BienSo,
-                             ngayBD = ct.NgayBatDau,
-                             ngayKT = ct.NgayKetThuc,
-                             tienCoc = ct.TienCoc,
-                             donGia = xe.DonGia,
-                             phuPhi = cp.GiaTien,
-                             tongTien = ct.TongTien,
-                             tenNV = nv.HoTen
-                         };
-            _lstDoanhThu.AddRange(getMHD);
+            }
             return _lstDoanhThu;
         }
-
-        public List<DoanhThu> GetDoanhThuThang(DateTime thang)
+        public List<HoaDonChiTiet> GetDoanhThugay()
         {
-            List<DoanhThu> _lstDoanhThu = new List<DoanhThu>();
-            var getMHD = from ct in _lstHĐCT
-                         join hd in _lstHĐTX on ct.IdHoaDon equals hd.Id
-                         join xe in _lstXe on ct.IdXe equals xe.ID
-                         join cp in _lstChiPhiPhatSinh on ct.Id equals cp.IdHDCT
-                         where ct.NgayBatDau.Month == thang.Month /* && ct.Id in (from cp in _lstChiPhiPhatSinh select cp.IdHDCT)*/ && ct.TrangThai == 1 || ct.TrangThai == 2 || ct.TrangThai == 3 || ct.TrangThai == 4
-                         select new DoanhThu()
-                         {
-                             maHD = hd.SoHopDong,
-                             tenXe = xe.LoaiXe.Name,
-                             bienSo = xe.BienSo,
-                             ngayBD = ct.NgayBatDau,
-                             ngayKT = ct.NgayKetThuc,
-                             tienCoc = ct.TienCoc,
-                             donGia = xe.DonGia,
-                             phuPhi = cp.GiaTien,
-                             tongTien = ct.TongTien,
-                             tenNV = hd.IdNhanVien.ToString()
-                         };
-            _lstDoanhThu.AddRange(getMHD);
+            List<HoaDonChiTiet> _lstHDCT = new List<HoaDonChiTiet>();
 
-            return _lstDoanhThu;
-        }
+            foreach (var i in _lstHĐCT)
+            {
+                i.chiPhiPhatSinhs = _lstChiPhiPhatSinh.Where(c => c.IdHDCT == i.Id).ToList();
+            }
 
-        public List<DoanhThu> GetDoanhThuNam(DateTime nam)
-        {
-            List<DoanhThu> _lstDoanhThu = new List<DoanhThu>();
-            var getMHD = from ct in _lstHĐCT
-                         join hd in _lstHĐTX on ct.IdHoaDon equals hd.Id
-                         join xe in _lstXe on ct.IdXe equals xe.ID
-                        join cp in _lstChiPhiPhatSinh on ct.Id equals cp.IdHDCT
-                     where ct.NgayBatDau.Year == nam.Year  /* && ct.Id in (from cp in _lstChiPhiPhatSinh select cp.IdHDCT)*/ &&( ct.TrangThai == 1 || ct.TrangThai == 2 || ct.TrangThai == 3 || ct.TrangThai == 4)
-                         select new DoanhThu()
-                         {
-                             maHD = hd.SoHopDong,
-                             tenXe = xe.LoaiXe.Name,
-                             bienSo = xe.BienSo,
-                             ngayBD = ct.NgayBatDau,
-                             ngayKT = ct.NgayKetThuc,
-                             tienCoc = ct.TienCoc,
-                             donGia = xe.DonGia,
-                         //    phuPhi = cp.GiaTien,
-                             tongTien = ct.TongTien,
-                             tenNV = hd.IdNhanVien.ToString()
-                         };
-            _lstDoanhThu.AddRange(getMHD);
-
-            return _lstDoanhThu;
+            return _lstHĐCT;
         }
 
         public LoaiXe Top1XeNam(DateTime dtBD)

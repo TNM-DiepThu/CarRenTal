@@ -80,7 +80,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             dgvDoanhThu.Columns[10].Name = "Tổng tiền";
             dgvDoanhThu.Columns[11].Name = "Nhân viên thực hiện";
             _lstDoanhThu = _doanhThuService.GetDoanhThus(dtBD);
-            foreach (var i in _lstDoanhThu)
+            foreach (var i in _lstDoanhThu.Where(c=>c.ngayBD.Date == dtBD))
             {
                 dgvDoanhThu.Rows.Add(i.maHD, i.tenXe, i.bienSo, i.ngayBD, i.ngayKT, (i.ngayKT - i.ngayBD).Days, i.donGia, i.tienCoc, i.phuPhi, (i.tongTien - i.tienCoc) + i.phuPhi, i.tongTien, i.tenNV);
             }

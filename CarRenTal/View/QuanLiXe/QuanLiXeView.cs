@@ -249,7 +249,7 @@ namespace CarRenTal
             if (selectedXeId != Guid.Empty) // Đảm bảo đã chọn một xe trước khi mở Form BaoDuong
             {
                 // Tạo Form mới chứa DataGridView của BaoDuong
-                using (var bh = new XeBaoHiemView(selectedXeId))
+                using (var bh = new XeBaoHiemView(selectedXeId,this))
                 {
                     bh.ShowDialog();
                 }
