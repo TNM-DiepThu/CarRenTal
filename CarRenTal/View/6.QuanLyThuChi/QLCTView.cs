@@ -1,5 +1,6 @@
 ﻿using Bus.Serviece.Implements;
 using Bus.ViewModal;
+using Dal.Modal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,8 @@ namespace CarRenTal.View._6.QuanLyThuChi
     {
         DoanhThuService DTService = new DoanhThuService();
         List<DoanhThu> _lstDoanhThu;
+        List<HoaDonChiTiet> _lstHoaDonCT;
+
         decimal _doanhThu = 0;
         decimal _HieuXuatNgay = 100000000;
         decimal _HieuXuatThang = 3000000000;
@@ -27,6 +30,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
         {
             InitializeComponent();
             _lstDoanhThu = new List<DoanhThu>();
+            _lstHoaDonCT = new List<HoaDonChiTiet>();
 
         }
         //private void OpenChildForm(Form childForm)
@@ -54,9 +58,9 @@ namespace CarRenTal.View._6.QuanLyThuChi
 
         private void QLCTView_Load(object sender, EventArgs e)
         {
-            GetHSDoanhThu();
-            GetHSDoanhThuThang();
-            GetHSDoanhThuNam();
+            GetHSDoanhThu(dtNDTTheoNgay.Value);
+            GetHSDoanhThuThang(dtNDTTheoNgay.Value);
+            GetHSDoanhThuNam(dtNDTTheoNgay.Value);
 
             SLXeChoThueTrongNgay();
             SLXeChoThueTrongThang();
@@ -87,100 +91,111 @@ namespace CarRenTal.View._6.QuanLyThuChi
 
         }
 
-        public void GetHSDoanhThu()
+        public void GetHSDoanhThu(DateTime dtb)
         {
-            _lstDoanhThu = DTService.GetDoanhThus(dtNDTTheoNgay.Value);
+            _lstHoaDonCT = DTService.GetDoanhThugay();
 
-            foreach (var i in _lstDoanhThu)
+            foreach (var i in _lstHoaDonCT.Where(c => c.NgayBatDau.Date == DateTime.Now.Date))
             {
-                _doanhThu += decimal.Parse(i.tongTien.ToString());
+                _doanhThu += decimal.Parse((i.TongTien + i.chiPhiPhatSinhs.Sum(c => c.GiaTien)).ToString());
             }
             lbHieuXuat.Visible = true;
             lbTDTNgay.Text = _doanhThu.ToString();
             lbTDTNgay.Visible = true;
             lbHieuXuat.Text = ((_doanhThu / _HieuXuatNgay) * 100).ToString("#.###") + "%";
+            lbXDCTNgay.Visible = true;
+            lbXDCTNgay.Text = _lstHoaDonCT.Count(c => c.NgayBatDau.Date == DateTime.Now.Date).ToString();
         }
-        public void GetHSDoanhThuThang()
+        public void GetHSDoanhThuThang(DateTime dtb)
         {
-            _lstDoanhThu = DTService.GetDoanhThuThang(dtNDTTheoNgay.Value);
+            _lstHoaDonCT = DTService.GetDoanhThugay();
 
-            foreach (var i in _lstDoanhThu)
+            foreach (var i in _lstHoaDonCT.Where(c => c.NgayBatDau.Month == dtb.Month))
             {
-                _doanhThu += decimal.Parse(i.tongTien.ToString());
+                _doanhThu += decimal.Parse((i.TongTien + i.chiPhiPhatSinhs.Sum(c => c.GiaTien)).ToString());
             }
             lbHSDoanhThuThang.Visible = true;
             lbTDTThang.Text = _doanhThu.ToString();
             lbTDTThang.Visible = true;
             lbHSDoanhThuThang.Text = ((_doanhThu / _HieuXuatThang) * 100).ToString("#.##") + "%";
+            lbXeDCThang.Visible = true;
+            lbXeDCThang.Text = _lstHoaDonCT.Where(c => c.NgayBatDau.Month == dtb.Month).ToList().Count.ToString();
         }
-        public void GetHSDoanhThuNam()
+        public void GetHSDoanhThuNam(DateTime dtb)
         {
-            _lstDoanhThu = DTService.GetDoanhThuNam(dtNDTTheoNgay.Value);
+            _lstHoaDonCT = DTService.GetDoanhThugay();
 
-            foreach (var i in _lstDoanhThu)
+            foreach (var i in _lstHoaDonCT.Where(c => c.NgayBatDau.Year == dtb.Year))
             {
-                _doanhThu += decimal.Parse(i.tongTien.ToString());
+                _doanhThu += decimal.Parse((i.TongTien + i.chiPhiPhatSinhs.Sum(c => c.GiaTien)).ToString());
             }
             lbHSDoanhThuNam.Visible = true;
             lbTDTNam.Text = _doanhThu.ToString();
             lbTDTNam.Visible = true;
             lbHSDoanhThuNam.Text = ((_doanhThu / _HieuXuatNam) * 100).ToString("#.##") + "%";
+            lbXeDCTNam.Visible = true;
+            lbXeDCTNam.Text = _lstHoaDonCT.Where(c => c.NgayBatDau.Year == dtb.Year).ToList().Count.ToString();
         }
 
         public void SLXeChoThueTrongNam()
         {
-            var ruslt = DTService.GetDoanhThuNam(dtNDTTheoNgay.Value);
-            if (ruslt != null)
-            {
-                for (int i = 0; i < ruslt.Count; i++)
-                {
-                    _amountCar++;
-                }
-                lbXeDCTNam.Visible = true;
-                lbXeDCTNam.Text = _amountCar.ToString();
-            }
-            else
-            {
-                lbXeDCTNam.Text = "0";
-            }
+            //var ruslt = DTService.GetDoanhThuNam(dtNDTTheoNgay.Value);
+            //if (ruslt != null)
+            //{
+            //    for (int i = 0; i < ruslt.Count; i++)
+            //    {
+            //        _amountCar++;
+            //    }
+            //    lbXeDCTNam.Visible = true;
+            //    lbXeDCTNam.Text = _amountCar.ToString();
+            //}
+            //else
+            //{
+            //    lbXeDCTNam.Text = "0";
+            //}
 
         }
         public void SLXeChoThueTrongThang()
         {
 
 
-            var ruslt = DTService.GetDoanhThuThang(dtNDTTheoNgay.Value);
-            if (ruslt != null)
-            {
-                for (int i = 0; i < ruslt.Count; i++)
-                {
-                    _amountCar++;
-                }
-                lbXeDCThang.Visible = true;
-                lbXeDCThang.Text = _amountCar.ToString();
-            }
-            else
-            {
-                lbXeDCThang.Text = "0";
-            }
+            //var ruslt = DTService.GetDoanhThuThang(dtNDTTheoNgay.Value);
+            //if (ruslt != null)
+            //{
+            //    for (int i = 0; i < ruslt.Count; i++)
+            //    {
+            //        _amountCar++;
+            //    }
+            //    lbXeDCThang.Visible = true;
+            //    lbXeDCThang.Text = _amountCar.ToString();
+            //}
+            //else
+            //{
+            //    lbXeDCThang.Text = "0";
+            //}
 
         }
         public void SLXeChoThueTrongNgay()
         {
-            var ruslt = DTService.GetDoanhThus(dtNDTTheoNgay.Value);
-            if (ruslt != null)
-            {
-                for (int i = 0; i < ruslt.Count; i++)
-                {
-                    _amountCar++;
-                }
-                lbXDCTNgay.Visible = true;
-                lbXDCTNgay.Text = _amountCar.ToString();
-            }
-            else
-            {
-                lbXDCTNgay.Text = "0";
-            }
+            //var ruslt = DTService.GetDoanhThus(dtNDTTheoNgay.Value);
+            //if (ruslt != null)
+            //{
+            //    for (int i = 0; i < ruslt.Count; i++)
+            //    {
+            //        _amountCar++;
+            //    }
+            //    lbXDCTNgay.Visible = true;
+            //    lbXDCTNgay.Text = _amountCar.ToString();
+            //}
+            //else
+            //{
+            //    lbXDCTNgay.Text = "0";
+            //}
+
+        }
+
+        private void dtNDTTheoNgay_ValueChanged(object sender, EventArgs e)
+        {
 
         }
     }

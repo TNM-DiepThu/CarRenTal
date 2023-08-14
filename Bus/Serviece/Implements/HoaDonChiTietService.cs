@@ -19,6 +19,7 @@ namespace Bus.Serviece.Implements
         XeRepo xeRepo = new XeRepo();
         ChiPhiPhatSinhRepo phuPhiRepo= new ChiPhiPhatSinhRepo();
         LoaiXeRepo loaiXeRepo = new LoaiXeRepo();
+        HangXeRepo hangXeRepo= new HangXeRepo();
         LoaiPhuPhiRepo loaiPhuPhiRepo = new LoaiPhuPhiRepo();
         GiayToTheChapRepo giayToRepo= new GiayToTheChapRepo();
         TaiSanTheChapRepo taiSanRepo= new TaiSanTheChapRepo();
@@ -98,6 +99,7 @@ namespace Bus.Serviece.Implements
                 hdct.HoaDonThueXe = HoaDonThueXeRepo.GetALL().FirstOrDefault(p => p.Id == hdct.IdHoaDon);
                 hdct.HoaDonThueXe.KhachHang= KhachHangRepo.GetALL().FirstOrDefault(p => p.Id == hdct.HoaDonThueXe.IdKhachHang);
                 hdct.Xe.LoaiXe= loaiXeRepo.GetALL().FirstOrDefault(p => p.Id == hdct.Xe.IdLoaiXe);
+                hdct.Xe.LoaiXe.HangXe= hangXeRepo.GetALL().FirstOrDefault(p => p.Id == hdct.Xe.LoaiXe.IdHangXe);
                 hdct.theChaps= theChapRepo.GetAll().Where(p=>p.IdHDCT==hdct.Id).ToList();
                 hdct.chiPhiPhatSinhs= phuPhiRepo.GetALL().Where(p=>p.IdHDCT==hdct.Id).ToList();
                 foreach (var item in hdct.chiPhiPhatSinhs)

@@ -167,8 +167,9 @@
             dtNDTTheoNgay.Name = "dtNDTTheoNgay";
             dtNDTTheoNgay.Size = new Size(250, 27);
             dtNDTTheoNgay.TabIndex = 11;
-            dtNDTTheoNgay.Value = new DateTime(2023, 7, 30, 13, 34, 0, 0);
+            dtNDTTheoNgay.Value = new DateTime(2023, 8, 13, 0, 0, 0, 0);
             dtNDTTheoNgay.Visible = false;
+            dtNDTTheoNgay.ValueChanged += dtNDTTheoNgay_ValueChanged;
             // 
             // button1
             // 
