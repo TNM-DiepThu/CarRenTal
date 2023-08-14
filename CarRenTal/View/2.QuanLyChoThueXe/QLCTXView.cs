@@ -148,21 +148,21 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 tx_tenKhach.Text = hoaDonCT.HoaDonThueXe.KhachHang.Name;
                 tx_sdt.Text = hoaDonCT.HoaDonThueXe.KhachHang.SDT;
                 cbb_trangThai.SelectedIndex = hoaDonCT.TrangThai;
-                if (hoaDonCT.theChaps.Count > 0&& hoaDonCT.TrangThai!=1)
+                if (hoaDonCT.theChaps.Count > 0 && hoaDonCT.TrangThai != 1)
                 {
                     cbb_loaiGiayTo.SelectedValue = hoaDonCT.theChaps.ToList()[0].IdGiayTo;
                     cbb_loaiTaiSan.SelectedValue = hoaDonCT.theChaps.ToList()[0].IdTS;
                     tx_giaTri.Text = hoaDonCT.theChaps.ToList()[0].GiaTri.ToString();
                     tx_chiTiet.Text = hoaDonCT.theChaps.ToList()[0].MoTa;
-                    if (hoaDonCT.chiPhiPhatSinhs != null)
+                }
+                if (hoaDonCT.chiPhiPhatSinhs != null)
+                {
+                    decimal sum = 0;
+                    foreach (var item in hoaDonCT.chiPhiPhatSinhs)
                     {
-                        decimal sum = 0;
-                        foreach (var item in hoaDonCT.chiPhiPhatSinhs)
-                        {
-                            sum += item.GiaTien;
-                        }
-                        tx_phuPhi.Text = sum.ToString();
+                        sum += item.GiaTien;
                     }
+                    tx_phuPhi.Text = sum.ToString();
                 }
             }
         }
@@ -268,7 +268,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 else
                 {
                     hoaDonCT.TrangThai = cbb_trangThai.SelectedIndex;
-                    TheChap theChap1 = new TheChap() { Id= hoaDonCT.Id,TinhTrang=2};
+                    TheChap theChap1 = new TheChap() { Id = hoaDonCT.Id, TinhTrang = 2 };
                     hdService.UpdateTheChap(theChap1);
                     hdService.UpdateHDCT(hoaDonCT);
                 }

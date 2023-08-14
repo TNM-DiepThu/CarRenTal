@@ -48,5 +48,20 @@ namespace Dal.Repository
                 return false;
             }
         }
+
+        public bool Delete(Guid id)
+        {
+            try
+            {
+                List<TheChap> theChap = db.theChaps.Where(p => p.IdHDCT == id).ToList();
+                db.theChaps.RemoveRange(theChap);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
