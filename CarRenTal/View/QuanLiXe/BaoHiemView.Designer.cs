@@ -135,7 +135,7 @@
             MinimumSize = new Size(743, 497);
             Name = "BaoHiemView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "BaoHiemView";
+            Text = "Loại bảo hiểm";
             FormClosed += BaoHiemView_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);

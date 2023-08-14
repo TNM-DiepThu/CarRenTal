@@ -13,5 +13,6 @@ namespace Bus.Serviece.Interface
         public bool Add(BaoDuong p,Guid id);
         public bool Edit(BaoDuong p,Guid id);
         public bool update(int trangthai);
+        public int GetTrangThaiBaoDuong(Guid xeId);
     }
 }

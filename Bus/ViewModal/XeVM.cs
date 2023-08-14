@@ -19,6 +19,7 @@ namespace Bus.ViewModal
         IXeBaoHiemServiece _baohiem;
         IDangKiemServiece _dangkiem;
         IXeServiece _xe;
+        IBaoDuongServiece _bo;
         public Guid ID { get; set; }
         public string BienSo { get; set; }
         public string SoKhung { get; set; }
@@ -35,11 +36,13 @@ namespace Bus.ViewModal
         public string TenXe { get; set; }
         public DateTime NgayKetThucBaoHiem { get; set; }
         public DateTime NgayHetHanDangKiem { get; set; }
+        public int TrangThaiBaoDuong {get; set;}
 
         public XeVM(Xe x)
         {
             _baohiem = new XeBaoHiemServiece();
             _dangkiem = new DangKiemServiece();
+            _bo = new BaoDuongServiece();
             _xe = new XeServiece();
             this.ID = x.ID;
             this.TenXe = _xe.GetTenLoaiXe(x.IdLoaiXe);
@@ -87,6 +90,7 @@ namespace Bus.ViewModal
             {
                 TrangThaiDangKiem = "Hết hạn";
             }
+            this.TrangThaiBaoDuong = _bo.GetTrangThaiBaoDuong(x.ID);
         }
     }
 }

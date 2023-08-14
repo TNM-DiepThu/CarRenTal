@@ -109,7 +109,7 @@
             MinimumSize = new Size(688, 497);
             Name = "MauSacView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MauSac";
+            Text = "Màu sắc";
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);
             PerformLayout();

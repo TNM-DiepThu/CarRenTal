@@ -48,37 +48,39 @@
             // 
             dtg_show.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtg_show.Location = new Point(34, 34);
+            dtg_show.MaximumSize = new Size(841, 385);
+            dtg_show.MinimumSize = new Size(841, 385);
             dtg_show.Name = "dtg_show";
             dtg_show.RowHeadersWidth = 51;
             dtg_show.RowTemplate.Height = 29;
-            dtg_show.Size = new Size(474, 385);
+            dtg_show.Size = new Size(841, 385);
             dtg_show.TabIndex = 0;
             dtg_show.CellClick += dtg_show_CellClick;
             // 
             // tb_ct
             // 
-            tb_ct.Location = new Point(554, 216);
+            tb_ct.Location = new Point(893, 216);
             tb_ct.Name = "tb_ct";
             tb_ct.Size = new Size(360, 27);
             tb_ct.TabIndex = 1;
             // 
             // tb_cphi
             // 
-            tb_cphi.Location = new Point(554, 163);
+            tb_cphi.Location = new Point(893, 163);
             tb_cphi.Name = "tb_cphi";
             tb_cphi.Size = new Size(360, 27);
             tb_cphi.TabIndex = 1;
             // 
             // dtp_bd
             // 
-            dtp_bd.Location = new Point(554, 57);
+            dtp_bd.Location = new Point(893, 57);
             dtp_bd.Name = "dtp_bd";
             dtp_bd.Size = new Size(360, 27);
             dtp_bd.TabIndex = 2;
             // 
             // dtp_kt
             // 
-            dtp_kt.Location = new Point(554, 110);
+            dtp_kt.Location = new Point(893, 110);
             dtp_kt.Name = "dtp_kt";
             dtp_kt.Size = new Size(360, 27);
             dtp_kt.TabIndex = 2;
@@ -87,7 +89,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(554, 34);
+            label1.Location = new Point(893, 34);
             label1.Name = "label1";
             label1.Size = new Size(99, 20);
             label1.TabIndex = 3;
@@ -96,7 +98,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(554, 87);
+            label2.Location = new Point(893, 87);
             label2.Name = "label2";
             label2.Size = new Size(100, 20);
             label2.TabIndex = 3;
@@ -106,7 +108,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(554, 140);
+            label3.Location = new Point(893, 140);
             label3.Name = "label3";
             label3.Size = new Size(55, 20);
             label3.TabIndex = 3;
@@ -116,7 +118,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(554, 193);
+            label4.Location = new Point(893, 193);
             label4.Name = "label4";
             label4.Size = new Size(81, 20);
             label4.TabIndex = 3;
@@ -125,7 +127,7 @@
             // 
             // bt_add
             // 
-            bt_add.Location = new Point(554, 375);
+            bt_add.Location = new Point(893, 375);
             bt_add.Name = "bt_add";
             bt_add.Size = new Size(177, 44);
             bt_add.TabIndex = 4;
@@ -135,7 +137,7 @@
             // 
             // bt_edit
             // 
-            bt_edit.Location = new Point(737, 375);
+            bt_edit.Location = new Point(1076, 375);
             bt_edit.Name = "bt_edit";
             bt_edit.Size = new Size(177, 44);
             bt_edit.TabIndex = 4;
@@ -145,7 +147,7 @@
             // 
             // tb_chitiet
             // 
-            tb_chitiet.Location = new Point(554, 273);
+            tb_chitiet.Location = new Point(893, 273);
             tb_chitiet.Multiline = true;
             tb_chitiet.Name = "tb_chitiet";
             tb_chitiet.Size = new Size(360, 96);
@@ -154,7 +156,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(554, 246);
+            label5.Location = new Point(893, 246);
             label5.Name = "label5";
             label5.Size = new Size(56, 20);
             label5.TabIndex = 3;
@@ -165,7 +167,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(959, 460);
+            ClientSize = new Size(1264, 460);
             Controls.Add(bt_edit);
             Controls.Add(bt_add);
             Controls.Add(label5);
@@ -179,11 +181,9 @@
             Controls.Add(tb_chitiet);
             Controls.Add(tb_ct);
             Controls.Add(dtg_show);
-            MaximumSize = new Size(977, 507);
-            MinimumSize = new Size(977, 507);
             Name = "BaoDuongView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "BaoDuongView";
+            Text = "Bảo dưỡng";
             Load += BaoDuongView_Load;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);

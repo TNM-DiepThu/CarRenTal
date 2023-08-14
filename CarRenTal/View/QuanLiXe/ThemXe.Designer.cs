@@ -318,7 +318,7 @@
             MinimumSize = new Size(589, 584);
             Name = "ThemXe";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ThemXe";
+            Text = "Thêm xe";
             FormClosed += ThemXe_FormClosed;
             Load += ThemXe_Load;
             ResumeLayout(false);

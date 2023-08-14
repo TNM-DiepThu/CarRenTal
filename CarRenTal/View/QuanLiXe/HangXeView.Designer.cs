@@ -145,7 +145,7 @@
             MinimumSize = new Size(818, 428);
             Name = "HangXeView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "HangXeView";
+            Text = "Hãng xe";
             ((System.ComponentModel.ISupportInitialize)ShowHangXe).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);

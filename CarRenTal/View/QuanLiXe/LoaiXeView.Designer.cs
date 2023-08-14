@@ -242,7 +242,7 @@
             MinimumSize = new Size(1176, 607);
             Name = "LoaiXeView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "LoaiXeView";
+            Text = "Loại xe";
             Load += LoaiXeView_Load;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);

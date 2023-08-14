@@ -245,7 +245,7 @@ namespace CarRenTal.View.QuanLiXe
             {
                 MessageBox.Show("Nhập đủ giá trị");
             }
-           
+
             else
             {
                 var updatedData = GetDataFrom2();

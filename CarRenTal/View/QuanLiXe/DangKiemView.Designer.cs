@@ -130,7 +130,7 @@
             MinimumSize = new Size(877, 327);
             Name = "DangKiemView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "DangKiemView";
+            Text = "Đăng kiểm ";
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);
             PerformLayout();

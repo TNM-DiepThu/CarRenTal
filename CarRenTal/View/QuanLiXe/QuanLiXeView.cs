@@ -82,11 +82,25 @@ namespace CarRenTal
             }
 
         }
+        private string TTBD(int trangThai)
+        {
+            if (trangThai == 1)
+            {
+                return "Đang đang bảo dưỡng";
+            }
+            if (trangThai == 0) // Loại bỏ dấu chấm phẩy ở đây
+            {
+                return "Kết thúc bảo dưỡng";
+            }
+
+            // Hãy đảm bảo bạn có xử lý cả trạng thái khác 0 và 1
+            return "Trạng thái không xác định";
+        }
 
         public void LoadData()
         {
             int stt = 1;
-            dtg_show.ColumnCount = 13;
+            dtg_show.ColumnCount = 14;
             dtg_show.Columns[0].Name = "STT";
             dtg_show.Columns[0].Width = 40;
 
@@ -102,18 +116,20 @@ namespace CarRenTal
             dtg_show.Columns[9].Name = "Màu sắc";
             dtg_show.Columns[10].Name = "Trạng thái đăng kiếm";
             dtg_show.Columns[11].Name = "Trạng thái bảo hiểm";
-            dtg_show.Columns[12].Name = "Trạng Thái";
+            dtg_show.Columns[12].Name = "Trạng Thái bảo dưỡng";
+            dtg_show.Columns[13].Name = "Trạng Thái";
             dtg_show.Rows.Clear();
             foreach (var x in _xe.GetAll())
             {
                 string trangThaiAsString = GetTrangThaiAsString(x.TrangThai);
+                string ttbd = TTBD(x.TrangThaiBaoDuong);
                 string TenhangXe = x.TenHangXe;
                 string TenXe = x.TenXe;
                 int LoaiXe = x.SoGhe;
 
 
 
-                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, trangThaiAsString);
+                dtg_show.Rows.Add(stt++, x.ID, TenhangXe, LoaiXe, TenXe, x.BienSo, x.SoKhung, x.SoMay, x.DonGia, x.MauSac, x.TrangThaiDangKiem, x.TrangThaiBaoHiem, ttbd, trangThaiAsString);
             }
         }
 
@@ -229,8 +245,8 @@ namespace CarRenTal
                 using (var edit = new EditXeView(selectedXeId, this))
                 {
                     edit.ShowDialog();
-                   
-                } 
+
+                }
                 LoadData();
             }
             else
@@ -249,7 +265,7 @@ namespace CarRenTal
             if (selectedXeId != Guid.Empty) // Đảm bảo đã chọn một xe trước khi mở Form BaoDuong
             {
                 // Tạo Form mới chứa DataGridView của BaoDuong
-                using (var bh = new XeBaoHiemView(selectedXeId,this))
+                using (var bh = new XeBaoHiemView(selectedXeId, this))
                 {
                     bh.ShowDialog();
                 }

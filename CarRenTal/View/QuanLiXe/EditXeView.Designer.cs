@@ -256,7 +256,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "EditXeView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EditXeView";
+            Text = "Sửa xe";
             FormClosed += EditXeView_FormClosed;
             Load += EditXeView_Load;
             ResumeLayout(false);

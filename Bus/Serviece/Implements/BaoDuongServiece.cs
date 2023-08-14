@@ -94,5 +94,15 @@ namespace Bus.Serviece.Implements
                 throw;
             }
         }
+        public int GetTrangThaiBaoDuong(Guid xeId)
+        {
+            BaoDuong baoduong = _context.baoDuongs.FirstOrDefault(b => b.IdXe == xeId);
+            if (baoduong != null)
+            {
+                return baoduong.TrangThai;
+            }
+            return 0; // Mặc định là kết thúc bảo dưỡng nếu không tìm thấy bảo dưỡng
+        }
+
     }
 }

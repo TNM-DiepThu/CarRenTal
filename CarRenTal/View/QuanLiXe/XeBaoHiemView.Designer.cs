@@ -169,7 +169,7 @@
             MinimumSize = new Size(935, 556);
             Name = "XeBaoHiemView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "XeBaoHiemView";
+            Text = "Bảo hiểm ";
             FormClosed += XeBaoHiemView_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);

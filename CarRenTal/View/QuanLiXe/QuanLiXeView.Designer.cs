@@ -271,7 +271,7 @@
             MaximumSize = new Size(1500, 840);
             MinimumSize = new Size(1500, 840);
             Name = "QuanLiXeView";
-            Text = "QuanLiXe";
+            Text = "Quản lý xe";
             Load += QuanLiXe_Load;
             Click += QuanLiXeView_Click;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();

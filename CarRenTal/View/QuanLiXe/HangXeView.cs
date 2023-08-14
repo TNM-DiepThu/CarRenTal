@@ -185,7 +185,7 @@ namespace CarRenTal.View
             if (textBox1.Text == "" || !(rd_hd.Checked || rd_khd.Checked))
             {
                 MessageBox.Show("Nhập dữ liệu");
-            }         
+            }
             else
             {
                 MessageBox.Show(_hangXeServiece.UpdateHangXe(GetDataFrom2()));
