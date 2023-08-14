@@ -43,6 +43,7 @@ namespace CarRenTal.View._5._QuanLyKhachHang
             dgvQLKH.ColumnCount = 7;
 
             dgvQLKH.Columns[0].Name = "Mã KH";
+            dgvQLKH.Columns[0].Visible = false;
             dgvQLKH.Columns[1].Name = "Họ và tên";
             dgvQLKH.Columns[2].Name = "Giới tính";
             dgvQLKH.Columns[3].Name = "Địa Chỉ";

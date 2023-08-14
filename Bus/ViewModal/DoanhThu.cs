@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dal.Modal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,9 @@ namespace Bus.ViewModal
 {
     public class DoanhThu
     {
+        internal ChiPhiPhatSinh? phuphi;
+    
+        public Guid idHD { get; set; }
         public int maHD { get; set; }
         public string tenXe { get; set; }
         public string bienSo { get; set; }

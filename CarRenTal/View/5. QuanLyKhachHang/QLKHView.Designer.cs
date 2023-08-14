@@ -69,8 +69,6 @@
             groupBox5 = new GroupBox();
             groupBox6 = new GroupBox();
             lbTongTienKhachThue = new Label();
-            groupBox7 = new GroupBox();
-            lbXedaThue = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvQLKH).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -78,7 +76,6 @@
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
-            groupBox7.SuspendLayout();
             SuspendLayout();
             // 
             // dgvQLKH
@@ -98,7 +95,7 @@
             // 
             txtSearch.Location = new Point(62, 30);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(536, 31);
+            txtSearch.Size = new Size(536, 27);
             txtSearch.TabIndex = 28;
             txtSearch.TextChanged += tbSearch_TextChanged;
             // 
@@ -110,6 +107,7 @@
             btnUpdate.TabIndex = 30;
             btnUpdate.Text = "Người thân";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Visible = false;
             btnUpdate.Click += btnUpdate_Click;
             // 
             // groupBox1
@@ -137,7 +135,7 @@
             // 
             txtSdtKH.Location = new Point(676, 159);
             txtSdtKH.Name = "txtSdtKH";
-            txtSdtKH.Size = new Size(276, 31);
+            txtSdtKH.Size = new Size(276, 27);
             txtSdtKH.TabIndex = 79;
             // 
             // label8
@@ -145,7 +143,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(638, 119);
             label8.Name = "label8";
-            label8.Size = new Size(117, 25);
+            label8.Size = new Size(97, 20);
             label8.TabIndex = 78;
             label8.Text = "Số điện thoại";
             // 
@@ -155,7 +153,7 @@
             cbbGioiTinhKH.Items.AddRange(new object[] { "Nam", "Nữ" });
             cbbGioiTinhKH.Location = new Point(359, 70);
             cbbGioiTinhKH.Name = "cbbGioiTinhKH";
-            cbbGioiTinhKH.Size = new Size(278, 33);
+            cbbGioiTinhKH.Size = new Size(278, 28);
             cbbGioiTinhKH.TabIndex = 77;
             // 
             // dtpNgaySinhKh
@@ -163,7 +161,7 @@
             dtpNgaySinhKh.Format = DateTimePickerFormat.Short;
             dtpNgaySinhKh.Location = new Point(676, 68);
             dtpNgaySinhKh.Name = "dtpNgaySinhKh";
-            dtpNgaySinhKh.Size = new Size(276, 31);
+            dtpNgaySinhKh.Size = new Size(276, 27);
             dtpNgaySinhKh.TabIndex = 76;
             // 
             // label7
@@ -171,7 +169,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(638, 27);
             label7.Name = "label7";
-            label7.Size = new Size(91, 25);
+            label7.Size = new Size(74, 20);
             label7.TabIndex = 75;
             label7.Text = "Ngày sinh";
             // 
@@ -179,7 +177,7 @@
             // 
             txtDiaChiKH.Location = new Point(354, 159);
             txtDiaChiKH.Name = "txtDiaChiKH";
-            txtDiaChiKH.Size = new Size(283, 31);
+            txtDiaChiKH.Size = new Size(283, 27);
             txtDiaChiKH.TabIndex = 74;
             // 
             // label6
@@ -187,7 +185,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(336, 119);
             label6.Name = "label6";
-            label6.Size = new Size(65, 25);
+            label6.Size = new Size(55, 20);
             label6.TabIndex = 73;
             label6.Text = "Địa chỉ";
             // 
@@ -196,7 +194,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(323, 27);
             label5.Name = "label5";
-            label5.Size = new Size(78, 25);
+            label5.Size = new Size(65, 20);
             label5.TabIndex = 49;
             label5.Text = "Giới tính";
             // 
@@ -204,7 +202,7 @@
             // 
             txtCCCDKH.Location = new Point(18, 159);
             txtCCCDKH.Name = "txtCCCDKH";
-            txtCCCDKH.Size = new Size(283, 31);
+            txtCCCDKH.Size = new Size(283, 27);
             txtCCCDKH.TabIndex = 48;
             // 
             // label4
@@ -212,7 +210,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(18, 119);
             label4.Name = "label4";
-            label4.Size = new Size(84, 25);
+            label4.Size = new Size(68, 20);
             label4.TabIndex = 47;
             label4.Text = "Số CCCD";
             // 
@@ -220,7 +218,7 @@
             // 
             txtHoTenKH.Location = new Point(18, 72);
             txtHoTenKH.Name = "txtHoTenKH";
-            txtHoTenKH.Size = new Size(283, 31);
+            txtHoTenKH.Size = new Size(283, 27);
             txtHoTenKH.TabIndex = 46;
             // 
             // label3
@@ -228,7 +226,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(18, 27);
             label3.Name = "label3";
-            label3.Size = new Size(89, 25);
+            label3.Size = new Size(73, 20);
             label3.TabIndex = 45;
             label3.Text = "Họ và tên";
             // 
@@ -262,7 +260,7 @@
             textIDkh.AutoSize = true;
             textIDkh.Location = new Point(24, 108);
             textIDkh.Name = "textIDkh";
-            textIDkh.Size = new Size(78, 25);
+            textIDkh.Size = new Size(64, 20);
             textIDkh.TabIndex = 4;
             textIDkh.Text = "textIDkh";
             textIDkh.Visible = false;
@@ -335,7 +333,7 @@
             txtIDNT.AutoSize = true;
             txtIDNT.Location = new Point(322, 27);
             txtIDNT.Name = "txtIDNT";
-            txtIDNT.Size = new Size(81, 25);
+            txtIDNT.Size = new Size(68, 20);
             txtIDNT.TabIndex = 5;
             txtIDNT.Text = "textIDNT";
             txtIDNT.Visible = false;
@@ -365,7 +363,7 @@
             // 
             txtDiaChiTn.Location = new Point(25, 260);
             txtDiaChiTn.Name = "txtDiaChiTn";
-            txtDiaChiTn.Size = new Size(420, 31);
+            txtDiaChiTn.Size = new Size(420, 27);
             txtDiaChiTn.TabIndex = 81;
             txtDiaChiTn.TextChanged += textBox4_TextChanged;
             // 
@@ -373,7 +371,7 @@
             // 
             txtCCCDTn.Location = new Point(17, 166);
             txtCCCDTn.Name = "txtCCCDTn";
-            txtCCCDTn.Size = new Size(198, 31);
+            txtCCCDTn.Size = new Size(198, 27);
             txtCCCDTn.TabIndex = 81;
             // 
             // label12
@@ -381,7 +379,7 @@
             label12.AutoSize = true;
             label12.Location = new Point(17, 216);
             label12.Name = "label12";
-            label12.Size = new Size(65, 25);
+            label12.Size = new Size(55, 20);
             label12.TabIndex = 80;
             label12.Text = "Địa chỉ";
             label12.Click += label12_Click;
@@ -390,7 +388,7 @@
             // 
             txtSDTTn.Location = new Point(235, 166);
             txtSDTTn.Name = "txtSDTTn";
-            txtSDTTn.Size = new Size(210, 31);
+            txtSDTTn.Size = new Size(210, 27);
             txtSDTTn.TabIndex = 80;
             // 
             // label11
@@ -398,7 +396,7 @@
             label11.AutoSize = true;
             label11.Location = new Point(25, 126);
             label11.Name = "label11";
-            label11.Size = new Size(84, 25);
+            label11.Size = new Size(68, 20);
             label11.TabIndex = 80;
             label11.Text = "Số CCCD";
             // 
@@ -407,7 +405,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(215, 126);
             label10.Name = "label10";
-            label10.Size = new Size(117, 25);
+            label10.Size = new Size(97, 20);
             label10.TabIndex = 80;
             label10.Text = "Số điện thoại";
             // 
@@ -417,14 +415,14 @@
             cbbGioiTinhTN.Items.AddRange(new object[] { "Nam", "Nữ" });
             cbbGioiTinhTN.Location = new Point(235, 77);
             cbbGioiTinhTN.Name = "cbbGioiTinhTN";
-            cbbGioiTinhTN.Size = new Size(210, 33);
+            cbbGioiTinhTN.Size = new Size(210, 28);
             cbbGioiTinhTN.TabIndex = 81;
             // 
             // txtHoTenTn
             // 
             txtHoTenTn.Location = new Point(20, 79);
             txtHoTenTn.Name = "txtHoTenTn";
-            txtHoTenTn.Size = new Size(195, 31);
+            txtHoTenTn.Size = new Size(195, 27);
             txtHoTenTn.TabIndex = 81;
             // 
             // label2
@@ -432,7 +430,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(215, 27);
             label2.Name = "label2";
-            label2.Size = new Size(78, 25);
+            label2.Size = new Size(65, 20);
             label2.TabIndex = 80;
             label2.Text = "Giới tính";
             // 
@@ -441,7 +439,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(20, 34);
             label1.Name = "label1";
-            label1.Size = new Size(89, 25);
+            label1.Size = new Size(73, 20);
             label1.TabIndex = 80;
             label1.Text = "Họ và tên";
             // 
@@ -451,7 +449,7 @@
             lbSoLuongXe.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lbSoLuongXe.Location = new Point(185, 42);
             lbSoLuongXe.Name = "lbSoLuongXe";
-            lbSoLuongXe.Size = new Size(67, 22);
+            lbSoLuongXe.Size = new Size(56, 18);
             lbSoLuongXe.TabIndex = 35;
             lbSoLuongXe.Text = "Loading";
             // 
@@ -470,7 +468,7 @@
             // 
             groupBox6.Controls.Add(lbTongTienKhachThue);
             groupBox6.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox6.Location = new Point(1018, 606);
+            groupBox6.Location = new Point(1018, 504);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(458, 96);
             groupBox6.TabIndex = 37;
@@ -483,36 +481,14 @@
             lbTongTienKhachThue.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lbTongTienKhachThue.Location = new Point(185, 42);
             lbTongTienKhachThue.Name = "lbTongTienKhachThue";
-            lbTongTienKhachThue.Size = new Size(67, 22);
+            lbTongTienKhachThue.Size = new Size(56, 18);
             lbTongTienKhachThue.TabIndex = 35;
             lbTongTienKhachThue.Text = "Loading";
-            // 
-            // groupBox7
-            // 
-            groupBox7.Controls.Add(lbXedaThue);
-            groupBox7.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox7.Location = new Point(1018, 504);
-            groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(458, 96);
-            groupBox7.TabIndex = 38;
-            groupBox7.TabStop = false;
-            groupBox7.Text = "Những con xe khách đã thuê";
-            // 
-            // lbXedaThue
-            // 
-            lbXedaThue.AutoSize = true;
-            lbXedaThue.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lbXedaThue.Location = new Point(185, 42);
-            lbXedaThue.Name = "lbXedaThue";
-            lbXedaThue.Size = new Size(67, 22);
-            lbXedaThue.TabIndex = 35;
-            lbXedaThue.Text = "Loading";
             // 
             // QLKHView
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1478, 784);
-            Controls.Add(groupBox7);
             Controls.Add(groupBox6);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
@@ -537,8 +513,6 @@
             groupBox5.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
-            groupBox7.ResumeLayout(false);
-            groupBox7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -583,8 +557,6 @@
         private Label txtIDNT;
         private GroupBox groupBox6;
         private Label lbTongTienKhachThue;
-        private GroupBox groupBox7;
-        private Label lbXedaThue;
         private Button btnClearTTTN;
     }
 }

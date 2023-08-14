@@ -90,8 +90,8 @@ namespace CarRenTal.View._6.QuanLyThuChi
             dgvDoanhThu.Columns[9].Name = "Số tiền cần thu";
             dgvDoanhThu.Columns[10].Name = "Tổng tiền";
             dgvDoanhThu.Columns[11].Name = "Nhân viên thực hiện";
-            _lstDoanhThu = _doanhThuService.GetDoanhThus(dtTimeSearch.Value.Date);
-            foreach (var i in _lstDoanhThu)
+            _lstDoanhThu = _doanhThuService.GetDoanhThus(dtBD);
+            foreach (var i in _lstDoanhThu.Where(c=>c.ngayBD.Date == dtBD))
             {
                 dgvDoanhThu.Rows.Add(i.maHD, i.tenXe, i.bienSo, i.ngayBD, i.ngayKT, (i.ngayKT - i.ngayBD).Days, i.donGia, i.tienCoc, i.phuPhi, (i.tongTien - i.tienCoc) + i.phuPhi, i.tongTien, i.tenNV);
             }
@@ -344,7 +344,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             Microsoft.Office.Interop.Excel.Range cl12 = oSheet.get_Range("L3", "L3");
             cl12.Value2 = "Nhân viên thực hiện";
             cl12.ColumnWidth = 20;
-            
+
 
             // Xác định hàng tiêu đề
             Microsoft.Office.Interop.Excel.Range rowHead = oSheet.get_Range("A3", "L3");
@@ -468,7 +468,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
             {
                 for (int j = 0; j < dtTB.Columns.Count; j++)
                 {
-                    if (dtTB.Rows[i].Cells[j].Value != null) { oExcel.Cells[i + 4, j+1] = dtTB.Rows[i].Cells[j].Value.ToString(); }
+                    if (dtTB.Rows[i].Cells[j].Value != null) { oExcel.Cells[i + 4, j + 1] = dtTB.Rows[i].Cells[j].Value.ToString(); }
                 }
             }
 
@@ -537,7 +537,7 @@ namespace CarRenTal.View._6.QuanLyThuChi
                 MessageBox.Show("Không có dữ liệu");
                 return;
             }
-           
+
         }
     }
 }
