@@ -48,7 +48,7 @@ namespace CarRenTal.View.QuanLiXe
         }
         private bool ContainsSpecialCharacters(string input)
         {
-            string pattern = @"^[a-zA-Z0-9 ]+$";
+            string pattern = @"^[a-zA-Z0-9\- ]+$";
             return !Regex.IsMatch(input, pattern);
         }
         private bool Checkvali()

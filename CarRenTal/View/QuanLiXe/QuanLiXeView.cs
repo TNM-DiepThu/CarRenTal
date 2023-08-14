@@ -176,8 +176,11 @@ namespace CarRenTal
 
         private void tb_seach_TextChanged(object sender, EventArgs e)
         {
-            string tenXeFilter = tb_seach.Text;
-            var filteredXes = _xe.GetAll().Where(x => x.TenXe.Contains(tenXeFilter));
+            string searchText = tb_seach.Text.ToLower();
+            var filteredXes = _xe.GetAll().Where(x =>
+                x.TenXe.ToLower().Contains(searchText) ||
+                x.BienSo.ToLower().Contains(searchText));
+
             dtg_show.Rows.Clear();
             int stt = 1;
             foreach (var x in filteredXes)
@@ -226,11 +229,13 @@ namespace CarRenTal
                 using (var edit = new EditXeView(selectedXeId, this))
                 {
                     edit.ShowDialog();
-                }
+                   
+                } 
+                LoadData();
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện xem bảo dưỡng.");
+                MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện xem sửa.");
             }
         }
         public void RefreshDataGridView()
@@ -244,7 +249,7 @@ namespace CarRenTal
             if (selectedXeId != Guid.Empty) // Đảm bảo đã chọn một xe trước khi mở Form BaoDuong
             {
                 // Tạo Form mới chứa DataGridView của BaoDuong
-                using (var bh = new XeBaoHiemView(selectedXeId))
+                using (var bh = new XeBaoHiemView(selectedXeId,this))
                 {
                     bh.ShowDialog();
                 }

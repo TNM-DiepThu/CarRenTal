@@ -137,9 +137,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(42, 9);
             label2.Name = "label2";
-            label2.Size = new Size(129, 20);
+            label2.Size = new Size(217, 20);
             label2.TabIndex = 4;
-            label2.Text = "Tìm kiếm theo tên";
+            label2.Text = "Tìm kiếm theo tên hoặc biển số";
             // 
             // bt_edit
             // 

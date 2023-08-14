@@ -27,9 +27,9 @@ namespace Bus.Serviece.Implements
                 .Where(x => x.IdXe == id).ToList();
 
             danhSachLoaiXeVM = danhSachLoaiXeVM
-        .OrderByDescending(x => x.LoaiBaoHiem == "Bảo hiểm trách nhiệm dân sự")
-        .ThenBy(x => x.LoaiBaoHiem)
-        .ToList();
+                .OrderByDescending(x => x.LoaiBaoHiem == "Bảo hiểm trách nhiệm dân sự")
+                .ThenByDescending(x => x.NgayKetThuc) // Sắp xếp theo ngày kết thúc giảm dần
+                .ToList();
 
             return danhSachLoaiXeVM;
         }
@@ -53,7 +53,7 @@ namespace Bus.Serviece.Implements
                     bd.NgayBatDau = p.NgayBatDau;
                     bd.NgayKetThuc = p.NgayKetThuc;
                     bd.ChiPhi = p.ChiPhi;                   
-                    bd.TrangThai = (p.NgayKetThuc < DateTime.Now) ? 1 : 0;
+                    bd.TrangThai = (p.NgayKetThuc < DateTime.Now) ? 0 : 1;
                     bd.IdXe = id;
 
                 }
@@ -82,7 +82,7 @@ namespace Bus.Serviece.Implements
                     bd.NgayBatDau = p.NgayBatDau;
                     bd.NgayKetThuc = p.NgayKetThuc;
                     bd.ChiPhi = p.ChiPhi;               
-                    bd.TrangThai = (p.NgayKetThuc < DateTime.Now) ? 1 : 0;
+                    bd.TrangThai = (p.NgayKetThuc < DateTime.Now) ? 0 : 1;
                     bd.IdXe = Id;
                     BaoHiem lx = _context.baoHiems.FirstOrDefault(h => h.LoaiBaoHiem == p.LoaiBaoHiem);
                     if (lx != null)

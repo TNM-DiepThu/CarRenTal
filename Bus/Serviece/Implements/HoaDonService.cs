@@ -67,6 +67,16 @@ namespace Bus.Serviece.Implements
 
         }
 
+        public void CreateTheChap(TheChap theChap)
+        {
+            theChapRepo.Create(theChap);
+        }
+
+        public void DeleteTheChap(Guid id)
+        {
+            theChapRepo.Delete(id);
+        }
+
         public void UpdateHoaDon(HoaDonChiTiet hdct)
         {
             hoaDonChiTietRepo.Update(hdct);

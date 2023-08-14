@@ -136,6 +136,7 @@
             Name = "BaoHiemView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BaoHiemView";
+            FormClosed += BaoHiemView_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);
             PerformLayout();

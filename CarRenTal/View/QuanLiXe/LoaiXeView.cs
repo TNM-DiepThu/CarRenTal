@@ -57,7 +57,7 @@ namespace CarRenTal.View.QuanLiXe
         private void tb_lnl_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Chỉ cho phép nhập chữ cái và chữ số
-            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '-' && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -160,7 +160,7 @@ namespace CarRenTal.View.QuanLiXe
             tb_lnl.Text = obj.LoaiNguyenLieu;
             tb_soghe.Text = obj.SoGhe.ToString();
             tb_loaisoxe.Text = obj.LoaiSoXe;
-
+            cbb_hangxe.Text = obj.TenHangXe;
 
             rd_0.Checked = (obj.TrangThai == 1) ? true : false;
             rd_1.Checked = (obj.TrangThai == 0) ? true : false;

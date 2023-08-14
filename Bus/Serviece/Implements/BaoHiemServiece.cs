@@ -63,6 +63,7 @@ namespace Bus.Serviece.Implements
             if (baohiem == null) return false;
 
             baohiem.LoaiBaoHiem = vm.LoaiBaoHiem;
+            baohiem.TrangThai = vm.TrangThai;
 
             try
             {

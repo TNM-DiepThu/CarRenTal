@@ -28,7 +28,7 @@ namespace Bus.Serviece.Implements
                 bd.ChiPhi = p.ChiPhi;
                 bd.SoCongToBaoDuong = p.SoCongToBaoDuong;
                 bd.ChiTiet = p.ChiTiet;
-                bd.TrangThai = (p.NgayHetHan < DateTime.Now) ? 1 : 0;
+                bd.TrangThai = (p.NgayHetHan < DateTime.Now) ? 0 : 1;
                 bd.IdXe = id;
 
             }
@@ -51,7 +51,7 @@ namespace Bus.Serviece.Implements
                     bd.ChiPhi = p.ChiPhi;
                     bd.SoCongToBaoDuong = p.SoCongToBaoDuong;
                     bd.ChiTiet = p.ChiTiet;
-                    bd.TrangThai = (p.NgayHetHan < DateTime.Now) ? 1 : 0;
+                    bd.TrangThai = (p.NgayHetHan < DateTime.Now) ? 0 : 1;
                     _context.Update(bd);
                     _context.SaveChanges();
                     return true;

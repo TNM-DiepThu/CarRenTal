@@ -170,6 +170,7 @@
             Name = "XeBaoHiemView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "XeBaoHiemView";
+            FormClosed += XeBaoHiemView_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dtg_show).EndInit();
             ResumeLayout(false);
             PerformLayout();
