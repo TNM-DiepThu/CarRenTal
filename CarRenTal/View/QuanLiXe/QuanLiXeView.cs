@@ -229,11 +229,13 @@ namespace CarRenTal
                 using (var edit = new EditXeView(selectedXeId, this))
                 {
                     edit.ShowDialog();
-                }
+                   
+                } 
+                LoadData();
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện xem bảo dưỡng.");
+                MessageBox.Show("Vui lòng chọn một xe trước khi thực hiện xem sửa.");
             }
         }
         public void RefreshDataGridView()
