@@ -87,6 +87,10 @@ namespace CarRenTal.View._4.QuanLyHoaDon
 
         private void dtgv_data_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            cbb_giayTo.SelectedIndex = -1;
+            cbb_taiSan.SelectedIndex = -1;
+            tx_soTien.Text = "";
+            tx_chiTiet.Text = "";
             dtgv_data.Columns[0].HeaderText = "ID";
             dtgv_data.Columns[1].HeaderText = "Tên xe";
             dtgv_data.Columns[2].HeaderText = "Biển số";
@@ -103,7 +107,7 @@ namespace CarRenTal.View._4.QuanLyHoaDon
             tx_ngayTra.Text = hdct.NgayKetThuc.ToString();
             tx_tienCoc.Text = hdct.TienCoc.ToString();
             cbb_trangThai.SelectedIndex = hdct.TrangThai;
-            if (cbb_trangThai.SelectedIndex == 2 || cbb_trangThai.SelectedIndex == 3)
+            if (hdct.theChaps.ToList().Count != 0)
             {
                 cbb_giayTo.SelectedValue = hdct.theChaps.ToList()[0].IdGiayTo;
                 cbb_taiSan.SelectedValue = hdct.theChaps.ToList()[0].IdTS;
@@ -114,10 +118,7 @@ namespace CarRenTal.View._4.QuanLyHoaDon
 
         private void bt_save_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc muốn thay đổi không?", "Thay đổi trạng thái", MessageBoxButtons.YesNo) == DialogResult.No)
-            {
-                return;
-            }
+
             if (checkSave() != null)
             {
                 MessageBox.Show("" + checkSave());
@@ -125,7 +126,8 @@ namespace CarRenTal.View._4.QuanLyHoaDon
             }
             hdct.TrangThai = cbb_trangThai.SelectedIndex;
             hoaDonService.UpdateHoaDon(hdct);
-            if (cbb_trangThai.SelectedIndex==2|| cbb_trangThai.SelectedIndex == 3)
+
+            if (cbb_trangThai.SelectedIndex == 2 || cbb_trangThai.SelectedIndex == 3)
             {
                 TheChap theChap = new TheChap()
                 {
@@ -134,15 +136,19 @@ namespace CarRenTal.View._4.QuanLyHoaDon
                     IdTS = Guid.Parse(cbb_taiSan.SelectedValue.ToString()),
                     IdHDCT = hdct.Id,
                     MoTa = tx_chiTiet.Text,
-                    TinhTrang = cbb_trangThai.SelectedIndex,
+                    TinhTrang = (cbb_trangThai.SelectedIndex == 3 ? 2 : 1),
                 };
-                hoaDonService.UpdateTheChap(theChap); 
+                hoaDonService.UpdateTheChap(theChap);
             }
-            hoaDon.TrangThai=hoaDonService.CheckHoaDon(hoaDon);
-
+            hoaDon.TrangThai = hoaDonService.CheckHoaDon(hoaDon);
+            MessageBox.Show("Thành công");
         }
         private string checkSave()
         {
+            if (hdct == null)
+            {
+                return " Bạn chưa chọn hóa đơn chi tiết nào";
+            }
             if (hdct.NgayBatDau.Date < DateTime.Now.Date && cbb_trangThai.SelectedIndex == 1)
             {
                 return " Không thể chuyển trạng thái vì qua ngày bắt đầu";
@@ -158,7 +164,19 @@ namespace CarRenTal.View._4.QuanLyHoaDon
             return null;
         }
 
+        private void bt_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void cbb_trangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbb_trangThai.SelectedIndex == 2 && hdct != null)
+            {
+                decimal theChap = hdct.DonGia * (decimal)30.0;
+                tx_soTien.Text = theChap.ToString();
+            }
+        }
     }
 
 

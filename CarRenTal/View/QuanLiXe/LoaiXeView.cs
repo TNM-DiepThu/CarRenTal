@@ -162,8 +162,8 @@ namespace CarRenTal.View.QuanLiXe
             tb_loaisoxe.Text = obj.LoaiSoXe;
 
 
-            rd_0.Checked = (obj.TrangThai == 0) ? true : false;
-            rd_1.Checked = (obj.TrangThai != 0) ? true : false;
+            rd_0.Checked = (obj.TrangThai == 1) ? true : false;
+            rd_1.Checked = (obj.TrangThai == 0) ? true : false;
 
 
             var id = dtg_show.Rows[e.RowIndex].Cells["Id"].Value;
@@ -245,10 +245,7 @@ namespace CarRenTal.View.QuanLiXe
             {
                 MessageBox.Show("Nhập đủ giá trị");
             }
-            else if (_loaiXeServiece.GetAll().Any(x => x.Name == tb_name.Text))
-            {
-                MessageBox.Show("Tên loại xe đã tồn tại ");
-            }
+           
             else
             {
                 var updatedData = GetDataFrom2();

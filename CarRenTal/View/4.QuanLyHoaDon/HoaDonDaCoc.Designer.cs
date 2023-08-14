@@ -52,8 +52,8 @@
             label2 = new Label();
             label1 = new Label();
             bt_exit = new Button();
-            bt_save = new Button();
             lb_id = new Label();
+            bt_save = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgv_data).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -121,6 +121,7 @@
             cbb_trangThai.Name = "cbb_trangThai";
             cbb_trangThai.Size = new Size(220, 28);
             cbb_trangThai.TabIndex = 6;
+            cbb_trangThai.SelectedIndexChanged += cbb_trangThai_SelectedIndexChanged;
             // 
             // tx_ngayTra
             // 
@@ -301,17 +302,7 @@
             bt_exit.TabIndex = 10;
             bt_exit.Text = "Thoát";
             bt_exit.UseVisualStyleBackColor = true;
-            // 
-            // bt_save
-            // 
-            bt_save.DialogResult = DialogResult.OK;
-            bt_save.Location = new Point(222, 216);
-            bt_save.Name = "bt_save";
-            bt_save.Size = new Size(124, 120);
-            bt_save.TabIndex = 10;
-            bt_save.Text = "Lưu lại";
-            bt_save.UseVisualStyleBackColor = true;
-            bt_save.Click += bt_save_Click;
+            bt_exit.Click += bt_exit_Click;
             // 
             // lb_id
             // 
@@ -323,13 +314,23 @@
             lb_id.Text = "lb_id";
             lb_id.Visible = false;
             // 
+            // bt_save
+            // 
+            bt_save.Location = new Point(208, 216);
+            bt_save.Name = "bt_save";
+            bt_save.Size = new Size(124, 120);
+            bt_save.TabIndex = 10;
+            bt_save.Text = "Lưu lại";
+            bt_save.UseVisualStyleBackColor = true;
+            bt_save.Click += bt_save_Click;
+            // 
             // HoaDonDaCoc
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1119, 662);
-            Controls.Add(bt_save);
             Controls.Add(lb_id);
+            Controls.Add(bt_save);
             Controls.Add(bt_exit);
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
@@ -377,7 +378,7 @@
         private Label label2;
         private Label label1;
         private Button bt_exit;
-        private Button bt_save;
         private Label lb_id;
+        private Button bt_save;
     }
 }

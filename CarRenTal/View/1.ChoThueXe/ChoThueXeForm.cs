@@ -211,6 +211,10 @@ namespace CarRenTal.View._1.ChoThueXe
                 return;
             }
             lstXe = lstXe.Where(p => p.DonGia > nud_minGia.Value && p.DonGia < nud_maxGia.Value).ToList();
+            if (tx_search.Text != null)
+            {
+                lstXe = lstXe.Where(p => p.LoaiXe.Name.ToLower().Contains(tx_search.Text.ToLower())|| p.LoaiXe.HangXe.Name.ToLower().Contains(tx_search.Text.ToLower())).ToList();
+            }
             foreach (var item in lstXe)
             {
                 dtgv_xeSS.Rows.Add(item.LoaiXe.HangXe.Name + " " + item.LoaiXe.Name, item.BienSo, item.MauSac.TenMauSac, item.DonGia, item.LoaiXe.LoaiSoXe, item.LoaiXe.LoaiNguyenLieu, item.LoaiXe.SoGhe, item.ID);

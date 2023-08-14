@@ -117,8 +117,8 @@ namespace Bus.Serviece.Implements
             var getMHD = from ct in _lstHĐCT
                          join hd in _lstHĐTX on ct.IdHoaDon equals hd.Id
                          join xe in _lstXe on ct.IdXe equals xe.ID
-                         join cp in _lstChiPhiPhatSinh on ct.Id equals cp.IdHDCT
-                         where ct.NgayBatDau.Year == nam.Year  /* && ct.Id in (from cp in _lstChiPhiPhatSinh select cp.IdHDCT)*/ && ct.TrangThai == 1 || ct.TrangThai == 2 || ct.TrangThai == 3 || ct.TrangThai == 4
+                        join cp in _lstChiPhiPhatSinh on ct.Id equals cp.IdHDCT
+                     where ct.NgayBatDau.Year == nam.Year  /* && ct.Id in (from cp in _lstChiPhiPhatSinh select cp.IdHDCT)*/ &&( ct.TrangThai == 1 || ct.TrangThai == 2 || ct.TrangThai == 3 || ct.TrangThai == 4)
                          select new DoanhThu()
                          {
                              maHD = hd.SoHopDong,
@@ -128,7 +128,7 @@ namespace Bus.Serviece.Implements
                              ngayKT = ct.NgayKetThuc,
                              tienCoc = ct.TienCoc,
                              donGia = xe.DonGia,
-                             phuPhi = cp.GiaTien,
+                         //    phuPhi = cp.GiaTien,
                              tongTien = ct.TongTien,
                              tenNV = hd.IdNhanVien.ToString()
                          };

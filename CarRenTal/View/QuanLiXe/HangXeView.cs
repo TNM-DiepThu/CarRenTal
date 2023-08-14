@@ -130,8 +130,8 @@ namespace CarRenTal.View
             _id = Guid.Parse(ShowHangXe.Rows[rowIndex].Cells[1].Value.ToString());
             var obj = _hangXeServiece.GetAllHangXe().FirstOrDefault(c => c.Id == _id);
             textBox1.Text = obj.Name;
-            rd_hd.Checked = (obj.TrangThai == 0) ? true : false;
-            rd_khd.Checked = (obj.TrangThai != 0) ? true : false;
+            rd_hd.Checked = (obj.TrangThai == 1) ? true : false;
+            rd_khd.Checked = (obj.TrangThai == 0) ? true : false;
 
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
@@ -185,11 +185,7 @@ namespace CarRenTal.View
             if (textBox1.Text == "" || !(rd_hd.Checked || rd_khd.Checked))
             {
                 MessageBox.Show("Nhập dữ liệu");
-            }
-            else if (_hangXeServiece.GetAllHangXe().Any(x => x.Name == textBox1.Text))
-            {
-                MessageBox.Show("Tên đã tồn tại");
-            }
+            }         
             else
             {
                 MessageBox.Show(_hangXeServiece.UpdateHangXe(GetDataFrom2()));

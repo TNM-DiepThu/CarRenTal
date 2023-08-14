@@ -249,7 +249,7 @@
             tx_search.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             tx_search.Location = new Point(78, 81);
             tx_search.Name = "tx_search";
-            tx_search.PlaceholderText = "Nhập tên khách hàng hoặc căn cước";
+            tx_search.PlaceholderText = "Nhập tên khách hàng hoặc số hợp đồng";
             tx_search.Size = new Size(620, 34);
             tx_search.TabIndex = 10;
             // 
