@@ -98,7 +98,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 foreach (var item in _lstHDCT)
                 {
                     string tThai2 = CheckTrangThai(item.TrangThai, item.NgayBatDau, item.NgayKetThuc, tThai);
-                    dtgv_data.Rows.Add(item.Id, item.Xe.LoaiXe.Name, item.Xe.BienSo, item.HoaDonThueXe.KhachHang.Name, item.NgayBatDau.Date, item.NgayKetThuc.Date, item.TienCoc, item.TongTien, tThai2);
+                    dtgv_data.Rows.Add(item.Id, item.Xe.LoaiXe.HangXe.Name + " "+ item.Xe.LoaiXe.Name, item.Xe.BienSo, item.HoaDonThueXe.KhachHang.Name, item.NgayBatDau.Date, item.NgayKetThuc.Date, item.TienCoc, item.TongTien, tThai2);
                     if (tThai2 == "Quá hạn nhận xe" || tThai2 == "Quá hạn trả xe")
                     {
                         dtgv_data.Rows[stt].DefaultCellStyle.BackColor = Color.OrangeRed;
