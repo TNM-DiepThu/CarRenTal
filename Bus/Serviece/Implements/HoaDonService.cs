@@ -17,6 +17,10 @@ namespace Bus.Serviece.Implements
 
         public int CheckHoaDon(HoaDonThueXe hd)
         {
+            if (hd==null)
+            {
+                return -1;
+            }
             hd.HoaDonChiTiets = hoaDonChiTietRepo.GetALL().Where(p => p.IdHoaDon == hd.Id).ToList();
             int hoanThanh = 0, thucHien = 0, huy = 0, soLuong = 0;
             foreach (var hdct in hd.HoaDonChiTiets)

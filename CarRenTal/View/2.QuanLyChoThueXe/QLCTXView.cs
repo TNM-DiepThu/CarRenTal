@@ -137,13 +137,18 @@ namespace CarRenTal.View.QuanLyChoThueXe
 
         private void dtgv_data_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            tx_chiTiet.Text = "";
+            tx_giaTri.Text = "";
+            tx_phuPhi.Text = "";
+            cbb_loaiGiayTo.SelectedIndex = -1;
+            cbb_loaiTaiSan.SelectedIndex = -1;
             hoaDonCT = _lstHDCT.FirstOrDefault(p => p.Id == Guid.Parse(dtgv_data.CurrentRow.Cells[0].Value.ToString()));
             if (hoaDonCT != null)
             {
                 tx_tenKhach.Text = hoaDonCT.HoaDonThueXe.KhachHang.Name;
                 tx_sdt.Text = hoaDonCT.HoaDonThueXe.KhachHang.SDT;
                 cbb_trangThai.SelectedIndex = hoaDonCT.TrangThai;
-                if (hoaDonCT.TrangThai == 2)
+                if (hoaDonCT.theChaps.Count > 0&& hoaDonCT.TrangThai!=1)
                 {
                     cbb_loaiGiayTo.SelectedValue = hoaDonCT.theChaps.ToList()[0].IdGiayTo;
                     cbb_loaiTaiSan.SelectedValue = hoaDonCT.theChaps.ToList()[0].IdTS;
@@ -166,13 +171,18 @@ namespace CarRenTal.View.QuanLyChoThueXe
         {
             if (hoaDonCT == null)
             {
-                MessageBox.Show("Chỉ có thế chuyển trạng thái về khách không đến lấy xe");
+                MessageBox.Show("Bạn chưa chọn hóa đơn chi tiết nào");
                 return;
             }
             if (hoaDonCT.TrangThai == 1)
             {
                 if (cbb_trangThai.SelectedIndex == 1)
                 {
+                    return;
+                }
+                if (cbb_trangThai.SelectedIndex == 3)
+                {
+                    MessageBox.Show("Không thể hoàn thành khi khách chưa lấy xe");
                     return;
                 }
                 if (DateTime.Now.Date > hoaDonCT.NgayBatDau.Date)
@@ -187,14 +197,14 @@ namespace CarRenTal.View.QuanLyChoThueXe
                     {
                         hoaDonCT.TrangThai = 4;
                         hdService.UpdateHDCT(hoaDonCT);
-                         hoaDonService.CheckHoaDon(hoaDonCT.HoaDonThueXe);
+                        hoaDonService.CheckHoaDon(hoaDonCT.HoaDonThueXe);
                         MessageBox.Show("Thành công");
 
                     }
                     LoadData(trangThai, null);
                     return;
                 }
-                if (cbb_trangThai.SelectedIndex==0||cbb_trangThai.SelectedIndex==5 || cbb_trangThai.SelectedIndex == 4)
+                if (cbb_trangThai.SelectedIndex == 0 || cbb_trangThai.SelectedIndex == 5 || cbb_trangThai.SelectedIndex == 4)
                 {
                     hoaDonCT.TrangThai = cbb_trangThai.SelectedIndex;
                     hdService.UpdateHDCT(hoaDonCT);
@@ -207,11 +217,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
                     MessageBox.Show("" + CheckTheChap());
                     return;
                 }
-                if (cbb_trangThai.SelectedIndex == 3)
-                {
-                    MessageBox.Show("Không thể hoàn thành khi khách chưa lấy xe");
-                    return;
-                }
+
                 if (cbb_trangThai.SelectedIndex == 2)
                 {
                     TheChap theChap = new TheChap()
@@ -241,23 +247,29 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 {
                     hoaDonCT.TrangThai = cbb_trangThai.SelectedIndex;
                     hdService.UpdateHDCT(hoaDonCT);
-                    hdService.UpdateTheChap(new TheChap() { Id = hoaDonCT.Id });
+                    if (cbb_trangThai.SelectedIndex == 3)
+                    {
+                        hdService.UpdateTheChap(new TheChap() { Id = hoaDonCT.Id });
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Chỉ có thế chuyển trạng thái thành hủy hoặc hoàn thành");
                 }
-            
+
             }
-            else if (dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Đến ngày trả"|| dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Quá hạn trả xe")
+            else if (dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Đến ngày trả" || dtgv_data.CurrentRow.Cells[8].Value.ToString() == "Quá hạn trả xe")
             {
                 if (cbb_trangThai.SelectedIndex != 0 && cbb_trangThai.SelectedIndex != 3)
                 {
                     MessageBox.Show("Chỉ có thế chuyển trạng thái thành hủy hoặc hoàn thành");
+                    return;
                 }
-                else 
+                else
                 {
-                    hoaDonCT.TrangThai= cbb_trangThai.SelectedIndex;
+                    hoaDonCT.TrangThai = cbb_trangThai.SelectedIndex;
+                    TheChap theChap1 = new TheChap() { Id= hoaDonCT.Id,TinhTrang=2};
+                    hdService.UpdateTheChap(theChap1);
                     hdService.UpdateHDCT(hoaDonCT);
                 }
             }
@@ -289,7 +301,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
             tx_chiTiet.Text = "";
             tx_giaTri.Text = "";
             tx_sdt.Text = "";
-           // tx_search.Text = "";
+            // tx_search.Text = "";
             tx_tenKhach.Text = "";
             tx_thanhToan.Text = "0";
             tx_phuPhi.Text = "0";
@@ -308,7 +320,7 @@ namespace CarRenTal.View.QuanLyChoThueXe
                 if (cbb_trangThai.SelectedIndex == 2)
                 {
                     tx_giaTri.Text = (hoaDonCT.DonGia * 30).ToString();
-                    tx_thanhToan.Text = ( hoaDonCT.TongTien - hoaDonCT.TienCoc).ToString();
+                    tx_thanhToan.Text = (hoaDonCT.TongTien - hoaDonCT.TienCoc).ToString();
                     return;
                 }
                 if (cbb_trangThai.SelectedIndex == 5)
@@ -322,9 +334,9 @@ namespace CarRenTal.View.QuanLyChoThueXe
                     tx_thanhToan.Text = 0.ToString();
                 }
             }
-            else if (hoaDonCT.TrangThai==2)
+            else if (hoaDonCT.TrangThai == 2)
             {
-                if (cbb_trangThai.SelectedIndex==3)
+                if (cbb_trangThai.SelectedIndex == 3)
                 {
                     tx_thanhToan.Text = tx_phuPhi.Text;
                 }
