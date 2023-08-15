@@ -116,7 +116,7 @@ namespace Bus.Serviece.Implements
             //kiểm tra xe có đang cho thuê hay không
             checkDK = from xe in lstXe
                           join hd in lstHoaDonChitiet on xe.ID equals hd.IdXe
-                          where (((startDate >= hd.NgayBatDau && startDate <= hd.NgayKetThuc) || (endDate >= hd.NgayBatDau && endDate <= hd.NgayKetThuc)) && (hd.TrangThai == 2 || hd.TrangThai == 1)) 
+                          where (((startDate >= hd.NgayBatDau && startDate <= hd.NgayKetThuc) || (endDate >= hd.NgayBatDau && endDate <= hd.NgayKetThuc|| (startDate<=hd.NgayBatDau&&endDate>=hd.NgayKetThuc))) && (hd.TrangThai == 2 || hd.TrangThai == 1)) 
                           select xe;
             if (checkDK != null && result != null)
             {
