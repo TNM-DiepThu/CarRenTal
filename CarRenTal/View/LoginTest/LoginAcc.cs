@@ -26,5 +26,10 @@ namespace CarRenTal.View.LoginTest
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            int i = 1;
+        }
     }
 }

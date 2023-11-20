@@ -53,13 +53,14 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Gold;
-            label1.Location = new Point(190, 212);
+            label1.Location = new Point(88, 293);
             label1.Name = "label1";
             label1.Size = new Size(156, 54);
             label1.TabIndex = 1;
