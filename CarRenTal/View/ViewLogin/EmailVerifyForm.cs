@@ -28,16 +28,29 @@ namespace CarRenTal.View.ViewLogin
 
         private void bt_continue_Click(object sender, EventArgs e)
         {
-            if (tx_email.Text==null)
+            try
             {
-                return;
+                if (tx_email.Text == null)
+                {
+                    return;
+                }
+                if (loginService.VerifyOTP(tx_emailOTP.Text))
+                {
+                    OpenChildForm(new ResetPassForm(tx_email.Text));
+                }
+                else
+                {
+                    countOTPFail++;
+                    MessageBox.Show("Vui lòng kiểm tra email hoặc mã của bạn");
+                    if (countOTPFail >= 3)
+                    {
+                        MessageBox.Show("Tài khoản của bạn bị khóa tạm thời, liên hệ quản lý để mở lại");
+                    }
+                }
             }
-            if (loginService.VerifyOTP(tx_emailOTP.Text))
+            catch (Exception)
             {
-                OpenChildForm(new ResetPassForm(tx_email.Text));
-            }
-            else
-            {
+
                 countOTPFail++;
                 MessageBox.Show("Vui lòng kiểm tra email hoặc mã của bạn");
                 if (countOTPFail >= 3)

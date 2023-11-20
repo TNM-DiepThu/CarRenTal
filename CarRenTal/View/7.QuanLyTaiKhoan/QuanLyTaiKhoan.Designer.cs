@@ -79,7 +79,7 @@
             dtgv_data.RowHeadersWidth = 51;
             dtgv_data.RowTemplate.Height = 29;
             dtgv_data.Size = new Size(1385, 436);
-            dtgv_data.TabIndex = 0;
+            dtgv_data.TabIndex = 44;
             dtgv_data.CellClick += dtgv_data_CellClick;
             // 
             // groupBox1
@@ -112,7 +112,7 @@
             tx_email.Location = new Point(21, 47);
             tx_email.Name = "tx_email";
             tx_email.Size = new Size(184, 27);
-            tx_email.TabIndex = 0;
+            tx_email.TabIndex = 6;
             // 
             // groupBox10
             // 
@@ -130,7 +130,7 @@
             dtp_dob.Location = new Point(19, 49);
             dtp_dob.Name = "dtp_dob";
             dtp_dob.Size = new Size(180, 27);
-            dtp_dob.TabIndex = 0;
+            dtp_dob.TabIndex = 5;
             // 
             // groupBox9
             // 
@@ -147,7 +147,7 @@
             tx_sdt.Location = new Point(21, 47);
             tx_sdt.Name = "tx_sdt";
             tx_sdt.Size = new Size(184, 27);
-            tx_sdt.TabIndex = 0;
+            tx_sdt.TabIndex = 4;
             // 
             // groupBox8
             // 
@@ -165,7 +165,7 @@
             tx_adress.Multiline = true;
             tx_adress.Name = "tx_adress";
             tx_adress.Size = new Size(184, 48);
-            tx_adress.TabIndex = 0;
+            tx_adress.TabIndex = 3;
             // 
             // groupBox7
             // 
@@ -185,7 +185,7 @@
             cbb_gioiTinh.Location = new Point(25, 46);
             cbb_gioiTinh.Name = "cbb_gioiTinh";
             cbb_gioiTinh.Size = new Size(183, 28);
-            cbb_gioiTinh.TabIndex = 0;
+            cbb_gioiTinh.TabIndex = 1;
             // 
             // groupBox5
             // 
@@ -202,7 +202,7 @@
             tx_hoTen.Location = new Point(21, 47);
             tx_hoTen.Name = "tx_hoTen";
             tx_hoTen.Size = new Size(184, 27);
-            tx_hoTen.TabIndex = 0;
+            tx_hoTen.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -215,7 +215,7 @@
             groupBox2.Location = new Point(39, 165);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(702, 174);
-            groupBox2.TabIndex = 3;
+            groupBox2.TabIndex = 44;
             groupBox2.TabStop = false;
             groupBox2.Text = "Chức năng";
             // 
@@ -234,7 +234,7 @@
             bt_clear.Location = new Point(553, 47);
             bt_clear.Name = "bt_clear";
             bt_clear.Size = new Size(132, 55);
-            bt_clear.TabIndex = 7;
+            bt_clear.TabIndex = 12;
             bt_clear.Text = "Clear";
             bt_clear.UseVisualStyleBackColor = true;
             bt_clear.Click += bt_clear_Click;
@@ -244,7 +244,7 @@
             bt_delete.Location = new Point(391, 47);
             bt_delete.Name = "bt_delete";
             bt_delete.Size = new Size(132, 55);
-            bt_delete.TabIndex = 8;
+            bt_delete.TabIndex = 11;
             bt_delete.Text = "Xóa";
             bt_delete.UseVisualStyleBackColor = true;
             bt_delete.Click += bt_delete_Click;
@@ -254,7 +254,7 @@
             bt_update.Location = new Point(203, 47);
             bt_update.Name = "bt_update";
             bt_update.Size = new Size(132, 55);
-            bt_update.TabIndex = 9;
+            bt_update.TabIndex = 10;
             bt_update.Text = "Sửa ";
             bt_update.UseVisualStyleBackColor = true;
             bt_update.Click += bt_update_Click;
@@ -264,7 +264,7 @@
             bt_add.Location = new Point(19, 47);
             bt_add.Name = "bt_add";
             bt_add.Size = new Size(132, 55);
-            bt_add.TabIndex = 10;
+            bt_add.TabIndex = 9;
             bt_add.Text = "Thêm";
             bt_add.UseVisualStyleBackColor = true;
             bt_add.Click += bt_add_Click;
@@ -302,7 +302,7 @@
             tx_pass.Location = new Point(15, 47);
             tx_pass.Name = "tx_pass";
             tx_pass.Size = new Size(188, 27);
-            tx_pass.TabIndex = 0;
+            tx_pass.TabIndex = 8;
             // 
             // groupBox4
             // 
@@ -319,7 +319,7 @@
             tx_user.Location = new Point(21, 47);
             tx_user.Name = "tx_user";
             tx_user.Size = new Size(184, 27);
-            tx_user.TabIndex = 0;
+            tx_user.TabIndex = 7;
             // 
             // lb_id
             // 

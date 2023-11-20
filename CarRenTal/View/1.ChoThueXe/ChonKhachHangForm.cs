@@ -104,7 +104,9 @@ namespace CarRenTal.View._1.ChoThueXe
                         string[] codeText = result.Text.Split('|');
                         if (currenInfor == 1)
                         {
-                            tx_cccdKH.Text = codeText[0];
+							tx_nameKH.Text=result.Text;
+
+							tx_cccdKH.Text = codeText[0];
                             tx_nameKH.Text = codeText[2];
                             string day = codeText[3][0] + codeText[3][1].ToString();
                             string date = (day + "/" + codeText[3][2] + codeText[3][3] + "/" + codeText[3][4] + codeText[3][5] + codeText[3][6] + codeText[3][7]).ToString();
