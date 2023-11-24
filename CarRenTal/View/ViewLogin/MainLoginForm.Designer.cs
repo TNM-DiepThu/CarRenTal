@@ -58,6 +58,6 @@
         }
 
         #endregion
-        private Panel pn_show;
+        public Panel pn_show;
     }
 }

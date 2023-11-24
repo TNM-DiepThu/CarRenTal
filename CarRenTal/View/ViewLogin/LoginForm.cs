@@ -14,6 +14,7 @@ namespace CarRenTal.View.ViewLogin
 {
     public partial class LoginForm : Form
     {
+        public bool checkLogin = false;
         private Form currentFormChild;
         LoginService loginService;
 
@@ -44,13 +45,14 @@ namespace CarRenTal.View.ViewLogin
             childForm.Show();
         }
 
-        private void bt_login_Click(object sender, EventArgs e)
+        public void bt_login_Click(object sender, EventArgs e)
         {
             try
             {
                 var result = loginService.CheckLogin(tx_user.Text, tx_pass.Text);
                 if (result != null)
                 {
+                    checkLogin = true;
                     tx_pass.Text = "";
                     this.Hide();
                     View.MainView.MainViewQL main = new View.MainView.MainViewQL(result);
@@ -60,17 +62,23 @@ namespace CarRenTal.View.ViewLogin
                 }
                 else
                 {
-                    MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
+                    checkLogin = false;
+                  //  MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
                 }
             }
             catch (Exception)
             {
-
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
+                checkLogin = false;
+                //   MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu");
             }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pn_login_Paint(object sender, PaintEventArgs e)
         {
 
         }
