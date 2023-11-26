@@ -6,7 +6,10 @@ namespace Phuc_UnitTest
 		public void Setup()
 		{
 		}
-
+		[TearDown] 
+		public void TearDown()
+		{ 
+		}
 		[Test]
 		public void Test1()
 		{
