@@ -73,7 +73,7 @@ namespace Bus.Serviece.Implements
 
         }
 
-        public List<Xe> DataXe(DateTime startDate, DateTime endDate,List<HoaDonChiTiet> xeDaChon)
+        public List<Xe> DataXe(DateTime startDate, DateTime endDate,List<HoaDonChiTiet>? xeDaChon)
         {
             //var resul2 = from xe in lstXe                 
             //             join hd in lstHoaDonChitiet on xe.ID equals hd.IdXe
