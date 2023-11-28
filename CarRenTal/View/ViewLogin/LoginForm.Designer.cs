@@ -129,6 +129,7 @@
             pn_login.Name = "pn_login";
             pn_login.Size = new Size(571, 722);
             pn_login.TabIndex = 1;
+            pn_login.Paint += pn_login_Paint;
             // 
             // LoginForm
             // 
@@ -146,13 +147,13 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label lb_pass;
-        private Label lb_forgotPass;
-        private TextBox tx_user;
-        private TextBox tx_pass;
-        private Button bt_login;
-        private Panel pn_login;
+        public Label label1;
+        public Label label2;
+        public Label lb_pass;
+        public Label lb_forgotPass;
+        public TextBox tx_user;
+        public TextBox tx_pass;
+        public Button bt_login;
+        public Panel pn_login;
     }
 }

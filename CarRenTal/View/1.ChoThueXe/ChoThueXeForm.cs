@@ -17,16 +17,18 @@ namespace CarRenTal.View._1.ChoThueXe
     {
         DateTime maxDate = DateTime.Now.AddDays(45);
         ChoThueXeService service = new ChoThueXeService();
-        List<HoaDonChiTiet> lstXeChon = new List<HoaDonChiTiet>();
+        public List<HoaDonChiTiet> lstXeChon = new List<HoaDonChiTiet>();
         NhanVien nhanVienLogin;
         decimal heSo = 2 / 10;
         decimal minTC = 0;
-        public ChoThueXeForm(NhanVien nhanVien)
+        public List<Xe> lstXeTest;
+        public string maXe3;
+		public ChoThueXeForm(NhanVien nhanVien)
         {
             InitializeComponent();
 
-            nhanVienLogin = nhanVien;
-        }
+            nhanVienLogin = nhanVien;          
+		}
 
         public ChoThueXeForm()
         {
@@ -40,12 +42,12 @@ namespace CarRenTal.View._1.ChoThueXe
             lb_idKhach.Text = khachHang.Id.ToString();
         }
 
-        private void ChoThueXeForm_Load(object sender, EventArgs e)
+        public void ChoThueXeForm_Load(object sender, EventArgs e)
         {
             LoadData();
             bt_search_Click(null, null);
         }
-        private void LoadData()
+        public void LoadData()
         {
             dtgv_xeSS.Rows.Clear();
             dtgv_xeChon.Rows.Clear();
@@ -97,7 +99,7 @@ namespace CarRenTal.View._1.ChoThueXe
             cbb_trangThai.SelectedIndex = 0;
         }
 
-        private void bt_chooseCurtomer_Click(object sender, EventArgs e)
+        public void bt_chooseCurtomer_Click(object sender, EventArgs e)
         {
             using (ChonKhachHangForm chonKhach = new ChonKhachHangForm())
             {
@@ -109,7 +111,7 @@ namespace CarRenTal.View._1.ChoThueXe
         }
 
 
-        private void bt_add_Click(object sender, EventArgs e)
+        public void bt_add_Click(object sender, EventArgs e)
         {
             if (dtgv_xeSS.CurrentRow == null)
             {
@@ -134,6 +136,8 @@ namespace CarRenTal.View._1.ChoThueXe
                                  int.Parse(dtgv_xeSS.CurrentRow.Cells[3].Value.ToString()) * interval.Days,
                                   dtgv_xeSS.CurrentRow.Cells[7].Value.ToString()
                                  );
+            maXe3 = dtgv_xeChon[8,0].Value.ToString();
+           
         }
 
 
@@ -141,19 +145,19 @@ namespace CarRenTal.View._1.ChoThueXe
         {
 
         }
-        private void dtp_ngayThue_ValueChanged(object sender, EventArgs e)
+        public void dtp_ngayThue_ValueChanged(object sender, EventArgs e)
         {
             bt_search_Click(null, null);
             checkDate();
         }
 
-        private void dtp_ngayTra_ValueChanged(object sender, EventArgs e)
+        public void dtp_ngayTra_ValueChanged(object sender, EventArgs e)
         {
             bt_search_Click(null, null);
             checkDate();
         }
 
-        private void cbb_trangThai_SelectedIndexChanged_1(object sender, EventArgs e)
+        public void cbb_trangThai_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cbb_trangThai.SelectedIndex == 1)
             {
@@ -171,7 +175,7 @@ namespace CarRenTal.View._1.ChoThueXe
             }
         }
 
-        private void dt_delete_Click(object sender, EventArgs e)
+        public void dt_delete_Click(object sender, EventArgs e)
         {
             if (dtgv_xeChon.CurrentRow == null)
             {
@@ -180,12 +184,12 @@ namespace CarRenTal.View._1.ChoThueXe
             dtgv_xeChon.Rows.Remove(dtgv_xeChon.CurrentRow);
         }
 
-        private void bt_deleteAll_Click(object sender, EventArgs e)
+        public void bt_deleteAll_Click(object sender, EventArgs e)
         {
             dtgv_xeChon.Rows.Clear();
         }
 
-        private void bt_search_Click(object sender, EventArgs e)
+        public void bt_search_Click(object sender, EventArgs e)
         {
             dtgv_xeSS.Rows.Clear();
             List<Xe> lstXe = service.DataXe(dtp_ngayThue.Value.Date, dtp_ngayTra.Value.Date, lstXeChon);
@@ -215,14 +219,16 @@ namespace CarRenTal.View._1.ChoThueXe
             {
                 lstXe = lstXe.Where(p => p.LoaiXe.Name.ToLower().Contains(tx_search.Text.ToLower())|| p.LoaiXe.HangXe.Name.ToLower().Contains(tx_search.Text.ToLower())).ToList();
             }
-            foreach (var item in lstXe)
+            lstXeTest = lstXe;
+
+			foreach (var item in lstXe)
             {
                 dtgv_xeSS.Rows.Add(item.LoaiXe.HangXe.Name + " " + item.LoaiXe.Name, item.BienSo, item.MauSac.TenMauSac, item.DonGia, item.LoaiXe.LoaiSoXe, item.LoaiXe.LoaiNguyenLieu, item.LoaiXe.SoGhe, item.ID);
             }
 
         }
 
-        private void CheckData()
+        public void CheckData()
         {
             lstXeChon = new List<HoaDonChiTiet>();
             minTC = 0;
@@ -256,18 +262,18 @@ namespace CarRenTal.View._1.ChoThueXe
 
         }
 
-        private void dtgv_xeChon_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        public void dtgv_xeChon_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             CheckData();
 
         }
 
-        private void dtgv_xeChon_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        public void dtgv_xeChon_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             CheckData();
         }
 
-        private void tx_phiThue_TextChanged(object sender, EventArgs e)
+        public void tx_phiThue_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -289,7 +295,7 @@ namespace CarRenTal.View._1.ChoThueXe
             }
         }
 
-        private void bt_pay_Click(object sender, EventArgs e)
+        public void bt_pay_Click(object sender, EventArgs e)
         {
             if (!CheckPay())
             {
@@ -390,7 +396,7 @@ namespace CarRenTal.View._1.ChoThueXe
             }
         }
 
-        private bool CheckPay()
+        public bool CheckPay()
         {
             if (dtgv_xeChon.Rows.Count < 1)
             {
@@ -407,7 +413,7 @@ namespace CarRenTal.View._1.ChoThueXe
             return true;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        public void button4_Click(object sender, EventArgs e)
         {
             dtgv_xeChon.Rows.Clear();
             tx_search.Text = "";
@@ -425,17 +431,17 @@ namespace CarRenTal.View._1.ChoThueXe
             bt_search_Click(null, null);
         }
 
-        private void nud_minGia_ValueChanged(object sender, EventArgs e)
+        public void nud_minGia_ValueChanged(object sender, EventArgs e)
         {
             bt_search_Click(null, null);
         }
 
-        private void nud_maxGia_ValueChanged(object sender, EventArgs e)
+        public void nud_maxGia_ValueChanged(object sender, EventArgs e)
         {
             bt_search_Click(null, null);
         }
 
-        private void cbb_soGhe_SelectedIndexChanged(object sender, EventArgs e)
+        public void cbb_soGhe_SelectedIndexChanged(object sender, EventArgs e)
         {
             bt_search_Click(null, null);
         }
