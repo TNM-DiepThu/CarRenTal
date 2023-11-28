@@ -21,8 +21,17 @@ namespace CarRenTal.View._1.ChoThueXe
         NhanVien nhanVienLogin;
         decimal heSo = 2 / 10;
         decimal minTC = 0;
+        //khai báo để test
         public List<Xe> lstXeTest;
         public string maXe3;
+        public int CountXeTest5;
+        public KhachHang khtest6;
+        public bool checkTest6= false;
+        public bool checkTest7= false;
+        public bool checkTest10= false;
+        public bool dkTest7= false;
+        public int countXe6= 0;
+
 		public ChoThueXeForm(NhanVien nhanVien)
         {
             InitializeComponent();
@@ -40,6 +49,7 @@ namespace CarRenTal.View._1.ChoThueXe
             tx_nameKhach.Text = khachHang.Name;
             tx_canCuoc.Text = khachHang.CCCD;
             lb_idKhach.Text = khachHang.Id.ToString();
+            khtest6 = khachHang;
         }
 
         public void ChoThueXeForm_Load(object sender, EventArgs e)
@@ -60,7 +70,7 @@ namespace CarRenTal.View._1.ChoThueXe
             dtgv_xeSS.Columns[5].HeaderText = "Loại nhiên liệu";
             dtgv_xeSS.Columns[6].HeaderText = "Số ghế";
             dtgv_xeSS.Columns[7].HeaderText = "ID";
-            dtgv_xeSS.Columns[7].Visible = false;
+           // dtgv_xeSS.Columns[7].Visible = false;
             dtgv_xeChon.ColumnCount = 9;
             dtgv_xeChon.Columns[0].HeaderText = "Tên xe";
             dtgv_xeChon.Columns[1].HeaderText = "Biển số";
@@ -138,6 +148,7 @@ namespace CarRenTal.View._1.ChoThueXe
                                  );
             maXe3 = dtgv_xeChon[8,0].Value.ToString();
            
+           
         }
 
 
@@ -181,12 +192,15 @@ namespace CarRenTal.View._1.ChoThueXe
             {
                 return;
             }
-            dtgv_xeChon.Rows.Remove(dtgv_xeChon.CurrentRow);
+			countXe6++;
+			dtgv_xeChon.Rows.Remove(dtgv_xeChon.CurrentRow);
         }
 
         public void bt_deleteAll_Click(object sender, EventArgs e)
         {
             dtgv_xeChon.Rows.Clear();
+            CountXeTest5 = dtgv_xeChon.RowCount;
+
         }
 
         public void bt_search_Click(object sender, EventArgs e)
@@ -299,14 +313,17 @@ namespace CarRenTal.View._1.ChoThueXe
         {
             if (!CheckPay())
             {
-                MessageBox.Show("Mời nhập đủ các trường!");
+                //  MessageBox.Show("Mời nhập đủ các trường!");
+                checkTest6 = true;
                 return;
             }
-            if (MessageBox.Show("Bạn có xác nhận không?", "Xác nhận tạo hóa đơn", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (!dkTest7)
             {
-                return;
-            }
-           
+				if (MessageBox.Show("Bạn có xác nhận không?", "Xác nhận tạo hóa đơn", MessageBoxButtons.YesNo) == DialogResult.No)
+				{
+					return;
+				}
+			}
             if (cbb_trangThai.SelectedIndex == 0)
             {
                 HoaDonThueXe hd = new HoaDonThueXe()
@@ -337,6 +354,7 @@ namespace CarRenTal.View._1.ChoThueXe
                     service.CreateHDCT(hdct);
 
                 }
+                checkTest7 = true;
                 MessageBox.Show("Đặt cọc thành công");
                 button4_Click(null, null);
             }
@@ -408,6 +426,7 @@ namespace CarRenTal.View._1.ChoThueXe
             }
             if (tx_nameKhach.Text.Length < 3 || tx_phiThue.Text.Length < 3)
             {
+                checkTest10 = true;
                 return false;
             }
             return true;

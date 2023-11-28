@@ -15,11 +15,11 @@ namespace CarRenTal
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-                 Application.Run(new View._1.ChoThueXe.ChoThueXeForm(new Dal.Modal.NhanVien() { Id = Guid.Parse("BC8C0A62-8157-475F-BB06-598569ACE162") }));
+           //Application.Run(new View._1.ChoThueXe.ChoThueXeForm(new Dal.Modal.NhanVien() { Id = Guid.Parse("BC8C0A62-8157-475F-BB06-598569ACE162") }));
             //   Application.Run(new View.QuanLyChoThueXe.QLCTXView());
              // Application.Run(new View.ViewLogin.LoginForm() );
             //    Application.Run(new View.LoginTest.LoginAcc());
-            Application.Run(new View.ViewLogin.MainLoginForm());
+           Application.Run(new View.ViewLogin.MainLoginForm());
            // Application.Run(new View.QuanLyChoThueXe.QLCTXView());
 
 
