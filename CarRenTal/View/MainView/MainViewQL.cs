@@ -17,9 +17,11 @@ namespace CarRenTal.View.MainView
 {
     public partial class MainViewQL : Form
     {
+        //public readonly LogoutSuccessFull { get; set; }
         TaiKhoan _tk = new TaiKhoan();
         public MainViewQL(TaiKhoan tk)
         {
+          
             _tk = tk;
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.Font;
@@ -124,13 +126,13 @@ namespace CarRenTal.View.MainView
             ChangeBackGroundButton(btnQLTC);
         }
 
-        private void btnAccount_Click(object sender, EventArgs e)
+        public void btnAccount_Click(object sender, EventArgs e)
         {
             OpenChildForm(new QuanLyTaiKhoan());
             ChangeBackGroundButton(btnDangXuat);
         }
 
-        private void btnDangXuat_Click(object sender, EventArgs e)
+        public void btnDangXuat_Click(object sender, EventArgs e)
         {
             this.Close();
         }

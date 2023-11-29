@@ -215,7 +215,7 @@
         private GroupBox grb_Funtion;
         private Button btnQLCTX;
         private Panel pn_main;
-        private Button btnDangXuat;
+        public Button btnDangXuat;
         private Button btnQLTC;
         private Button btnQLKH;
         private Button btnQLNV;

@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             dtgv_data = new DataGridView();
             groupBox1 = new GroupBox();
@@ -368,32 +368,32 @@
 
         #endregion
 
-        private DataGridView dtgv_data;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private Button bt_search;
-        private Button bt_clear;
-        private Button bt_delete;
-        private Button bt_update;
-        private Button bt_add;
-        private TextBox tx_search;
-        private GroupBox groupBox3;
-        private TextBox tx_pass;
-        private TextBox tx_user;
-        private GroupBox groupBox11;
-        private TextBox tx_email;
-        private GroupBox groupBox10;
-        private DateTimePicker dtp_dob;
-        private GroupBox groupBox9;
-        private TextBox tx_sdt;
-        private GroupBox groupBox8;
-        private TextBox tx_adress;
-        private GroupBox groupBox7;
-        private ComboBox cbb_gioiTinh;
-        private GroupBox groupBox5;
-        private TextBox tx_hoTen;
-        private GroupBox groupBox6;
-        private GroupBox groupBox4;
-        private Label lb_id;
+        public DataGridView dtgv_data;
+        public GroupBox groupBox1;
+        public GroupBox groupBox2;
+        public Button bt_search;
+        public Button bt_clear;
+        public Button bt_delete;
+        public Button bt_update;
+        public Button bt_add;
+        public TextBox tx_search;
+        public GroupBox groupBox3;
+        public TextBox tx_pass;
+        public TextBox tx_user;
+        public GroupBox groupBox11;
+        public TextBox tx_email;
+        public GroupBox groupBox10;
+        public DateTimePicker dtp_dob;
+        public GroupBox groupBox9;
+        public TextBox tx_sdt;
+        public GroupBox groupBox8;
+        public TextBox tx_adress;
+        public GroupBox groupBox7;
+        public ComboBox cbb_gioiTinh;
+        public GroupBox groupBox5;
+        public TextBox tx_hoTen;
+        public GroupBox groupBox6;
+        public GroupBox groupBox4;
+        public Label lb_id;
     }
 }

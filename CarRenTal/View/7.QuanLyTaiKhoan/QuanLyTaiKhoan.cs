@@ -17,6 +17,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
 {
     public partial class QuanLyTaiKhoan : Form
     {
+        public bool checkCreat = false;
         TaiKhoanService _taiKhoanService = new TaiKhoanService();
 
         List<NhanVien> _lstNhanVien;
@@ -29,7 +30,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
 
         }
 
-        private void QuanLyTaiKhoan_Load(object sender, EventArgs e)
+        public void QuanLyTaiKhoan_Load(object sender, EventArgs e)
         {
             dtgv_data.Rows.Clear();
             dtgv_data.ColumnCount = 7;
@@ -86,7 +87,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             }
         }
 
-        private void bt_add_Click(object sender, EventArgs e)
+        public void bt_add_Click(object sender, EventArgs e)
         {
             string regexKQ = RegexInfor(tx_hoTen.Text, cbb_gioiTinh.SelectedIndex, tx_sdt.Text, tx_email.Text, tx_adress.Text, tx_user.Text, tx_pass.Text, "add");
             if (regexKQ != null)
@@ -117,12 +118,14 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             bool AddTK = _taiKhoanService.CreateTaiKhoan(taiKhoan);
             if (AddNV && AddTK)
             {
+                checkCreat =true;
                 MessageBox.Show("Thành công");
                 _lstNhanVien.Add(nhanVien);
                 QuanLyTaiKhoan_Load(null, null);
             }
             else
             {
+                checkCreat = false;
                 MessageBox.Show("Thất bại");
             }
 
