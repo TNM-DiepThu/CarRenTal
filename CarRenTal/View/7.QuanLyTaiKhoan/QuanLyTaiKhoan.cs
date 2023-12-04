@@ -21,6 +21,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
 
         List<NhanVien> _lstNhanVien;
         List<TaiKhoan> _lstTaiKhoan;
+        public bool UpdateCheck { get; private set; }
 
         public QuanLyTaiKhoan()
         {
@@ -86,7 +87,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             }
         }
 
-        private void bt_add_Click(object sender, EventArgs e)
+        public void bt_add_Click(object sender, EventArgs e)
         {
             string regexKQ = RegexInfor(tx_hoTen.Text, cbb_gioiTinh.SelectedIndex, tx_sdt.Text, tx_email.Text, tx_adress.Text, tx_user.Text, tx_pass.Text, "add");
             if (regexKQ != null)
@@ -117,12 +118,14 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             bool AddTK = _taiKhoanService.CreateTaiKhoan(taiKhoan);
             if (AddNV && AddTK)
             {
+                
                 MessageBox.Show("Thành công");
                 _lstNhanVien.Add(nhanVien);
                 QuanLyTaiKhoan_Load(null, null);
             }
             else
             {
+               
                 MessageBox.Show("Thất bại");
             }
 
@@ -175,7 +178,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
 
         }
 
-        private void bt_update_Click(object sender, EventArgs e)
+        public void bt_update_Click(object sender, EventArgs e)
         {
             string regexKQ = RegexInfor(tx_hoTen.Text, cbb_gioiTinh.SelectedIndex, tx_sdt.Text, tx_email.Text, tx_adress.Text, tx_user.Text, tx_pass.Text, "update");
             if (regexKQ != null)
@@ -185,6 +188,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             }
             NhanVien nhanVien = new NhanVien()
             {
+               
                 DiaChi = tx_adress.Text,
                 Email = tx_email.Text,
                 GioiTinh = cbb_gioiTinh.SelectedIndex == 0 ? true : false,
@@ -206,6 +210,8 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             bool AddTK = _taiKhoanService.UpdateTaiKhoan(taiKhoan);
             if (AddNV && AddTK)
             {
+                UpdateCheck = true;
+               
                 MessageBox.Show("Thành công");
                 _lstNhanVien.Remove(_lstNhanVien.FirstOrDefault(p => p.Id == Guid.Parse(lb_id.Text)));
                 _lstNhanVien.Add(nhanVien);
@@ -213,6 +219,7 @@ namespace CarRenTal.View._7.QuanLyTaiKhoan
             }
             else
             {
+                UpdateCheck = false;
                 MessageBox.Show("Thất bại");
             }
         }

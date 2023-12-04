@@ -18,9 +18,11 @@ using ZXing;
 
 namespace CarRenTal.View._1.ChoThueXe
 {
+   
 
     public partial class ChonKhachHangForm : Form
     {
+        public bool AddKH { get; private set; }
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice finalFrame = new VideoCaptureDevice();
         int currenInfor = 0;
@@ -214,6 +216,7 @@ namespace CarRenTal.View._1.ChoThueXe
         }
         string checkInfor()
         {
+         
             if (tx_nameKH.Text.Length == 0 || cbb_gtinhKH.SelectedIndex < 0 || tx_diaChiKH.Text.Length == 0 ||
          tx_nameNT.Text.Length == 0 || cbb_gtinhNT.SelectedIndex < 0 || tx_diaChiNT.Text.Length == 0)
             {
@@ -249,9 +252,9 @@ namespace CarRenTal.View._1.ChoThueXe
             }
             return null;
         }
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
-            string check = checkInfor();
+            string check = checkInfor(); ;
             bool isNew = true;
             if (choThueXeService.FindByCCCD(tx_cccdKH.Text) != null)
             {
@@ -291,10 +294,12 @@ namespace CarRenTal.View._1.ChoThueXe
                 {
                     khachHangChon = khachHang;
                     this.Close();
+                    AddKH = true;
                 }
             }
             else
             {
+                AddKH = false;
 
                 if (choThueXeService.UpdateKH(khachHang, nguoiThan))
                 {

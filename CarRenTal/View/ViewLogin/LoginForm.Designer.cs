@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             label1 = new Label();
             label2 = new Label();
@@ -146,13 +146,13 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
-        private Label lb_pass;
-        private Label lb_forgotPass;
-        private TextBox tx_user;
-        private TextBox tx_pass;
-        private Button bt_login;
-        private Panel pn_login;
+        public Label label1;
+        public Label label2;
+        public Label lb_pass;
+        public Label lb_forgotPass;
+        public TextBox tx_user;
+        public TextBox tx_pass;
+        public Button bt_login;
+        public Panel pn_login;
     }
 }
