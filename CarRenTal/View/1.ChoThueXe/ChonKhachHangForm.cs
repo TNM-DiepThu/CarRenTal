@@ -2,6 +2,7 @@
 using AForge.Video.DirectShow;
 using Bus.Serviece.Implements;
 using Dal.Modal;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,20 +28,21 @@ namespace CarRenTal.View._1.ChoThueXe
         ChoThueXeService choThueXeService = new ChoThueXeService();
         public KhachHang khachHangChon = new KhachHang();
         List<KhachHang> _lstKhachHang;
+        public bool AddKH { get; set; }
         public ChonKhachHangForm()
         {
             InitializeComponent();
         }
 
 
-        private void ChonKhachHangForm_Load(object sender, EventArgs e)
+        public void ChonKhachHangForm_Load(object sender, EventArgs e)
         {
             SetUpCam();
             _lstKhachHang = choThueXeService.GetKhachHang("");
             LoadData();
         }
         #region SetUpCam quét QR
-        private void CurentInfo(int button)
+        public void CurentInfo(int button)
         {
             if (button == currenInfor)
             {
@@ -53,7 +55,7 @@ namespace CarRenTal.View._1.ChoThueXe
 
         }
 
-        private void SetUpCam()
+        public void SetUpCam()
         {
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo filter in filterInfoCollection)
@@ -62,7 +64,7 @@ namespace CarRenTal.View._1.ChoThueXe
             }
               cbb_chooseDrives.SelectedIndex = 0;
         }
-        private void bt_start_Click(object sender, EventArgs e)
+        public void bt_start_Click(object sender, EventArgs e)
         {
             timer1.Start();
             bt_start.Enabled = false;
@@ -71,12 +73,12 @@ namespace CarRenTal.View._1.ChoThueXe
             finalFrame.NewFrame += new NewFrameEventHandler(finalFrame_NewFrame);
             finalFrame.Start();
         }
-        private void finalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        public void finalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             pic_Cam.Image = (Bitmap)eventArgs.Frame.Clone();
         }
 
-        private void ChonKhachHangForm_FormClosing(object sender, FormClosingEventArgs e)
+        public void ChonKhachHangForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (finalFrame.IsRunning)
             {
@@ -132,12 +134,12 @@ namespace CarRenTal.View._1.ChoThueXe
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        public void timer1_Tick(object sender, EventArgs e)
         {
             ScanQR();
         }
 
-        private void bt_stop_Click(object sender, EventArgs e)
+        public void bt_stop_Click(object sender, EventArgs e)
         {
             pic_Cam.Image = null;
             if (finalFrame.IsRunning)
@@ -149,7 +151,7 @@ namespace CarRenTal.View._1.ChoThueXe
                 finalFrame.WaitForStop();
             }
         }
-        private void bt_khach_Click(object sender, EventArgs e)
+        public void bt_khach_Click(object sender, EventArgs e)
         {
             CurentInfo(1);
             if (currenInfor == 1)
@@ -163,7 +165,7 @@ namespace CarRenTal.View._1.ChoThueXe
             }
         }
 
-        private void bt_nguoiThan_Click(object sender, EventArgs e)
+        public void bt_nguoiThan_Click(object sender, EventArgs e)
         {
             CurentInfo(2);
             if (currenInfor == 2)
@@ -201,7 +203,7 @@ namespace CarRenTal.View._1.ChoThueXe
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         {
             lb_idKH.Text = "";
             tx_cccdKH.Text = "";
@@ -251,7 +253,7 @@ namespace CarRenTal.View._1.ChoThueXe
             }
             return null;
         }
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             string check = checkInfor();
             bool isNew = true;
@@ -291,13 +293,14 @@ namespace CarRenTal.View._1.ChoThueXe
             {
                 if (choThueXeService.CreateKH(khachHang, nguoiThan))
                 {
+                    AddKH = true;
                     khachHangChon = khachHang;
                     this.Close();
                 }
             }
             else
             {
-
+                AddKH = false;
                 if (choThueXeService.UpdateKH(khachHang, nguoiThan))
                 {
                     khachHangChon = khachHang;
@@ -306,7 +309,7 @@ namespace CarRenTal.View._1.ChoThueXe
             }
         }
 
-        private void dtgv_data_CellClick(object sender, DataGridViewCellEventArgs e)
+        public void dtgv_data_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lb_idKH.Text = dtgv_data.CurrentRow.Cells[0].Value.ToString();
             tx_nameKH.Text = dtgv_data.CurrentRow.Cells[1].Value.ToString();
@@ -318,7 +321,7 @@ namespace CarRenTal.View._1.ChoThueXe
             ShowTN(lb_idKH.Text);
 
         }
-        private void ShowTN(string id)
+        public void ShowTN(string id)
         {
             NguoiThan nguoiThan = choThueXeService.FindNTbyIdKH(Guid.Parse(id));
 
@@ -329,7 +332,7 @@ namespace CarRenTal.View._1.ChoThueXe
             tx_cccdNT.Text = nguoiThan.CCCD.ToString();
         }
 
-        private void tx_cccdKH_TextChanged(object sender, EventArgs e)
+        public void tx_cccdKH_TextChanged(object sender, EventArgs e)
         {
             if (tx_cccdKH.Text.Length != 12)
             {
@@ -358,13 +361,13 @@ namespace CarRenTal.View._1.ChoThueXe
 
         }
 
-        private void bt_search_Click(object sender, EventArgs e)
+        public void bt_search_Click(object sender, EventArgs e)
         {
             _lstKhachHang = choThueXeService.GetKhachHang(tx_search.Text);
             LoadData();
         }
 
-        private void bt_exit_Click(object sender, EventArgs e)
+        public void bt_exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }

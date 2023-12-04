@@ -174,14 +174,14 @@ namespace Phuc_UnitTest
 
             // Thêm dữ liệu
             _FrmQLTK.lb_id.Text = Guid.NewGuid().ToString();
-            _FrmQLTK.tx_hoTen.Text = "Nguyễn Văn A";
+            _FrmQLTK.tx_hoTen.Text = "Nguyễn Văn FG";
             _FrmQLTK.cbb_gioiTinh.SelectedIndex = 0;
             _FrmQLTK.tx_adress.Text = "Như là A";
             _FrmQLTK.tx_sdt.Text = "0369639117";
             _FrmQLTK.tx_email.Text = "nkphuc221@gmail.com";
             _FrmQLTK.dtp_dob.Value = DateTime.Now;
 
-            _FrmQLTK.tx_user.Text = "phucnk1";
+            _FrmQLTK.tx_user.Text = "phucnk96";
             _FrmQLTK.tx_pass.Text = "1";
 
 
@@ -218,15 +218,15 @@ namespace Phuc_UnitTest
 
             // Thêm dữ liệu
             _FrmQLTK.lb_id.Text = Guid.NewGuid().ToString();
-            _FrmQLTK.tx_hoTen.Text = "Nguyễn Văn B";
+            _FrmQLTK.tx_hoTen.Text = "Nguyễn Văn GG";
             _FrmQLTK.cbb_gioiTinh.SelectedIndex = 1;
             _FrmQLTK.tx_adress.Text = "Như là B";
             _FrmQLTK.tx_sdt.Text = "0369639117";
             _FrmQLTK.tx_email.Text = "nkphuc221@gmail.com";
             _FrmQLTK.dtp_dob.Value = DateTime.Now;
 
-            _FrmQLTK.tx_user.Text = "phucnk2";
-            _FrmQLTK.tx_pass.Text = "2";
+            _FrmQLTK.tx_user.Text = "phucnk10";
+            _FrmQLTK.tx_pass.Text = "1";
 
 
             // Gọi nút add dữ liệu trên 
