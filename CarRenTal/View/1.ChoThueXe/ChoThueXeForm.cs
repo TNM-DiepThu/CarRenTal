@@ -355,7 +355,7 @@ namespace CarRenTal.View._1.ChoThueXe
 
                 }
                 checkTest7 = true;
-                MessageBox.Show("Đặt cọc thành công");
+              // MessageBox.Show("Đặt cọc thành công");
                 button4_Click(null, null);
             }
             if (cbb_trangThai.SelectedIndex == 1)

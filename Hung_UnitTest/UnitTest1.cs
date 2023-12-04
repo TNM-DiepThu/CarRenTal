@@ -42,7 +42,7 @@ namespace Hung_UnitTest
 		[SetUp]
 		public void Setup()
 		{
-			frm = new ChoThueXeForm(new Dal.Modal.NhanVien() { Id = Guid.Parse("BC8C0A62-8157-475F-BB06-598569ACE162") });
+			frm = new ChoThueXeForm(new Dal.Modal.NhanVien() { Id = Guid.Parse("BC8C0A62-8157-475F-BB06-598569ACE162") });// mở form cho thuê xe với tk Guid
 			frm.ChoThueXeForm_Load(null, null);
 			lstXe = xeRepo.GetXe();
 			lstHoaDonChitiet = hoaDonChiTietRepo.GetALL();
@@ -312,7 +312,7 @@ namespace Hung_UnitTest
 
 			Assert.IsTrue(frm.checkTest7);
 		}
-		//Test6 Tạo hoá đơn khi chưa chọn xe và khách hàng
+		//Test9 Tạo hoá đơn khi chưa chọn xe và khách hàng
 		[Test]
 		public void TC_U_09()
 		{
